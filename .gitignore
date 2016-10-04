@@ -1,0 +1,11 @@
+
+# Python byte compiled/optimized files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# plug.vim is symlinked into this location during vim_plug installation. We
+# don't want to track it.
+/dotfiles/nvim/autoload/plug.vim
