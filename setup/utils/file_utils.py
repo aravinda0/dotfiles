@@ -29,7 +29,7 @@ def backup_if_exists(path, key):
     return None
 
 
-def install_dotfiles(relative_src, dest, key):
+def install_dotfiles(key, relative_src, dest):
     echo('Installing dotfiles for {key}...'.format(key=key))
 
     dotfiles_src = os.path.join(DOTFILES_ROOT_DIR, relative_src)

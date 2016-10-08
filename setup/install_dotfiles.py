@@ -7,9 +7,9 @@ from utils.file_utils import install_dotfiles
 
 
 def install_all_dotfiles():
-    install_dotfiles('dotfiles/nvim', '~/.config/nvim', 'neovim')
+    install_dotfiles('neovim', 'dotfiles/nvim', '~/.config/nvim')
     install_dotfiles(
-        'dotfiles/nvim/vim_plug/plug.vim', '~/.config/nvim/autoload/plug.vim', 'vim_plug'
+        'vim_plug', 'dotfiles/nvim/vim_plug/plug.vim', '~/.config/nvim/autoload/plug.vim'
     )
 
 
