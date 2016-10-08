@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# Ignore vim's history file used for cross-network edits
+dotfiles/nvim/.netrwhist
+
 # Vim plugins directory
 dotfiles/nvim/plugged
 
