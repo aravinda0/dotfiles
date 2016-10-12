@@ -1,0 +1,3 @@
+
+# Disable terminal suspension (usually ctrl-s)
+stty -ixon
