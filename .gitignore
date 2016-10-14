@@ -17,4 +17,4 @@ dotfiles/nvim/plugged
 /dotfiles/nvim/autoload/plug.vim
 
 # Vim persistent undo directory
-dotfiles/nvim/undo
+dotfiles/nvim/.undo

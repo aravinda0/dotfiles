@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 from plumbum import local, FG
-from plumbum import colors
 from plumbum.cmd import mkdir, git, make
 
 import settings
@@ -12,7 +11,6 @@ build_dir = settings.DOTFILES_BUILD_DIR
 neovim_repo = 'https://github.com/neovim/neovim'
 
 def install_neovim_from_source():
-
     mkdir['-p'](build_dir)
 
     echo('Cloning neovim repo...')
@@ -32,5 +30,9 @@ def install_neovim_from_source():
     echo('Neovim installed!')
 
 
-if __name__ == '__main__':
+def install_tools():
     install_neovim_from_source()
+
+
+if __name__ == '__main__':
+    install_tools()
