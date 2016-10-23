@@ -18,12 +18,12 @@ def install_neovim_from_source():
     # TODO: Check if neovim already present on system (use 'which' or shutils.which)
     # TODO: Check for existing directory
 
-    with local.cwd(local.cwd / build_dir):
+    with local.cwd(build_dir):
         git['clone', neovim_repo] & FG
 
     echo('Building and installing neovim...')
 
-    with local.cwd(local.cwd / build_dir / 'neovim'):
+    with local.cwd(os.path.join(build_dir, 'neovim')):
         make & FG
         make['install'] & FG
 
