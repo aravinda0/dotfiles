@@ -13,3 +13,5 @@ DOTFILES_BUILD_DIR = os.getenv(
 BACKUP_DIR_FOR_EXISTING_FILES = os.getenv(
     'BACKUP_DIR_FOR_EXISTING_FILES', path.expanduser('~/BACKED_UP_DOTFILES')
 )
+
+FZF_INSTALL_PATH = os.getenv('FZF_INSTALL_PATH', '~/.fzf')

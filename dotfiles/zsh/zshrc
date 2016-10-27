@@ -1,3 +1,7 @@
 
 # Disable terminal suspension (usually ctrl-s)
 stty -ixon
+
+
+# Load fzf config
+[[ -f $FZF_INSTALL_PATH/fzf.zsh ]] && source $FZF_INSTALL_PATH/fzf.zsh

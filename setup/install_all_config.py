@@ -2,11 +2,13 @@
 
 from nvim.install_config import install_config as install_nvim_config
 from zsh.install_config import install_config as install_zsh_config
+from fzf.install_config import install_config as install_fzf_config
 
 
 def install_config():
     install_nvim_config()
     install_zsh_config()
+    install_fzf_config()
 
 
 if __name__ == '__main__':
