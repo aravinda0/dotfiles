@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 
-import os
-
 from plumbum import FG
 from plumbum.cmd import chsh
 
-from settings import DOTFILES_ROOT_DIR
 from utils.file_utils import install_dotfiles
 from utils.messaging import echo
 
@@ -29,4 +26,4 @@ def install_config():
 
 
 if __name__ == '__main__':
-    install_config
+    install_config()
