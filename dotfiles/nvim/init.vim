@@ -6,16 +6,10 @@ set nocompatible
 let s:vim_config_path = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 
 
-" Source options file
+" Source various config from helper files
 execute 'source ' . s:vim_config_path . '/config/options.vim'
-
-" Source mappings file
 execute 'source ' . s:vim_config_path . '/config/mappings.vim'
-
-" Source functions file
 execute 'source ' . s:vim_config_path . '/config/functions.vim'
-
-" Source plugins and their config
 execute 'source ' . s:vim_config_path . '/config/plugins.vim'
 
 
