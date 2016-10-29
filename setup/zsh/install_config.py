@@ -5,11 +5,16 @@ from plumbum.cmd import chsh
 
 from utils.file_utils import install_dotfiles
 from utils.messaging import echo
+import settings
 
 
 def install_zsh_dotfiles():
+    # Add shell startup files to standard locations
     install_dotfiles('dotfiles/zsh/zshenv', '~/.zshenv', 'zshenv')
     install_dotfiles('dotfiles/zsh/zshrc', '~/.zshrc', 'zshrc')
+
+    # Our helper files
+    install_dotfiles('dotfiles/zsh/config', settings.ZSH_CONFIG_PATH, 'zsh_config')
 
 
 def make_zsh_default_shell():

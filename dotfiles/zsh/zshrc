@@ -3,5 +3,9 @@
 stty -ixon
 
 
-# Load fzf config
-[[ -f $FZF_INSTALL_PATH/fzf.zsh ]] && source $FZF_INSTALL_PATH/fzf.zsh
+# Source $PATH modifications. See notes in this file.
+source $ZSH_CONFIG_PATH/path.zsh
+
+
+# Load fzf config. Should be done after setting key-bindings to vi-mode.
+[[ -f $FZF_CONFIG_PATH/fzf.zsh ]] && source $FZF_CONFIG_PATH/fzf.zsh

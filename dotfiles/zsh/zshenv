@@ -1,3 +1,7 @@
+# This file handles setting of various environment variables EXCEPT modifications to
+# $PATH. $PATH modifications are stored in $ZSH_CONFIG_PATH/path.zsh. See related notes
+# in that file.
+
 
 # Default editors
 export EDITOR='vim'
@@ -6,13 +10,17 @@ export PAGER='less'
 
 
 # -------------------------------------------------------------------------------
-# FZF
+# zsh
 # -------------------------------------------------------------------------------
 
-export FZF_INSTALL_PATH=$HOME/.fzf
+export ZSH_CONFIG_PATH=$HOME/.zsh
 
-# Add fzf binaries to PATH
-export PATH="$PATH:$FZF_INSTALL_PATH/fzf/bin"
+
+# -------------------------------------------------------------------------------
+# fzf
+# -------------------------------------------------------------------------------
+
+export FZF_CONFIG_PATH=$HOME/.fzf
 
 # Have fzf use `ag` instead of default `find` command
 if ! ag_cmd="$(type -p ag)" || [[ -z "$ag_cmd" ]]; then
