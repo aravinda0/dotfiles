@@ -65,7 +65,7 @@ set history=1000
 
 " Persistent undo - available since vim 7.3
 if has('persistent_undo') && exists("&undodir")
-  set undodir=$HOME/.config/nvim/undo
+  set undodir=$HOME/.config/nvim/.undo
   set undofile
   set undolevels=700
   set undoreload=5000
