@@ -3,7 +3,7 @@
 import os
 
 from plumbum import local, FG
-from plumbum.cmd import mkdir, git, make
+from plumbum.cmd import mkdir, git, make, pip
 
 import settings
 from utils.messaging import echo
@@ -31,9 +31,17 @@ def install_neovim_from_source():
 
     echo('Neovim installed!')
 
+def install_neovim_python_client():
+    echo('Installing neovim python client...')
+
+    pip['install', 'neovim'] & FG
+
+    echo('Neovim python client installed!')
+
 
 def install_tools():
     install_neovim_from_source()
+    install_neovim_python_client()
 
 
 if __name__ == '__main__':
