@@ -9,12 +9,19 @@ Plug 'mhartington/oceanic-next'
 " Plug 'frankier/neovim-colors-solarized-truecolor-only'  " true-color fork of solarized
 " Plug 'trevordmiller/nova-vim'
 
+" Handy motions starting with '[' and ']' keys
 Plug 'tpope/vim-unimpaired'
 
+" Easy commenting
+Plug 'tpope/vim-commentary'
+
+" Easily surround objects with brackets, quotes etc.
 Plug 'tpope/vim-surround'
 
+" Auto-close quotes, brackets while typing
 Plug 'jiangmiao/auto-pairs'
 
+" Fast searching of files in directory/project/history/etc.
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
