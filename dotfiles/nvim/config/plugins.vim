@@ -28,11 +28,21 @@ call plug#end()
 nnoremap <c-p> :GFiles<cr>
 nnoremap <c-o> :Files<cr>
 nnoremap <c-i> :Buffers<cr>
-nnoremap <c-l><c-l> :BLines<cr>
-nnoremap <c-l>, :Lines<cr>
-nnoremap <c-l><c-h> :Commits<cr>
-nnoremap <c-l><c-b> :BCommits<cr>
-nnoremap <c-l><c-m> :Maps<cr>
+
+" Search lines in current buffer
+nnoremap <c-t>l :BLines<cr>
+
+" Search all lines in all files
+nnoremap <c-t>, :Lines<cr>
+
+" Search repo commits
+nnoremap <c-t>h :Commits<cr>
+
+" Search commits for current buffer
+nnoremap <c-t>b :BCommits<cr>
+
+" Search normal mode mappings
+nnoremap <c-t>m :Maps<cr>
 
 " Search from current dir using `ag` and show results to search in
-nnoremap <c-l>/ :execute 'Ag ' . input('Ag/')<cr>
+nnoremap <c-t>/ :execute 'Ag ' . input('Ag/')<cr>
