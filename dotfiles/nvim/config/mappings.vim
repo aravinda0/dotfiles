@@ -91,6 +91,9 @@ noremap E <esc>:tabfirst<cr>
 noremap R <esc>:tablast<cr>
 
 
+" Switch to previous buffer
+nnoremap <bs> :b#<cr>
+
 
 " ---------------------------------------------------------------------------
 " Abbreviations
