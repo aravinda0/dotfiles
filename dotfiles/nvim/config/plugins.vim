@@ -21,9 +21,16 @@ Plug 'tpope/vim-surround'
 " Auto-close quotes, brackets while typing
 Plug 'jiangmiao/auto-pairs'
 
+" Show indent guides
+" Plug 'Yggdroot/indentLine'
+
 " Fast searching of files in directory/project/history/etc.
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+
+" Async code runner. Primarily for running linters, compilers etc.
+Plug 'neomake/neomake'
+
 
 call plug#end()
 
@@ -53,3 +60,11 @@ nnoremap <c-t>m :Maps<cr>
 
 " Search from current dir using `ag` and show results to search in
 nnoremap <c-t>/ :execute 'Ag ' . input('Ag/')<cr>
+
+
+" -------------------------------------------------------------------------------
+" neomake
+" -------------------------------------------------------------------------------
+
+" Run linter on saving/opening file
+autocmd! BufWritePost,BufRead * Neomake
