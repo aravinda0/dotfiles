@@ -21,3 +21,6 @@ __pycache__/
 
 # Vim persistent undo directory
 /dotfiles/nvim/.undo
+
+# Dedicated venv directory for neovim
+/dotfiles/nvim/venvs

@@ -31,6 +31,11 @@ Plug 'junegunn/fzf.vim'
 " Async code runner. Primarily for running linters, compilers etc.
 Plug 'neomake/neomake'
 
+" Async completion system for neovim
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" Jedi wrapper, Python autocompletion and static analysis lib, used with deoplete
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 
 call plug#end()
 
@@ -68,3 +73,21 @@ nnoremap <c-t>/ :execute 'Ag ' . input('Ag/')<cr>
 
 " Run linter on saving/opening file
 autocmd! BufWritePost,BufRead * Neomake
+
+
+" -------------------------------------------------------------------------------
+" deoplete
+" -------------------------------------------------------------------------------
+"  Ref: https://github.com/Shougo/deoplete.nvim/blob/master/doc%2Fdeoplete.txt
+
+let g:deoplete#enable_at_startup = 1
+
+" Close popup menu when completion is done
+autocmd CompleteDone * pclose!
+
+
+" -------------------------------------------------------------------------------
+" deoplete
+" -------------------------------------------------------------------------------
+
+" let g:deoplete#sources#jedi#show_docstring = 1

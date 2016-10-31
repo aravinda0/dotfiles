@@ -87,6 +87,11 @@ set splitright
 set ttyfast   " (Removed and default on in neovim)
 
 
+" Point nvim to the Python in the dedicated nvim venv we created, which holds the nvim
+" Python client and other packages for plugins.
+let g:python3_host_prog = $NVIM_VENVS_PATH . '/neovim_py_3/bin/python'
+
+
 " Enable loading plugins for specific file-types
 filetype plugin indent on
 

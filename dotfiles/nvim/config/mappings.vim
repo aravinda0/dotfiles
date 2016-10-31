@@ -66,6 +66,11 @@ cnoremap <c-k> <up>
 cnoremap <c-j> <down>
 
 
+" Easier navigation inside popup menus
+inoremap <expr> <c-k> pumvisible() ? '<c-p>' : '<c-k>'
+inoremap <expr> <c-j> pumvisible() ? '<c-n>' : '<c-j>'
+
+
 " Easier copy-to-clipboard
 nnoremap Y "+y
 vnoremap Y "+y

@@ -16,3 +16,5 @@ BACKUP_DIR_FOR_EXISTING_FILES = os.getenv(
 
 FZF_CONFIG_PATH = os.getenv('FZF_CONFIG_PATH', '~/.fzf')
 ZSH_CONFIG_PATH = os.getenv('ZSH_CONFIG_PATH', '~/.zsh')
+
+NVIM_VENVS_PATH = os.getenv('NVIM_VENVS_PATH', '~/.config/nvim/venvs')
