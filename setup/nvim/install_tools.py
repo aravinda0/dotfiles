@@ -5,7 +5,7 @@ import sys
 import venv
 
 from plumbum import local, FG
-from plumbum.cmd import mkdir, git, make
+from plumbum.cmd import sudo, mkdir, git, make
 
 import settings
 from utils.messaging import echo
@@ -29,7 +29,7 @@ def install_neovim_from_source():
 
     with local.cwd(os.path.join(build_dir, 'neovim')):
         make & FG
-        make['install'] & FG
+        sudo[make['install']] & FG
 
     echo('Neovim installed!')
 

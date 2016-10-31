@@ -1,4 +1,4 @@
-from plumbum.cmd import pacman
+from plumbum.cmd import pacman, sudo
 
 
-pacman_install_f = pacman['-S', '--noconfirm']
+pacman_install_f = sudo[pacman['-S', '--noconfirm']]
