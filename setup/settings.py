@@ -18,3 +18,5 @@ FZF_CONFIG_PATH = os.getenv('FZF_CONFIG_PATH', '~/.fzf')
 ZSH_CONFIG_PATH = os.getenv('ZSH_CONFIG_PATH', '~/.zsh')
 
 NVIM_VENVS_PATH = os.getenv('NVIM_VENVS_PATH', '~/.config/nvim/venvs')
+NVIM_PY3_VENV_NAME = os.getenv('NVIM_PY3_VENV_NAME', 'neovim_py_3')
+NVIM_PY3_VENV_PATH = path.join(path.expanduser(NVIM_VENVS_PATH), NVIM_PY3_VENV_NAME)

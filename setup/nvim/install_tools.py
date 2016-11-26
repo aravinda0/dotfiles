@@ -9,6 +9,7 @@ from plumbum.cmd import sudo, mkdir, git, make
 
 import settings
 from utils.messaging import echo
+from utils.system import nvim_venv_pip
 
 
 build_dir = settings.DOTFILES_BUILD_DIR
@@ -34,12 +35,14 @@ def install_neovim_from_source():
     echo('Neovim installed!')
 
 
-def install_neovim_python_deps():
-    """Sets up a dedicated python virtualenv for use by neovim - particularly for plugins
-    such as deoplete-jedi.
+def setup_python_env_for_neovim():
+    """Sets up a dedicated python virtualenv for use by neovim and installs the neovim
+    python client inside it.
 
     This prevents us having to install the neovim python lib into every virtualenv that
-    needs it.
+    needs it. We also use the venv to install various plugin python dependencies
+    (eg. jedi) instad of installing them globally.
+
     Refs:
         https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
         https://github.com/zchee/deoplete-jedi/issues/21
@@ -51,30 +54,20 @@ def install_neovim_python_deps():
     """
     echo('Creating dedicated venv for neovim...')
 
-    venv_path = make_neovim_venv()
+    env_builder = venv.EnvBuilder(with_pip=True)
+    env_builder.create(settings.NVIM_PY3_VENV_PATH)
 
-    echo('Installing neovim python dependencies...')
+    echo('Installing neovim python client...')
 
     # Use the venv python's pip to install necessary packages inside that venv
-    venv_pip = local[os.path.join(venv_path, 'bin/pip')]
-    venv_pip['install', 'neovim'] & FG
-    venv_pip['install', 'jedi'] & FG
+    nvim_venv_pip['install', 'neovim'] & FG
 
-    echo('Neovim python dependencies installed in venv!')
-
-
-def make_neovim_venv():
-    env_builder = venv.EnvBuilder(with_pip=True)
-    venv_path = os.path.join(os.path.expanduser(settings.NVIM_VENVS_PATH), 'neovim_py_3')
-
-    env_builder.create(venv_path)
-
-    return venv_path
+    echo('Installed neovim python client in venv!')
 
 
 def install_tools():
     install_neovim_from_source()
-    install_neovim_python_deps()
+    setup_python_env_for_neovim()
 
 
 if __name__ == '__main__':

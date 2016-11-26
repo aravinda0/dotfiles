@@ -21,6 +21,7 @@ export ZSH_CONFIG_PATH=$HOME/.zsh
 # -------------------------------------------------------------------------------
 
 export NVIM_VENVS_PATH=$HOME/.config/nvim/venvs
+export NVIM_PY3_VENV_PATH=$HOME/.config/nvim/venvs/neovim_py_3
 
 # -------------------------------------------------------------------------------
 # fzf
