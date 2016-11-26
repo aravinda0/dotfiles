@@ -1,4 +1,4 @@
-import os
+from os.path import join
 import shutil
 
 from settings import DOTFILES_ROOT_DIR, BACKUP_DIR_FOR_EXISTING_FILES
@@ -9,7 +9,7 @@ def resolve_backup_path(path, key):
     """
     """
     relative_path = path[1:] if path.startswith('/') else path
-    return os.path.join(BACKUP_DIR_FOR_EXISTING_FILES, key, relative_path)
+    return join(BACKUP_DIR_FOR_EXISTING_FILES, key, relative_path)
 
 
 def backup_if_exists(path, key):
@@ -17,7 +17,7 @@ def backup_if_exists(path, key):
     """
     if os.path.exists(path):
         backup_path = resolve_backup_path(path, key)
-        backup_path_parent = os.path.abspath(os.path.join(backup_path, os.path.pardir))
+        backup_path_parent = os.path.abspath(join(backup_path, os.path.pardir))
 
         # Make necessary dirs in backup folder corresponding to original path
         os.makedirs(backup_path_parent, exist_ok=True)
@@ -50,7 +50,7 @@ def install_file(src, dest, key, install_method='copy'):
             "'{backup_path}'".format(dest=abs_dest, backup_path=backed_up_path)
         )
 
-    os.makedirs(os.path.abspath(os.path.join(abs_dest, os.path.pardir)), exist_ok=True)
+    os.makedirs(os.path.abspath(join(abs_dest, os.path.pardir)), exist_ok=True)
 
     if install_method == 'copy':
         # Try copying as a directory. If it fails, try copying as a file.
@@ -72,4 +72,4 @@ def install_dotfiles(src, dest, key):
     """Wrapper around `install_file` that accepts src paths that are relative to the
     dotfiles repo root and symlinks to dest.
     """
-    install_file(os.path.join(DOTFILES_ROOT_DIR, src), dest, key, 'symlink')
+    install_file(join(DOTFILES_ROOT_DIR, src), dest, key, 'symlink')

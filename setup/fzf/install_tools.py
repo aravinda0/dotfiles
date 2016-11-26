@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import os
+from os.path import join
 
 from plumbum import local, FG
 from plumbum.cmd import sh
@@ -10,8 +10,8 @@ from utils.file_utils import install_dotfiles
 from utils.messaging import echo
 
 
-fzf_dir = os.path.join(settings.DOTFILES_ROOT_DIR, 'dotfiles/fzf')
-fzf_submodule_dir = os.path.join(fzf_dir, 'fzf')
+fzf_dir = join(settings.DOTFILES_ROOT_DIR, 'dotfiles/fzf')
+fzf_submodule_dir = join(fzf_dir, 'fzf')
 fzf_install_path = '~/.fzf'
 
 

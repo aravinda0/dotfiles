@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import os
+from os.path import join
 import sys
 import venv
 
@@ -28,7 +28,7 @@ def install_neovim_from_source():
 
     echo('Building and installing neovim...')
 
-    with local.cwd(os.path.join(build_dir, 'neovim')):
+    with local.cwd(join(build_dir, 'neovim')):
         make & FG
         sudo[make['install']] & FG
 
