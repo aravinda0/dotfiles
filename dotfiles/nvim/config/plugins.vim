@@ -37,6 +37,11 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Jedi wrapper, Python autocompletion and static analysis lib, used with deoplete
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 
+" jedi-vim, to be used for python features aside from completion (which is provided by
+" deoplete-jedi). Primarily for go-to-definition.
+" NOTE: vim startup time seems to be a fraction slower with this enabled
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+
 call plug#end()
 
 
@@ -115,7 +120,22 @@ augroup END
 
 
 " -------------------------------------------------------------------------------
-" deoplete
+" deoplete-jedi
 " -------------------------------------------------------------------------------
 
-" let g:deoplete#sources#jedi#show_docstring = 1
+
+" -------------------------------------------------------------------------------
+" vim-jedi
+" -------------------------------------------------------------------------------
+
+let g:jedi#completions_enabled = 0
+
+" Prevent popup on selecting an item from completion menu
+augroup JediCommands
+  autocmd!
+  autocmd FileType python setlocal completeopt-=preview
+augroup END
+
+" -------------------------------------------------------------------------------
+" deoplete-ternjs
+" -------------------------------------------------------------------------------
