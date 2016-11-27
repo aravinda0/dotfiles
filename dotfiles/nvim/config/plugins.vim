@@ -86,7 +86,7 @@ nnoremap <c-t>/ :execute 'Ag ' . input('Ag/')<cr>
 " Override default python makers to use only flake8.
 " Further, we tell neomake to use the flake8 installed in our dedicated nvim venv. The
 " remaining flake8 options are taken as-is from what is specified in the neomake repo.
-" See `plugged/neomake/autoload/neomake/makers/ft/python.vim`
+" (See `plugged/neomake/autoload/neomake/makers/ft/python.vim`)
 let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_python_flake8_maker = {
   \ 'exe': s:neovim_venv_bin . '/flake8',
@@ -108,7 +108,7 @@ augroup END
 " -------------------------------------------------------------------------------
 " deoplete
 " -------------------------------------------------------------------------------
-"  Ref: https://github.com/Shougo/deoplete.nvim/blob/master/doc%2Fdeoplete.txt
+" Ref: https://github.com/Shougo/deoplete.nvim/blob/master/doc%2Fdeoplete.txt
 
 let g:deoplete#enable_at_startup = 1
 
@@ -130,12 +130,8 @@ augroup END
 
 let g:jedi#completions_enabled = 0
 
-" Prevent popup on selecting an item from completion menu
-augroup JediCommands
-  autocmd!
-  autocmd FileType python setlocal completeopt-=preview
-augroup END
 
 " -------------------------------------------------------------------------------
 " deoplete-ternjs
 " -------------------------------------------------------------------------------
+

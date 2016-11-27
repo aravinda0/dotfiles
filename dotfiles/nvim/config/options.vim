@@ -57,6 +57,10 @@ set foldmethod=indent
 set foldlevelstart=99   " folds open by default
 
 
+" Don't open preview window on selecting an item from completion menu
+set completeopt-=preview
+
+
 " Remove <esc> delay
 set timeoutlen=1000
 set ttimeoutlen=0
@@ -72,8 +76,7 @@ if has('persistent_undo') && exists("&undodir")
 endif
 
 
-" Disable backups and swap files - they trigger too many events for file system
-" watchers
+" Disable backups and swap files - they trigger too many events for file system watchers
 set nobackup
 set nowritebackup
 set noswapfile
