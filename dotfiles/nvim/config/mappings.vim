@@ -56,7 +56,7 @@ vnoremap <c-n> :nohl<cr>
 inoremap <c-n> :nohl<cr>
 
 
-" Easier moving of code blocks in visual mode
+" Easier reindenting in visual mode
 vnoremap < <gv
 vnoremap > >gv
 
@@ -78,11 +78,6 @@ vnoremap Y "+y
 
 " Select previously pasted text
 noremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
-
-
-" Easier reindenting in visual mode
-vnoremap < <gv
-vnoremap > >gv
 
 
 " Easier moving between tabs.
