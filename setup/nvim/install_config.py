@@ -4,7 +4,6 @@ import os
 from os.path import join
 
 from plumbum import FG
-from plumbum.cmd import sudo, npm
 
 import settings
 from utils.file_utils import install_dotfiles
@@ -36,17 +35,8 @@ def install_plugin_python_dependencies():
     echo('Neovim plugin python dependencies installed!')
 
 
-def install_plugin_js_dependencies():
-    echo('Installing neovim JS dependencies for neovim plugins...')
-
-    sudo[npm['i', '-g', 'tern']] & FG
-
-    echo('Neovim plugin JS dependencies installed!')
-
-
 def install_config():
     install_neovim_dotfiles()
-    install_plugin_python_dependencies()
     install_plugin_python_dependencies()
 
 

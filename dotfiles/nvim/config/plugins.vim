@@ -4,43 +4,67 @@
 
 call plug#begin()
 
+
 " Color scheme
 Plug 'mhartington/oceanic-next'
 " Plug 'frankier/neovim-colors-solarized-truecolor-only'  " true-color fork of solarized
 " Plug 'trevordmiller/nova-vim'
 
+
 " Handy motions starting with '[' and ']' keys
 Plug 'tpope/vim-unimpaired'
+
 
 " Easy commenting
 Plug 'tpope/vim-commentary'
 
+
 " Easily surround objects with brackets, quotes etc.
 Plug 'tpope/vim-surround'
+
 
 " Auto-close quotes, brackets while typing
 Plug 'jiangmiao/auto-pairs'
 
+
 " Show indent guides
 " Plug 'Yggdroot/indentLine'
+
 
 " Fast searching of files in directory/project/history/etc.
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
+
 " Async code runner. Primarily for running linters, compilers etc.
 Plug 'neomake/neomake'
+
 
 " Async completion system for neovim
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
+
+" NOTE: vim startup time seems to be a fraction slower with some of the following plugins.
+" Particularly - jedi-vim and tern_for_vim. Probably due to lack of async in these
+" heavy plugins.
+
 " Jedi wrapper, Python autocompletion and static analysis lib, used with deoplete
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 
+
 " jedi-vim, to be used for python features aside from completion (which is provided by
 " deoplete-jedi). Primarily for go-to-definition.
-" NOTE: vim startup time seems to be a fraction slower with this enabled
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+
+
+" ternjs wrapper, deoplete-ternjs will handle completions, this will provide other tern
+" feaures from within vim.
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx'] }
+
+
+" ternjs wrapper, JavaScript autocompletion and static analysis lib, used with deocomplete
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+
 
 call plug#end()
 
@@ -128,10 +152,24 @@ augroup END
 " vim-jedi
 " -------------------------------------------------------------------------------
 
+" Completions handled by deoplete-jedi
 let g:jedi#completions_enabled = 0
 
 
 " -------------------------------------------------------------------------------
-" deoplete-ternjs
+" deoplete-ternjs, tern_for_vim
 " -------------------------------------------------------------------------------
 
+" TODO: Can this be a command from some neovim-specific non-global install of tern?
+" See deoplete-ternjs source - kind of looks to be configurable.
+let g:tern#command = ['tern']
+
+" Disable auto-shutdown of tern server that happens after 5 mins of inactivity
+let g:tern#arguments = ['--persistent']
+
+" Shortcuts for tern_for_vim commands
+augroup TernCommands
+  autocmd!
+  autocmd FileType javascript,javascript.jsx nnoremap <leader>d :TernDef<cr>
+  autocmd FileType javascript,javascript.jsx nnoremap <leader>D :TernDefTab<cr>
+augroup END
