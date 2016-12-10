@@ -80,8 +80,8 @@ let s:neovim_venv_bin = $NVIM_PY3_VENV_PATH . '/bin'
 " fzf
 " -------------------------------------------------------------------------------
 
-nnoremap <c-p> :GFiles<cr>
-nnoremap <c-o> :Files<cr>
+nnoremap <c-p> :Files<cr>
+nnoremap <c-o> :GFiles<cr>
 nnoremap <c-i> :Buffers<cr>
 
 " Search lines in current buffer
