@@ -44,6 +44,11 @@ Plug 'neomake/neomake'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 
+" Plugins that provide better syntax and indentation settings for JS
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
+
+
 " NOTE: vim startup time seems to be a fraction slower with some of the following plugins.
 " Particularly - jedi-vim and tern_for_vim. Probably due to lack of async in these
 " heavy plugins.
