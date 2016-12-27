@@ -23,6 +23,10 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 
 
+" Quickly jump to any location on the screen
+Plug 'easymotion/vim-easymotion'
+
+
 " Auto-close quotes, brackets while typing
 Plug 'jiangmiao/auto-pairs'
 
@@ -79,6 +83,27 @@ call plug#end()
 " -------------------------------------------------------------------------------
 
 let s:neovim_venv_bin = $NVIM_PY3_VENV_PATH . '/bin'
+
+
+" -------------------------------------------------------------------------------
+" Easy Motion
+" -------------------------------------------------------------------------------
+
+" Disable default mappings
+let g:EasyMotion_do_mapping = 0
+
+" Search like vim's smartcase
+let g:EasyMotion_smartcase = 1
+
+" Don't search outside visible screen
+let g:EasyMotion_off_screen_search = 0
+
+" 2-char searches across splits
+nmap s <Plug>(easymotion-overwin-f2)
+
+nmap s <Plug>(easymotion-s)
+nmap w <Plug>(easymotion-w)
+nmap b <Plug>(easymotion-b)
 
 
 " -------------------------------------------------------------------------------
