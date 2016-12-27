@@ -35,3 +35,6 @@ if ag_cmd="$(type -p ag)" || [[ -z "$ag_cmd" ]]; then
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
+
+# Sort history results by default, instead of chronological ordering - quicker matches
+export FZF_CTRL_R_OPTS='--sort'
