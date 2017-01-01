@@ -1,97 +1,55 @@
-" ---------------------------------------------------------------------------
+" -------------------------------------------------------------------------------
 " Plugins
-" ---------------------------------------------------------------------------
+" -------------------------------------------------------------------------------
+
+let s:neovim_venv_bin = $NVIM_PY3_VENV_PATH . '/bin'
 
 call plug#begin()
 
 
-" Color scheme
+
+" -------------------------------------------------------------------------------
+" Color Scheme
+" -------------------------------------------------------------------------------
+
 Plug 'mhartington/oceanic-next'
 " Plug 'frankier/neovim-colors-solarized-truecolor-only'  " true-color fork of solarized
 " Plug 'trevordmiller/nova-vim'
 
 
-" Handy motions starting with '[' and ']' keys
-Plug 'tpope/vim-unimpaired'
+" -------------------------------------------------------------------------------
+" indentline - show indent guides
+" -------------------------------------------------------------------------------
 
-
-" Easy commenting
-Plug 'tpope/vim-commentary'
-
-
-" Easily surround objects with brackets, quotes etc.
-Plug 'tpope/vim-surround'
-
-
-" Quickly jump to any location on the screen
-Plug 'easymotion/vim-easymotion'
-
-
-" Auto-close quotes, brackets while typing
-Plug 'jiangmiao/auto-pairs'
-
-
-" Show indent guides
 " Plug 'Yggdroot/indentLine'
 
 
-" Shortcuts for xml-based languages, building markup from css-like selectors
-Plug 'mattn/emmet-vim'
+" -------------------------------------------------------------------------------
+" vim-unimpaired - handy motions starting with '[' and ']' keys
+" -------------------------------------------------------------------------------
 
-
-" Fast searching of files in directory/project/history/etc.
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-
-
-" Async code runner. Primarily for running linters, compilers etc.
-Plug 'neomake/neomake'
-
-
-" Async completion system for neovim
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-
-" Plugins that provide better syntax and indentation settings for JS
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
-
-
-" NOTE: vim startup time seems to be a fraction slower with some of the following plugins.
-" Particularly - jedi-vim and tern_for_vim. Probably due to lack of async in these
-" heavy plugins.
-
-" Jedi wrapper, Python autocompletion and static analysis lib, used with deoplete
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-
-
-" jedi-vim, to be used for python features aside from completion (which is provided by
-" deoplete-jedi). Primarily for go-to-definition.
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-
-
-" ternjs wrapper, deoplete-ternjs will handle completions, this will provide other tern
-" feaures from within vim.
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx'] }
-
-
-" ternjs wrapper, JavaScript autocompletion and static analysis lib, used with deocomplete
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-
-
-call plug#end()
+Plug 'tpope/vim-unimpaired'
 
 
 " -------------------------------------------------------------------------------
-" General
+" vim-commentary - easier commenting
 " -------------------------------------------------------------------------------
 
-let s:neovim_venv_bin = $NVIM_PY3_VENV_PATH . '/bin'
+Plug 'tpope/vim-commentary'
 
 
 " -------------------------------------------------------------------------------
-" Easy Motion
+" vim-surround - easily surround objects with brackets, quotes etc.
 " -------------------------------------------------------------------------------
+
+Plug 'tpope/vim-surround'
+
+
+" -------------------------------------------------------------------------------
+" EasyMotion - quickly jump to any location on the screen
+" -------------------------------------------------------------------------------
+
+Plug 'easymotion/vim-easymotion'
 
 " Disable default mappings
 let g:EasyMotion_do_mapping = 0
@@ -111,16 +69,28 @@ nmap b <Plug>(easymotion-b)
 
 
 " -------------------------------------------------------------------------------
-" emmet
+" auto-pairs - Auto-close quotes, brackets while typing
 " -------------------------------------------------------------------------------
+
+Plug 'jiangmiao/auto-pairs'
+
+
+" -------------------------------------------------------------------------------
+" Emmet - Shortcuts for xml-based languages, building markup from css-like selectors
+" -------------------------------------------------------------------------------
+
+Plug 'mattn/emmet-vim'
 
 " <c-g> as emmet leader key in all modes
 let g:user_emmet_leader_key='<c-g>'
 
 
 " -------------------------------------------------------------------------------
-" fzf
+" FZF - Fast searching of files in directory/project/history/etc.
 " -------------------------------------------------------------------------------
+
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 nnoremap <c-p> :Files<cr>
 nnoremap <c-o> :GFiles<cr>
@@ -146,8 +116,10 @@ nnoremap <c-t>/ :execute 'Ag ' . input('Ag/')<cr>
 
 
 " -------------------------------------------------------------------------------
-" neomake
+" Neomake - Async code runner. Primarily for running linters, compilers etc.
 " -------------------------------------------------------------------------------
+
+Plug 'neomake/neomake'
 
 " Override default python makers to use only flake8.
 " Further, we tell neomake to use the flake8 installed in our dedicated nvim venv. The
@@ -172,9 +144,11 @@ augroup END
 
 
 " -------------------------------------------------------------------------------
-" deoplete
-" -------------------------------------------------------------------------------
+" Deoplete - Async completion system for neovim
 " Ref: https://github.com/Shougo/deoplete.nvim/blob/master/doc%2Fdeoplete.txt
+" -------------------------------------------------------------------------------
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 let g:deoplete#enable_at_startup = 1
 
@@ -186,21 +160,50 @@ augroup END
 
 
 " -------------------------------------------------------------------------------
-" deoplete-jedi
+" JavaScript syntax - Plugins that provide better syntax and indentation settings for JS
 " -------------------------------------------------------------------------------
+
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 
 
 " -------------------------------------------------------------------------------
-" vim-jedi
+" deoplete-jedi - Jedi wrapper, Python autocompletion and static analysis lib, used with
+" deoplete
+"
+" NOTE: vim startup time seems to be a fraction slower with some of the following plugins.
+" Particularly - jedi-vim and tern_for_vim. Probably due to lack of async in these
+" heavy plugins.
 " -------------------------------------------------------------------------------
+
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+
+
+" -------------------------------------------------------------------------------
+" jedi-vim - to be used for python features aside from completion (which is provided by
+" deoplete-jedi). Primarily for go-to-definition.
+" -------------------------------------------------------------------------------
+
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " Completions handled by deoplete-jedi
 let g:jedi#completions_enabled = 0
 
 
 " -------------------------------------------------------------------------------
-" deoplete-ternjs, tern_for_vim
+" tern_for_vim - ternjs wrapper, deoplete-ternjs will handle completions, this will
+" provide other tern feaures from within vim.
 " -------------------------------------------------------------------------------
+
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx'] }
+
+
+" -------------------------------------------------------------------------------
+" deoplete-ternjs - ternjs wrapper, JavaScript autocompletion and static analysis lib,
+" used with deocomplete
+" -------------------------------------------------------------------------------
+
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 
 " TODO: Can this be a command from some neovim-specific non-global install of tern?
 " See deoplete-ternjs source - kind of looks to be configurable.
@@ -215,3 +218,10 @@ augroup TernCommands
   autocmd FileType javascript,javascript.jsx nnoremap <leader>d :TernDef<cr>
   autocmd FileType javascript,javascript.jsx nnoremap <leader>D :TernDefTab<cr>
 augroup END
+
+
+" ---------------------------------------------------------------------------
+" End Plugins
+" ---------------------------------------------------------------------------
+
+call plug#end()
