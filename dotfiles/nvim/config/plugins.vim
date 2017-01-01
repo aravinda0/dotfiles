@@ -35,6 +35,10 @@ Plug 'jiangmiao/auto-pairs'
 " Plug 'Yggdroot/indentLine'
 
 
+" Shortcuts for xml-based languages, building markup from css-like selectors
+Plug 'mattn/emmet-vim'
+
+
 " Fast searching of files in directory/project/history/etc.
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -104,6 +108,14 @@ nmap s <Plug>(easymotion-overwin-f2)
 nmap s <Plug>(easymotion-s)
 nmap w <Plug>(easymotion-w)
 nmap b <Plug>(easymotion-b)
+
+
+" -------------------------------------------------------------------------------
+" emmet
+" -------------------------------------------------------------------------------
+
+" <c-g> as emmet leader key in all modes
+let g:user_emmet_leader_key='<c-g>'
 
 
 " -------------------------------------------------------------------------------
