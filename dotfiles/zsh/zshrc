@@ -7,5 +7,13 @@ stty -ixon
 source $ZSH_CONFIG_PATH/path.zsh
 
 
+# Source options
+source $ZSH_CONFIG_PATH/options.zsh
+
+
+# Source key mappings
+source $ZSH_CONFIG_PATH/mappings.zsh
+
+
 # Load fzf config. Should be done after setting key-bindings to vi-mode.
 [[ -f $FZF_CONFIG_PATH/fzf.zsh ]] && source $FZF_CONFIG_PATH/fzf.zsh
