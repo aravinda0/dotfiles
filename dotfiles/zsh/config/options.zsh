@@ -1,3 +1,21 @@
+# -------------------------------------------------------------------------------
+# History
+# -------------------------------------------------------------------------------
+
+HISTFILE="$HOME/.zhistory"
+HISTSIZE=100000
+SAVEHIST=100000
+
+
+# Don't display duplicates of lines already found
+setopt HIST_FIND_NO_DUPS
+
+# Remove older entry from history if it matches newly added entry
+setopt HIST_IGNORE_ALL_DUPS
+
+# When writing out history file, older commands that duplicate newer ones are omitted
+setopt HIST_SAVE_NO_DUPS
+
 
 # -------------------------------------------------------------------------------
 # Completion
