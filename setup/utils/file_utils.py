@@ -1,7 +1,7 @@
 from os.path import join
 import shutil
 
-from settings import DOTFILES_ROOT_DIR, BACKUP_DIR_FOR_EXISTING_FILES
+from settings import DOTFILES_REPO_ROOT_DIR, BACKUP_DIR_FOR_EXISTING_FILES
 from utils.messaging import echo
 
 
@@ -72,4 +72,4 @@ def install_dotfiles(src, dest, key):
     """Wrapper around `install_file` that accepts src paths that are relative to the
     dotfiles repo root and symlinks to dest.
     """
-    install_file(join(DOTFILES_ROOT_DIR, src), dest, key, 'symlink')
+    install_file(join(DOTFILES_REPO_ROOT_DIR, src), dest, key, 'symlink')

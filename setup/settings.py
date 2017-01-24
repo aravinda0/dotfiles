@@ -4,10 +4,10 @@ from os import path
 
 _this_dir = path.dirname(path.abspath(__file__))
 
-DOTFILES_ROOT_DIR = path.abspath(path.join(_this_dir, path.pardir))
+DOTFILES_REPO_ROOT_DIR = path.abspath(path.join(_this_dir, path.pardir))
 
 DOTFILES_BUILD_DIR = os.getenv(
-    'DOTFILES_BUILD_DIR', path.join(DOTFILES_ROOT_DIR, 'build')
+    'DOTFILES_BUILD_DIR', path.join(DOTFILES_REPO_ROOT_DIR, 'build')
 )
 
 BACKUP_DIR_FOR_EXISTING_FILES = os.getenv(

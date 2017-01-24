@@ -17,7 +17,7 @@ def install_neovim_dotfiles():
     install_dotfiles('dotfiles/nvim', '~/.config/nvim', 'neovim')
 
     # Make directory for persistent undo feature
-    os.makedirs(join(settings.DOTFILES_ROOT_DIR, 'dotfiles/nvim/.undo'), exist_ok=True)
+    os.makedirs(join(settings.DOTFILES_REPO_ROOT_DIR, 'dotfiles/nvim/.undo'), exist_ok=True)
 
     # Install config for vim plugin manager
     install_dotfiles(
