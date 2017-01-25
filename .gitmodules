@@ -1,9 +1,6 @@
 [submodule "dotfiles/nvim/vim_plug"]
 	path = dotfiles/nvim/vim_plug
 	url = https://github.com/junegunn/vim-plug
-[submodule "dotfiles/fzf/fzf"]
-	path = dotfiles/fzf/fzf
-	url = https://github.com/junegunn/fzf
 [submodule "dotfiles/zsh/zplug"]
 	path = dotfiles/zsh/zplug
 	url = https://github.com/zplug/zplug

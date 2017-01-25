@@ -13,9 +13,6 @@ def install_zsh_dotfiles():
     install_dotfiles('dotfiles/zsh/zshenv', '~/.zshenv', 'zshenv')
     install_dotfiles('dotfiles/zsh/zshrc', '~/.zshrc', 'zshrc')
 
-    # Our helper files
-    install_dotfiles('dotfiles/zsh/config', settings.ZSH_CONFIG_PATH, 'zsh_config')
-
 
 def make_zsh_default_shell():
     chsh['-s', '/bin/zsh'] & FG

@@ -1,7 +1,16 @@
 # This file handles setting of various environment variables EXCEPT modifications to
-# $PATH. $PATH modifications are stored in $ZSH_CONFIG_PATH/path.zsh. See related notes
-# in that file.
+# $PATH. $PATH modifications are stored in $DOTFILES_PATH/zsh/config/path.zsh. See related
+# notes in that file.
+# Also see $DOTFILES_PATH/zsh/config/plugins.zsh for plugin specific env vars.
 
+
+# The all-important path to our dotfiles. This is assumed in all other config.
+export DOTFILES_PATH=$HOME/.dotfiles
+
+
+# -------------------------------------------------------------------------------
+# General
+# -------------------------------------------------------------------------------
 
 # Default editors
 export EDITOR='vim'
@@ -10,31 +19,8 @@ export PAGER='less'
 
 
 # -------------------------------------------------------------------------------
-# zsh
-# -------------------------------------------------------------------------------
-
-export ZSH_CONFIG_PATH=$HOME/.zsh
-
-
-# -------------------------------------------------------------------------------
 # nvim
 # -------------------------------------------------------------------------------
 
 export NVIM_VENVS_PATH=$HOME/.config/nvim/venvs
 export NVIM_PY3_VENV_PATH=$HOME/.config/nvim/venvs/neovim_py_3
-
-# -------------------------------------------------------------------------------
-# fzf
-# -------------------------------------------------------------------------------
-
-export FZF_CONFIG_PATH=$HOME/.fzf
-
-# Have fzf use `ag` instead of default `find` command
-if ag_cmd="$(type -p ag)" || [[ -z "$ag_cmd" ]]; then
-  export FZF_DEFAULT_COMMAND='ag -g ""'
-  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-  export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
-fi
-
-# Sort history results by default, instead of chronological ordering - quicker matches
-export FZF_CTRL_R_OPTS='--sort'

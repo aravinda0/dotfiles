@@ -23,5 +23,3 @@
 # http://superuser.com/questions/968942/why-does-tmux-create-new-windows-as-login-shells-by-default
 
 
-# Add fzf binaries to PATH
-export PATH="$PATH:$FZF_CONFIG_PATH/fzf/bin"

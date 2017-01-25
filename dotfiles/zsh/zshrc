@@ -3,17 +3,19 @@
 stty -ixon
 
 
+ZSH_CONFIG_PATH=$DOTFILES_PATH/zsh/config
+
+
 # Source $PATH modifications. See notes in this file.
 source $ZSH_CONFIG_PATH/path.zsh
 
 
-# Source options
 source $ZSH_CONFIG_PATH/options.zsh
 
 
-# Source key mappings
 source $ZSH_CONFIG_PATH/mappings.zsh
 
 
-# Load fzf config. Should be done after setting key-bindings to vi-mode.
-[[ -f $FZF_CONFIG_PATH/fzf.zsh ]] && source $FZF_CONFIG_PATH/fzf.zsh
+# Source plugin system and plugins. Should do this after sourcing mappings, since
+# some plugins require things like vi-mode to be set, to function properly.
+source $ZSH_CONFIG_PATH/plugins.zsh

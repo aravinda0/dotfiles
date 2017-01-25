@@ -5,7 +5,6 @@ from docker.install_tools import install_tools as install_docker
 from tern.install_tools import install_tools as install_tern
 from nvim.install_tools import install_tools as install_nvim
 from zsh.install_tools import install_tools as install_zsh
-from fzf.install_tools import install_tools as install_fzf
 
 
 def install_tools():
@@ -14,7 +13,6 @@ def install_tools():
     install_tern()
     install_nvim()
     install_zsh()
-    install_fzf()
 
 
 if __name__ == '__main__':
