@@ -12,14 +12,14 @@ from utils.system import nvim_venv_pip
 def install_neovim_dotfiles():
     echo('Installing neovim config...')
 
-    install_dotfiles('dotfiles/nvim', '~/.config/nvim', 'neovim')
+    install_dotfiles('nvim', '~/.config/nvim', 'neovim')
 
     # Make directory for persistent undo feature
-    os.makedirs(join(settings.DOTFILES_REPO_ROOT_DIR, 'dotfiles/nvim/.undo'), exist_ok=True)
+    os.makedirs(join(settings.DOTFILES_REPO_DOTFILES_DIR, 'nvim/.undo'), exist_ok=True)
 
     # Install config for vim plugin manager
     install_dotfiles(
-        'dotfiles/nvim/vim_plug/plug.vim', '~/.config/nvim/autoload/plug.vim', 'vim_plug',
+        'nvim/vim_plug/plug.vim', '~/.config/nvim/autoload/plug.vim', 'vim_plug',
     )
 
     echo('Neovim config installed!\n')

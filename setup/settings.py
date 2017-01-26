@@ -7,6 +7,9 @@ _this_dir = path.dirname(path.abspath(__file__))
 # During config installation etc., files are picked relative to this path
 DOTFILES_REPO_ROOT_DIR = path.abspath(path.join(_this_dir, path.pardir))
 
+# Convenience path variable that points to the actual dir that contains all the dotfiles
+DOTFILES_REPO_DOTFILES_DIR = path.join(DOTFILES_REPO_ROOT_DIR, 'dotfiles')
+
 # A symlink to the `dotfiles` dir is made at this location. This is later used in
 # zsh config files to refer to various dependency paths.
 DOTFILES_INSTALL_DIR = os.getenv('DOTFILES_INSTALL_DIR', '~/.dotfiles')

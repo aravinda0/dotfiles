@@ -8,8 +8,8 @@ import settings
 
 def install_zsh_dotfiles():
     # Add shell startup files to standard locations
-    install_dotfiles('dotfiles/zsh/zshenv', '~/.zshenv', 'zshenv')
-    install_dotfiles('dotfiles/zsh/zshrc', '~/.zshrc', 'zshrc')
+    install_dotfiles('zsh/zshenv', '~/.zshenv', 'zshenv')
+    install_dotfiles('zsh/zshrc', '~/.zshrc', 'zshrc')
 
 
 def make_zsh_default_shell():
