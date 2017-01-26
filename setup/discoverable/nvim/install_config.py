@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import os
 from os.path import join
 
@@ -38,7 +36,3 @@ def install_plugin_python_dependencies():
 def install_config():
     install_neovim_dotfiles()
     install_plugin_python_dependencies()
-
-
-if __name__ == '__main__':
-    install_config()

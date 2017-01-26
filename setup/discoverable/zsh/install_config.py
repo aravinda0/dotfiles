@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from plumbum import FG
 from plumbum.cmd import chsh
 
@@ -25,7 +23,3 @@ def install_config():
     install_zsh_dotfiles()
 
     echo('Zsh config installed!\n')
-
-
-if __name__ == '__main__':
-    install_config()

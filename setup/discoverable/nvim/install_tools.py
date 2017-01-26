@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from os.path import join
 import sys
 import venv
@@ -68,7 +66,3 @@ def setup_python_env_for_neovim():
 def install_tools():
     install_neovim_from_source()
     setup_python_env_for_neovim()
-
-
-if __name__ == '__main__':
-    install_tools()

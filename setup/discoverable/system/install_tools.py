@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from plumbum import FG
 
 from utils.messaging import echo
@@ -19,7 +17,3 @@ def install_tools():
     pacman_install_f[packages_to_install] & FG
 
     echo('System packages installed!')
-
-
-if __name__ == '__main__':
-    install_tools()
