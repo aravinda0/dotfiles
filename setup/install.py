@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 
 from argparse import ArgumentParser, RawTextHelpFormatter
+from os.path import realpath, islink
 from textwrap import dedent
 
+import settings
 from utils.discovery import (
     get_available_setup_modules, get_tool_installer_module, get_config_installer_module,
     sorted_by_install_precedence
 )
+from utils.file_utils import install_dotfiles
+from utils.messaging import echo
 
 
 _available_tools = sorted(get_available_setup_modules())
@@ -45,6 +49,8 @@ def install():
     """Takes an iterable of names of setup modules and invokes their tool/config installers."""
     args = _parser.parse_args()
 
+    ensure_dotfiles_available()
+
     if args.tools:
         tools_to_process = sorted_by_install_precedence(args.tools)
     else:
@@ -58,6 +64,22 @@ def install():
         else:
             _install_tool(item)
             _install_config(item)
+
+
+def ensure_dotfiles_available():
+    """Checks if dotfiles are available at `settings.DOTFILES_INSTALL_DIR`, else creates
+    a symlink at that location."""
+    install_dir = settings.DOTFILES_INSTALL_DIR
+    repo_dotfiles_dir = settings.DOTFILES_REPO_DOTFILES_DIR
+
+    if islink(install_dir) and (realpath(install_dir) == repo_dotfiles_dir):
+        # Everything is as expected. Break out.
+        return
+
+    # Install reference to dotfiles. (Blank string to `install_dotfiles()` will lead to
+    # whole dotfiles dir being referenced)
+    install_dotfiles('', install_dir, 'dotfiles')
+    echo('Dotfiles are now linked from {install_dir}'.format(install_dir=install_dir))
 
 
 def _install_tool(tool):
