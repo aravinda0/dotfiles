@@ -12,16 +12,18 @@ DOTFILES_REPO_DOTFILES_DIR = path.join(DOTFILES_REPO_ROOT_DIR, 'dotfiles')
 
 # A symlink to the `dotfiles` dir is made at this location. This is later used in
 # zsh config files to refer to various dependency paths.
-DOTFILES_INSTALL_DIR = os.getenv('DOTFILES_INSTALL_DIR', '~/.dotfiles')
+DOTFILES_INSTALL_DIR = path.expanduser(os.getenv('DOTFILES_INSTALL_DIR', '~/.dotfiles'))
 
-DOTFILES_BUILD_DIR = os.getenv(
-    'DOTFILES_BUILD_DIR', path.join(DOTFILES_REPO_ROOT_DIR, 'build')
+# The dir that will be used for things like building from source etc.
+DOTFILES_BUILD_DIR = path.expanduser(
+    os.getenv('DOTFILES_BUILD_DIR', path.join(DOTFILES_REPO_ROOT_DIR, 'build'))
 )
 
-BACKUP_DIR_FOR_EXISTING_FILES = os.getenv(
-    'BACKUP_DIR_FOR_EXISTING_FILES', path.expanduser('~/BACKED_UP_DOTFILES')
+BACKUP_DIR_FOR_EXISTING_FILES = path.expanduser(
+    os.getenv('BACKUP_DIR_FOR_EXISTING_FILES', '~/BACKED_UP_DOTFILES')
 )
 
-NVIM_VENVS_PATH = os.getenv('NVIM_VENVS_PATH', '~/.config/nvim/venvs')
+# Dedicated venv(s) for neovim and its plugins
+NVIM_VENVS_PATH = path.expanduser(os.getenv('NVIM_VENVS_PATH', '~/.config/nvim/venvs'))
 NVIM_PY3_VENV_NAME = os.getenv('NVIM_PY3_VENV_NAME', 'neovim_py_3')
-NVIM_PY3_VENV_PATH = path.join(path.expanduser(NVIM_VENVS_PATH), NVIM_PY3_VENV_NAME)
+NVIM_PY3_VENV_PATH = path.join(NVIM_VENVS_PATH, NVIM_PY3_VENV_NAME)
