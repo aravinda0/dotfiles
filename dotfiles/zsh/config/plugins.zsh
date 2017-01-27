@@ -29,6 +29,14 @@ export FZF_CTRL_R_OPTS='--sort'
 # Bind Ctrl-T functionality to Ctrl-P instead
 bindkey '^p' fzf-file-widget
 
+
+# -------------------------------------------------------------------------------
+# Minimal - A simple, clean prompt theme with 'magic enter' capabilities
+# -------------------------------------------------------------------------------
+
+zplug 'subnixr/minimal'
+
+
 # -------------------------------------------------------------------------------
 # Finish zplug setup
 # -------------------------------------------------------------------------------
