@@ -8,7 +8,10 @@ packages_to_install = [
     'base-devel', 'git',
 
     # For building neovim
-    'cmake', 'unzip'
+    'cmake', 'unzip',
+
+    # For various tools/plugins that work with the clipboard
+    'xclip',
 ]
 
 def install_tools():
