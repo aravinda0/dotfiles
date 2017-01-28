@@ -3,7 +3,6 @@ from plumbum.cmd import chsh
 
 from utils.file_utils import install_dotfiles
 from utils.messaging import echo
-import settings
 
 
 def install_zsh_dotfiles():

@@ -19,3 +19,6 @@ source $ZSH_CONFIG_PATH/mappings.zsh
 # Source plugin system and plugins. Should do this after sourcing mappings, since
 # some plugins require things like vi-mode to be set, to function properly.
 source $ZSH_CONFIG_PATH/plugins.zsh
+
+
+source $ZSH_CONFIG_PATH/aliases.zsh
