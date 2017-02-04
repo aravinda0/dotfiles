@@ -25,6 +25,26 @@ Plug 'mhartington/oceanic-next'
 
 
 " -------------------------------------------------------------------------------
+" Vim tmux navigator - consistent keys to move between splits/panes across
+" vim/tmux
+" -------------------------------------------------------------------------------
+
+Plug 'christoomey/vim-tmux-navigator'
+
+" Disable default mappings
+let g:tmux_navigator_no_mappings = 1
+
+
+" Alt-key based movement across splits. Keep this in sync with corresponding
+" mappings in tmux mappings file.
+nnoremap <silent> h :TmuxNavigateLeft<cr>
+nnoremap <silent> j :TmuxNavigateDown<cr>
+nnoremap <silent> k :TmuxNavigateUp<cr>
+nnoremap <silent> l :TmuxNavigateRight<cr>
+nnoremap <silent> / :TmuxNavigatePrevious<cr>
+
+
+" -------------------------------------------------------------------------------
 " vim-unimpaired - handy motions starting with '[' and ']' keys
 " -------------------------------------------------------------------------------
 
