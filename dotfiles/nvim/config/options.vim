@@ -6,6 +6,10 @@
 set hidden
 
 
+" Enable true colors
+set termguicolors
+
+
 " Line settings
 set number
 set numberwidth=4
@@ -83,7 +87,6 @@ set noswapfile
 
 
 " Interface options
-set termguicolors  " Enable true colors
 set more  " Show more prompt when a listing's display fills screen
 set splitbelow
 set splitright
