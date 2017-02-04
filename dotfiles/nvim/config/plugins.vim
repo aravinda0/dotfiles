@@ -37,11 +37,11 @@ let g:tmux_navigator_no_mappings = 1
 
 " Alt-key based movement across splits. Keep this in sync with corresponding
 " mappings in tmux mappings file.
-nnoremap <silent> h :TmuxNavigateLeft<cr>
-nnoremap <silent> j :TmuxNavigateDown<cr>
-nnoremap <silent> k :TmuxNavigateUp<cr>
-nnoremap <silent> l :TmuxNavigateRight<cr>
-nnoremap <silent> / :TmuxNavigatePrevious<cr>
+nnoremap <silent> <m-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <m-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <m-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <m-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <m-/> :TmuxNavigatePrevious<cr>
 
 
 " -------------------------------------------------------------------------------
