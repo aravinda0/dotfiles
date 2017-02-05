@@ -10,6 +10,7 @@ IGNORED_DISCOVERABLE_DIRS = [
 ]
 ENFORCED_SETUP_MODULE_ORDER = [
     'system',
+    'git',
     # Everything else can be in any order
 ]
 

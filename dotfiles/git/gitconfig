@@ -1,0 +1,25 @@
+[core]
+	excludesfile = ~/.gitignore
+
+[alias]
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+
+[credential]
+	helper = cache --timeout=10800
+
+[color]
+	ui = auto
+
+[push]
+	default = simple
+
+[diff]
+	tool = vimdiff
+
+# Use seperate file for private info (username, email, etc.)
+[include]
+  path = ~/.gitconfig.local

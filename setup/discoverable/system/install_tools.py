@@ -5,7 +5,7 @@ from utils.system import pacman_install_f
 
 
 packages_to_install = [
-    'base-devel', 'git',
+    'base-devel',
 
     # For building neovim
     'cmake', 'unzip',
