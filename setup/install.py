@@ -83,13 +83,19 @@ def ensure_dotfiles_available():
 
 
 def _install_tool(tool):
-    installer_module = get_tool_installer_module(tool)
-    installer_module.install_tools()
+    try:
+        installer_module = get_tool_installer_module(tool)
+        installer_module.install_tools()
+    except ImportError:
+        echo('No tool installer found for \'{tool}\'. Skipping...'.format(tool=tool))
 
 
 def _install_config(tool):
-    installer_module = get_config_installer_module(tool)
-    installer_module.install_config()
+    try:
+        installer_module = get_config_installer_module(tool)
+        installer_module.install_config()
+    except ImportError:
+        echo('No config installer found for \'{tool}\'. Skipping...'.format(tool=tool))
 
 
 if __name__ == "__main__":
