@@ -1,7 +1,7 @@
 from plumbum import FG
 
 from utils.messaging import echo
-from utils.system import pacman_install_f
+from utils.system.commands import pacman_install_f
 
 
 def install_tools():

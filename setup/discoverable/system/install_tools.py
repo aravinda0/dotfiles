@@ -1,11 +1,14 @@
 from plumbum import FG
 
 from utils.messaging import echo
-from utils.system import pacman_install_f
+from utils.system.commands import pacman_install_f
 
 
 packages_to_install = [
     'base-devel',
+
+    # For building various things
+    'make',
 
     # For building neovim
     'cmake', 'unzip',

@@ -6,7 +6,7 @@ from plumbum import FG
 import settings
 from utils.file_utils import install_dotfiles
 from utils.messaging import echo
-from utils.system import nvim_venv_pip
+from utils.system.commands import nvim_venv_pip
 
 
 def install_neovim_dotfiles():

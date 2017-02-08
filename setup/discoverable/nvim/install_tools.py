@@ -1,36 +1,11 @@
-from os.path import join
-import sys
 import venv
 
-from plumbum import local, FG
-from plumbum.cmd import sudo, mkdir, git, make
+from plumbum import FG
 
 import settings
 from utils.messaging import echo
-from utils.system import nvim_venv_pip
-
-
-build_dir = settings.DOTFILES_BUILD_DIR
-neovim_repo = 'https://github.com/neovim/neovim'
-
-def install_neovim_from_source():
-    mkdir['-p'](build_dir)
-
-    echo('Cloning neovim repo...')
-
-    # TODO: Check if neovim already present on system (use 'which' or shutils.which)
-    # TODO: Check for existing directory
-
-    with local.cwd(build_dir):
-        git['clone', neovim_repo] & FG
-
-    echo('Building and installing neovim...')
-
-    with local.cwd(join(build_dir, 'neovim')):
-        make & FG
-        sudo[make['install']] & FG
-
-    echo('Neovim installed!')
+from utils.system.commands import nvim_venv_pip
+from utils.system.install import install_from_source
 
 
 def setup_python_env_for_neovim():
@@ -64,5 +39,5 @@ def setup_python_env_for_neovim():
 
 
 def install_tools():
-    install_neovim_from_source()
+    install_from_source('nvim', 'https://github.com/neovim/neovim')
     setup_python_env_for_neovim()
