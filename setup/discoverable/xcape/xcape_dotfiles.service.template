@@ -1,0 +1,9 @@
+[Unit]
+Description=Keyboard mods using xcape. Modify caps lock behaviour, etc.
+
+[Service]
+Type=forking
+ExecStart=/bin/sh $DOTFILES_INSTALL_DIR/xcape/xcape.sh
+
+[Install]
+WantedBy=multi-user.target

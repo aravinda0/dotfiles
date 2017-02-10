@@ -7,6 +7,9 @@ from utils.system.commands import pacman_install_f
 packages_to_install = [
     'base-devel',
 
+    # To enable stuff on system startup
+    'systemd',
+
     # For building various things
     'make',
 
