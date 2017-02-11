@@ -1,0 +1,28 @@
+
+# Some control characters, such as Ctrl-W, are handled by the terminal driver
+# itself. Need to turn this setting off to user our own bindings.
+set bind-tty-special-chars off
+
+set editing-mode vi
+set keymap vi
+
+$if mode=vi
+    set keymap vi-command
+    "\C-l": clear-screen
+    "gg": beginning-of-history
+    "G": end-of-history
+    "\C-j": history-search-forward
+    "\C-k": history-search-backward
+    "\C-a": beginning-of-line
+    "\C-e": end-of-line
+    set keymap vi-insert
+    "jk": vi-movement-mode
+    "\C-l": clear-screen
+    "\C-w": backward-kill-word
+    "\e\C-w": unix-word-rubout
+    "\C-r": reverse-search-history
+    "\C-j": history-search-forward
+    "\C-k": history-search-backward
+    "\C-a": beginning-of-line
+    "\C-e": end-of-line
+$endif
