@@ -20,7 +20,7 @@ packages_to_install = [
     'xclip',
 
     # For general usage, and for installing some neovim plugins from npm
-    'nodejs',
+    'nodejs', 'npm',
 ]
 
 def install_tools():
