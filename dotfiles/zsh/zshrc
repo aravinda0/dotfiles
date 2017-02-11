@@ -22,3 +22,9 @@ source $ZSH_CONFIG_PATH/plugins.zsh
 
 
 source $ZSH_CONFIG_PATH/aliases.zsh
+
+
+# Source `pew` config, if it exists
+if [[ -f $DOTFILES_PATH/python/pew_config.sh ]]; then
+  source $DOTFILES_PATH/python/pew_config.sh
+fi
