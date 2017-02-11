@@ -1,4 +1,5 @@
 import importlib
+from importlib import util as importlib_util  # Has to be imported as `from x import y`
 import os
 from os.path import join
 
@@ -22,7 +23,7 @@ def sorted_by_install_precedence(setup_modules):
     Modules mentioned in `ENFORCED_SETUP_MODULE_ORDER` are processed first. The rest
     are processed in user specified order.
     """
-    sorted_modules = list(m for m in setup_modules if m in ENFORCED_SETUP_MODULE_ORDER)
+    sorted_modules = list(m for m in ENFORCED_SETUP_MODULE_ORDER if m in setup_modules)
     sorted_modules.extend(
         m for m in setup_modules if m not in ENFORCED_SETUP_MODULE_ORDER
     )
@@ -37,12 +38,20 @@ def get_available_setup_modules():
 
 
 def get_tool_installer_module(name):
-    return importlib.import_module(
-        'discoverable.{name}.install_tools'.format(name=name)
-    )
+    module_name = 'discoverable.{name}.install_tools'.format(name=name)
+    module_present = importlib_util.find_spec(module_name) is not None
+
+    if module_present:
+        return importlib.import_module(module_name)
+
+    return None
 
 
 def get_config_installer_module(name):
-    return importlib.import_module(
-        'discoverable.{name}.install_config'.format(name=name)
-    )
+    module_name = 'discoverable.{name}.install_config'.format(name=name)
+    module_present = importlib_util.find_spec(module_name) is not None
+
+    if module_present:
+        return importlib.import_module(module_name)
+
+    return None
