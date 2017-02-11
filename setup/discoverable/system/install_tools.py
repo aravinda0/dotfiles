@@ -18,6 +18,9 @@ packages_to_install = [
 
     # For various tools/plugins that work with the clipboard
     'xclip',
+
+    # For general usage, and for installing some neovim plugins from npm
+    'nodejs',
 ]
 
 def install_tools():
