@@ -1,7 +1,7 @@
-from os.path import join
+from os.path import join, exists
 
 from plumbum import local, FG
-from plumbum.cmd import sudo, git, make, mkdir
+from plumbum.cmd import sudo, git, make, mkdir, rm
 
 import settings
 from utils.messaging import echo
@@ -13,12 +13,12 @@ def install_from_source(program_name, git_repo, make_options=None):
     build_dir = settings.DOTFILES_BUILD_DIR
     mkdir['-p'](build_dir)
 
-    # TODO: Check if program already present on system (use 'which' or shutils.which)
-    # TODO: Check for existing directory
-
-    echo('Cloning {program_name} repo...'.format(program_name=program_name))
-
     with local.cwd(build_dir):
+        if exists(path.join(build_dir, program_name)):
+            echo('Deleting existing build files for {program_name}...')
+            rm['-rf', program_name] & FG
+
+        echo('Cloning {program_name} repo...'.format(program_name=program_name))
         git['clone', git_repo, program_name] & FG
 
     echo('Building and installing {program_name}...'.format(program_name=program_name))
