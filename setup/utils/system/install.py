@@ -1,4 +1,4 @@
-from os.path import join, exists
+from os.path import join, lexists
 
 from plumbum import local, FG
 from plumbum.cmd import sudo, git, make, mkdir, rm
@@ -14,7 +14,7 @@ def install_from_source(program_name, git_repo, make_options=None):
     mkdir['-p'](build_dir)
 
     with local.cwd(build_dir):
-        if exists(path.join(build_dir, program_name)):
+        if lexists(join(build_dir, program_name)):
             echo('Deleting existing build files for {program_name}...')
             rm['-rf', program_name] & FG
 

@@ -42,5 +42,5 @@ def install_tools():
     make_params = {
         'CMAKE_BUILD_TYPE': 'RelWithDebInfo'
     }
-    install_from_source('nvim', 'https://github.com/neovim/neovim')
+    install_from_source('nvim', 'https://github.com/neovim/neovim', make_params)
     setup_python_env_for_neovim()

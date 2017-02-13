@@ -16,7 +16,7 @@ def resolve_backup_path(path, key):
 def backup_if_exists(path, key):
     """
     """
-    if os.path.exists(path):
+    if os.path.lexists(path):
         backup_path = resolve_backup_path(path, key)
         backup_path_parent = os.path.abspath(join(backup_path, os.path.pardir))
 
