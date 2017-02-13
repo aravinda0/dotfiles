@@ -23,7 +23,16 @@ BACKUP_DIR_FOR_EXISTING_FILES = path.expanduser(
     os.getenv('BACKUP_DIR_FOR_EXISTING_FILES', '~/BACKED_UP_DOTFILES')
 )
 
+# Dir to hold any supporting files for various tools. We avoid using various dotfiles
+# config directories since they may be replaced during backup while installing config
+# files/dirs.
+DOTFILES_SUPPORT_DIR = path.expanduser(
+    os.getenv('DOTFILES_SUPPORT_DIR', '~/.dotfiles_support')
+)
+
 # Dedicated venv(s) for neovim and its plugins
-NVIM_VENVS_PATH = path.expanduser(os.getenv('NVIM_VENVS_PATH', '~/.config/nvim/venvs'))
+NVIM_VENVS_PATH = path.expanduser(
+    os.getenv('NVIM_VENVS_PATH', path.join(DOTFILES_SUPPORT_DIR, 'nvim/venvs'))
+)
 NVIM_PY3_VENV_NAME = os.getenv('NVIM_PY3_VENV_NAME', 'neovim_py_3')
 NVIM_PY3_VENV_PATH = path.join(NVIM_VENVS_PATH, NVIM_PY3_VENV_NAME)
