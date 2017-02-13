@@ -38,8 +38,9 @@ set laststatus=2
 set pastetoggle=<F2>
 
 
-" Easier handling of the * register
-set clipboard=unnamed
+" Alias the unnamed register to the '+' register to use system clipboard during d, y, etc.
+" actions. `unnamed` -> windows, `unnamedplus` -> X11
+set clipboard=unnamed,unnamedplus
 
 
 " Smarter backspace key

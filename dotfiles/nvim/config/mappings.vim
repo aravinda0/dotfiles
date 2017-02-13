@@ -71,9 +71,8 @@ inoremap <expr> <c-k> pumvisible() ? '<c-p>' : '<c-k>'
 inoremap <expr> <c-j> pumvisible() ? '<c-n>' : '<c-j>'
 
 
-" Easier copy-to-clipboard
-nnoremap Y "+y
-vnoremap Y "+y
+" Copy to end of line
+nnoremap Y y$
 
 
 " Select previously pasted text
