@@ -28,7 +28,11 @@ def install_neovim_dotfiles():
 def install_plugin_python_dependencies():
     echo('Installing python dependencies for neovim plugins...')
 
-    nvim_venv_pip['install', 'jedi'] & FG
+    py_packages = [
+        'jedi', 'flake8'
+    ]
+
+    nvim_venv_pip['install', py_packages] & FG
 
     echo('Neovim plugin python dependencies installed!')
 

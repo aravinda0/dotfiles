@@ -7,6 +7,11 @@
 # The all-important path to our dotfiles. This is assumed in all other config.
 export DOTFILES_PATH=$HOME/.dotfiles
 
+# Dir to hold any supporting files for various tools. We avoid using various dotfiles
+# config directories since they may be replaced during backup while installing config
+# files/dirs.
+export DOTFILES_SUPPORT_PATH=$HOME/.dotfiles_support
+
 
 # -------------------------------------------------------------------------------
 # General
@@ -22,8 +27,8 @@ export PAGER='less'
 # nvim
 # -------------------------------------------------------------------------------
 
-export NVIM_VENVS_PATH=$HOME/.config/nvim/venvs
-export NVIM_PY3_VENV_PATH=$HOME/.config/nvim/venvs/neovim_py_3
+export NVIM_VENVS_PATH=$DOTFILES_SUPPORT_PATH/nvim/venvs
+export NVIM_PY3_VENV_PATH=$NVIM_VENVS_PATH/neovim_py_3
 
 
 # -------------------------------------------------------------------------------
