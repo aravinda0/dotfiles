@@ -206,6 +206,9 @@ Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
+" Force jedi to use our Pyhon 3 virtual env setup
+let g:jedi#force_py_version = 3
+
 " Completions handled by deoplete-jedi
 let g:jedi#completions_enabled = 0
 
