@@ -51,6 +51,7 @@ npm-debug.log
 # IDEs
 .idea
 *.iml
+.tern-port
 
 
 # Misc

@@ -3,5 +3,6 @@
   "plugins": {
     "node": {},
     "es_modules": {}
-  }
+  },
+  "dependencyBudget": 5000
 }
