@@ -2,7 +2,8 @@
 
 
 # Initialize plugin system
-source $DOTFILES_PATH/zsh/zplug/init.zsh
+export ZPLUG_HOME=$DOTFILES_PATH/zsh/zplug
+source $ZPLUG_HOME/init.zsh
 
 
 # -------------------------------------------------------------------------------
