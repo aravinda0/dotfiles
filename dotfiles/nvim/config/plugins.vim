@@ -118,6 +118,26 @@ let g:markdown_mapping_switch_status = '<c-l>'
 
 
 " -------------------------------------------------------------------------------
+" Snippets
+" -------------------------------------------------------------------------------
+
+" Snippet engine
+Plug 'SirVer/ultisnips'
+
+" Snippet collections
+Plug 'honza/vim-snippets'
+
+
+" Specify default snippets directory along with one for our custom snippets
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom_snippets"]
+
+" Snippet expansion
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+
+" -------------------------------------------------------------------------------
 " FZF - Fast searching of files in directory/project/history/etc.
 " -------------------------------------------------------------------------------
 
