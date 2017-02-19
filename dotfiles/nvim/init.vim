@@ -11,11 +11,3 @@ execute 'source ' . s:vim_config_path . '/config/options.vim'
 execute 'source ' . s:vim_config_path . '/config/mappings.vim'
 execute 'source ' . s:vim_config_path . '/config/functions.vim'
 execute 'source ' . s:vim_config_path . '/config/plugins.vim'
-
-
-" -------------------------------------
-" Color scheme
-" -------------------------------------
-
-set background=dark
-colorscheme OceanicNext
