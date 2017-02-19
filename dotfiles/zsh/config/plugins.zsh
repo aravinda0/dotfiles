@@ -39,6 +39,15 @@ zplug 'subnixr/minimal'
 
 
 # -------------------------------------------------------------------------------
+# fzf-marks - Bookmark directories and use fzf to open them
+# -------------------------------------------------------------------------------
+
+# NOTE: There's a bug in the script for this that seems to look for `fzf-tmux` and
+# fails. Modify the `fzfcmd()` function in there manually to return just 'fzf'.
+zplug 'urbainvaes/fzf-marks'
+
+
+# -------------------------------------------------------------------------------
 # Finish zplug setup
 # -------------------------------------------------------------------------------
 
