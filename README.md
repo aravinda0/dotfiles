@@ -23,7 +23,9 @@ commands.
 
 From the project root, run:
 
-`$ [sudo] pip install -r requirements.txt`
+```shell
+$ [sudo] pip install -r requirements.txt
+```
 
 
 Now you should be ready to run the install scripts.
@@ -31,28 +33,38 @@ Now you should be ready to run the install scripts.
 
 To install everything (Always run from the `setup` directory):
 
-`$ cd setup/`
-`$ python install.py`
+```shell
+$ cd setup/
+$ python install.py
+```
 
 
 To install specific things:
 
-`$ python install.py tmux nvim zsh`
+```shell
+$ python install.py tmux nvim zsh
+```
 
 
 To install only the tool, without any configuration:
 
-`$ python install.py -t tmux`
+```shell
+$ python install.py -t tmux
+```
 
 
 To install only the config files, without (re)installing the tool:
 
-`$ python install.py -c zsh`
+```shell
+$ python install.py -c zsh
+```
 
 
 To see what is available for installation:
 
-`$ python install.py --help`
+```shell
+$ python install.py --help
+```
 
 
 ## Discovery
@@ -69,4 +81,7 @@ Each item here is a directory containing two optional Python modules:
 
 If you add your own directory here with tool/config installers, you'll be able
 to execute it using the install script as usual:
-`$ python install.py my_new_config`
+
+```shell
+$ python install.py my_new_config
+```
