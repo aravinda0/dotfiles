@@ -28,9 +28,6 @@ autoload -Uz compinit && compinit -i
 # Auto select the first menu completion entry
 setopt MENU_COMPLETE
 
-# Complete aliases as well
-setopt COMPLETE_ALIASES
-
 # Move cursor to end of word whenever completion happens
 setopt ALWAYS_TO_END
 
