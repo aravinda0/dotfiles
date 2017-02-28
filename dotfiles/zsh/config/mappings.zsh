@@ -27,3 +27,6 @@ bindkey -M viins '^j' down-line-or-history
 bindkey -M vicmd '^j' down-line-or-history
 bindkey -M viins '^k' up-line-or-history
 bindkey -M vicmd '^k' up-line-or-history
+
+# Shift-Tab to select previous options in completion menu
+bindkey '^[[Z' reverse-menu-complete
