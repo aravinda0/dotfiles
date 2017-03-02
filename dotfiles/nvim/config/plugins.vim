@@ -11,7 +11,7 @@ call plug#begin()
 " indentline - show indent guides
 " -------------------------------------------------------------------------------
 
-" Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 
 
 " -------------------------------------------------------------------------------
