@@ -6,6 +6,10 @@ HISTFILE="$HOME/.zhistory"
 HISTSIZE=100000
 SAVEHIST=100000
 
+# Keep adding commands to history file as we execute them instead of waiting for 
+# shell to exit. If we execute a command, then open a new shell, that last executed
+# command should be available in history.
+setopt INC_APPEND_HISTORY
 
 # Don't display duplicates of lines already found
 setopt HIST_FIND_NO_DUPS
