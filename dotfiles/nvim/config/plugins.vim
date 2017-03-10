@@ -210,6 +210,13 @@ Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 
 
 " -------------------------------------------------------------------------------
+" Typescript syntax
+" -------------------------------------------------------------------------------
+
+Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
+
+
+" -------------------------------------------------------------------------------
 " deoplete-jedi - Jedi wrapper, Python autocompletion and static analysis lib, used with
 " deoplete
 "
