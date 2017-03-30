@@ -18,8 +18,8 @@ export DOTFILES_SUPPORT_PATH=$HOME/.dotfiles_support
 # -------------------------------------------------------------------------------
 
 # Default editors
-export EDITOR='vim'
-export VISUAL='vim'
+export EDITOR='nvim'
+export VISUAL='nvim'
 export PAGER='less'
 
 
