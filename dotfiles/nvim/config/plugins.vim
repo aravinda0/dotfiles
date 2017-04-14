@@ -178,6 +178,10 @@ let g:neomake_python_flake8_maker = {
   \ 'postprocess': function('neomake#makers#ft#python#Flake8EntryProcess')
 \ }
 
+" tslint error format has changed in v5.0 (Neomake currently has 4.x error format)
+" TODO: Wait for `tsc` v2.3 and see if `tsconfig.json` can specify linting config as well
+let g:neomake_typescript_tslint_errorformat = '%EERROR: %f[%l\, %c]: %m'
+
 " Run linter on saving/opening file
 augroup NeomakeCommands
   autocmd!
@@ -252,7 +256,7 @@ Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javasc
 
 " -------------------------------------------------------------------------------
 " deoplete-ternjs - ternjs wrapper, JavaScript autocompletion and static analysis lib,
-" used with deocomplete
+" used with deoplete
 " -------------------------------------------------------------------------------
 
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
@@ -269,6 +273,20 @@ augroup TernCommands
   autocmd!
   autocmd FileType javascript,javascript.jsx nnoremap <leader>d :TernDef<cr>
   autocmd FileType javascript,javascript.jsx nnoremap <leader>D :TernDefTab<cr>
+augroup END
+
+
+" -------------------------------------------------------------------------------
+" Typescript completion backed by TSServer, used with deoplete.
+" Needs TypeScript installed globally. Also needs `tsconfig.json` in $CWD atm.
+" -------------------------------------------------------------------------------
+
+Plug 'mhartington/nvim-typescript', { 'for': ['typescript', 'typescript.tsx'], 'do': ':UpdateRemotePlugins' }
+
+augroup NvimTsCommands
+  autocmd!
+  autocmd FileType typescript,typescript.jsx nnoremap <leader>d :TSDef<cr>
+  autocmd FileType typescript,typescript.jsx nnoremap <leader>D :TSDefPreview<cr>
 augroup END
 
 
