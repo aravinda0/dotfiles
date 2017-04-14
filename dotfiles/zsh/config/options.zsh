@@ -25,10 +25,6 @@ setopt HIST_SAVE_NO_DUPS
 # Completion
 # -------------------------------------------------------------------------------
 
-# Load and initialize the completion system, ignoring insecure directories
-autoload -Uz compinit && compinit -i
-
-
 # Auto select the first menu completion entry
 setopt MENU_COMPLETE
 
