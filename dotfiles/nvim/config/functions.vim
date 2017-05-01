@@ -10,17 +10,13 @@ augroup LastPosition
 		\ endif
 augroup END
 
-
-" Get rid of trailing whitespace
-function! StripTrailingWhitespace()
-  let l = line(".")
-  let c = col(".")
+function! TrimWhitespace()
+  let l:save = winsaveview()
   %s/\s\+$//e
-  call cursor(l, c)
+  call winrestview(l:save)
 endfunction
 
 augroup StripTrailingWhitespace
-  autocmd! *
-    \ autocmd BufWritePre <buffer> :call
-    \ StripTrailingWhitespace()
+  autocmd!
+  autocmd BufWritePre * :call TrimWhitespace()
 augroup END
