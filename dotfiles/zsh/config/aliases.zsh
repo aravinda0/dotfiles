@@ -7,7 +7,7 @@ alias ll='ls -lh'
 alias rm='rm -i'
 
 
-alias o='xdg-open'
+alias o='gio open'
 
 
 alias vim='nvim'
