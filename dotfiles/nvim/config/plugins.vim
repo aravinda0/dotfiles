@@ -247,6 +247,13 @@ let g:jedi#completions_enabled = 0
 
 
 " -------------------------------------------------------------------------------
+" Better indentation for Python
+" -------------------------------------------------------------------------------
+
+Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
+
+
+" -------------------------------------------------------------------------------
 " tern_for_vim - ternjs wrapper, deoplete-ternjs will handle completions, this will
 " provide other tern feaures from within vim.
 " -------------------------------------------------------------------------------
