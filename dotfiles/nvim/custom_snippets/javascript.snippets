@@ -6,11 +6,37 @@ import React from 'react';
 endsnippet
 
 snippet imrp "Import react with PropTypes" b
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 endsnippet
 
-snippet imim "Import immutable" b
-import Immutable from 'immutable';
+snippet cmp "Stateless functional component" b
+function $1(props) {
+	return (
+		<div>
+
+		</div>
+	);
+}
+$1.propTypes = {
+
+};
+endsnippet
+
+snippet ccmp "Class based component" b
+class $1 extends React.Component {
+	static propTypes = {
+
+	}
+
+	render() {
+		return (
+			<div>
+
+			</div>
+		);
+	}
+}
 endsnippet
 
 
