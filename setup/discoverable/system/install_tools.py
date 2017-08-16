@@ -21,7 +21,11 @@ packages_to_install = [
 
     # For general usage, and for installing some neovim plugins from npm
     'nodejs', 'npm',
+
+    # Gnome utility for managing secrets
+    'libsecret',
 ]
+
 
 def install_tools():
     echo('Installing system packages...')

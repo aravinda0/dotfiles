@@ -9,7 +9,7 @@
     hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
 
 [credential]
-	helper = cache --timeout=10800
+	helper = libsecret
 
 [color]
 	ui = auto
