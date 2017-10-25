@@ -71,6 +71,11 @@ inoremap <expr> <c-k> pumvisible() ? '<c-p>' : '<c-k>'
 inoremap <expr> <c-j> pumvisible() ? '<c-n>' : '<c-j>'
 
 
+" Move lines up or down
+nnoremap <c-j> ddp
+nnoremap <c-k> ddkP
+
+
 " Copy to end of line
 nnoremap Y y$
 
