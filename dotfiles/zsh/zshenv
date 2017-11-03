@@ -35,3 +35,15 @@ export NVIM_PY3_VENV_PATH=$NVIM_VENVS_PATH/neovim_py_3
 # pew
 # -------------------------------------------------------------------------------
 export WORKON_HOME=$HOME/.virtualenvs
+
+
+# -------------------------------------------------------------------------------
+# ssh-agent
+# -------------------------------------------------------------------------------
+
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > ~/.ssh-agent-thing
+fi
+if [[ "$SSH_AGENT_PID" == "" ]]; then
+    eval "$(<~/.ssh-agent-thing)" &>/dev/null
+fi
