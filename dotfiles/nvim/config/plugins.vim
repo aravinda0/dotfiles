@@ -158,35 +158,36 @@ nnoremap <c-t>/ :execute 'Ag ' . input('Ag/')<cr>
 
 
 " -------------------------------------------------------------------------------
-" Neomake - Async code runner. Primarily for running linters, compilers etc.
+" Ale - Async code runner. Primarily for running linters, compilers etc.
 " -------------------------------------------------------------------------------
 
-Plug 'neomake/neomake'
+Plug 'w0rp/ale'
 
-" Override default python makers to use only flake8.
-" Further, we tell neomake to use the flake8 installed in our dedicated nvim venv. The
-" remaining flake8 options are taken as-is from what is specified in the neomake repo.
-" (See `plugged/neomake/autoload/neomake/makers/ft/python.vim`)
-let g:neomake_python_enabled_makers = ['flake8']
-let g:neomake_python_flake8_maker = {
-  \ 'exe': s:neovim_venv_bin . '/flake8',
-  \ 'errorformat':
-    \ '%E%f:%l: could not compile,%-Z%p^,' .
-    \ '%A%f:%l:%c: %t%n %m,' .
-    \ '%A%f:%l: %t%n %m,' .
-    \ '%-G%.%#',
-  \ 'postprocess': function('neomake#makers#ft#python#Flake8EntryProcess')
+let g:ale_linters = {
+\ 'python': ['flake8'],
+\ 'javascript': ['eslint'],
+\ 'typescript': ['tsserver', 'tslint'],
 \ }
 
-" tslint error format has changed in v5.0 (Neomake currently has 4.x error format)
-" TODO: Wait for `tsc` v2.3 and see if `tsconfig.json` can specify linting config as well
-let g:neomake_typescript_tslint_errorformat = '%EERROR: %f[%l\, %c]: %m'
+let g:ale_fixers = {
+\ 'javascript': ['eslint'],
+\ 'typescript': ['tslint'],
+\ }
 
-" Run linter on saving/opening file
-augroup NeomakeCommands
-  autocmd!
-  autocmd! BufWritePost,BufRead * Neomake
-augroup END
+" Use flake8 from our dedicated neovim virtualenv
+let g:ale_python_flake8_executable = s:neovim_venv_bin . '/flake8'
+
+" Use only the linters specified above. Else they actually get merged into a default
+" mapping.
+let g:ale_linters_explicit = 0
+
+" Don't be linting continously
+let g:ale_lint_on_text_changed = 'never'
+
+
+" Quick navigation between errors
+nmap <silent> <m-c-k> <Plug>(ale_previous_wrap)
+nmap <silent> <m-c-j> <Plug>(ale_next_wrap)
 
 
 " -------------------------------------------------------------------------------
