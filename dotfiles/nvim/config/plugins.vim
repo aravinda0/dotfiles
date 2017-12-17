@@ -185,9 +185,12 @@ let g:ale_linters_explicit = 0
 let g:ale_lint_on_text_changed = 'never'
 
 
-" Quick navigation between errors
+" Quick navigation between errors (Requires nmap instead of nnoremap?)
 nmap <silent> <m-c-k> <Plug>(ale_previous_wrap)
 nmap <silent> <m-c-j> <Plug>(ale_next_wrap)
+
+" Auto fix lint errors
+nnoremap <leader>F :ALEFix<cr>
 
 
 " -------------------------------------------------------------------------------
