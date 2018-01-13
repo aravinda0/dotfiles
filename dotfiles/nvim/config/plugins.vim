@@ -79,6 +79,16 @@ nmap b <Plug>(easymotion-b)
 
 
 " -------------------------------------------------------------------------------
+" NERDTree - Easier file exploration
+" -------------------------------------------------------------------------------
+
+Plug 'scrooloose/nerdtree'
+
+" Easier toggling of NERDTree window
+nmap <c-h> :NERDTreeToggle<cr>
+
+
+" -------------------------------------------------------------------------------
 " auto-pairs - Auto-close quotes, brackets while typing
 " -------------------------------------------------------------------------------
 
