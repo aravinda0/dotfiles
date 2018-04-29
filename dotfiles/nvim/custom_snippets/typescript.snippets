@@ -2,7 +2,10 @@ extends javascript
 
 priority 1
 
-# Redux stuff
+
+# -------------------------------------------------------------------------------
+# General Utilities
+# -------------------------------------------------------------------------------
 
 global !p
 _underscorer1 = re.compile(r'(.)([A-Z][a-z]+)')
@@ -23,6 +26,9 @@ def pascal_to_camel(name):
 endglobal
 
 
+# -------------------------------------------------------------------------------
+# Redux Snippets
+# -------------------------------------------------------------------------------
 
 snippet rata "Redux async actions" b
 $1_REQUEST = '$2.$1_REQUEST',
@@ -87,5 +93,89 @@ function* watch`!p snip.rv = camel_to_pascal(t[1])` () {
 	yield takeLatest(
 		ActionTypes.`!p snip.rv = camel_to_upper_snake(t[1])`_REQUEST, handle`!p snip.rv = camel_to_pascal(t[1])`
 	);
+}
+endsnippet
+
+
+# -------------------------------------------------------------------------------
+# React Snippets
+# -------------------------------------------------------------------------------
+
+
+snippet imr "Import react" b
+import * as React from 'react';
+endsnippet
+
+
+snippet cmp "Stateless functional component" b
+export interface Props {
+
+}
+
+function $1 (props: Props) {
+	return (
+		<div>
+
+		</div>
+	);
+}
+endsnippet
+
+
+snippet ccmp "Class based component" b
+export interface Props {
+
+}
+
+class $1 extends React.Component<Props> {
+	public render () {
+		return (
+			<div>
+				${0}
+			</div>
+		);
+	}
+}
+endsnippet
+
+
+snippet rccmp "Redux connected class based component" b
+interface StateProps {
+
+}
+
+interface DispatchProps {
+
+}
+
+export type Props = StateProps & DispatchProps;
+
+
+class $1 extends React.Component<Props> {
+	public render () {
+		return (
+			<div>
+				${0}
+			</div>
+		);
+	}
+}
+endsnippet
+
+
+snippet mstp "Redux mapStateToProps" b
+function mapStateToProps (state: RootState) {
+	return {
+		${0}
+	};
+}
+endsnippet
+
+
+snippet mstp "Redux mapDispatchToProps" b
+function mapDispatchToProps (dispatch: Dispatch<{}>) {
+	return {
+		${0}
+	};
 }
 endsnippet
