@@ -33,8 +33,8 @@ vnoremap <c-s> <c-c>:update<CR>
 
 
 " Easy editing and loading of vimrc
-nnoremap <leader>V :vsplit $MYVIMRC<cr>
-nnoremap <leader>S :source $MYVIMRC<cr>
+nnoremap <leader>cV :vsplit $MYVIMRC<cr>
+nnoremap <leader>cS :source $MYVIMRC<cr>
 
 
 " Shortcuts to open files in the same directory as current file
