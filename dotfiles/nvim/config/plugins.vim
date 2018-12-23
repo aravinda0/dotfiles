@@ -167,97 +167,19 @@ nnoremap <c-t>m :Maps<cr>
 nnoremap <c-t>/ :execute 'Ag ' . input('Ag/')<cr>
 
 
-" -------------------------------------------------------------------------------
-" Ale - Async code runner. Primarily for running linters, compilers etc.
-" -------------------------------------------------------------------------------
+" " -------------------------------------------------------------------------------
+" " JavaScript syntax - Plugins that provide better syntax and indentation settings for JS
+" " -------------------------------------------------------------------------------
 
-Plug 'w0rp/ale'
-
-let g:ale_linters = {
-\ 'python': ['flake8'],
-\ 'javascript': ['eslint'],
-\ 'typescript': ['tsserver', 'tslint'],
-\ }
-
-let g:ale_fixers = {
-\ 'javascript': ['eslint'],
-\ 'typescript': ['tslint'],
-\ }
-
-" Use flake8 from our dedicated neovim virtualenv
-let g:ale_python_flake8_executable = s:neovim_venv_bin . '/flake8'
-
-" Use only the linters specified above. Else they actually get merged into a default
-" mapping.
-let g:ale_linters_explicit = 0
-
-" Don't be linting continously
-let g:ale_lint_on_text_changed = 'never'
+" Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+" Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 
 
-" Quick navigation between errors (Requires nmap instead of nnoremap?)
-nmap <silent> <m-c-k> <Plug>(ale_previous_wrap)
-nmap <silent> <m-c-j> <Plug>(ale_next_wrap)
+" " -------------------------------------------------------------------------------
+" " Typescript syntax
+" " -------------------------------------------------------------------------------
 
-" Auto fix lint errors
-nnoremap <leader>F :ALEFix<cr>
-
-
-" -------------------------------------------------------------------------------
-" Deoplete - Async completion system for neovim
-" Ref: https://github.com/Shougo/deoplete.nvim/blob/master/doc%2Fdeoplete.txt
-" -------------------------------------------------------------------------------
-
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-let g:deoplete#enable_at_startup = 1
-
-" Close popup menu when completion is done
-augroup DeopleteCommands
-  autocmd!
-  autocmd CompleteDone * pclose!
-augroup END
-
-
-" -------------------------------------------------------------------------------
-" JavaScript syntax - Plugins that provide better syntax and indentation settings for JS
-" -------------------------------------------------------------------------------
-
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
-
-
-" -------------------------------------------------------------------------------
-" Typescript syntax
-" -------------------------------------------------------------------------------
-
-Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
-
-
-" -------------------------------------------------------------------------------
-" deoplete-jedi - Jedi wrapper, Python autocompletion and static analysis lib, used with
-" deoplete
-"
-" NOTE: vim startup time seems to be a fraction slower with some of the following plugins.
-" Particularly - jedi-vim and tern_for_vim. Probably due to lack of async in these
-" heavy plugins.
-" -------------------------------------------------------------------------------
-
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-
-
-" -------------------------------------------------------------------------------
-" jedi-vim - to be used for python features aside from completion (which is provided by
-" deoplete-jedi). Primarily for go-to-definition.
-" -------------------------------------------------------------------------------
-
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-
-" Force jedi to use our Pyhon 3 virtual env setup
-let g:jedi#force_py_version = 3
-
-" Completions handled by deoplete-jedi
-let g:jedi#completions_enabled = 0
+" Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
 
 
 " -------------------------------------------------------------------------------
@@ -268,47 +190,36 @@ Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 
 
 " -------------------------------------------------------------------------------
-" tern_for_vim - ternjs wrapper, deoplete-ternjs will handle completions, this will
-" provide other tern feaures from within vim.
+" Coc - for completions with the assistance of various coc plugins
 " -------------------------------------------------------------------------------
 
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx'] }
+" function! PlugCoc(info) abort
+"   if a:info.status ==? 'installed' || a:info.force
+"     !yarn install
+"     call coc#util#install_extension(join(get(s:, 'coc_extensions', [])))
+"   elseif a:info.status ==? 'updated'
+"     !yarn install
+"     call coc#util#update()
+"   endif
+"   call PlugRemotePlugins(a:info)
+" endfunction
 
+" let s:coc_extensions = [
+" \   'coc-pyls',
+" \   'coc-tsserver',
+" \   'coc-rls',
+" \   'coc-html',
+" \   'coc-css',
+" \   'coc-json',
+" \   'coc-yaml',
+" \   'coc-emmet',
+" \   'coc-highlight',
+" \   'coc-tslint',
+" \   'coc-ultisnips'
+" \ ]
 
-" -------------------------------------------------------------------------------
-" deoplete-ternjs - ternjs wrapper, JavaScript autocompletion and static analysis lib,
-" used with deoplete
-" -------------------------------------------------------------------------------
-
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-
-" TODO: Can this be a command from some neovim-specific non-global install of tern?
-" See deoplete-ternjs source - kind of looks to be configurable.
-let g:tern#command = ['tern']
-
-" Disable auto-shutdown of tern server that happens after 5 mins of inactivity
-let g:tern#arguments = ['--persistent']
-
-" Shortcuts for tern_for_vim commands
-augroup TernCommands
-  autocmd!
-  autocmd FileType javascript,javascript.jsx nnoremap <leader>d :TernDef<cr>
-  autocmd FileType javascript,javascript.jsx nnoremap <leader>D :TernDefTab<cr>
-augroup END
-
-
-" -------------------------------------------------------------------------------
-" Typescript completion backed by TSServer, used with deoplete.
-" Needs TypeScript installed globally. Also needs `tsconfig.json` in $CWD atm.
-" -------------------------------------------------------------------------------
-
-Plug 'mhartington/nvim-typescript', { 'for': ['typescript', 'typescript.tsx'], 'do': ':UpdateRemotePlugins' }
-
-augroup NvimTsCommands
-  autocmd!
-  autocmd FileType typescript,typescript.jsx nnoremap <leader>d :TSDef<cr>
-  autocmd FileType typescript,typescript.jsx nnoremap <leader>D :TSDefPreview<cr>
-augroup END
+" Plug 'neoclide/coc.nvim', {'do': function('PlugCoc')}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 
 
 " -------------------------------------------------------------------------------

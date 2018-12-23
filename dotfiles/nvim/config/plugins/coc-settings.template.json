@@ -1,0 +1,3 @@
+{
+  "pyls.commandPath": "${NVIM_PY3_VENV_PATH}/bin/pyls"
+}

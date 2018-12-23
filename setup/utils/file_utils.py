@@ -1,6 +1,7 @@
 import os
 from os.path import join
 import shutil
+import string
 
 from settings import DOTFILES_REPO_DOTFILES_DIR, BACKUP_DIR_FOR_EXISTING_FILES
 from utils.messaging import echo
@@ -69,8 +70,19 @@ def install_file(src, dest, key, install_method='copy'):
         )
 
 
-def install_dotfiles(src, dest, key):
+def install_dotfiles(src, dest, key, install_method='symlink'):
     """Wrapper around `install_file` that accepts src paths that are relative to the
     dotfiles directory (`settings.DOTFILES_REPO_DOTFILES_DIR`) and symlinks to dest.
     """
-    install_file(join(DOTFILES_REPO_DOTFILES_DIR, src), dest, key, 'symlink')
+    install_file(join(DOTFILES_REPO_DOTFILES_DIR, src), dest, key, install_method)
+
+
+def make_file_from_template(src, dest, substitutions):
+    """Takes a provided `src` template file (relatve to
+    `settings.DOTFILES_REPO_DOTFILES_DIR`), performs substitutions on it, and outputs it
+    to `dest`.
+    """
+    with open(join(DOTFILES_REPO_DOTFILES_DIR, src)) as template_file:
+        filled_in = string.Template(template_file.read())
+        with open(dest, 'w') as output_file:
+            output_file.write(filled_in.substitute(substitutions))
