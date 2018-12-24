@@ -171,15 +171,15 @@ nnoremap <c-t>/ :execute 'Ag ' . input('Ag/')<cr>
 " " JavaScript syntax - Plugins that provide better syntax and indentation settings for JS
 " " -------------------------------------------------------------------------------
 
-" Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
-" Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 
 
 " " -------------------------------------------------------------------------------
 " " Typescript syntax
 " " -------------------------------------------------------------------------------
 
-" Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
 
 
 " -------------------------------------------------------------------------------
