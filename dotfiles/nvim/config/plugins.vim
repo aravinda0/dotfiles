@@ -221,6 +221,36 @@ Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 " Plug 'neoclide/coc.nvim', {'do': function('PlugCoc')}
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 
+" Use <c-space> for trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Navigate diagnostics
+nmap <silent> <m-c-k> <Plug>(coc-diagnostic-prev)
+nmap <silent> <m-c-j> <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> <leader>d <Plug>(coc-definition)
+nmap <silent> <leader>t <Plug>(coc-type-definition)
+nmap <silent> <leader>i <Plug>(coc-implementation)
+nmap <silent> <leader>r <Plug>(coc-references)
+
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Show signature help while editing
+autocmd CursorHoldI * silent! call CocActionAsync('showSignatureHelp')
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
 
 " -------------------------------------------------------------------------------
 " Color Scheme
