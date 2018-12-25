@@ -1,9 +1,15 @@
 [submodule "dotfiles/nvim/vim_plug"]
 	path = dotfiles/nvim/vim_plug
 	url = https://github.com/junegunn/vim-plug
-[submodule "dotfiles/zsh/zplug"]
-	path = dotfiles/zsh/zplug
-	url = https://github.com/zplug/zplug
 [submodule "dotfiles/tmux/tpm"]
 	path = dotfiles/tmux/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "dotfiles/zsh/external/zimfw"]
+	path = dotfiles/zsh/external/zimfw
+	url = https://github.com/zimfw/zimfw
+[submodule "dotfiles/zsh/external/minimal"]
+	path = dotfiles/zsh/external/minimal
+	url = https://github.com/subnixr/minimal
+[submodule "dotfiles/zsh/external/fzf-marks"]
+	path = dotfiles/zsh/external/fzf-marks
+	url = https://github.com/urbainvaes/fzf-marks
