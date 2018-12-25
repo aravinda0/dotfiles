@@ -30,7 +30,7 @@ def install_plugin_python_dependencies():
 
     py_packages = [
         'flake8',
-        'python-language-server',
+        'python-language-server[all]',
     ]
 
     nvim_venv_pip['install', py_packages] & FG
