@@ -17,6 +17,12 @@ contact me directly.
 
 ## Installation
 
+Clone this repository somewhere and ensure that submodules are fetched too.
+
+```shell
+$ git clone https://github.com/ManiacalAce/dotfiles --recurse-submodules
+```
+
 There are a few Python dependencies required to use the installer scripts.
 Particularly, we use the `plumbum` Python package to make it easier to run shell
 commands.
