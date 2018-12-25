@@ -20,3 +20,6 @@ alias tls='tmux ls'
 
 # `cd` to git repo root
 alias gr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
+
+
+alias ag='rg'

@@ -5,8 +5,8 @@ from utils.messaging import echo
 
 
 def install_tools():
-    echo('Installing ag...')
+    echo('Installing ripgrep...')
 
-    pacman_install_f[['the_silver_searcher']] & FG
+    pacman_install_f[['ripgrep']] & FG
 
-    echo('Ag installed!')
+    echo('ripgrep installed!')

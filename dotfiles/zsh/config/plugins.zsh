@@ -12,9 +12,9 @@ export ZIM_HOME=$HOME/.zim
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 
-# Use `ag` instead of default `find` command
-if ag_cmd="$(type -p ag)" || [[ -z "$ag_cmd" ]]; then
-  export FZF_DEFAULT_COMMAND='ag -g ""'
+# Use `rg` instead of default `find` command
+if rg_cmd="$(type -p rg)" || [[ -z "$rg_cmd" ]]; then
+  export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
