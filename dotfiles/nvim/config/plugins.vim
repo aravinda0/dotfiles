@@ -257,13 +257,14 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Color Scheme
 " -------------------------------------------------------------------------------
 
-Plug 'morhetz/gruvbox'
+Plug 'cocopon/iceberg.vim'
 " Plug 'mhartington/oceanic-next'
 " Plug 'frankier/neovim-colors-solarized-truecolor-only'  " true-color fork of solarized
 " Plug 'trevordmiller/nova-vim'
 
-let g:gruvbox_italic = 1
-let g:gruvbox_invert_selection = 0
+" Plug 'morhetz/gruvbox'
+" let g:gruvbox_italic = 1
+" let g:gruvbox_invert_selection = 0
 
 " ---------------------------------------------------------------------------
 " End Plugins
@@ -277,4 +278,4 @@ call plug#end()
 " ---------------------------------------------------------------------------
 
 set background=dark
-colorscheme gruvbox
+colorscheme iceberg
