@@ -179,7 +179,8 @@ Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 " " Typescript syntax
 " " -------------------------------------------------------------------------------
 
-Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
+Plug 'ianks/vim-tsx', { 'for': ['typescript.tsx'] }
 
 
 " -------------------------------------------------------------------------------
