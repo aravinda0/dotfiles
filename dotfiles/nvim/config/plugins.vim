@@ -144,8 +144,8 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
 nnoremap <c-p> :Files<cr>
-nnoremap <c-o> :GFiles<cr>
-nnoremap <c-i> :Buffers<cr>
+nnoremap <c-t>g :GFiles<cr>
+nnoremap <c-o> :Buffers<cr>
 
 " Search lines in current buffer
 nnoremap <c-t>l :BLines<cr>
