@@ -15,8 +15,7 @@ Plug 'Yggdroot/indentLine'
 
 
 " -------------------------------------------------------------------------------
-" Vim tmux navigator - consistent keys to move between splits/panes across
-" vim/tmux
+" Vim tmux navigator - consistent keys to move between splits/panes across vim/tmux
 " -------------------------------------------------------------------------------
 
 Plug 'christoomey/vim-tmux-navigator'
@@ -167,17 +166,17 @@ nnoremap <c-t>m :Maps<cr>
 nnoremap <c-t>/ :execute 'Ag ' . input('Ag/')<cr>
 
 
-" " -------------------------------------------------------------------------------
-" " JavaScript syntax - Plugins that provide better syntax and indentation settings for JS
-" " -------------------------------------------------------------------------------
+" -------------------------------------------------------------------------------
+" JavaScript syntax - Plugins that provide better syntax and indentation settings for JS
+" -------------------------------------------------------------------------------
 
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 
 
-" " -------------------------------------------------------------------------------
-" " Typescript syntax
-" " -------------------------------------------------------------------------------
+" -------------------------------------------------------------------------------
+" Typescript syntax
+" -------------------------------------------------------------------------------
 
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
 Plug 'ianks/vim-tsx', { 'for': ['typescript.tsx'] }
@@ -251,6 +250,27 @@ autocmd CursorHoldI * silent! call CocActionAsync('showSignatureHelp')
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+
+" -------------------------------------------------------------------------------
+" vim-wiki - for notes with elegant markdown settings
+" -------------------------------------------------------------------------------
+
+Plug 'vimwiki/vimwiki'
+
+" TODO: After trial phase, fetch notes path from env var
+let g:vimwiki_list = [{'path': '~/.dency/notes/wiki/life'},
+  \ {'path': '~/.dency/notes/wiki/tech'},
+  \ {'path': '~/.dency/notes/wiki/work'}]
+
+
+" Need to use `namp` and not `nnoremap`
+nmap <leader>wv <Plug>VimwikiVSplitLink
+nmap <leader>wo <Plug>VimwikiFollowLink
+" nmap <leader>wt <Plug>VimwikiTabnewLink
+
+" Default seems to get unmapped if we remap VimwikiFollowLink
+nmap <cr> <Plug>VimwikiFollowLink
 
 
 " -------------------------------------------------------------------------------
