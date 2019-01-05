@@ -105,18 +105,6 @@ let g:user_emmet_leader_key='<c-g>'
 
 
 " -------------------------------------------------------------------------------
-" vim-markdown
-" -------------------------------------------------------------------------------
-
-Plug 'gabrielelana/vim-markdown'
-
-let g:markdown_enable_spell_checking = 0
-
-" Change mapping for toggling checklist items
-let g:markdown_mapping_switch_status = '<c-l>'
-
-
-" -------------------------------------------------------------------------------
 " Snippets
 " -------------------------------------------------------------------------------
 
