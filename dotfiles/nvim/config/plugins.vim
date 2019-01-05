@@ -253,12 +253,12 @@ let g:vimwiki_list = [{'path': '~/.dency/notes/wiki/life'},
 
 
 " Need to use `namp` and not `nnoremap`
-nmap <leader>wv <Plug>VimwikiVSplitLink
-nmap <leader>wo <Plug>VimwikiFollowLink
-" nmap <leader>wt <Plug>VimwikiTabnewLink
-
-" Default seems to get unmapped if we remap VimwikiFollowLink
-nmap <cr> <Plug>VimwikiFollowLink
+augroup PluginVimWikiMappings
+  autocmd!
+  autocmd FileType vimwiki nmap <buffer> gv <Plug>VimwikiVSplitLink
+  autocmd FileType vimwiki nmap <buffer> go <Plug>VimwikiFollowLink
+  autocmd FileType vimwiki nmap <buffer> gt <Plug>VimwikiTabnewLink
+augroup END
 
 
 " -------------------------------------------------------------------------------
