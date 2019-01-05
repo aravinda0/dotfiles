@@ -282,7 +282,8 @@ call plug#end()
 
 
 " ---------------------------------------------------------------------------
-" Color scheme - Has to be called after color scheme plugin is processed
+" Color scheme - Has to be called after color scheme plugin is processed and
+" plug#end has been called.
 " ---------------------------------------------------------------------------
 
 set background=dark
