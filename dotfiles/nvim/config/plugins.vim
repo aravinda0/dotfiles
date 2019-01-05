@@ -247,10 +247,16 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 Plug 'vimwiki/vimwiki'
 
 " TODO: After trial phase, fetch notes path from env var
-let g:vimwiki_list = [{'path': '~/.dency/notes/wiki/life'},
+let g:vimwiki_list = [
+  \ {'path': '~/.dency/notes/wiki/life'},
   \ {'path': '~/.dency/notes/wiki/tech'},
   \ {'path': '~/.dency/notes/wiki/work'}]
 
+" Handle various file types with appropriate syntax settings
+let g:vimwiki_ext2syntax = {
+  \ '.md': 'markdown',
+  \ '.mkd': 'markdown',
+  \ '.wiki': 'media'}
 
 " Need to use `namp` and not `nnoremap`
 augroup PluginVimWikiMappings
