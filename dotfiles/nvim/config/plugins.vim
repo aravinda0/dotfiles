@@ -119,7 +119,7 @@ Plug 'honza/vim-snippets'
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom_snippets"]
 
 " Snippet expansion
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
