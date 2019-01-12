@@ -261,9 +261,13 @@ let g:vimwiki_ext2syntax = {
 " Need to use `namp` and not `nnoremap`
 augroup PluginVimWikiMappings
   autocmd!
-  autocmd FileType vimwiki nmap <buffer> gv <Plug>VimwikiVSplitLink
-  autocmd FileType vimwiki nmap <buffer> go <Plug>VimwikiFollowLink
-  autocmd FileType vimwiki nmap <buffer> gt <Plug>VimwikiTabnewLink
+  autocmd FileType vimwiki,markdown nmap <buffer> gv <Plug>VimwikiVSplitLink
+  autocmd FileType vimwiki,markdown nmap <buffer> go <Plug>VimwikiFollowLink
+  autocmd FileType vimwiki,markdown nmap <buffer> gt <Plug>VimwikiTabnewLink
+  autocmd FileType vimwiki,markdown nmap <buffer> gb <Plug>VimwikiGoBackLink
+
+  " Bring back our backspace mapping that vimwiki overrides
+  autocmd FileType vimwiki,markdown nmap <buffer> <bs> :b#<cr>
 augroup END
 
 
