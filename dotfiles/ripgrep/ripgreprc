@@ -1,0 +1,8 @@
+
+# Default to smart-case
+--smart-case
+
+
+# Web file types
+--type-add
+web:*.{html,css,js,jsx,ts,tsx}*
