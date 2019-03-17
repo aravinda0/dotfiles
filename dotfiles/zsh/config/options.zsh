@@ -67,6 +67,7 @@ zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 unsetopt CASE_GLOB
 
+
 # -------------------------------------------------------------------------------
 # Directories
 # -------------------------------------------------------------------------------
@@ -82,3 +83,17 @@ setopt PUSHD_IGNORE_DUPS
 
 # Don't print directory name on doing `pushd`
 setopt PUSHD_SILENT
+
+
+# -------------------------------------------------------------------------------
+# Cursor
+# -------------------------------------------------------------------------------
+
+_fix_cursor() {
+   echo -ne '\e[5 q'
+}
+
+# Helps fix issues in some environments where cursor doesn't seem to be visible in
+# vi-mode. Also helps keeps things consistent between vim and zsh with how cursor looks in
+# insert vs vi modes.
+precmd_functions+=(_fix_cursor)
