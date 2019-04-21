@@ -206,8 +206,7 @@ Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 " \   'coc-ultisnips'
 " \ ]
 
-" Plug 'neoclide/coc.nvim', {'do': function('PlugCoc')}
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 " Use <c-space> for trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
