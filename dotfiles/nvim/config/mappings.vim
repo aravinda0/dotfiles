@@ -34,6 +34,7 @@ vnoremap <c-s> <c-c>:update<CR>
 
 " Easy editing and loading of vimrc
 nnoremap <leader>cv :vsplit $MYVIMRC<cr>
+nnoremap <leader>co :edit $MYVIMRC<cr>
 nnoremap <leader>cs :source $MYVIMRC<cr>
 
 
