@@ -4,22 +4,26 @@ from utils.system.commands import pip_install_global
 from utils.messaging import echo
 
 
+python_packages_to_install = [
+    'poetry',
+    'httpie',
+    'ipython',
+]
+
+
 def install_tools():
-    install_pew()
-    install_ipython()
+    echo('First installing pipx...')
 
+    pip_install_global['pipx'] & FG
 
-def install_pew():
-    echo('Installing pew...')
+    echo('pipx installed!')
 
-    pip_install_global['pew'] & FG
+    # Now import pipx which should be available
+    from plumbum.cmd import pipx
 
-    echo('pew installed!')
+    echo('Installing Python packages via pipx...')
 
+    for py_package in python_packages_to_install:
+        pipx['install'][py_package] & FG
 
-def install_ipython():
-    echo('Installing IPython...')
-
-    pip_install_global['ipython'] & FG
-
-    echo('IPython installed!')
+    echo('Python packages installed')
