@@ -282,6 +282,8 @@ augroup PluginVimWikiMappings
   autocmd FileType vimwiki,markdown nmap <buffer> <bs> :b#<cr>
 augroup END
 
+let g:vimwiki_table_mappings = 0
+
 
 " -------------------------------------------------------------------------------
 " Color Scheme
