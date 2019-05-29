@@ -238,6 +238,19 @@ autocmd CursorHoldI * silent! call CocActionAsync('showSignatureHelp')
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+" Formatting shortcuts
+nnoremap <silent> <leader>ff :call CocAction('format')<cr>
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <leader>x  :<C-u>CocList diagnostics<cr>
+
+" FileType mappings
+augroup PluginCocNvimMappings
+  autocmd!
+  autocmd FileType python nnoremap <silent> <leader>fi :CocCommand python.sortImports<cr>
+augroup END
+
 
 " -------------------------------------------------------------------------------
 " vim-wiki - for notes with elegant markdown settings

@@ -1,3 +1,5 @@
 {
-  "pyls.commandPath": "${NVIM_PY3_VENV_PATH}/bin/pyls"
+  "python.formatting.provider": "black",
+  "python.linting.flake8Enabled": true,
+  "python.linting.pylintEnabled": false
 }
