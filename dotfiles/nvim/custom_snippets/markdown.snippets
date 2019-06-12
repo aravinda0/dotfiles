@@ -1,6 +1,47 @@
 
-snippet daily "Daily todo list" b
-# $1
+snippet daily "Daily todo list - today" b
+# `!p
+from datetime import datetime
+snip.rv = datetime.now().strftime('%d %b %Y - %a')
+`
+
+## TODO
+
+* $2
+
+
+------------------------------------------------------------------------------------------
+
+## Temp
+
+
+endsnippet
+
+
+snippet dailyt "Daily todo list - tomorrow" b
+# `!p
+from datetime import datetime, timedelta
+snip.rv = (datetime.now() + timedelta(days=1)).strftime('%d %b %Y - %a')
+`
+
+## TODO
+
+* $2
+
+
+------------------------------------------------------------------------------------------
+
+## Temp
+
+
+endsnippet
+
+
+snippet dailyy "Daily todo list - yesterday" b
+# `!p
+from datetime import datetime, timedelta
+snip.rv = (datetime.now() - timedelta(days=1)).strftime('%d %b %Y - %a')
+`
 
 ## TODO
 
