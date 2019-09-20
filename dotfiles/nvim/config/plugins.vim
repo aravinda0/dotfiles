@@ -260,9 +260,10 @@ Plug 'vimwiki/vimwiki'
 
 " TODO: After trial phase, fetch notes path from env var
 let g:vimwiki_list = [
-  \ {'path': '~/.dency/notes/wiki/life', 'ext': '.md', 'syntax': 'markdown'},
+  \ {'path': '~/.dency/notes/wiki/work', 'ext': '.md', 'syntax': 'markdown'},
   \ {'path': '~/.dency/notes/wiki/notes', 'ext': '.md', 'syntax': 'markdown'},
-  \ {'path': '~/.dency/notes/wiki/work', 'ext': '.md', 'syntax': 'markdown'}]
+  \ {'path': '~/.dency/notes/wiki/.j/todo', 'ext': '.md', 'syntax': 'markdown'},
+  \ {'path': '~/.dency/notes/wiki/.j', 'ext': '.md', 'syntax': 'markdown'}]
 
 " Handle various file types with appropriate syntax settings
 let g:vimwiki_ext2syntax = {
