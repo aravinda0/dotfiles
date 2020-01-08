@@ -286,6 +286,11 @@ augroup END
 let g:vimwiki_table_mappings = 0
 
 
+hi! link VimwikiHeader3 Constant
+hi! link VimwikiHeader4 String
+hi! link VimwikiHeader5 QuickFixLine
+
+
 " -------------------------------------------------------------------------------
 " Color Scheme
 " -------------------------------------------------------------------------------
