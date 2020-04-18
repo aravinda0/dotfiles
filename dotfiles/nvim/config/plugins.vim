@@ -78,16 +78,6 @@ nmap b <Plug>(easymotion-b)
 
 
 " -------------------------------------------------------------------------------
-" NERDTree - Easier file exploration
-" -------------------------------------------------------------------------------
-
-Plug 'scrooloose/nerdtree'
-
-" Easier toggling of NERDTree window
-nmap <c-h> :NERDTreeToggle<cr>
-
-
-" -------------------------------------------------------------------------------
 " auto-pairs - Auto-close quotes, brackets while typing
 " -------------------------------------------------------------------------------
 
@@ -251,6 +241,9 @@ augroup PluginCocNvimMappings
   autocmd FileType python nnoremap <silent> <leader>fi :CocCommand python.sortImports<cr>
 augroup END
 
+
+" coc-explorer: Open
+nmap <c-h> :CocCommand explorer<CR>
 
 " -------------------------------------------------------------------------------
 " vim-wiki - for notes with elegant markdown settings
