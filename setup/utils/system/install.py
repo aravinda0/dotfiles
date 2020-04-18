@@ -15,7 +15,7 @@ def install_from_source(program_name, git_repo, make_options=None):
 
     with local.cwd(build_dir):
         if lexists(join(build_dir, program_name)):
-            echo('Deleting existing build files for {program_name}...')
+            echo(f'Deleting existing build files for {program_name}...')
             rm['-rf', program_name] & FG
 
         echo('Cloning {program_name} repo...'.format(program_name=program_name))
