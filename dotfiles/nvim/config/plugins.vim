@@ -229,8 +229,13 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Show signature help while editing
-autocmd CursorHoldI * silent! call CocActionAsync('showSignatureHelp')
+augroup PluginCocNvimCustomizations
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -238,19 +243,27 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Formatting shortcuts
 nnoremap <silent> <leader>ff :call CocAction('format')<cr>
 
+" Introduce function text object
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Show signature window
+nnoremap <silent> <c-l> :call CocActionAsync('showSignatureHelp')<cr>
+inoremap <silent> <c-l> <c-o>:call CocActionAsync('showSignatureHelp')<cr>
+
+" Organize imports
+command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
+
 " Using CocList
 " Show all diagnostics
 nnoremap <silent> <leader>x  :<C-u>CocList diagnostics<cr>
 
-" FileType mappings
-augroup PluginCocNvimMappings
-  autocmd!
-  autocmd FileType python nnoremap <silent> <leader>fi :CocCommand python.sortImports<cr>
-augroup END
-
-
 " coc-explorer: Open
 nmap <c-h> :CocCommand explorer<CR>
+
 
 " -------------------------------------------------------------------------------
 " vim-wiki - for notes with elegant markdown settings
