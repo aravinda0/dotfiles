@@ -8,12 +8,12 @@ priority 1
 # -------------------------------------------------------------------------------
 
 global !p
-_underscorer1 = re.compile(r'(.)([A-Z][a-z]+)')
-_underscorer2 = re.compile('([a-z0-9])([A-Z])')
+_underscorer1 = re.compile(r"(.)([A-Z][a-z]+)")
+_underscorer2 = re.compile("([a-z0-9])([A-Z])")
 
 def camel_to_upper_snake(name):
-	subbed = _underscorer1.sub(r'\1_\2', name)
-	return _underscorer2.sub(r'\1_\2', subbed).upper()
+	subbed = _underscorer1.sub(r"\1_\2", name)
+	return _underscorer2.sub(r"\1_\2", subbed).upper()
 
 
 def camel_to_pascal(name):
@@ -31,9 +31,9 @@ endglobal
 # -------------------------------------------------------------------------------
 
 snippet rata "Redux async actions" b
-$1_REQUEST = '$2.$1_REQUEST',
-$1_SUCCESS = '$2.$1_SUCCESS',
-$1_FAILURE = '$2.$1_FAILURE',
+$1_REQUEST = "$2.$1_REQUEST",
+$1_SUCCESS = "$2.$1_SUCCESS",
+$1_FAILURE = "$2.$1_FAILURE",
 endsnippet
 
 
@@ -85,7 +85,7 @@ function* handle$1 (action: any) {
 	} catch (error) {
 		yield put(actions.`!p snip.rv = pascal_to_camel(t[1])`Failure({
 			error,
-			message: 'Failed to $3!',
+			message: "Failed to $3!",
 		}));
 	}
 }
@@ -103,7 +103,7 @@ endsnippet
 
 
 snippet imr "Import react" b
-import * as React from 'react';
+import * as React from "react";
 endsnippet
 
 
