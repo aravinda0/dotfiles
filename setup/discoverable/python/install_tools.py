@@ -8,6 +8,8 @@ python_packages_to_install = [
     'poetry',
     'httpie',
     'ipython',
+    'black',
+    'flake8',
 ]
 
 
