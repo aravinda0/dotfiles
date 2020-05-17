@@ -22,3 +22,9 @@ source $ZSH_CONFIG_PATH/plugins.zsh
 
 
 source $ZSH_CONFIG_PATH/aliases.zsh
+
+
+# Hook up asdf runtime for various languages. This should be after any other config that
+# tweaks paths to find language binaries.
+source $DOTFILES_PATH/asdf/external/asdf/asdf.sh
+# source $DOTFILES_PATH/asdf/external/asdf/completions/_asdf

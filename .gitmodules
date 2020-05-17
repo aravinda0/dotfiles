@@ -13,3 +13,6 @@
 [submodule "dotfiles/zsh/external/fzf-marks"]
 	path = dotfiles/zsh/external/fzf-marks
 	url = https://github.com/urbainvaes/fzf-marks
+[submodule "dotfiles/asdf/external/asdf"]
+	path = dotfiles/asdf/external/asdf
+	url = https://github.com/asdf-vm/asdf.git
