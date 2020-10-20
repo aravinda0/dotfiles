@@ -9,8 +9,8 @@ export ZIM_HOME=$HOME/.zim
 # -------------------------------------------------------------------------------
 
 # Source fzf helpers from installation site
-source /usr/share/fzf/completion.zsh
-source /usr/share/fzf/key-bindings.zsh
+source /etc/profile.d/fzf.zsh
+source /usr/share/zsh/site-functions/_fzf
 
 # Use `rg` instead of default `find` command
 if rg_cmd="$(type -p rg)" || [[ -z "$rg_cmd" ]]; then
