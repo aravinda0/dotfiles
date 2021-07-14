@@ -39,12 +39,3 @@ source ${DOTFILES_PATH}/zsh/external/minimal/minimal.zsh
 # -------------------------------------------------------------------------------
 
 source $DOTFILES_PATH/zsh/external/fzf-marks/fzf-marks.plugin.zsh
-
-
-# -------------------------------------------------------------------------------
-# asdf - Manage different local/global versions of various programs
-# -------------------------------------------------------------------------------
-
-# This should be after any other config that tweaks paths to find language binaries.
-source $DOTFILES_PATH/asdf/external/asdf/asdf.sh
-# source $DOTFILES_PATH/asdf/external/asdf/completions/_asdf
