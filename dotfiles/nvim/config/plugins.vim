@@ -55,27 +55,14 @@ Plug 'tpope/vim-surround'
 
 
 " -------------------------------------------------------------------------------
-" EasyMotion - quickly jump to any location on the screen
+" Hop - quickly jump to any location on the screen. Modern alternative to easy-motion.
 " -------------------------------------------------------------------------------
 
-Plug 'easymotion/vim-easymotion'
+Plug 'phaazon/hop.nvim'
 
-" Disable default mappings
-let g:EasyMotion_do_mapping = 0
-
-" Search like vim's smartcase
-let g:EasyMotion_smartcase = 1
-
-" Don't search outside visible screen
-let g:EasyMotion_off_screen_search = 0
-
-" 2-char searches across splits
-nmap s <Plug>(easymotion-overwin-f2)
-
-nmap s <Plug>(easymotion-s)
-nmap w <Plug>(easymotion-w)
-nmap b <Plug>(easymotion-b)
-
+nnoremap s <c-o>:HopChar2<cr>
+nnoremap <leader>sw <c-o>:HopWord<cr>
+nnoremap <leader>sl <c-o>:HopLine<cr>
 
 " -------------------------------------------------------------------------------
 " auto-pairs - Auto-close quotes, brackets while typing
