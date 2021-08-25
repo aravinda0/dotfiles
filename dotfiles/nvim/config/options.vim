@@ -94,6 +94,10 @@ set ttyfast   " (Removed and default on in neovim)
 let g:python3_host_prog = $NVIM_PY3_VENV_PATH . '/bin/python'
 
 
+" Lets us have syntax highlighting in code blocks in markdown files
+let g:markdown_fenced_languages = ['bash', 'python', 'rust', 'javascript', 'typescript']
+
+
 " Enable loading plugins for specific file-types
 filetype plugin indent on
 
