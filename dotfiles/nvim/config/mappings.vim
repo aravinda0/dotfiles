@@ -2,7 +2,7 @@
 " Mappings
 " ---------------------------------------------------------------------------
 
-" NOTE: Also look at plugins.vim for plugin specific mappings
+" NOTE: Also look at `config/plugins.vim` for plugin specific mappings
 
 
 " The space bar is our leader key
@@ -13,8 +13,8 @@ inoremap jk <esc>
 
 
 " Save easily
-" Might require disabling terminal suspend by adding 'stty -ixon' to shell
-" startup script
+" Might require disabling terminal suspend by adding 'stty -ixon' to shell startup
+" script
 nnoremap <c-s> :update<cr>
 inoremap <c-s> <c-o>:update<cr>
 vnoremap <c-s> <c-c>:update<cr>
@@ -23,13 +23,6 @@ vnoremap <c-s> <c-c>:update<cr>
 " Quit easily
 noremap <leader>q :quit<cr>
 noremap <leader>Q :qa!<cr>
-
-
-" Easier saving. Might require disabling terminal suspend by adding 'stty " -ixon'
-" to shell startup script
-nnoremap <c-s> :update<CR>
-inoremap <c-s> <c-o>:update<CR>
-vnoremap <c-s> <c-c>:update<CR>
 
 
 " Easy editing and loading of vimrc

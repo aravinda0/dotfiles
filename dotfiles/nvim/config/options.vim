@@ -2,10 +2,6 @@
 " Options
 " ---------------------------------------------------------------------------
 
-" Allow switching to other buffers even if current is unsaved
-set hidden
-
-
 " Enable true colors
 set termguicolors
 
@@ -16,7 +12,6 @@ set numberwidth=4
 set textwidth=90
 set nowrap
 set colorcolumn=+1    " textwidth + 1
-highlight ColorColumn ctermbg=233
 
 
 " Indentation settings
@@ -72,13 +67,11 @@ set ttimeoutlen=0
 set history=1000
 
 
-" Persistent undo - available since vim 7.3
-if has('persistent_undo') && exists("&undodir")
-  set undodir=$HOME/.config/nvim/.undo
-  set undofile
-  set undolevels=700
-  set undoreload=5000
-endif
+" Persistent undo
+set undodir=$HOME/.config/nvim/.undo
+set undofile
+set undolevels=700
+set undoreload=5000
 
 
 " Disable backups and swap files - they trigger too many events for file system watchers
@@ -103,7 +96,7 @@ let g:python3_host_prog = $NVIM_PY3_VENV_PATH . '/bin/python'
 filetype plugin indent on
 
 
-" Enable syntax highlighting
+" Enable syntax highlighting based on file-type
 syntax on
 
 " -----------------------------------------------------------------------------
