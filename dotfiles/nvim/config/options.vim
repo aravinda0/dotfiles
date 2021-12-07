@@ -9,7 +9,7 @@ set termguicolors
 " Line settings
 set number
 set numberwidth=4
-set textwidth=90
+set textwidth=88
 set nowrap
 set colorcolumn=+1    " textwidth + 1
 
@@ -104,6 +104,6 @@ syntax on
 " File-type specific options
 augroup FileTypeSettings
   autocmd!
-  autocmd FileType markdown,text setlocal textwidth=90
+  autocmd FileType markdown,text setlocal textwidth=80
   autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 augroup END
