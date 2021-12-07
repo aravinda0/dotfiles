@@ -27,8 +27,8 @@ noremap <leader>Q :qa!<cr>
 
 " Easy editing and loading of vimrc
 nnoremap <leader>cv :vsplit $MYVIMRC<cr>
-nnoremap <leader>co :edit $MYVIMRC<cr>
-nnoremap <leader>cs :source $MYVIMRC<cr>
+nnoremap <leader>ce :edit $MYVIMRC<cr>
+nnoremap <leader>cr :source $MYVIMRC<cr>
 
 
 " Shortcuts to open files in the same directory as current file
