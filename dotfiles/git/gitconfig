@@ -26,5 +26,3 @@
 # Use seperate file for private info (username, email, etc.)
 [include]
   path = ~/.gitconfig.local
-[pull]
-	ff = only
