@@ -78,6 +78,13 @@ nnoremap Y y$
 noremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 
+" Window motions
+nnoremap <m-h> <c-w>h
+nnoremap <m-j> <c-w>j
+nnoremap <m-k> <c-w>k
+nnoremap <m-l> <c-w>l
+
+
 " Easier moving between tabs.
 noremap <m-e> <esc>:tabprevious<cr>
 noremap <m-r> <esc>:tabnext<cr>
