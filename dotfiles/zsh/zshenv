@@ -45,12 +45,10 @@ export WORKON_HOME=$HOME/.virtualenvs
 
 
 # -------------------------------------------------------------------------------
-# ssh-agent
+# ssh-agent manager
 # -------------------------------------------------------------------------------
 
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent > ~/.ssh-agent-thing
-fi
-if [[ "$SSH_AGENT_PID" == "" ]]; then
-    eval "$(<~/.ssh-agent-thing)" &>/dev/null
-fi
+# Use `keychain` to manage ssh-agent across shells.
+# Also relying on `AddKeysToAgent` option in ssh config so keys get added to ssh-agent
+# after first use
+eval $(keychain --eval -q)
