@@ -39,6 +39,16 @@ export RIPGREP_CONFIG_PATH=$DOTFILES_PATH/ripgrep/ripgreprc
 
 
 # -------------------------------------------------------------------------------
+# NPM
+# -------------------------------------------------------------------------------
+
+# Prevents having to use sudo to install global npm packages by specifying a
+# user-writeable dir.
+# Also needs a corresponding $PATH mod
+export NPM_CONFIG_PREFIX=~/.npm-global
+
+
+# -------------------------------------------------------------------------------
 # ssh-agent manager
 # -------------------------------------------------------------------------------
 

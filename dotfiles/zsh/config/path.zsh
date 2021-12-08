@@ -22,4 +22,4 @@
 # https://wiki.archlinux.org/index.php/Zsh#Startup.2FShutdown_files
 # http://superuser.com/questions/968942/why-does-tmux-create-new-windows-as-login-shells-by-default
 
-
+export PATH=~/.npm-global/bin:$PATH
