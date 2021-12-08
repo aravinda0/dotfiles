@@ -16,6 +16,9 @@ packages_to_install = [
     # For building neovim
     'cmake', 'unzip',
 
+    # pacman alternative
+    'yay',
+
     # For various tools/plugins that work with the clipboard
     'xclip',
 
