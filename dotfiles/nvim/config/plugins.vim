@@ -239,13 +239,15 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
   buf_set_keymap("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
   buf_set_keymap("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-
 end
 
 -- Use a loop to conveniently call `setup` on multiple servers and map buffer local
 -- keybindings when the language server attaches.
 -- Also ensure `coq_nvim` completion is enabled for each server.
-local servers = { "pyright", }
+local servers = {
+  "pyright",
+  "rust_analyzer",
+}
 for _, server in ipairs(servers) do
   lsp[server].setup(coq.lsp_ensure_capabilities({
     on_attach = on_attach,
