@@ -21,7 +21,7 @@ Plug 'neovim/nvim-lspconfig', { 'do': 'npm i -g pyright' }
 
 
 " -------------------------------------------------------------------------------
-" Syntax, highlight, indent etc
+" Syntax, highlight, formatting, indent etc
 " -------------------------------------------------------------------------------
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -31,6 +31,15 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 
 " Treesitter indent support is not yet up to the mark in many cases
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
+
+
+" TODO: Review approaches via LSP. eg. `efm-langserver`, which I couldn't figure out.
+Plug 'psf/black'
+
+augroup PluginAutoFormatters
+  autocmd!
+  autocmd BufWritePre *.py execute ':Black'
+augroup END
 
 
 " -------------------------------------------------------------------------------
