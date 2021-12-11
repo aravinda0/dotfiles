@@ -68,6 +68,8 @@ inoremap <expr> <c-j> pumvisible() ? '<c-n>' : '<c-j>'
 " Move lines up or down
 nnoremap <c-j> ddp
 nnoremap <c-k> ddkP
+vnoremap <c-j> :move '>+1<cr>gv-gv
+vnoremap <c-k> :move '<-2<cr>gv-gv
 
 
 " Copy to end of line
