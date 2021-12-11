@@ -1,5 +1,3 @@
-from plumbum import FG
-
 from utils.messaging import echo
 from utils.file_utils import install_dotfiles
 
