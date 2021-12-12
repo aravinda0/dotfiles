@@ -25,6 +25,10 @@ noremap <leader>q :quit<cr>
 noremap <leader>Q :qa!<cr>
 
 
+" Prevent disasters
+nnoremap ZZ <nop>
+
+
 " Easy editing and loading of vimrc
 nnoremap <leader>cv :vsplit $MYVIMRC<cr>
 nnoremap <leader>ce :edit $MYVIMRC<cr>
