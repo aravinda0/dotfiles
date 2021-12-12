@@ -351,7 +351,7 @@ require("lualine").setup({
   },
   inactive_sections = {
     lualine_a = {},
-    lualine_b = {},
+    lualine_b = {{"diagnostics", sources={"nvim_diagnostic"}}},
     lualine_c = {{"filename", file_status = true, path = 1, shorting_target = 30}},
     lualine_x = {"location"},
     lualine_y = {},
