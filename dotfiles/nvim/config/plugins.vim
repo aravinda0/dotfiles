@@ -146,16 +146,17 @@ Plug 'numToStr/Comment.nvim'
 
 
 " -------------------------------------------------------------------------------
-" Vim Wiki
+" Note Taking
 " -------------------------------------------------------------------------------
 
 Plug 'vimwiki/vimwiki'
 
 " TODO: After trial phase, fetch notes path from env var
 let g:vimwiki_list = [
+      \ {'path': '~/.dency/forge/notes', 'ext': '.md', 'syntax': 'markdown'},
       \ {'path': '~/.dency/brain', 'ext': '.md', 'syntax': 'markdown'},
-      \ {'path': '~/.dency/notes/wiki/.j/todo', 'ext': '.md', 'syntax': 'markdown'},
-      \ {'path': '~/.dency/notes/wiki/.j', 'ext': '.md', 'syntax': 'markdown'}
+      \ {'path': '~/.dency/old_notes/wiki/.j/todo', 'ext': '.md', 'syntax': 'markdown'},
+      \ {'path': '~/.dency/old_notes/wiki/.j', 'ext': '.md', 'syntax': 'markdown'}
   \ ]
 
 " Handle various file types with appropriate syntax settings
