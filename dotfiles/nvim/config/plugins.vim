@@ -169,6 +169,7 @@ let g:vimwiki_ext2syntax = {
 augroup PluginVimWikiMappings
   autocmd!
   autocmd FileType vimwiki,markdown nmap <buffer> gv <Plug>VimwikiVSplitLink
+  autocmd FileType vimwiki,markdown nmap <buffer> gx <Plug>VimwikiSplitLink
   autocmd FileType vimwiki,markdown nmap <buffer> go <Plug>VimwikiFollowLink
   autocmd FileType vimwiki,markdown nmap <buffer> gt <Plug>VimwikiTabnewLink
   autocmd FileType vimwiki,markdown nmap <buffer> gb <Plug>VimwikiGoBackLink
