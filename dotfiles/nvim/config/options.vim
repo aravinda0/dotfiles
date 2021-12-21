@@ -14,7 +14,6 @@ set colorcolumn=+1    " textwidth + 1
 
 " Some left-margin while using nonumber. (signcolumn is too wide)
 set nonumber
-set foldcolumn=1
 
 
 " Indentation settings
