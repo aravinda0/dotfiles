@@ -2,6 +2,8 @@
 
 alias ls='ls --color=auto --group-directories-first'
 alias ll='ls -lh'
+alias la='ls -a'
+alias lla='ls -lah'
 
 
 alias rm='rm -i'
