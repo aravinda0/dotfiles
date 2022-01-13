@@ -100,6 +100,10 @@ noremap <m-R> <esc>:tablast<cr>
 nnoremap <bs> :b#<cr>
 
 
+" New zettel link based on date and random string
+inoremap <m-n> [](<c-r>=(strftime('%Y-%m-%d-%H%M-') . system('uuidgen')[:7])<cr>)<c-o>T[
+
+
 " ---------------------------------------------------------------------------
 " Abbreviations
 " ---------------------------------------------------------------------------
@@ -110,3 +114,8 @@ iabbrev --$ --------------------------------------------------------------------
 
 " Insert date
 iabbrev <expr> date$ strftime('%d %b %Y - %a')
+iabbrev <expr> dt$ strftime('%F')
+
+
+" Date based zettel title
+iabbrev <expr> tt$ strftime('%Y-%m-%d-%H%M-') . system('uuidgen')[:7]
