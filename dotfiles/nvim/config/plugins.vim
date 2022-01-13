@@ -58,14 +58,21 @@ Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 "   usage. Current assignment is default.
 let g:coq_settings = {
       \ 'auto_start': v:true,
-      \ 'keymap.recommended': v:true,
+      \ 'keymap.recommended': v:false,
       \ 'keymap.bigger_preview': '<c-m-k>',
-      \ 'keymap.jump_to_mark': '<c-h>',
+      \ 'keymap.jump_to_mark': '<c-n>',
+      \ 'keymap.pre_select': v:false,
+      \ 'clients.snippets.user_path': $DOTFILES_PATH . '/nvim/custom_snippets/coq'
   \ }
 
 " Additional bindings beyond the built-in bindings
 inoremap <silent><expr> <c-j>   pumvisible() ? "\<C-n>" : "\<c-j>"
 inoremap <silent><expr> <c-k> pumvisible() ? "\<C-p>" : "\<c-k>"
+" inoremap <silent><expr> <tab> pumvisible() ? (complete_info().selected == -1 ? "\<c-e>\<tab>" : "\<c-y>") : "\<tab>"
+inoremap <silent><expr> <c-e> pumvisible() ? (complete_info().selected == -1 ? "\<c-e><tab>" : "\<c-y>") : "<end>"
+inoremap <silent><expr> <c-c> pumvisible() ? "\<C-e><c-c>" : "\<c-c>"
+inoremap <silent><expr> <cr> "\<cr>"
+
 
 
 " -------------------------------------------------------------------------------
