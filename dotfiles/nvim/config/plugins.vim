@@ -34,7 +34,7 @@ Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 
 
 " TODO: Review approaches via LSP. eg. `efm-langserver`, which I couldn't figure out.
-Plug 'psf/black'
+Plug 'psf/black', { 'branch': 'stable' }
 
 augroup PluginAutoFormatters
   autocmd!
