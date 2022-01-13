@@ -20,14 +20,15 @@ alias tls='tmux ls'
 
 
 # git helpers
-
 alias gs='git status'
 alias gd="git diff"
 alias gds="git diff --staged"
+alias gco='git checkout'
 alias ga='git add'
-alias gco='git commit'
 alias gci='git commit -m'
+alias gcm='git commit'
 alias gp='git push'
+
 
 # `cd` to git repo root
 alias gr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
