@@ -50,8 +50,6 @@ nnoremap <c-a> ^
 
 " Clear highlighting
 noremap <c-n> :nohl<cr>
-vnoremap <c-n> :nohl<cr>
-inoremap <c-n> :nohl<cr>
 
 
 " Easier reindenting in visual mode
