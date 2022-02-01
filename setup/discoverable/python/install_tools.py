@@ -5,27 +5,28 @@ from utils.messaging import echo
 
 
 python_packages_to_install = [
-    'poetry',
-    'httpie',
-    'ipython',
-    'black',
-    'flake8',
+    "poetry",
+    "httpie",
+    "ipython",
+    "ptpython",
+    "black",
+    "flake8",
 ]
 
 
 def install_tools():
-    echo('First installing pipx...')
+    echo("First installing pipx...")
 
-    pip_install_global['pipx'] & FG
+    pip_install_global["pipx"] & FG
 
-    echo('pipx installed!')
+    echo("pipx installed!")
 
     # Now import pipx which should be available
     from plumbum.cmd import pipx
 
-    echo('Installing Python packages via pipx...')
+    echo("Installing Python packages via pipx...")
 
     for py_package in python_packages_to_install:
-        pipx['install'][py_package] & FG
+        pipx["install"][py_package] & FG
 
-    echo('Python packages installed')
+    echo("Python packages installed")
