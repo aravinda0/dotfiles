@@ -1,6 +1,7 @@
 
 call plug#begin()
 
+
 " -------------------------------------------------------------------------------
 " LSP and language servers
 " -------------------------------------------------------------------------------
@@ -190,6 +191,19 @@ let g:vimwiki_table_mappings = 0
 
 
 " -------------------------------------------------------------------------------
+" Session management
+" Docs:
+"   https://github.com/rmagatti/auto-session
+"   https://github.com/rmagatti/session-lens
+" -------------------------------------------------------------------------------
+
+Plug 'rmagatti/auto-session'
+Plug 'rmagatti/session-lens'
+
+
+nnoremap <c-t>s <cmd>SearchSession<cr>
+
+" -------------------------------------------------------------------------------
 " Color scheme
 " -------------------------------------------------------------------------------
 
@@ -374,4 +388,15 @@ EOF
 
 lua <<EOF
 require("Comment").setup()
+EOF
+
+
+lua <<EOF
+require('auto-session').setup({
+  auto_session_suppress_dirs = {"~/.dency/forge/notes"},
+  auto_session_root_dir = os.getenv("HOME").."/.vim_sessions/",
+})
+
+require("telescope").load_extension("session-lens")
+require('session-lens').setup { }
 EOF
