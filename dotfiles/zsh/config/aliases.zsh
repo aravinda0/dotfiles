@@ -14,6 +14,7 @@ alias o='gio open'
 
 alias vim='nvim'
 alias ag='rg'
+alias py="ptpython"
 
 
 alias ta='tmux attach -t'
