@@ -95,7 +95,7 @@ Plug 'windwp/nvim-autopairs'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch': 'main', 'do': 'make' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 nnoremap <c-p> <cmd>Telescope find_files<cr>
 nnoremap <c-o> <cmd>Telescope buffers<cr>
@@ -455,6 +455,8 @@ telescope.setup{
     }
   },
 }
+
+require("telescope").load_extension("fzf")
 EOF
 
 
