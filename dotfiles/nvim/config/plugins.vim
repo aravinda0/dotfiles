@@ -287,10 +287,19 @@ local lsp = require("lspconfig")
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
--- load snippets
+-- Load custom snippets
+-- TODO: Generalize this code to look in snippets dir and auto-load
+local python_snippets = require("snippets.luasnip.python")
+local rust_snippets = require("snippets.luasnip.rust")
+
+luasnip.snippets = {
+  python = python_snippets.python,
+  rust = rust_snippets.rust,
+}
+
+-- Lazy load general snippets
 require("luasnip.loaders.from_vscode").lazy_load()
-require("custom_snippets.luasnip.python")
-require("custom_snippets.luasnip.rust")
+
 
 -- Use an on_attach function to only map the following keys after the language server
 -- attaches to the current buffer.

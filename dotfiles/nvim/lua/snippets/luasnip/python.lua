@@ -1,5 +1,6 @@
 local luasnip = require("luasnip")
 
+
 local s = luasnip.snippet
 local t = luasnip.text_node
 local i = luasnip.insert_node
@@ -10,17 +11,18 @@ local c = luasnip.choice_node
 local d = luasnip.dynamic_node
 local r = luasnip.restore_node
 
-luasnip.snippets = {
-  python = {
-    s({
-      trig="pr",
-      dscr="Print function"
-    }, {
-        t("print(\""), i(1),
-        t("\")"), i(0)
-    }),
 
-  }
+snippets = {
+  s({
+    trig="pr",
+    dscr="Print function"
+  }, {
+      t("print(\""), i(1),
+      t("\")"), i(0)
+  }),
 }
 
 
+return {
+  python = snippets,
+}
