@@ -98,7 +98,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 nnoremap <c-p> <cmd>Telescope find_files<cr>
-nnoremap <c-o> <cmd>Telescope buffers<cr>
+nnoremap <c-o> <cmd>Telescope buffers sort_mru=true<cr>
 nnoremap <c-t>/ <cmd>Telescope live_grep<cr>
 nnoremap <c-t>* <cmd>Telescope grep_string<cr>
 nnoremap <c-t>f <cmd>Telescope file_browser<cr>
