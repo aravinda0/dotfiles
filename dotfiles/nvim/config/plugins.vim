@@ -344,6 +344,10 @@ local actions = require("telescope.actions")
 
 telescope.setup{
   defaults = {
+    file_ignore_patterns = {
+      "__pycache__",
+      "%.pyc",
+    },
     mappings = {
       -- default mappings: https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/mappings.lua
       -- actions: https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/actions/init.lua
