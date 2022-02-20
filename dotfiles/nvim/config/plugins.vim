@@ -292,11 +292,6 @@ require("luasnip.loaders.from_vscode").lazy_load()
 require("custom_snippets.luasnip.python")
 require("custom_snippets.luasnip.rust")
 
--- vim.api.nvim_set_keymap("i", "<tab>", "<Plug>luasnip-next-choice", {})
--- vim.api.nvim_set_keymap("s", "<tab>", "<Plug>luasnip-next-choice", {})
--- vim.api.nvim_set_keymap("i", "<s-tab>", "<Plug>luasnip-prev-choice", {})
--- vim.api.nvim_set_keymap("s", "<s-tab>", "<Plug>luasnip-prev-choice", {})
-
 -- Use an on_attach function to only map the following keys after the language server
 -- attaches to the current buffer.
 local on_attach = function(client, bufnr)
