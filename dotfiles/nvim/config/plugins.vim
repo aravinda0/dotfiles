@@ -33,7 +33,6 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 " Treesitter indent support is not yet up to the mark in many cases
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 
-
 " TODO: Review approaches via LSP. eg. `efm-langserver`, which I couldn't figure out.
 Plug 'psf/black', { 'branch': 'main' }
 
@@ -46,34 +45,41 @@ augroup END
 " -------------------------------------------------------------------------------
 " Autocomplete
 " -------------------------------------------------------------------------------
+" - nvim-cmp docs:
+"   - https://github.com/hrsh7th/nvim-cmp
+" - lsp_signature docs:
+"   - https://github.com/ray-x/lsp_signature.nvim
+" -------------------------------------------------------------------------------
 
-Plug 'ms-jpq/coq_nvim', { 'branch': 'coq' }
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+" nvim-cmp and completion sources
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
 
-" coq settings:
-" - auto_start: Autostart completion. This needs to be set before `require("coq")`.
-" - keymap.recommended: `true` by default and gives us some mappings.
-" - keymap.bigger_preview: By default, mapped to `<c-k>` which conflicts with my motion
-"   mappings. Need to reset it here, else our mappings don't take effect.
-" - keymap.jump_to_mark: TODO: Setting to `<Tab>` leads to `Tab` not working in general
-"   usage. Current assignment is default.
-let g:coq_settings = {
-      \ 'auto_start': v:true,
-      \ 'keymap.recommended': v:false,
-      \ 'keymap.bigger_preview': '<c-m-k>',
-      \ 'keymap.jump_to_mark': '<c-n>',
-      \ 'keymap.pre_select': v:false,
-      \ 'clients.snippets.user_path': $DOTFILES_PATH . '/nvim/custom_snippets/coq'
-  \ }
+" nvim-cmp says signature hints support is out-of-scope, since it's not part of the LSP
+" spec. This plugin is recommended.
+Plug 'ray-x/lsp_signature.nvim'
 
-" Additional bindings beyond the built-in bindings
-inoremap <silent><expr> <c-j>   pumvisible() ? "\<C-n>" : "\<c-j>"
-inoremap <silent><expr> <c-k> pumvisible() ? "\<C-p>" : "\<c-k>"
-" inoremap <silent><expr> <tab> pumvisible() ? (complete_info().selected == -1 ? "\<c-e>\<tab>" : "\<c-y>") : "\<tab>"
-inoremap <silent><expr> <c-e> pumvisible() ? (complete_info().selected == -1 ? "\<c-e><tab>" : "\<c-y>") : "<end>"
-inoremap <silent><expr> <c-c> pumvisible() ? "\<C-e><c-c>" : "\<c-c>"
-inoremap <silent><expr> <cr> "\<cr>"
 
+" -------------------------------------------------------------------------------
+" Snippets
+" -------------------------------------------------------------------------------
+"  LuaSnip Docs:
+"   - https://github.com/L3MON4D3/LuaSnip
+"   - https://github.com/L3MON4D3/LuaSnip/blob/master/DOC.md
+"   - Sample snippets:
+"     - https://github.com/L3MON4D3/LuaSnip/blob/b5a72f1fbde545be101fcd10b70bcd51ea4367de/Examples/snippets.lua
+" -------------------------------------------------------------------------------
+
+Plug 'L3MON4D3/LuaSnip'
+
+" Sources for nvim-cmp
+Plug 'saadparwaiz1/cmp_luasnip'
+
+" Snippet collections
+Plug 'rafamadriz/friendly-snippets'
 
 
 " -------------------------------------------------------------------------------
@@ -192,6 +198,7 @@ let g:vimwiki_table_mappings = 0
 
 " -------------------------------------------------------------------------------
 " Session management
+" -------------------------------------------------------------------------------
 " Docs:
 "   https://github.com/rmagatti/auto-session
 "   https://github.com/rmagatti/session-lens
@@ -230,57 +237,6 @@ colorscheme gruvbox-material
 " LSP and related config after `plug#end` is called and plugins are initialized.
 " Else would throw error when opening vim - on things like `require(<module>)`
 " ---------------------------------------------------------------------------
-
-lua << EOF
-local lsp = require("lspconfig")
-local coq = require("coq")
-
--- Use an on_attach function to only map the following keys after the language server
--- attaches to the current buffer.
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  -- Mappings.
-  local opts = { noremap=true, silent=true }
-
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  buf_set_keymap("n", "<leader>k", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-  buf_set_keymap("n", "<leader>t", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-  buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-  buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-  buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  buf_set_keymap("n", "<leader>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
-  buf_set_keymap("n", "<leader>d", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-  buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  buf_set_keymap("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-  buf_set_keymap("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-  buf_set_keymap("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-end
-
--- Use a loop to conveniently call `setup` on multiple servers and map buffer local
--- keybindings when the language server attaches.
--- Also ensure `coq_nvim` completion is enabled for each server.
-local servers = {
-  "pyright",
-  "rust_analyzer",
-}
-for _, server in ipairs(servers) do
-  lsp[server].setup(coq.lsp_ensure_capabilities({
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    }
-  }))
-end
-EOF
-
 
 lua <<EOF
 require("nvim-treesitter.configs").setup({
@@ -323,6 +279,143 @@ vim.cmd [[
 ]]
 EOF
 
+
+lua << EOF
+-- Configure LSP and related plugins that need to hook into LSP.
+
+local lsp = require("lspconfig")
+local cmp = require("cmp")
+local luasnip = require("luasnip")
+
+-- load snippets
+require("luasnip.loaders.from_vscode").lazy_load()
+require("custom_snippets.luasnip.python")
+require("custom_snippets.luasnip.rust")
+
+-- vim.api.nvim_set_keymap("i", "<tab>", "<Plug>luasnip-next-choice", {})
+-- vim.api.nvim_set_keymap("s", "<tab>", "<Plug>luasnip-next-choice", {})
+-- vim.api.nvim_set_keymap("i", "<s-tab>", "<Plug>luasnip-prev-choice", {})
+-- vim.api.nvim_set_keymap("s", "<s-tab>", "<Plug>luasnip-prev-choice", {})
+
+-- Use an on_attach function to only map the following keys after the language server
+-- attaches to the current buffer.
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+  buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+  buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+  buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  buf_set_keymap("n", "<leader>k", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+  buf_set_keymap("n", "<leader>t", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+  buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+  buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+  buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+  buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+  buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+  buf_set_keymap("n", "<leader>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+  buf_set_keymap("n", "<leader>d", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+  buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  buf_set_keymap("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+  buf_set_keymap("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+  buf_set_keymap("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+end
+
+-- Configure nvim-cmp and luasnip
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+  mapping = {
+    ["<c-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+    ["<c-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+    ["<c-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+    ["<c-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+    ["<c-space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+    ["<c-e>"] = cmp.mapping(function(fallback)
+      if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, {"i", "s"}),
+    ["<c-w>"] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, {"i", "s"}),
+    ["<c-n>"] = cmp.mapping(function(fallback)
+      if luasnip.choice_active() then
+        luasnip.change_choice(1)
+      else
+        fallback()
+      end
+    end, {"i", "s"}),
+    ["<c-p>"] = cmp.mapping(function(fallback)
+      if luasnip.choice_active() then
+        luasnip.change_choice(-1)
+      else
+        fallback()
+      end
+    end, {"i", "s"}),
+  },
+  sources = cmp.config.sources({
+    { name = "nvim_lsp" },
+    { name = "path" },
+    { name = "luasnip" },
+  }, {
+    { name = "buffer" },
+  })
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+    { name = "path" }
+  }, {
+    { name = "cmdline" }
+  })
+})
+
+
+-- Use a loop to conveniently call `setup` on multiple servers and map buffer local
+-- keybindings when the language server attaches.
+-- Also ensure `nvim-cmp` completion is enabled for each server.
+local servers = {
+  "pyright",
+  "rust_analyzer",
+}
+for _, server in ipairs(servers) do
+  local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities());
+
+  lsp[server].setup(({
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    },
+    capabilities = capabilities,
+  }))
+end
+EOF
+
+
+lua <<EOF
+require("lsp_signature").setup({
+  bind = true,
+  handler_opts = {
+    border = "rounded",
+  }
+})
+EOF
 
 lua <<EOF
 require("indent_blankline").setup({

@@ -59,8 +59,8 @@ set foldmethod=indent
 set foldlevelstart=99   " folds open by default
 
 
-" Don't open preview window on selecting an item from completion menu
-set completeopt-=preview
+" Completion menu settings that work alongside completion plugins
+set completeopt=menu,menuone,noselect
 
 
 " Remove <esc> delay
