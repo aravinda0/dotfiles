@@ -1,7 +1,18 @@
 
+# -------------------------------------------------------------------------------
+# Zim
+# -------------------------------------------------------------------------------
+
 # Initialize plugin system
 export ZIM_HOME=$HOME/.zim
-[[ -s ${ZIM_HOME}/init.zsh ]] && source ${ZIM_HOME}/init.zsh
+
+# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init -q
+fi
+
+# Initialize modules.
+source ${ZIM_HOME}/init.zsh
 
 
 # -------------------------------------------------------------------------------
@@ -25,13 +36,6 @@ export FZF_CTRL_R_OPTS='--sort'
 
 # Bind Ctrl-T functionality to Ctrl-P instead
 bindkey '^p' fzf-file-widget
-
-
-# -------------------------------------------------------------------------------
-# Minimal - A simple, clean prompt theme with 'magic enter' capabilities
-# -------------------------------------------------------------------------------
-
-source ${DOTFILES_PATH}/zsh/external/minimal/minimal.zsh
 
 
 # -------------------------------------------------------------------------------
