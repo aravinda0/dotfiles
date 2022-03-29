@@ -133,7 +133,7 @@ nnoremap <c-g>a <cmd>Telescope git_stash<cr>
 
 Plug 'phaazon/hop.nvim'
 
-nnoremap s <c-o>:HopChar2<cr>
+nnoremap s <cmd>HopChar2<cr>
 nnoremap <leader>sw <c-o>:HopWord<cr>
 nnoremap <leader>sl <c-o>:HopLine<cr>
 
