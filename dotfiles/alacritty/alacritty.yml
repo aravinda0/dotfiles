@@ -40,9 +40,9 @@ hints:
 # List of key-codes: https://docs.rs/glutin/*/glutin/event/enum.VirtualKeyCode.html#variants
 #
 # If some keys don't seem to bind, there is a workround by specifying the numeric
-# keycode. To see keycodes live, use the below command:
+# keycode in `key`. To see keycodes live, use the below command:
 #   - `alacritty --print-events | ag "KeyboardInput"`
 key_bindings:
   - { key: U,  mods: Super, mode: ~Search, action: ToggleViMode }
   - { key: 53, mods: Shift, mode: Vi|~Search, action: SearchBackward }
-
+  - { key: N, mods: Super, action: SpawnNewInstance }
