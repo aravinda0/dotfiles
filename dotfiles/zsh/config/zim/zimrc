@@ -6,10 +6,14 @@
 zmodule git-info
 zmodule minimal
 
-zmodule zsh-users/zsh-completions --fpath src
-zmodule completion
 zmodule zsh-users/zsh-syntax-highlighting
 zmodule zsh-users/zsh-autosuggestions
 
 zmodule input
 zstyle ':zim:input' double-dot-expand yes
+
+
+zmodule zsh-users/zsh-completions --fpath src
+
+# Must be defined after all modules that define completions
+zmodule completion
