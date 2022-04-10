@@ -2,9 +2,11 @@
 # https://zimfw.sh/docs/modules/
 # https://github.com/zimfw/zimfw
 
-
 zmodule git-info
 zmodule minimal
+
+zmodule zsh-users/zsh-completions --fpath src
+zmodule completion # Must come after modules that define completions
 
 zmodule zsh-users/zsh-syntax-highlighting
 zmodule zsh-users/zsh-autosuggestions
@@ -12,8 +14,3 @@ zmodule zsh-users/zsh-autosuggestions
 zmodule input
 zstyle ':zim:input' double-dot-expand yes
 
-
-zmodule zsh-users/zsh-completions --fpath src
-
-# Must be defined after all modules that define completions
-zmodule completion
