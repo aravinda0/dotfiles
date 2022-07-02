@@ -11,7 +11,7 @@ call plug#begin()
 "   - https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
 " -------------------------------------------------------------------------------
 
-Plug 'neovim/nvim-lspconfig', { 'do': 'npm i -g pyright' }
+Plug 'neovim/nvim-lspconfig', { 'do': 'npm i -g pyright typescript typescript-language-server' }
 
 " lua <<EOF
 " -- You will likely want to reduce updatetime which affects CursorHold
@@ -240,7 +240,7 @@ colorscheme gruvbox-material
 
 lua <<EOF
 require("nvim-treesitter.configs").setup({
-  ensure_installed = "maintained",
+  ensure_installed = "all",
   sync_install = false,
   highlight = {
     enable = true,
@@ -398,6 +398,7 @@ cmp.setup.cmdline(':', {
 local servers = {
   "pyright",
   "rust_analyzer",
+  "tsserver",
 }
 for _, server in ipairs(servers) do
   local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities());
@@ -445,6 +446,7 @@ telescope.setup{
     file_ignore_patterns = {
       "__pycache__",
       "%.pyc",
+      "node_modules",
     },
     mappings = {
       -- default mappings: https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/mappings.lua
