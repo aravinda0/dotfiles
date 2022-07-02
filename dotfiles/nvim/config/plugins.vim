@@ -292,12 +292,10 @@ local luasnip = require("luasnip")
 local python_snippets = require("snippets.luasnip.python")
 local rust_snippets = require("snippets.luasnip.rust")
 
-luasnip.snippets = {
-  python = python_snippets.python,
-  rust = rust_snippets.rust,
-}
+luasnip.add_snippets("python", python_snippets.python)
+luasnip.add_snippets("rust", rust_snippets.rust)
 
--- Lazy load general snippets
+-- Lazy load general snippets and custom ones
 require("luasnip.loaders.from_vscode").lazy_load()
 
 
