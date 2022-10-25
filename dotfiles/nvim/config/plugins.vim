@@ -38,7 +38,7 @@ Plug 'psf/black', { 'branch': 'main' }
 
 augroup PluginAutoFormatters
   autocmd!
-  autocmd BufWritePre *.py execute ':Black'
+  autocmd BufWritePre *.py Black
 augroup END
 
 
