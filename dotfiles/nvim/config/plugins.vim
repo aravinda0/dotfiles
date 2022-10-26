@@ -403,9 +403,6 @@ for _, server in ipairs(servers) do
 
   lsp[server].setup(({
     on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    },
     capabilities = capabilities,
   }))
 end
