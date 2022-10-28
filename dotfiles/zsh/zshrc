@@ -25,3 +25,6 @@ source $ZSH_CONFIG_PATH/aliases.zsh
 
 
 source $HOME/.config/broot/launcher/bash/br
+
+
+source $HOME/.cargo/env
