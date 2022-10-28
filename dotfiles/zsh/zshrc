@@ -22,3 +22,6 @@ source $ZSH_CONFIG_PATH/plugins.zsh
 
 
 source $ZSH_CONFIG_PATH/aliases.zsh
+
+
+source $HOME/.config/broot/launcher/bash/br
