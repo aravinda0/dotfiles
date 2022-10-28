@@ -111,12 +111,9 @@ nnoremap <c-l>r <cmd>Telescope lsp_references<cr>
 nnoremap <c-l>s <cmd>Telescope lsp_document_symbols<cr>
 nnoremap <c-l>wss <cmd>Telescope lsp_workspace_symbols<cr>
 nnoremap <c-l>wsd <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
-nnoremap <c-l>caa <cmd>Telescope lsp_code_actions<cr>
-nnoremap <c-l>car <cmd>Telescope lsp_range_code_actions<cr>
-nnoremap <c-l>d <cmd>Telescope lsp_definitions<cr>
-nnoremap <c-l>t <cmd>Telescope lsp_type_definitions<cr>
-nnoremap <c-l>D <cmd>Telescope lsp_document_diagnostics<cr>
-nnoremap <c-l>0 <cmd>Telescope treesitter<cr>
+nnoremap <c-l>ic <cmd>Telescope lsp_incoming_calls<cr>
+nnoremap <c-l>oc <cmd>Telescope lsp_outcoming_calls<cr>
+nnoremap <c-l>d <cmd>Telescope diagnostics<cr>
 
 " git helpers
 nnoremap <c-g>f <cmd>Telescope git_files<cr>
@@ -125,6 +122,8 @@ nnoremap <c-g>bc <cmd>Telescope git_bcommits<cr>
 nnoremap <c-g>br <cmd>Telescope git_branches<cr>
 nnoremap <c-g>s <cmd>Telescope git_status<cr>
 nnoremap <c-g>a <cmd>Telescope git_stash<cr>
+
+nnoremap <c-l>0 <cmd>Telescope treesitter<cr>
 
 
 " -------------------------------------------------------------------------------
@@ -314,7 +313,6 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
   vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-  vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
   vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, opts)
   vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
