@@ -297,30 +297,30 @@ luasnip.add_snippets("rust", rust_snippets.rust)
 -- Lazy load general snippets and custom ones
 require("luasnip.loaders.from_vscode").lazy_load()
 
+-- `:h vim.diagnostic.*`
+local key_opts = { noremap=true, silent=true }
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, key_opts)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, key_opts)
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, key_opts)
 
 -- Use an on_attach function to only map the following keys after the language server
 -- attaches to the current buffer.
 local on_attach = function(client, bufnr)
-  local opts = { noremap=true, silent=true }
-
-  -- `:h vim.diagnostic.*`
-  vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-  vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-  vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+  local buf_opts = { noremap=true, silent=true, buffer=bufnr }
 
   -- `:h vim.lsp.*`
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-  vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
-  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-  vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, opts)
-  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-  vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, opts)
-  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-  vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
-  vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
-  vim.keymap.set("n", "<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, opts)
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, buf_opts)
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, buf_opts)
+  vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, buf_opts)
+  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, buf_opts)
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, buf_opts)
+  vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, buf_opts)
+  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, buf_opts)
+  vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, buf_opts)
+  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, buf_opts)
+  vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, buf_opts)
+  vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, buf_opts)
+  vim.keymap.set("n", "<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, buf_opts)
 end
 
 -- Configure nvim-cmp and luasnip
