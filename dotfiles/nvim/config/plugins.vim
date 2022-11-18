@@ -99,7 +99,6 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 nnoremap <c-p> <cmd>Telescope find_files<cr>
 nnoremap <c-o> <cmd>Telescope buffers sort_mru=true<cr>
-nnoremap <c-t>/ <cmd>Telescope live_grep<cr>
 nnoremap <c-t>* <cmd>Telescope grep_string<cr>
 nnoremap <c-t>f <cmd>Telescope file_browser<cr>
 nnoremap <c-t>: <cmd>Telescope commands<cr>
@@ -453,6 +452,7 @@ EOF
 lua <<EOF
 local telescope = require("telescope")
 local actions = require("telescope.actions")
+local pkm = require("pkm")
 
 telescope.setup{
   defaults = {
@@ -472,7 +472,9 @@ telescope.setup{
   },
 }
 
-require("telescope").load_extension("fzf")
+telescope.load_extension("fzf")
+
+vim.keymap.set("n", "<c-t>/", pkm.contextual_live_grep)
 EOF
 
 
