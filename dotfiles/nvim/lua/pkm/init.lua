@@ -35,7 +35,7 @@ end
 
 M.contextual_live_grep = function(opts)
   local notes_dirs = {
-    "~/.dency/forge",
+    vim.env["MY_NOTES_PATH"],
   }
   local cwd = vim.fn.getcwd()
 

@@ -10,7 +10,7 @@ M.setup = function()
   }
 
   vim.g.vimwiki_list = {
-    {path= '~/.dency/forge', ext= '.md', syntax= 'markdown'},
+    {path= vim.env["MY_NOTES_PATH"], ext= ".md", syntax= "markdown"},
   }
   vim.g.vimwiki_ext2syntax = {
     [".md"] = "markdown",

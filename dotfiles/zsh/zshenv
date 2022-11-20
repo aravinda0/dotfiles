@@ -13,6 +13,10 @@ export DOTFILES_PATH=$HOME/.dotfiles
 export DOTFILES_SUPPORT_PATH=$HOME/.dotfiles_support
 
 
+# Notes
+export MY_NOTES_PATH=$HOME/.dency/forge
+
+
 # -------------------------------------------------------------------------------
 # General
 # -------------------------------------------------------------------------------
