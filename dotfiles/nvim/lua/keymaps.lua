@@ -277,6 +277,15 @@ M.after_markdown = function()
   vim.keymap.set("n", "gv", "<cmd>VimwikiVSplitLink<cr>")
   vim.keymap.set("n", "gx", "<cmd>VimwikiSplitLink<cr>")
   vim.keymap.set("n", "gt", "<cmd>VimwikiTabnewLink<cr>")
+  vim.keymap.set("n", "gu", "<cmd>VimwikiGoBackLink<cr>")
+
+  vim.keymap.set("n", "<tab>", "<cmd>VimwikiNextLink<cr>")
+  vim.keymap.set("n", "<s-tab>", "<cmd>VimwikiPrevLink<cr>")
+  vim.keymap.set("n", "<leader>wd", "<cmd>VimwikiDeleteFile<cr>")
+  vim.keymap.set("n", "<leader>wr", "<cmd>VimwikiRenameFile<cr>")
+  vim.keymap.set("n", "<leader><c-up>", "<cmd>VimwikiDiaryPrevDay<cr>")
+  vim.keymap.set("n", "<leader><c-down>", "<cmd>VimwikiDiaryNextDay<cr>")
+  vim.keymap.set("n", "<leader>w<leader>i", "<cmd>VimwikiDiaryGenerateLinks<cr>")
 
   -- ZK new note link
   vim.keymap.set(
