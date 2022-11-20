@@ -25,6 +25,11 @@ M.setup = function()
           ["if"] = "@function.inner",
           ["ac"] = "@class.outer",
           ["ic"] = "@class.inner",
+          ["ai"] = "@conditional.outer",
+          ["ii"] = "@conditional.inner",
+          ["aa"] = "@attribute.outer",
+          ["ia"] = "@attribute.inner",
+          ["a;"] = "@statement.outer",
         }
       },
     },
