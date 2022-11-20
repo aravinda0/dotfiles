@@ -140,6 +140,12 @@ require("packer").startup({
       setup = function() require("plugins.vimwiki_config").setup() end,
     }
 
+    use {
+      "Shatur/neovim-session-manager",
+      requires = "nvim-lua/plenary.nvim",
+      config = function() require("plugins.neovim_session_manager_config").setup() end,
+    }
+
     use {"sainnhe/gruvbox-material"}
 
     -- Install all plugins when first bootstrapped
