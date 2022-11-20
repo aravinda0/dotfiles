@@ -45,6 +45,10 @@ vim.keymap.set("n", "<bs>", "<cmd>b#<cr>")
 vim.keymap.set({"n", "v", "i"}, "<c-s>", "<cmd>update<cr>")
 
 
+-- Reload file forcefully, discarding changes
+vim.keymap.set("n", "<leader>rr", "<cmd>e!<cr>")
+
+
 -- Prevent disasters
 vim.keymap.set("n", "ZZ", "<nop>")
 
