@@ -273,10 +273,10 @@ end
 -- --------------------------------------------------------------------------------
 
 M.after_markdown = function()
-  vim.keymap.set("n", "go", function() vim.cmd("VimwikiFollowLink") end)
-  vim.keymap.set("n", "gv", function() vim.cmd("VimwikiVSplitLink") end)
-  vim.keymap.set("n", "gx", function() vim.cmd("VimwikiSplitLink") end)
-  vim.keymap.set("n", "gt", function() vim.cmd("VimwikiTabnewLink") end)
+  vim.keymap.set("n", "go", "<cmd>VimwikiFollowLink<cr>")
+  vim.keymap.set("n", "gv", "<cmd>VimwikiVSplitLink<cr>")
+  vim.keymap.set("n", "gx", "<cmd>VimwikiSplitLink<cr>")
+  vim.keymap.set("n", "gt", "<cmd>VimwikiTabnewLink<cr>")
 
   -- ZK new note link
   vim.keymap.set(
