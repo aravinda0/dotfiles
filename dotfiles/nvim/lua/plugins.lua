@@ -130,11 +130,14 @@ require("packer").startup({
       config = function() require("Comment").setup() end,
     }
 
+    -- Invoke configuration in `setup` as vimwiki configuration involves setting a bunch
+    -- of global vars. For some options, setting it afterwards in `config` doesn't seem
+    -- to take effect.
     use {
       "vimwiki/vimwiki",
       branch = "dev",
       ft = {"markdown", "vimwiki"},
-      config = function() require("plugins.vimwiki_config").setup() end,
+      setup = function() require("plugins.vimwiki_config").setup() end,
     }
 
     use {"sainnhe/gruvbox-material"}
