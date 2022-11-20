@@ -26,7 +26,7 @@ M.setup = function()
           ["ac"] = "@class.outer",
           ["ic"] = "@class.inner",
         }
-      }
+      },
     },
   })
 end

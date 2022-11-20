@@ -1,6 +1,6 @@
-local packer_install_path = (
+local packer_install_path =
   vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-)
+
 
 local ensure_packer = function()
   local fn = vim.fn
@@ -36,14 +36,12 @@ require("packer").startup({
       requires = "nvim-treesitter/nvim-treesitter",
     }
 
-    -- The configurator here invokes `require("lsp").setup() which configures `lspconfig`,
-    -- `nvim-cmp` and `luasnip`.
+    -- The configurator here invokes `require("plugins.lang").setup() which configures
+    -- `lspconfig`, `nvim-cmp` and `luasnip`.
     -- There is a bit of interdependency where they are all configured together.
-    -- Not sure if `requires` is the best way to represent this dependency chain.
     use {
       "neovim/nvim-lspconfig",
-      requires = "hrsh7th/nvim-cmp",
-      config = function() require("plugins.lsp").setup() end,
+      config = function() require("plugins.lang").setup() end,
     }
 
     -- Completion
