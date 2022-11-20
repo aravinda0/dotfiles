@@ -1,6 +1,3 @@
-[submodule "dotfiles/nvim/vim_plug"]
-	path = dotfiles/nvim/vim_plug
-	url = https://github.com/junegunn/vim-plug
 [submodule "dotfiles/tmux/tpm"]
 	path = dotfiles/tmux/tpm
 	url = https://github.com/tmux-plugins/tpm

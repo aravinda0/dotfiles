@@ -1,4 +1,11 @@
+local keymaps = require("keymaps")
 
-local key_opts = { noremap=true, silent=true }
 
-vim.keymap.set("n", "<c-l>oi", "<cmd>%!isort -<cr>", key_opts)
+keymaps.after_python()
+
+
+-- Format with Black on save
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*.py" },
+  command = "silent! Black",
+})

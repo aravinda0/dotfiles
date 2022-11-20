@@ -24,3 +24,6 @@ __pycache__/
 
 # Dedicated venv directory for neovim
 /dotfiles/nvim/venvs
+
+# Temporary while we have just neovim specific global lua config
+.luarc.json

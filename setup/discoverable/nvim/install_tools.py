@@ -33,7 +33,7 @@ def setup_python_env_for_neovim():
     echo('Installing neovim python client...')
 
     # Use the venv python's pip to install necessary packages inside that venv
-    nvim_venv_pip['install', 'neovim'] & FG
+    nvim_venv_pip['install', '-U', 'neovim'] & FG
 
     echo('Installed neovim python client in venv!')
 
@@ -42,5 +42,5 @@ def install_tools():
     make_params = {
         'CMAKE_BUILD_TYPE': 'RelWithDebInfo'
     }
-    install_from_source('nvim', 'https://github.com/neovim/neovim', make_params)
+    # install_from_source('nvim', 'https://github.com/neovim/neovim', make_params)
     setup_python_env_for_neovim()
