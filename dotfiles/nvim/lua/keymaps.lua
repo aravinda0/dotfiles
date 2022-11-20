@@ -64,12 +64,6 @@ vim.keymap.set("c", "<c-k>", "<up>")
 vim.keymap.set("c", "<c-j>", "<down>")
 
 
--- TODO: Is this needed at this level? If so, translate
--- Easier navigation in popup-menus
--- inoremap <expr> <c-k> pumvisible() ? '<c-p>' : '<c-k>'
--- inoremap <expr> <c-j> pumvisible() ? '<c-n>' : '<c-j>'
-
-
 -- Easier indenting in visual mode
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
