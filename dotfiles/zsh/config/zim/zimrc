@@ -3,6 +3,7 @@
 # https://github.com/zimfw/zimfw
 
 zmodule git-info
+zmodule prompt-pwd
 zmodule minimal
 
 zmodule zsh-users/zsh-completions --fpath src
