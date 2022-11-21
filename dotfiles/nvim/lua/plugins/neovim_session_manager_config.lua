@@ -11,6 +11,9 @@ M.setup = function()
     autosave_ignore_not_normal = true,
     autosave_ignore_dirs = {
       vim.env["MY_NOTES_PATH"] .. "/notes",
+      vim.env["HOME"],
+      vim.env["HOME"] .. "/Downloads",
+      "/tmp",
     },
     autosave_ignore_filetypes = {
       'gitcommit',
