@@ -1,11 +1,14 @@
 local cmp = require("cmp")
 local lsp = require("lspconfig")
 local luasnip = require("luasnip")
+local null_ls = require("null-ls")
 
 local keymaps = require("keymaps")
 
 
 local M = {}
+
+local augroup_lsp_formatting = vim.api.nvim_create_augroup("lsp_formatting", {})
 
 
 local setup_cmp = function()
@@ -52,27 +55,27 @@ end
 
 local setup_lsp = function()
   local capabilities = require("cmp_nvim_lsp").default_capabilities();
-  local on_attach = function(client, bufnr)
+  local handle_lsp_attach = function(client, bufnr)
     keymaps.set_common_lsp_keymaps(client, bufnr)
   end
 
   lsp.pyright.setup({
-    on_attach = on_attach,
+    on_attach = handle_lsp_attach,
     capabilities = capabilities,
   })
 
   lsp.rust_analyzer.setup({
-    on_attach = on_attach,
+    on_attach = handle_lsp_attach,
     capabilities = capabilities,
   })
 
   lsp.tsserver.setup({
-    on_attach = on_attach,
+    on_attach = handle_lsp_attach,
     capabilities = capabilities,
   })
 
   lsp.sumneko_lua.setup({
-    on_attach = on_attach,
+    on_attach = handle_lsp_attach,
     capabilities = capabilities,
 
     -- specific to nvim development for now
@@ -96,10 +99,40 @@ local setup_lsp = function()
 end
 
 
+local setup_null_ls = function()
+  local handle_lsp_attach = function(client, bufnr)
+    -- Set things up to invoke formatters automatically on save
+    if client.supports_method("textDocument/formatting") then
+      vim.api.nvim_clear_autocmds({ group = augroup_lsp_formatting, buffer = bufnr })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = augroup_lsp_formatting,
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = bufnr })
+        end,
+      })
+    end
+  end
+
+  null_ls.setup({
+    sources = {
+      null_ls.builtins.formatting.trim_whitespace,
+
+      null_ls.builtins.formatting.black,
+      null_ls.builtins.formatting.isort,
+
+      null_ls.builtins.formatting.stylua,
+    },
+    on_attach = handle_lsp_attach,
+  })
+end
+
+
 M.setup = function()
   setup_cmp()
   setup_snippets()
   setup_lsp()
+  setup_null_ls()
 end
 
 

@@ -42,7 +42,7 @@ vim.keymap.set("n", "<bs>", "<cmd>b#<cr>")
 
 -- Save easily. May require disabling terminal suspend by adding `stty -ixon` to shell
 -- startup script
-vim.keymap.set({"n", "v", "i"}, "<c-s>", "<cmd>update<cr>")
+vim.keymap.set({ "n", "v", "i" }, "<c-s>", "<cmd>update<cr>")
 
 
 -- Reload file forcefully, discarding changes
@@ -59,8 +59,8 @@ vim.keymap.set("n", "<leader>Q", "<cmd>qa!<cr>")
 
 
 -- emacs-esque bindings for BOL/EOL
-vim.keymap.set({"i", "c"}, "<c-a>", "<home>")
-vim.keymap.set({"i", "c"}, "<c-e>", "<end>")
+vim.keymap.set({ "i", "c" }, "<c-a>", "<home>")
+vim.keymap.set({ "i", "c" }, "<c-e>", "<end>")
 
 
 -- Easier history navigation in command mode
@@ -100,7 +100,7 @@ vim.keymap.set(
   function()
     return "'[" .. vim.fn.strpart(vim.fn.getregtype(), 0, 1) .. "']"
   end,
-  {expr = true}
+  { expr = true }
 )
 
 
@@ -129,7 +129,7 @@ vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 -- UI customizations: https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
 -- --------------------------------------------------------------------------------
 M.set_common_lsp_keymaps = function(_, bufnr)
-  local buf_opts = { noremap=true, silent=true, buffer=bufnr }
+  local buf_opts = { noremap = true, silent = true, buffer = bufnr }
 
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, buf_opts)
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, buf_opts)
@@ -171,28 +171,28 @@ M.build_nvim_cmp_config_keymaps = function()
       else
         fallback()
       end
-    end, {"i", "s"}),
+    end, { "i", "s" }),
     ["<c-b>"] = cmp.mapping(function(fallback)
       if luasnip.get_active_snip() and luasnip.jumpable(-1) then
         luasnip.jump(-1)
       else
         fallback()
       end
-    end, {"i", "s"}),
+    end, { "i", "s" }),
     ["<c-n>"] = cmp.mapping(function(fallback)
       if luasnip.choice_active() then
         luasnip.change_choice(1)
       else
         fallback()
       end
-    end, {"i", "s"}),
+    end, { "i", "s" }),
     ["<c-p>"] = cmp.mapping(function(fallback)
       if luasnip.choice_active() then
         luasnip.change_choice(-1)
       else
         fallback()
       end
-    end, {"i", "s"}),
+    end, { "i", "s" }),
   }
 end
 
@@ -205,7 +205,7 @@ end
 -- --------------------------------------------------------------------------------
 vim.keymap.set("n", "<c-p>", telescope_builtin.find_files)
 vim.keymap.set(
-  "n", "<c-o>", function() telescope_builtin.buffers({sort_mru = true}) end
+  "n", "<c-o>", function() telescope_builtin.buffers({ sort_mru = true }) end
 )
 
 vim.keymap.set("n", "<c-t>*", telescope_builtin.grep_string)
@@ -260,15 +260,6 @@ vim.keymap.set("n", "<c-t>/", pkm.contextual_live_grep)
 
 
 -- --------------------------------------------------------------------------------
--- filetype python
--- --------------------------------------------------------------------------------
-
-M.after_python = function()
-  vim.keymap.set("n", "<c-l>oi", "<cmd>%!isort -<cr>")
-end
-
-
--- --------------------------------------------------------------------------------
 -- filetype markdown
 -- --------------------------------------------------------------------------------
 
@@ -297,9 +288,9 @@ M.after_markdown = function()
       local row = pos[1] - 1
       local col = pos[2]
       vim.api.nvim_buf_set_text(
-        0, row, col, row, col, {string.format("[](%s-%s)", timestamp, uuid)}
+        0, row, col, row, col, { string.format("[](%s-%s)", timestamp, uuid) }
       )
-      vim.api.nvim_win_set_cursor(0, {row + 1, col + 1})
+      vim.api.nvim_win_set_cursor(0, { row + 1, col + 1 })
     end
   )
 end

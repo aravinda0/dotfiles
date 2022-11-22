@@ -1,5 +1,5 @@
 local packer_install_path =
-  vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 
 local ensure_packer = function()
@@ -23,7 +23,7 @@ local packer_bootstrap = ensure_packer()
 require("packer").startup({
   function(use)
     -- `packer` can manage itself
-    use {"wbthomason/packer.nvim"}
+    use { "wbthomason/packer.nvim" }
 
     -- `treesitter` and related extensions
     use {
@@ -36,16 +36,19 @@ require("packer").startup({
       requires = "nvim-treesitter/nvim-treesitter",
     }
 
-    -- The configurator here invokes `require("plugins.lang").setup() which configures
-    -- `lspconfig`, `nvim-cmp` and `luasnip`.
-    -- There is a bit of interdependency where they are all configured together.
+    -- `plugins.lang` is the configurator for setting up core language capabilities.
+    -- It configures `nvim-lspconfig`, `null-ls`, `nvim-cmp`, `luasnip`.
     use {
       "neovim/nvim-lspconfig",
       config = function() require("plugins.lang").setup() end,
     }
+    use {
+      "jose-elias-alvarez/null-ls.nvim",
+      requires = "nvim-lua/plenary.nvim",
+    }
 
     -- Completion
-    use {"hrsh7th/nvim-cmp"}
+    use { "hrsh7th/nvim-cmp" }
     use {
       "hrsh7th/cmp-nvim-lsp",
       requires = "hrsh7th/nvim-cmp",
@@ -71,15 +74,15 @@ require("packer").startup({
     }
 
     -- Snippets
-    use {"L3MON4D3/LuaSnip"}
-    use {"rafamadriz/friendly-snippets"}
+    use { "L3MON4D3/LuaSnip" }
+    use { "rafamadriz/friendly-snippets" }
     use {
       "saadparwaiz1/cmp_luasnip",
-      requires = {"hrsh7th/nvim-cmp", "L3MON4D3/LuaSnip"},
+      requires = { "hrsh7th/nvim-cmp", "L3MON4D3/LuaSnip" },
     }
 
     -- Telescope
-    use {"nvim-lua/plenary.nvim"}
+    use { "nvim-lua/plenary.nvim" }
     use {
       "nvim-telescope/telescope-fzf-native.nvim",
       run = "make",
@@ -94,19 +97,13 @@ require("packer").startup({
     }
 
     -- Indentation
-    use {"lukas-reineke/indent-blankline.nvim"}
+    use { "lukas-reineke/indent-blankline.nvim" }
     use {
       "Vimjas/vim-python-pep8-indent",
-      ft = {"python"},
+      ft = { "python" },
       config = function() require("plugins.indent_blankline_config").setup() end,
     }
 
-    -- Formatters
-    use {
-      "psf/black",
-      branch = "main",
-      ft = {"python"},
-    }
 
     use {
       "windwp/nvim-autopairs",
@@ -118,7 +115,7 @@ require("packer").startup({
       config = function() require("hop").setup() end
     }
 
-    use {"tpope/vim-surround"}
+    use { "tpope/vim-surround" }
 
     use {
       "nvim-lualine/lualine.nvim",
@@ -136,7 +133,7 @@ require("packer").startup({
     use {
       "vimwiki/vimwiki",
       branch = "dev",
-      ft = {"markdown", "vimwiki"},
+      ft = { "markdown", "vimwiki" },
       setup = function() require("plugins.vimwiki_config").setup() end,
     }
 
@@ -146,7 +143,7 @@ require("packer").startup({
       config = function() require("plugins.neovim_session_manager_config").setup() end,
     }
 
-    use {"sainnhe/gruvbox-material"}
+    use { "sainnhe/gruvbox-material" }
 
     -- Install all plugins when first bootstrapped
     if packer_bootstrap then
