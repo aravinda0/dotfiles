@@ -5,11 +5,9 @@ local null_ls = require("null-ls")
 
 local keymaps = require("keymaps")
 
-
 local M = {}
 
 local augroup_lsp_formatting = vim.api.nvim_create_augroup("lsp_formatting", {})
-
 
 local setup_cmp = function()
   cmp.setup({
@@ -25,20 +23,19 @@ local setup_cmp = function()
       { name = "luasnip" },
     }, {
       { name = "buffer" },
-    })
+    }),
   })
 
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work
   -- anymore).
-  cmp.setup.cmdline(':', {
+  cmp.setup.cmdline(":", {
     sources = cmp.config.sources({
-      { name = "path" }
+      { name = "path" },
     }, {
-      { name = "cmdline" }
-    })
+      { name = "cmdline" },
+    }),
   })
 end
-
 
 local setup_snippets = function()
   -- TODO: Generalize this code to look in snippets dir and auto-load
@@ -52,9 +49,8 @@ local setup_snippets = function()
   require("luasnip.loaders.from_vscode").lazy_load()
 end
 
-
 local setup_lsp = function()
-  local capabilities = require("cmp_nvim_lsp").default_capabilities();
+  local capabilities = require("cmp_nvim_lsp").default_capabilities()
   local handle_lsp_attach = function(client, bufnr)
     keymaps.set_common_lsp_keymaps(client, bufnr)
   end
@@ -92,18 +88,20 @@ local setup_lsp = function()
         },
         telemetry = {
           enable = false,
-        }
-      }
-    }
+        },
+      },
+    },
   })
 end
-
 
 local setup_null_ls = function()
   local handle_lsp_attach = function(client, bufnr)
     -- Set things up to invoke formatters automatically on save
     if client.supports_method("textDocument/formatting") then
-      vim.api.nvim_clear_autocmds({ group = augroup_lsp_formatting, buffer = bufnr })
+      vim.api.nvim_clear_autocmds({
+        group = augroup_lsp_formatting,
+        buffer = bufnr,
+      })
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = augroup_lsp_formatting,
         buffer = bufnr,
@@ -127,13 +125,11 @@ local setup_null_ls = function()
   })
 end
 
-
 M.setup = function()
   setup_cmp()
   setup_snippets()
   setup_lsp()
   setup_null_ls()
 end
-
 
 return M
