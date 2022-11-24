@@ -114,7 +114,11 @@ local setup_null_ls = function()
 
   null_ls.setup({
     sources = {
-      null_ls.builtins.formatting.trim_whitespace,
+      null_ls.builtins.formatting.trim_whitespace.with({
+        disabled_filetypes = {
+          "python", -- `black` takes care of it
+        },
+      }),
 
       null_ls.builtins.formatting.black,
       null_ls.builtins.formatting.isort,
