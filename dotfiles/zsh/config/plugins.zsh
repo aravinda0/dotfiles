@@ -43,3 +43,11 @@ bindkey '^p' fzf-file-widget
 # -------------------------------------------------------------------------------
 
 source $DOTFILES_PATH/zsh/external/fzf-marks/fzf-marks.plugin.zsh
+
+
+# --------------------------------------------------------------------------------
+# zimfw minimal theme
+# --------------------------------------------------------------------------------
+
+# Prompt indicator for vi normal mode
+export MNML_NORMAL_CHAR=•

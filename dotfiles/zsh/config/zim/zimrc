@@ -14,4 +14,3 @@ zmodule zsh-users/zsh-autosuggestions
 
 zmodule input
 zstyle ':zim:input' double-dot-expand yes
-
