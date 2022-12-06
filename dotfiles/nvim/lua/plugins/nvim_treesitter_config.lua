@@ -1,3 +1,5 @@
+local keymaps = require("keymaps")
+
 local M = {}
 
 M.setup = function()
@@ -19,17 +21,7 @@ M.setup = function()
       select = {
         enable = true,
         lookahead = true,
-        keymaps = {
-          ["af"] = "@function.outer",
-          ["if"] = "@function.inner",
-          ["ac"] = "@class.outer",
-          ["ic"] = "@class.inner",
-          ["ai"] = "@conditional.outer",
-          ["ii"] = "@conditional.inner",
-          ["aa"] = "@attribute.outer",
-          ["ia"] = "@attribute.inner",
-          ["a;"] = "@statement.outer",
-        },
+        keymaps = keymaps.build_textobject_keymaps(),
       },
     },
   })

@@ -97,6 +97,24 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 
 -- --------------------------------------------------------------------------------
+-- Treesitter
+-- --------------------------------------------------------------------------------
+
+M.build_textobject_keymaps = function()
+  return {
+    ["af"] = "@function.outer",
+    ["if"] = "@function.inner",
+    ["ac"] = "@class.outer",
+    ["ic"] = "@class.inner",
+    ["ai"] = "@conditional.outer",
+    ["ii"] = "@conditional.inner",
+    ["aa"] = "@attribute.outer",
+    ["ia"] = "@attribute.inner",
+    ["a;"] = "@statement.outer",
+  }
+end
+
+-- --------------------------------------------------------------------------------
 -- LSP
 -- --------------------------------------------------------------------------------
 -- Docs:
