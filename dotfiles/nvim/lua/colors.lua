@@ -8,11 +8,10 @@ vim.g.gruvbox_material_better_performance = 1
 
 vim.cmd("colorscheme gruvbox-material")
 
-
 -- --------------------------------------------------------------------------------
 -- Highlight customization
 -- --------------------------------------------------------------------------------
-vim.cmd [[
+vim.cmd([[
   highlight DiagnosticLineNrError guibg=#51202A guifg=#FF0000 gui=bold
   highlight DiagnosticLineNrWarn guibg=#51412A guifg=#FFA500 gui=bold
   highlight DiagnosticLineNrInfo guibg=#1E535D guifg=#00FFFF gui=bold
@@ -22,4 +21,4 @@ vim.cmd [[
   sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticLineNrWarn
   sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticLineNrInfo
   sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticLineNrHint
-]]
+]])

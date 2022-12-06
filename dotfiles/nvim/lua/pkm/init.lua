@@ -2,7 +2,6 @@ local builtin = require("telescope.builtin")
 
 local M = {}
 
-
 M.live_grep_notes = function(opts)
   local local_opts = {}
 
@@ -25,13 +24,12 @@ M.live_grep_notes = function(opts)
   -- The default layout gives slight preference to the preview window. It's a bit too
   -- wasteful since we use sensible line-lengths.
   local_opts.layout_config = {
-    horizontal = { preview_width = 0.5 }
+    horizontal = { preview_width = 0.5 },
   }
 
   opts = vim.tbl_extend("force", local_opts, opts or {})
   builtin.live_grep(opts)
 end
-
 
 M.contextual_live_grep = function(opts)
   local notes_dirs = {
@@ -48,6 +46,5 @@ M.contextual_live_grep = function(opts)
 
   builtin.live_grep(opts)
 end
-
 
 return M

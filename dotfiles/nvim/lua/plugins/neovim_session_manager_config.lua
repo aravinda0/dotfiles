@@ -1,12 +1,11 @@
 local M = {}
 
-
 M.setup = function()
   require("session_manager").setup({
-    sessions_dir = vim.fn.stdpath('data') .. '/sessions',
-    path_replacer = '__',
-    colon_replacer = '++',
-    autoload_mode = require('session_manager.config').AutoloadMode.CurrentDir,
+    sessions_dir = vim.fn.stdpath("data") .. "/sessions",
+    path_replacer = "__",
+    colon_replacer = "++",
+    autoload_mode = require("session_manager.config").AutoloadMode.CurrentDir,
     autosave_last_session = true,
     autosave_ignore_not_normal = true,
     autosave_ignore_dirs = {
@@ -16,7 +15,7 @@ M.setup = function()
       "/tmp",
     },
     autosave_ignore_filetypes = {
-      'gitcommit',
+      "gitcommit",
     },
     autosave_ignore_buftypes = {},
 
@@ -24,6 +23,5 @@ M.setup = function()
     autosave_only_in_session = false,
   })
 end
-
 
 return M

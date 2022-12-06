@@ -1,6 +1,5 @@
 local M = {}
 
-
 M.setup = function()
   vim.g.vimwiki_global_ext = 1
   vim.g.vimwiki_hl_headers = 1
@@ -10,7 +9,7 @@ M.setup = function()
   }
 
   vim.g.vimwiki_list = {
-    {path= vim.env["MY_NOTES_PATH"], ext= ".md", syntax= "markdown"},
+    { path = vim.env["MY_NOTES_PATH"], ext = ".md", syntax = "markdown" },
   }
   vim.g.vimwiki_ext2syntax = {
     [".md"] = "markdown",
@@ -18,6 +17,5 @@ M.setup = function()
     [".wiki"] = "media",
   }
 end
-
 
 return M

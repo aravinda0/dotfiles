@@ -1,6 +1,5 @@
 local M = {}
 
-
 M.setup = function()
   require("nvim-treesitter.configs").setup({
     ensure_installed = "all",
@@ -13,7 +12,7 @@ M.setup = function()
     --  Track issue: https://github.com/nvim-treesitter/nvim-treesitter/issues/1136
     indent = {
       enable = true,
-      disable = { "python", "yaml" }
+      disable = { "python", "yaml" },
     },
 
     textobjects = {
@@ -30,11 +29,10 @@ M.setup = function()
           ["aa"] = "@attribute.outer",
           ["ia"] = "@attribute.inner",
           ["a;"] = "@statement.outer",
-        }
+        },
       },
     },
   })
 end
-
 
 return M
