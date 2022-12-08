@@ -165,6 +165,14 @@ require("packer").startup({
       end,
     })
 
+    -- Code outline
+    use({
+      "stevearc/aerial.nvim",
+      config = function()
+        require("plugins.aerial").setup()
+      end,
+    })
+
     use({ "sainnhe/gruvbox-material" })
 
     -- Install all plugins when first bootstrapped
