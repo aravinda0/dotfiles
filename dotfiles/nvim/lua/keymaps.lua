@@ -192,9 +192,32 @@ end
 -- Default mappings: https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/mappings.lua
 -- Actions: https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/actions/init.lua
 -- --------------------------------------------------------------------------------
-vim.keymap.set("n", "<c-p>", telescope_builtin.find_files)
+vim.keymap.set("n", "<c-p>", function()
+  if pkm.is_cwd_notes_dir() then
+    pkm.find_notes()
+  else
+    telescope_builtin.find_files()
+  end
+end)
+
 vim.keymap.set("n", "<c-o>", function()
-  telescope_builtin.buffers({ sort_mru = true })
+  local opts = {
+    ignore_current_buffer = true,
+    sort_mru = true,
+  }
+  if pkm.is_cwd_notes_dir() then
+    pkm.find_notes_buffers(opts)
+  else
+    telescope_builtin.buffers(opts)
+  end
+end)
+
+vim.keymap.set("n", "<c-t>/", function()
+  if pkm.is_cwd_notes_dir() then
+    pkm.live_grep_notes()
+  else
+    telescope_builtin.live_grep()
+  end
 end)
 
 vim.keymap.set("n", "<c-t>*", telescope_builtin.grep_string)
@@ -238,12 +261,6 @@ end
 vim.keymap.set("n", "s", hop.hint_char2)
 vim.keymap.set("n", "<leader>sw", hop.hint_words)
 vim.keymap.set("n", "<leader>sl", hop.hint_lines_skip_whitespace)
-
--- --------------------------------------------------------------------------------
--- PKM
--- --------------------------------------------------------------------------------
-
-vim.keymap.set("n", "<c-t>/", pkm.contextual_live_grep)
 
 -- --------------------------------------------------------------------------------
 -- filetype markdown
