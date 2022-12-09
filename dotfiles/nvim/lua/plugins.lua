@@ -31,7 +31,7 @@ require("packer").startup({
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
       config = function()
-        require("plugins.nvim_treesitter_config").setup()
+        require("plugins.nvim_treesitter").setup()
       end,
     })
     use({
@@ -76,7 +76,7 @@ require("packer").startup({
     use({
       "ray-x/lsp_signature.nvim",
       config = function()
-        require("plugins.lsp_signature_config").setup()
+        require("plugins.lsp_signature").setup()
       end,
     })
 
@@ -101,7 +101,7 @@ require("packer").startup({
         "nvim-telescope/telescope-fzf-native.nvim",
       },
       config = function()
-        require("plugins.telescope_config").setup()
+        require("plugins.telescope").setup()
       end,
     })
 
@@ -111,14 +111,14 @@ require("packer").startup({
       "Vimjas/vim-python-pep8-indent",
       ft = { "python" },
       config = function()
-        require("plugins.indent_blankline_config").setup()
+        require("plugins.indent_blankline").setup()
       end,
     })
 
     use({
       "windwp/nvim-autopairs",
       config = function()
-        require("plugins.nvim_autopairs_config").setup()
+        require("plugins.nvim_autopairs").setup()
       end,
     })
 
@@ -134,7 +134,7 @@ require("packer").startup({
     use({
       "nvim-lualine/lualine.nvim",
       config = function()
-        require("plugins.lualine_config").setup()
+        require("plugins.lualine").setup()
       end,
     })
 
@@ -153,7 +153,7 @@ require("packer").startup({
       branch = "dev",
       ft = { "markdown", "vimwiki" },
       setup = function()
-        require("plugins.vimwiki_config").setup()
+        require("plugins.vimwiki").setup()
       end,
     })
 
@@ -161,7 +161,7 @@ require("packer").startup({
       "Shatur/neovim-session-manager",
       requires = "nvim-lua/plenary.nvim",
       config = function()
-        require("plugins.neovim_session_manager_config").setup()
+        require("plugins.neovim_session_manager").setup()
       end,
     })
 
