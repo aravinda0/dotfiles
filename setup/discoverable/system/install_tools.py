@@ -18,6 +18,10 @@ packages = [
     # For general usage, and for installing some neovim plugins from npm
     "nodejs",
     "npm",
+    #
+    # manage disks and handle automounting
+    "udisks2",
+    "udiskie",
 ]
 
 
