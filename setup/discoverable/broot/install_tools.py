@@ -1,12 +1,5 @@
-from plumbum import FG
-from utils.system.commands import pacman_install_f
-
-from utils.messaging import echo
+from utils.system.commands import system_install
 
 
 def install_tools():
-    echo("Installing broot...")
-
-    pacman_install_f[["broot"]] & FG
-
-    echo("broot installed!")
+    system_install("broot")

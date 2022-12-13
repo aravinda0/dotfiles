@@ -1,38 +1,27 @@
-from plumbum import FG
-
-from utils.messaging import echo
-from utils.system.commands import pacman_install_f
+from utils.system.commands import system_install, system_update_package_databases
 
 
-packages_to_install = [
-    'base-devel',
-
-    # To enable stuff on system startup
-    'systemd',
-
-    # For building various things
-    'make',
-
-    # For building neovim
-    'cmake', 'unzip',
-
-    # pacman alternative
-    'yay',
-
+packages = [
+    "base-devel",
+    "systemd",
+    "make",
+    "cmake",
+    "unzip",
+    #
     # For various tools/plugins that work with the clipboard
-    'xclip',
-
-    # For general usage, and for installing some neovim plugins from npm
-    'nodejs', 'npm',
-
+    "xclip",
+    #
     # ssh and related secrets management helpers
-    'openssh', 'keychain',
+    "openssh",
+    "keychain",
+    #
+    # For general usage, and for installing some neovim plugins from npm
+    "nodejs",
+    "npm",
 ]
 
 
 def install_tools():
-    echo('Installing system packages...')
-
-    pacman_install_f[packages_to_install] & FG
-
-    echo('System packages installed!')
+    system_update_package_databases()
+    system_install("yay")
+    system_install(packages)

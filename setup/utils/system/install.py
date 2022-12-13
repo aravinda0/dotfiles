@@ -1,35 +1,33 @@
-from os.path import join, lexists
-
-from plumbum import local, FG
-from plumbum.cmd import sudo, git, make, mkdir, rm
+import errno
+import os
+import subprocess
+import shutil
 
 import settings
-from utils.messaging import echo
 
 
 def install_from_source(program_name, git_repo, make_options=None):
     make_options = make_options or {}
 
     build_dir = settings.DOTFILES_BUILD_DIR
-    mkdir['-p', build_dir] & FG
 
-    with local.cwd(build_dir):
-        if lexists(join(build_dir, program_name)):
-            echo(f'Deleting existing build files for {program_name}...')
-            rm['-rf', program_name] & FG
+    try:
+        os.makedirs(build_dir)
+    except OSError as e:
+        if e.errno == errno.EEXIST and os.path.isdir(build_dir):
+            pass
 
-        echo('Cloning {program_name} repo...'.format(program_name=program_name))
-        git['clone', git_repo, program_name] & FG
+    if os.path.lexists(os.path.join(build_dir, program_name)):
+        print(f"Deleting existing build files for {program_name}...")
+        shutil.rmtree(program_name)
 
-    echo('Building and installing {program_name}...'.format(program_name=program_name))
+    print(f"Cloning {program_name} repo...")
+    subprocess.run(["git", "clone", git_repo, program_name], cwd=build_dir)
 
-    make_params = [
-        '{option}={value}'.format(option=option, value=value) for
-        option, value in make_options.items()
-    ]
+    print(f"Building and installing {program_name}...")
 
-    with local.cwd(join(build_dir, program_name)):
-        make[make_params] & FG
-        sudo[make['install']] & FG
+    make_params = [f"{option}={value}" for option, value in make_options.items()]
+    subprocess.run(["make", *make_params], cwd=build_dir)
+    subprocess.run(["make", "install"], cwd=build_dir)
 
-    echo('{program_name} installed!'.format(program_name=program_name))
+    print(f"{program_name} installed!")

@@ -1,14 +1,11 @@
 import venv
 
-from plumbum import FG
-
 import settings
-from utils.messaging import echo
-from utils.system.commands import nvim_venv_pip
+from utils.system.commands import nvim_venv_pip_install
 from utils.system.install import install_from_source
 
 
-def setup_python_env_for_neovim():
+def setup_python_venv_for_neovim():
     """Sets up a dedicated python virtualenv for use by neovim and installs the neovim
     python client inside it.
 
@@ -22,25 +19,20 @@ def setup_python_env_for_neovim():
 
     Note: Currently, it is assumed a Python 3 venv is created. The path to this venv
     is set to `g:python3_host_prog` in neovim settings.
-
-    TODO: See if we can have a Py2 venv as well.
     """
-    echo('Creating dedicated venv for neovim...')
+    print("Creating dedicated venv for neovim...")
 
     env_builder = venv.EnvBuilder(with_pip=True)
     env_builder.create(settings.NVIM_PY3_VENV_PATH)
 
-    echo('Installing neovim python client...')
+    print("Installing neovim python client...")
 
-    # Use the venv python's pip to install necessary packages inside that venv
-    nvim_venv_pip['install', '-U', 'neovim'] & FG
+    nvim_venv_pip_install("neovim")
 
-    echo('Installed neovim python client in venv!')
+    print("Installed neovim python client in venv!")
 
 
 def install_tools():
-    make_params = {
-        'CMAKE_BUILD_TYPE': 'RelWithDebInfo'
-    }
-    install_from_source('nvim', 'https://github.com/neovim/neovim', make_params)
-    setup_python_env_for_neovim()
+    make_params = {"CMAKE_BUILD_TYPE": "RelWithDebInfo"}
+    install_from_source("nvim", "https://github.com/neovim/neovim", make_params)
+    setup_python_venv_for_neovim()

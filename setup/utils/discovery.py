@@ -7,11 +7,11 @@ from settings import DOTFILES_REPO_ROOT_DIR
 
 
 IGNORED_DISCOVERABLE_DIRS = [
-    '__pycache__',
+    "__pycache__",
 ]
 ENFORCED_SETUP_MODULE_ORDER = [
-    'system',
-    'git',
+    "system",
+    "git",
     # Everything else can be in any order
 ]
 
@@ -32,13 +32,13 @@ def sorted_by_install_precedence(setup_modules):
 
 def get_available_setup_modules():
     """Returns a list of available 'discoverable' setup modules."""
-    _, dirs, _ = next(os.walk(join(DOTFILES_REPO_ROOT_DIR, 'setup/discoverable')))
+    _, dirs, _ = next(os.walk(join(DOTFILES_REPO_ROOT_DIR, "setup/discoverable")))
     setup_modules = [x for x in dirs if x not in IGNORED_DISCOVERABLE_DIRS]
     return sorted_by_install_precedence(setup_modules)
 
 
 def get_tool_installer_module(name):
-    module_name = 'discoverable.{name}.install_tools'.format(name=name)
+    module_name = "discoverable.{name}.install_tools".format(name=name)
     module_present = importlib_util.find_spec(module_name) is not None
 
     if module_present:
@@ -48,7 +48,7 @@ def get_tool_installer_module(name):
 
 
 def get_config_installer_module(name):
-    module_name = 'discoverable.{name}.install_config'.format(name=name)
+    module_name = "discoverable.{name}.install_config".format(name=name)
     module_present = importlib_util.find_spec(module_name) is not None
 
     if module_present:

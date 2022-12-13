@@ -1,25 +1,21 @@
 import os
-from os.path import join
 import shutil
 import string
 
 from settings import DOTFILES_REPO_DOTFILES_DIR, BACKUP_DIR_FOR_EXISTING_FILES
-from utils.messaging import echo
 
 
 def resolve_backup_path(path, key):
-    """
-    """
-    relative_path = path[1:] if path.startswith('/') else path
-    return join(BACKUP_DIR_FOR_EXISTING_FILES, key, relative_path)
+    """ """
+    relative_path = path[1:] if path.startswith("/") else path
+    return os.path.join(BACKUP_DIR_FOR_EXISTING_FILES, key, relative_path)
 
 
 def backup_if_exists(path, key):
-    """
-    """
+    """ """
     if os.path.lexists(path):
         backup_path = resolve_backup_path(path, key)
-        backup_path_parent = os.path.abspath(join(backup_path, os.path.pardir))
+        backup_path_parent = os.path.abspath(os.path.join(backup_path, os.path.pardir))
 
         # Make necessary dirs in backup folder corresponding to original path
         os.makedirs(backup_path_parent, exist_ok=True)
@@ -31,7 +27,7 @@ def backup_if_exists(path, key):
     return None
 
 
-def install_file(src, dest, key, install_method='copy'):
+def install_file(src, dest, key, install_method="copy"):
     """Backs up the target `dest` if it's present and then copies/moves/symlinks `src` to
     `dest`.
 
@@ -47,34 +43,37 @@ def install_file(src, dest, key, install_method='copy'):
 
     backed_up_path = backup_if_exists(abs_dest, key)
     if backed_up_path is not None:
-        echo(
-            "The target {dest} seems to exist already. Moved it to backup path at "
-            "'{backup_path}'".format(dest=abs_dest, backup_path=backed_up_path)
+        print(
+            f"The target {abs_dest} seems to exist already. Moved it to backup path at "
+            f"'{backed_up_path}'"
         )
 
-    os.makedirs(os.path.abspath(join(abs_dest, os.path.pardir)), exist_ok=True)
+    os.makedirs(os.path.abspath(os.path.join(abs_dest, os.path.pardir)), exist_ok=True)
 
-    if install_method == 'copy':
+    if install_method == "copy":
         # Try copying as a directory. If it fails, try copying as a file.
         try:
             shutil.copytree(abs_src, abs_dest)
         except shutil.Error:
             shutil.copy2(abs_src, abs_dest)
-    elif install_method == 'move':
+    elif install_method == "move":
         shutil.move(abs_src, abs_dest)
-    elif install_method == 'symlink':
+    elif install_method == "symlink":
         os.symlink(abs_src, abs_dest)
     else:
         raise ValueError(
-            'Invalid `creation_method` specified. Must be one of \{copy, move, symlink\}'
+            "Invalid `creation_method` specified. Must be one of \{copy, move, symlink\}"
         )
 
 
-def install_dotfiles(src, dest, key, install_method='symlink'):
+def install_dotfiles(src, dest, key, install_method="symlink"):
     """Wrapper around `install_file` that accepts src paths that are relative to the
     dotfiles directory (`settings.DOTFILES_REPO_DOTFILES_DIR`) and symlinks to dest.
     """
-    install_file(join(DOTFILES_REPO_DOTFILES_DIR, src), dest, key, install_method)
+    install_file(
+        os.path.join(DOTFILES_REPO_DOTFILES_DIR, src), dest, key, install_method
+    )
+    print(f"Installed {key} dotfiles at {dest}!")
 
 
 def make_file_from_template(src, dest, substitutions):
@@ -82,7 +81,7 @@ def make_file_from_template(src, dest, substitutions):
     `settings.DOTFILES_REPO_DOTFILES_DIR`), performs substitutions on it, and outputs it
     to `dest`.
     """
-    with open(join(DOTFILES_REPO_DOTFILES_DIR, src)) as template_file:
+    with open(os.path.join(DOTFILES_REPO_DOTFILES_DIR, src)) as template_file:
         filled_in = string.Template(template_file.read())
-        with open(dest, 'w') as output_file:
+        with open(dest, "w") as output_file:
             output_file.write(filled_in.substitute(substitutions))

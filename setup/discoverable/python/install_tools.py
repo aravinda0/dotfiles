@@ -1,32 +1,27 @@
-from plumbum import FG
+import subprocess
 
-from utils.system.commands import pip_install_global
-from utils.messaging import echo
+from utils.system.commands import pip_install
 
 
-python_packages_to_install = [
+binary_packages = [
     "poetry",
     "httpie",
     "ipython",
     "ptpython",
     "black",
-    "flake8",
+    "isort",
 ]
 
 
 def install_tools():
-    echo("First installing pipx...")
+    print("First installing pipx...")
 
-    pip_install_global["pipx"] & FG
+    pip_install("pipx")
 
-    echo("pipx installed!")
+    print("pipx installed!")
 
-    # Now import pipx which should be available
-    from plumbum.cmd import pipx
+    print("Installing python binary packages via pipx...")
 
-    echo("Installing Python packages via pipx...")
+    subprocess.run(["pipx", "install", *binary_packages])
 
-    for py_package in python_packages_to_install:
-        pipx["install"][py_package] & FG
-
-    echo("Python packages installed")
+    print("Python binary packages installed")

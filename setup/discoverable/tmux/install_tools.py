@@ -1,12 +1,5 @@
-from plumbum import FG
-
-from utils.messaging import echo
-from utils.system.commands import pacman_install_f
+from utils.system.commands import system_install
 
 
 def install_tools():
-    echo('Installing tmux...')
-
-    pacman_install_f[['tmux']] & FG
-
-    echo('Tmux installed!')
+    system_install("tmux")

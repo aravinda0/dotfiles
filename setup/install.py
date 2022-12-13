@@ -6,42 +6,45 @@ from textwrap import dedent
 
 import settings
 from utils.discovery import (
-    get_available_setup_modules, get_tool_installer_module, get_config_installer_module,
-    sorted_by_install_precedence
+    get_available_setup_modules,
+    get_tool_installer_module,
+    get_config_installer_module,
+    sorted_by_install_precedence,
 )
 from utils.file_utils import install_dotfiles
-from utils.messaging import echo
 
 
 _available_tools = sorted(get_available_setup_modules())
 
 _parser = ArgumentParser(
-    description='One stop installer script to help install tools and/or their config for everything in the `setup/discoverable` folder.',  # noqa
-    formatter_class=RawTextHelpFormatter
+    description="One stop installer script to help install tools and/or their config for everything in the `setup/discoverable` folder.",  # noqa
+    formatter_class=RawTextHelpFormatter,
 )
 _parser.add_argument(
-    'tools',
-    nargs='*',
+    "tools",
+    nargs="*",
     help=dedent(
-        '''\
+        """\
         The specific tools who's respective installers should be run. If not specified, everything will be installed.
         The available tools are:
             {tools}
-        '''.format(tools=', '.join(_available_tools))
-    )
+        """.format(
+            tools=", ".join(_available_tools)
+        )
+    ),
 )
 _group = _parser.add_mutually_exclusive_group()
 _group.add_argument(
-    '-t',
-    '--tool-only',
-    action='store_true',
-    help='If specified, only the tools will be installed, without their config/dotfiles.'
+    "-t",
+    "--tool-only",
+    action="store_true",
+    help="If specified, only the tools will be installed, without their config/dotfiles.",
 )
 _group.add_argument(
-    '-c',
-    '--config-only',
-    action='store_true',
-    help='If specified, only the config for the specified tools will be installed, without installing the actual tools themselves.'  # noqa
+    "-c",
+    "--config-only",
+    action="store_true",
+    help="If specified, only the config for the specified tools will be installed, without installing the actual tools themselves.",  # noqa
 )
 
 
@@ -78,8 +81,8 @@ def ensure_dotfiles_available():
 
     # Install reference to dotfiles. (Blank string to `install_dotfiles()` will lead to
     # whole dotfiles dir being referenced)
-    install_dotfiles('', install_dir, 'dotfiles')
-    echo('Dotfiles are now linked from {install_dir}'.format(install_dir=install_dir))
+    install_dotfiles("", install_dir, "dotfiles")
+    print("Dotfiles are now linked from {install_dir}".format(install_dir=install_dir))
 
 
 def _install_tool(tool):
@@ -87,7 +90,7 @@ def _install_tool(tool):
     if installer_module is not None:
         installer_module.install_tools()
     else:
-        echo('No tool installer found for \'{tool}\'. Skipping...'.format(tool=tool))
+        print("No tool installer found for '{tool}'. Skipping...".format(tool=tool))
 
 
 def _install_config(tool):
@@ -95,7 +98,7 @@ def _install_config(tool):
     if installer_module is not None:
         installer_module.install_config()
     else:
-        echo('No config installer found for \'{tool}\'. Skipping...'.format(tool=tool))
+        print("No config installer found for '{tool}'. Skipping...".format(tool=tool))
 
 
 if __name__ == "__main__":
