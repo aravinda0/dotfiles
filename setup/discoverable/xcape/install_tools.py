@@ -1,5 +1,4 @@
-from utils.system.commands import system_install
-from utils.system.install import install_from_source
+from utils.system import system_install, system_install_from_source
 
 
 def install_tools():
@@ -7,4 +6,4 @@ def install_tools():
     # dependency.
     system_install("libxtst")
 
-    install_from_source("xcape", "https://github.com/alols/xcape")
+    system_install_from_source("xcape", "https://github.com/alols/xcape")

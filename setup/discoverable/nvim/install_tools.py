@@ -1,8 +1,7 @@
 import venv
 
 import settings
-from utils.system.commands import nvim_venv_pip_install
-from utils.system.install import install_from_source
+from utils.system import nvim_venv_pip_install, system_install_from_source
 
 
 def setup_python_venv_for_neovim():
@@ -34,5 +33,5 @@ def setup_python_venv_for_neovim():
 
 def install_tools():
     make_params = {"CMAKE_BUILD_TYPE": "RelWithDebInfo"}
-    install_from_source("nvim", "https://github.com/neovim/neovim", make_params)
+    system_install_from_source("nvim", "https://github.com/neovim/neovim", make_params)
     setup_python_venv_for_neovim()

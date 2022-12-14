@@ -1,4 +1,4 @@
-from utils.system.commands import system_install, system_update_package_databases
+from utils.system import system_install, system_update_package_databases
 
 
 packages = [

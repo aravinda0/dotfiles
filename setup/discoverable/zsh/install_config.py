@@ -1,7 +1,7 @@
 import subprocess
 
 from utils.file_utils import install_dotfiles
-from utils.system.commands import system_install
+from utils.system import system_install
 
 
 def install_zsh_dotfiles():

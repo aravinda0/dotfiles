@@ -1,4 +1,4 @@
-from utils.system.commands import system_install
+from utils.system import system_install
 
 
 def install_tools():

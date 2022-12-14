@@ -16,7 +16,7 @@ ENFORCED_SETUP_MODULE_ORDER = [
 ]
 
 
-def sorted_by_install_precedence(setup_modules):
+def sort_by_install_precedence(setup_modules):
     """
     Takes an iterable of setup module names and returns the ideal order in which they
     may be processed.
@@ -34,7 +34,7 @@ def get_available_setup_modules():
     """Returns a list of available 'discoverable' setup modules."""
     _, dirs, _ = next(os.walk(join(DOTFILES_REPO_ROOT_DIR, "setup/discoverable")))
     setup_modules = [x for x in dirs if x not in IGNORED_DISCOVERABLE_DIRS]
-    return sorted_by_install_precedence(setup_modules)
+    return sort_by_install_precedence(setup_modules)
 
 
 def get_tool_installer_module(name):

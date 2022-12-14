@@ -1,6 +1,6 @@
 import subprocess
 
-from utils.system.commands import pip_install
+from utils.system import pip_install
 
 
 binary_packages = [
