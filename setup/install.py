@@ -11,7 +11,7 @@ from utils.discovery import (
     get_config_installer_module,
     sorted_by_install_precedence,
 )
-from utils.file_utils import install_dotfiles
+from utils.files import install_dotfiles
 
 
 _available_tools = sorted(get_available_setup_modules())

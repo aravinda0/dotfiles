@@ -1,4 +1,4 @@
-from utils.file_utils import install_dotfiles
+from utils.files import install_dotfiles
 
 
 def install_config():
