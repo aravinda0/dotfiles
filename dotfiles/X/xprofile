@@ -1,0 +1,13 @@
+# This file is sourced at the start of the X session, before the window manager is
+# started. This is where we set any GUI-related environment variables.
+#
+# For example, we can set Qt/GTK/etc hidpi scaling variables so that any application
+# launched through our window manager can see those variables. Window managers like
+# qtile spawn commands via `/bin/sh` so anything we set in our shell startup files won't
+# be seen.
+
+
+export ENVFILES_PATH=$HOME/Dropbox/env/$(hostname)
+
+
+[ -f $ENVFILES_PATH/xprofile.local ] && . $ENVFILES_PATH/xprofile.local
