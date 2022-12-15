@@ -24,12 +24,7 @@ source $ZSH_CONFIG_PATH/plugins.zsh
 source $ZSH_CONFIG_PATH/aliases.zsh
 
 
-source $HOME/.config/broot/launcher/bash/br
-
-
 source $HOME/.cargo/env
-
-source /home/aravinda/.config/broot/launcher/bash/br
 
 
 if [ -f $ENVFILES_PATH/zshrc.local.zsh ]; then
