@@ -1,6 +1,6 @@
 # This file handles setting of various environment variables EXCEPT modifications to
-# $PATH. $PATH modifications are stored in $DOTFILES_PATH/zsh/config/path.zsh. See related
-# notes in that file.
+# $PATH. $PATH modifications are stored in $DOTFILES_PATH/zsh/config/path.zsh. See
+# related notes in that file.
 # Also see $DOTFILES_PATH/zsh/config/plugins.zsh for plugin specific env vars.
 
 
@@ -11,6 +11,11 @@ export DOTFILES_PATH=$HOME/.dotfiles
 # config directories since they may be replaced during backup while installing config
 # files/dirs.
 export DOTFILES_SUPPORT_PATH=$HOME/.dotfiles_support
+
+
+# Environment specific files that contain dotfiles that are configured differently for
+# different environments
+export ENVFILES_PATH=$HOME/Dropbox/env/$HOST
 
 
 # Notes

@@ -28,3 +28,10 @@ source $HOME/.config/broot/launcher/bash/br
 
 
 source $HOME/.cargo/env
+
+source /home/aravinda/.config/broot/launcher/bash/br
+
+
+if [ -f $ENVFILES_PATH/zshrc.local.zsh ]; then
+  source $ENVFILES_PATH/zshrc.local.zsh
+fi
