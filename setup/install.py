@@ -9,7 +9,7 @@ from utils.discovery import (
     get_available_setup_modules,
     get_tool_installer_module,
     get_config_installer_module,
-    sorted_by_install_precedence,
+    sort_by_install_precedence,
 )
 from utils.files import install_dotfiles
 
@@ -55,7 +55,7 @@ def install():
     ensure_dotfiles_available()
 
     if args.tools:
-        tools_to_process = sorted_by_install_precedence(args.tools)
+        tools_to_process = sort_by_install_precedence(args.tools)
     else:
         tools_to_process = get_available_setup_modules()
 
