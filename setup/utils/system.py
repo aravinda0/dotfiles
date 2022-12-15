@@ -10,7 +10,8 @@ def pip_install(packages: str | list[str]):
     if isinstance(packages, str):
         packages = [packages]
 
-    subprocess.run(["pip", "install", *packages])
+    subprocess.run(["python", "-m", "ensurepip"])
+    subprocess.run(["python", "-m", "pip", "install", *packages])
 
 
 def nvim_venv_pip_install(packages: str | list[str], upgrade=True):
