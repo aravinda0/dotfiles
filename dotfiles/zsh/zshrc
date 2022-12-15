@@ -27,6 +27,4 @@ source $ZSH_CONFIG_PATH/aliases.zsh
 source $HOME/.cargo/env
 
 
-if [ -f $ENVFILES_PATH/zshrc.local.zsh ]; then
-  source $ENVFILES_PATH/zshrc.local.zsh
-fi
+[ -f $ENVFILES_PATH/zshrc.local.zsh ] && . $ENVFILES_PATH/zshrc.local.zsh
