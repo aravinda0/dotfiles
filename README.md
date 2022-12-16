@@ -22,21 +22,21 @@ $ python install.py
 ```
 
 
-To (re)install specific things:
+To [re]install specific things:
 
 ```shell
 $ python install.py tmux nvim zsh
 ```
 
 
-To (re)install only the tool, without any configuration:
+To [re]install only the tool, without any configuration:
 
 ```shell
 $ python install.py -t tmux
 ```
 
 
-To (re)install only the config files, without (re)installing the tool:
+To [re]install only the config files, without the tool:
 
 ```shell
 $ python install.py -c zsh
@@ -52,17 +52,14 @@ $ python install.py --help
 
 ## Discovery
 
-There's a 'discovery' mechanism in place that detects things inside the [setup/discoverable](https://github.com/aravinda0/dotfiles/tree/master/setup/discoverable)
+- For a setup element to be discovered, it must be placed in the [setup/discoverable](https://github.com/aravinda0/dotfiles/tree/master/setup/discoverable)
 directory.
-
-
-Each item there is a directory containing two optional Python modules:
-- `install_tools.py` - must define a function called `install_tools()`
-- `install_config.py` - must define a function called `install_config()`
-
-If you add your own directory here with tool/config installers, you'll be able
-to execute it using the install script as usual:
-
-```shell
-$ python install.py my_new_config
-```
+- Each item there is a directory named after the tool, containing an
+  `install.py` module. eg. `discoverable/my_tool/install.py`.
+- The module can define two optional functions:
+    - `install_tools()`
+    - `install_config()`
+- The above configuration would allow us to run:
+    ```shell
+    $ python install.py my_tool
+    ```
