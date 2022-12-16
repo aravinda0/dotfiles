@@ -1,5 +1,7 @@
 # Hacky implementation of contextual workflow
 
+import socket
+
 from libqtile import hook, qtile, widget
 from libqtile.config import Group
 
@@ -10,41 +12,65 @@ contexts = [
     {
         "name": "work",
         "main": {
-            "preferred_display": 0,
+            "preferred_display": {
+                "nexus": 0,
+                "scout": 0,
+            },
             "groups": ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
         },
         "notes": {
-            "preferred_display": 1,
+            "preferred_display": {
+                "nexus": 1,
+                "scout": 0,
+            },
             "groups": ["1", "2", "3", "4", "5", "6"],
         },
         "browser": {
-            "preferred_display": 2,
+            "preferred_display": {
+                "nexus": 2,
+                "scout": 0,
+            },
             "groups": ["1", "2"],
         },
     },
     {
         "name": "study: topic1",
         "main": {
-            "preferred_display": 0,
+            "preferred_display": {
+                "nexus": 0,
+                "scout": 0,
+            },
             "groups": ["1", "2", "3", "4", "5"],
         },
         "notes": {
-            "preferred_display": 1,
+            "preferred_display": {
+                "nexus": 1,
+                "scout": 0,
+            },
             "groups": ["1", "2", "3", "4", "5", "6"],
         },
         "browser": {
-            "preferred_display": 2,
+            "preferred_display": {
+                "nexus": 2,
+                "scout": 0,
+            },
             "groups": ["1", "2"],
         },
     },
     {
         "name": "study: topic2",
         "main": {
-            "preferred_display": 0,
+            "preferred_display": {
+                "nexus": 0,
+                "scout": 0,
+            },
             "groups": ["1", "2", "3", "4", "5"],
         },
         "notes": {
-            "preferred_display": 1,
+            "preferred_display": {
+                "nexus": 1,
+                "scout": 0,
+            },
             "groups": ["1", "2", "3", "4", "5", "6"],
         },
         "browser": {
@@ -55,45 +81,72 @@ contexts = [
     {
         "name": "study: playground",
         "main": {
-            "preferred_display": 0,
+            "preferred_display": {
+                "nexus": 0,
+                "scout": 0,
+            },
             "groups": ["1", "2", "3", "4", "5"],
         },
         "notes": {
-            "preferred_display": 1,
+            "preferred_display": {
+                "nexus": 1,
+                "scout": 0,
+            },
             "groups": ["1", "2", "3", "4", "5", "6"],
         },
         "browser": {
-            "preferred_display": 2,
+            "preferred_display": {
+                "nexus": 2,
+                "scout": 0,
+            },
             "groups": ["1", "2"],
         },
     },
     {
         "name": "study: pkm",
         "main": {
-            "preferred_display": 0,
+            "preferred_display": {
+                "nexus": 0,
+                "scout": 0,
+            },
             "groups": ["1", "2", "3", "4"],
         },
         "notes": {
-            "preferred_display": 1,
+            "preferred_display": {
+                "nexus": 1,
+                "scout": 0,
+            },
             "groups": ["1", "2", "3", "4", "5", "6"],
         },
         "browser": {
-            "preferred_display": 2,
+            "preferred_display": {
+                "nexus": 2,
+                "scout": 0,
+            },
             "groups": ["1"],
         },
     },
     {
         "name": "misc",
         "main": {
-            "preferred_display": 0,
+            "preferred_display": {
+                "nexus": 0,
+                "scout": 0,
+            },
             "groups": ["1", "2", "3", "4"],
         },
         "notes": {
-            "preferred_display": 1,
+            "preferred_display": {
+                "nexus": 1,
+                "scout": 0,
+            },
             "groups": ["1", "2", "3", "4", "5", "6"],
         },
         "browser": {
-            "preferred_display": 2,
+            "preferred_display": {
+                "nexus": 2,
+                "scout": 0,
+            },
             "groups": ["1"],
         },
     },
@@ -167,7 +220,7 @@ def activate_group_set(group_set_name):
         group = context_info[group_set_name]["groups"][0]
 
     active_group_set = group_set_name
-    screen = context_info[group_set_name]["preferred_display"]
+    screen = context_info[group_set_name]["preferred_display"][socket.gethostname()]
     activate_standard_group(group, screen)
     qtile.focus_screen(screen)
 
