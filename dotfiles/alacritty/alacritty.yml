@@ -1,5 +1,13 @@
 # Default config: https://github.com/alacritty/alacritty/blob/master/alacritty.yml
 
+
+# Import additional config. Note that any config specified in this file takes precedence
+# over whatever is imported. Moving this import key to the end of this file has no
+# effect on precedence.
+import:
+  - ~/.envfiles/alacritty.local.yml
+
+
 font:
   normal:
     family: source code pro
@@ -13,9 +21,6 @@ font:
   bold_italic:
     family: source code pro
     style: Bold Italic
-
-  # 12 seems nice and easy on the eyes. 11.5 is the next lower size.
-  size: 12.0
 
 
 selection:
