@@ -13,6 +13,10 @@ vim.o.pastetoggle = "<F2>"
 
 vim.keymap.set("i", "jk", "<esc>")
 
+-- Workaround to allow pasting the same line multiple times in visual mode
+vim.keymap.set("x", "p", "pgvy")
+vim.keymap.set("x", "P", "Pgvy")
+
 -- Nicer window motions
 vim.keymap.set("n", "<m-h>", "<c-w>h")
 vim.keymap.set("n", "<m-j>", "<c-w>j")
