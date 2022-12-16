@@ -13,9 +13,6 @@ vim.o.pastetoggle = "<F2>"
 
 vim.keymap.set("i", "jk", "<esc>")
 
--- Reload vim config
-vim.keymap.set("n", "<leader>cr", "<cmd>source $MYVIMRC<cr>")
-
 -- Nicer window motions
 vim.keymap.set("n", "<m-h>", "<c-w>h")
 vim.keymap.set("n", "<m-j>", "<c-w>j")
