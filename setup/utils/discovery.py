@@ -1,10 +1,11 @@
 import importlib
-from importlib import util as importlib_util  # Has to be imported as `from x import y`
 import os
+import types
+from importlib import \
+    util as importlib_util  # Has to be imported as `from x import y`
 from os.path import join
 
 from settings import DOTFILES_REPO_ROOT_DIR
-
 
 IGNORED_DISCOVERABLE_DIRS = [
     "__pycache__",
@@ -37,8 +38,8 @@ def get_available_setup_modules():
     return sort_by_install_precedence(setup_modules)
 
 
-def get_tool_installer_module(name):
-    module_name = "discoverable.{name}.install_tools".format(name=name)
+def get_installer_module(name: str) -> types.ModuleType | None:
+    module_name = f"discoverable.{name}.install"
     module_present = importlib_util.find_spec(module_name) is not None
 
     if module_present:
@@ -47,11 +48,18 @@ def get_tool_installer_module(name):
     return None
 
 
-def get_config_installer_module(name):
-    module_name = "discoverable.{name}.install_config".format(name=name)
-    module_present = importlib_util.find_spec(module_name) is not None
+def run_installer(tool_name: str, func_name: str):
+    module = get_installer_module(tool_name)
+    if module is None:
+        print(f"No installer module found for '{tool_name}'. Skipping...")
+        return
 
-    if module_present:
-        return importlib.import_module(module_name)
+    func = getattr(module, func_name, None)
+    if func is None:
+        print(
+            f"No function named `{func_name}` found in installer module for "
+            f"{tool_name}. Skipping..."
+        )
+        return
 
-    return None
+    func()

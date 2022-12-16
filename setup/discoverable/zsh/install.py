@@ -4,6 +4,10 @@ from utils.files import install_dotfiles
 from utils.system import system_install
 
 
+def install_tools():
+    system_install("zsh")
+
+
 def install_zsh_dotfiles():
     install_dotfiles("zsh/zshenv", "~/.zshenv", "zshenv")
     install_dotfiles("zsh/zshrc", "~/.zshrc", "zshrc")

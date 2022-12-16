@@ -1,6 +1,7 @@
 import venv
 
 import settings
+from utils.files import install_dotfiles
 from utils.system import nvim_venv_pip_install, system_install_from_source
 
 
@@ -35,3 +36,7 @@ def install_tools():
     make_params = {"CMAKE_BUILD_TYPE": "RelWithDebInfo"}
     system_install_from_source("nvim", "https://github.com/neovim/neovim", make_params)
     setup_python_venv_for_neovim()
+
+
+def install_config():
+    install_dotfiles("nvim", "~/.config/nvim", "neovim")

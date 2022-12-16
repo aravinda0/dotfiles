@@ -1,18 +1,13 @@
 #!/usr/bin/env python3
 
 from argparse import ArgumentParser, RawTextHelpFormatter
-from os.path import realpath, islink
+from os.path import islink, realpath
 from textwrap import dedent
 
 import settings
-from utils.discovery import (
-    get_available_setup_modules,
-    get_tool_installer_module,
-    get_config_installer_module,
-    sort_by_install_precedence,
-)
+from utils.discovery import (get_available_setup_modules, run_installer,
+                             sort_by_install_precedence)
 from utils.files import install_dotfiles
-
 
 _available_tools = sorted(get_available_setup_modules())
 
@@ -49,7 +44,9 @@ _group.add_argument(
 
 
 def install():
-    """Takes an iterable of names of setup modules and invokes their tool/config installers."""
+    """Takes an iterable of names of setup modules and invokes their tool/config
+    installers.
+    """
     args = _parser.parse_args()
 
     ensure_dotfiles_available()
@@ -61,12 +58,12 @@ def install():
 
     for item in tools_to_process:
         if args.tool_only:
-            _install_tool(item)
+            run_installer(item, "install_tools")
         elif args.config_only:
-            _install_config(item)
+            run_installer(item, "install_config")
         else:
-            _install_tool(item)
-            _install_config(item)
+            run_installer(item, "install_tools")
+            run_installer(item, "install_config")
 
 
 def ensure_dotfiles_available():
@@ -76,29 +73,13 @@ def ensure_dotfiles_available():
     repo_dotfiles_dir = settings.DOTFILES_REPO_DOTFILES_DIR
 
     if islink(install_dir) and (realpath(install_dir) == repo_dotfiles_dir):
-        # Everything is as expected. Break out.
+        # Everything is as expected.
         return
 
     # Install reference to dotfiles. (Blank string to `install_dotfiles()` will lead to
     # whole dotfiles dir being referenced)
     install_dotfiles("", install_dir, "dotfiles")
     print("Dotfiles are now linked from {install_dir}".format(install_dir=install_dir))
-
-
-def _install_tool(tool):
-    installer_module = get_tool_installer_module(tool)
-    if installer_module is not None:
-        installer_module.install_tools()
-    else:
-        print("No tool installer found for '{tool}'. Skipping...".format(tool=tool))
-
-
-def _install_config(tool):
-    installer_module = get_config_installer_module(tool)
-    if installer_module is not None:
-        installer_module.install_config()
-    else:
-        print("No config installer found for '{tool}'. Skipping...".format(tool=tool))
 
 
 if __name__ == "__main__":
