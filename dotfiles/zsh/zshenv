@@ -7,15 +7,16 @@
 # The all-important path to our dotfiles. This is assumed in all other config.
 export DOTFILES_PATH=$HOME/.dotfiles
 
+
+# Environment specific files that contain dotfiles that are configured differently for
+# different environments
+export ENVFILES_PATH=$HOME/.envfiles
+
+
 # Dir to hold any supporting files for various tools. We avoid using various dotfiles
 # config directories since they may be replaced during backup while installing config
 # files/dirs.
 export DOTFILES_SUPPORT_PATH=$HOME/.dotfiles_support
-
-
-# Environment specific files that contain dotfiles that are configured differently for
-# different environments
-export ENVFILES_PATH=$HOME/Dropbox/env/$HOST
 
 
 # Notes

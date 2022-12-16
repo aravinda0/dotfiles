@@ -1,6 +1,6 @@
 import os
+import socket
 from os import path
-
 
 _this_dir = path.dirname(path.abspath(__file__))
 
@@ -36,3 +36,13 @@ NVIM_VENVS_PATH = path.expanduser(
 )
 NVIM_PY3_VENV_NAME = os.getenv("NVIM_PY3_VENV_NAME", "neovim_py_3")
 NVIM_PY3_VENV_PATH = path.join(NVIM_VENVS_PATH, NVIM_PY3_VENV_NAME)
+
+
+ENVFILES_SOURCE_DIR = path.expanduser(
+    os.getenv("ENVFILES_SOURCE_DIR", f"~/Dropbox/env/{socket.gethostname()}")
+)
+
+# Having a simply named symlink for envfiles (without hostnames, say) makes it easier to
+# configure some programs that can't/won't allow environment variables in their config
+# files.
+ENVFILES_INSTALL_DIR = path.expanduser(os.getenv("ENVFILES_INSTALL_DIR", "~/.envfiles"))
