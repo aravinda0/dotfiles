@@ -74,7 +74,10 @@ contexts = [
             "groups": ["1", "2", "3", "4", "5", "6"],
         },
         "browser": {
-            "preferred_display": 2,
+            "preferred_display": {
+                "nexus": 2,
+                "scout": 0,
+            },
             "groups": ["1", "2"],
         },
     },
