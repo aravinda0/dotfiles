@@ -12,13 +12,6 @@ __pycache__/
 # Ignore vim's history file used for cross-network edits
 /dotfiles/nvim/.netrwhist
 
-# Vim plugins directory
-/dotfiles/nvim/plugged
-
-# plug.vim is symlinked into this location during vim_plug installation. We
-# don't want to track it.
-/dotfiles/nvim/autoload/plug.vim
-
 # Vim persistent undo directory
 /dotfiles/nvim/.undo
 
