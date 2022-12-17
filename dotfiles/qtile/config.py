@@ -324,7 +324,8 @@ screens = [
         bottom=bar.Bar(
             [
                 widget.CurrentLayout(),
-                ContextGroupBox(),
+                widget.AGroupBox(padding=50),
+                # ContextGroupBox(),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
@@ -346,7 +347,8 @@ screens = [
         bottom=bar.Bar(
             [
                 widget.CurrentLayout(),
-                ContextGroupBox(),
+                widget.AGroupBox(padding=50),
+                # ContextGroupBox(),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
@@ -365,7 +367,8 @@ screens = [
         bottom=bar.Bar(
             [
                 widget.CurrentLayout(),
-                ContextGroupBox(),
+                widget.AGroupBox(padding=50),
+                # ContextGroupBox(),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
