@@ -345,7 +345,6 @@ screens = [
                 ),
                 widget.Systray(),
                 widget.Volume(padding=10),
-                widget.BatteryIcon(),
                 widget.Clock(format=" %a, %d %b %Y %H:%M"),
                 widget.QuickExit(),
             ],
