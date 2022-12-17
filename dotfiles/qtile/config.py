@@ -4,8 +4,8 @@ import subprocess
 
 import workspaces as ws
 from libqtile import bar, hook, layout, widget
-from libqtile.config import (Click, Drag, DropDown, EzKey, Group, Match,
-                             ScratchPad, Screen)
+from libqtile.config import (Click, Drag, DropDown, EzKey, Group, KeyChord,
+                             Match, ScratchPad, Screen)
 from libqtile.lazy import lazy
 from workspaces import (ContextGroupBox, activate_context, activate_group_set,
                         activate_standard_group, make_groups_from_contexts)
@@ -180,7 +180,16 @@ keys = [
     # Misc
     # --------------------------------------------------------------------------------
     EzKey("M-<Return>", lazy.spawn(terminal), desc="Launch terminal"),
-    EzKey("M-r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    KeyChord(
+        ["mod4"],
+        "r",
+        [
+            EzKey("M-r", lazy.spawncmd()),
+            EzKey("r", lazy.spawncmd()),
+            EzKey("w", lazy.spawn("firefox-developer-edition")),
+        ],
+        desc="Run programs",
+    ),
     EzKey("M-<BackSpace>", lazy.window.kill(), desc="Kill focused window"),
     EzKey(
         "C-S-l",
