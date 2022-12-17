@@ -4,24 +4,11 @@ import subprocess
 
 import workspaces as ws
 from libqtile import bar, hook, layout, widget
-from libqtile.config import (
-    Click,
-    Drag,
-    DropDown,
-    EzKey,
-    Group,
-    Match,
-    ScratchPad,
-    Screen,
-)
+from libqtile.config import (Click, Drag, DropDown, EzKey, Group, Match,
+                             ScratchPad, Screen)
 from libqtile.lazy import lazy
-from workspaces import (
-    ContextGroupBox,
-    activate_context,
-    activate_group_set,
-    activate_standard_group,
-    make_groups_from_contexts,
-)
+from workspaces import (ContextGroupBox, activate_context, activate_group_set,
+                        activate_standard_group, make_groups_from_contexts)
 
 # TODO: Figure out how to not hardcode this. zsh env var not set yet when qtile runs.
 DOTFILES_PATH = os.path.expanduser("~/.dotfiles")
@@ -184,6 +171,12 @@ keys = [
     ),
     EzKey("M-<Tab>", lazy.next_layout(), desc="Toggle between layouts"),
     # --------------------------------------------------------------------------------
+    # Audio
+    # --------------------------------------------------------------------------------
+    EzKey("<XF86AudioRaiseVolume>", lazy.spawn("amixer set -q Master 5%+")),
+    EzKey("<XF86AudioLowerVolume>", lazy.spawn("amixer set -q Master 5%-")),
+    EzKey("<XF86AudioMute>", lazy.spawn("amixer set -q Master toggle")),
+    # --------------------------------------------------------------------------------
     # Misc
     # --------------------------------------------------------------------------------
     EzKey("M-<Return>", lazy.spawn(terminal), desc="Launch terminal"),
@@ -341,6 +334,8 @@ screens = [
                     name_transform=lambda name: name.upper(),
                 ),
                 widget.Systray(),
+                widget.Volume(padding=10),
+                widget.BatteryIcon(),
                 widget.Clock(format=" %a, %d %b %Y %H:%M"),
                 widget.QuickExit(),
             ],
