@@ -221,28 +221,29 @@ vim.keymap.set("n", "<c-t>/", function()
   end
 end)
 
-vim.keymap.set("n", "<c-t>*", telescope_builtin.grep_string)
-vim.keymap.set("n", "<c-t>f", telescope_builtin.current_buffer_fuzzy_find)
-vim.keymap.set("n", "<c-t>:", telescope_builtin.commands)
 vim.keymap.set("n", "<c-t>h", telescope_builtin.help_tags)
-vim.keymap.set("n", "<c-t>m", telescope_builtin.keymaps)
-vim.keymap.set("n", "<c-t>l", telescope_builtin.reloader)
+vim.keymap.set("n", "<c-t>vm", telescope_builtin.keymaps)
+vim.keymap.set("n", "<c-t>vc", telescope_builtin.commands)
+vim.keymap.set("n", "<c-t>vr", telescope_builtin.reloader)
+vim.keymap.set("n", "<c-t>f", telescope_builtin.current_buffer_fuzzy_find)
+vim.keymap.set("n", "<c-t>*", telescope_builtin.grep_string)
 
+-- context:lang
+vim.keymap.set("n", "<c-l>d", telescope_builtin.diagnostics)
+vim.keymap.set("n", "<c-l>ic", telescope_builtin.lsp_incoming_calls)
+vim.keymap.set("n", "<c-l>oc", telescope_builtin.lsp_outgoing_calls)
 vim.keymap.set("n", "<c-l>r", telescope_builtin.lsp_references)
 vim.keymap.set("n", "<c-l>s", telescope_builtin.lsp_document_symbols)
 vim.keymap.set("n", "<c-l>wss", telescope_builtin.lsp_workspace_symbols)
-vim.keymap.set("n", "<c-l>ic", telescope_builtin.lsp_incoming_calls)
-vim.keymap.set("n", "<c-l>oc", telescope_builtin.lsp_outgoing_calls)
-vim.keymap.set("n", "<c-l>d", telescope_builtin.diagnostics)
+vim.keymap.set("n", "<c-l>t", telescope_builtin.treesitter)
 
+-- context:git
 vim.keymap.set("n", "<c-g>s", telescope_builtin.git_status)
+vim.keymap.set("n", "<c-g>h", telescope_builtin.git_commits)
+vim.keymap.set("n", "<c-g>bh", telescope_builtin.git_bcommits)
 vim.keymap.set("n", "<c-g>f", telescope_builtin.git_files)
-vim.keymap.set("n", "<c-g>c", telescope_builtin.git_commits)
-vim.keymap.set("n", "<c-g>bc", telescope_builtin.git_bcommits)
 vim.keymap.set("n", "<c-g>br", telescope_builtin.git_branches)
 vim.keymap.set("n", "<c-g>a", telescope_builtin.git_stash)
-
-vim.keymap.set("n", "<c-l>t", telescope_builtin.treesitter)
 
 M.build_telescope_config_keymaps = function()
   local actions = require("telescope.actions")
