@@ -25,4 +25,8 @@ source $ZSH_CONFIG_PATH/aliases.zsh
 
 
 # Source environment-specific config
-[ -f $ENVFILES_PATH/zshrc.local.zsh ] && . $ENVFILES_PATH/zshrc.local.zsh
+if [ -f $ENVFILES_PATH/zshrc.local.zsh ]; then
+  . $ENVFILES_PATH/zshrc.local.zsh
+else
+  echo "zsh envfiles have not been configured for this system!"
+fi
