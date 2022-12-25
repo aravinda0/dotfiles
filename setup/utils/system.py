@@ -1,7 +1,7 @@
 import errno
 import os
-import subprocess
 import shutil
+import subprocess
 
 import settings
 
@@ -42,6 +42,7 @@ def system_install_from_source(program_name, git_repo, make_options=None):
     make_options = make_options or {}
 
     build_dir = settings.DOTFILES_BUILD_DIR
+    program_build_dir = os.path.join(settings.DOTFILES_BUILD_DIR, program_name)
 
     try:
         os.makedirs(build_dir)
@@ -49,9 +50,9 @@ def system_install_from_source(program_name, git_repo, make_options=None):
         if e.errno == errno.EEXIST and os.path.isdir(build_dir):
             pass
 
-    if os.path.lexists(os.path.join(build_dir, program_name)):
+    if os.path.lexists(program_build_dir):
         print(f"Deleting existing build files for {program_name}...")
-        shutil.rmtree(program_name)
+        shutil.rmtree(program_build_dir)
 
     print(f"Cloning {program_name} repo...")
     subprocess.run(["git", "clone", git_repo, program_name], cwd=build_dir)
@@ -59,7 +60,7 @@ def system_install_from_source(program_name, git_repo, make_options=None):
     print(f"Building and installing {program_name}...")
 
     make_params = [f"{option}={value}" for option, value in make_options.items()]
-    subprocess.run(["make", *make_params], cwd=build_dir)
-    subprocess.run(["make", "install"], cwd=build_dir)
+    subprocess.run(["make", *make_params], cwd=program_build_dir)
+    subprocess.run(["sudo", "make", "install"], cwd=program_build_dir)
 
     print(f"{program_name} installed!")
