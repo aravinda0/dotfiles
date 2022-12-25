@@ -55,7 +55,9 @@ def system_install_from_source(program_name, git_repo, make_options=None):
         shutil.rmtree(program_build_dir)
 
     print(f"Cloning {program_name} repo...")
-    subprocess.run(["git", "clone", git_repo, program_name], cwd=build_dir)
+    subprocess.run(
+        ["git", "clone", "--depth", "1", git_repo, program_name], cwd=build_dir
+    )
 
     print(f"Building and installing {program_name}...")
 
