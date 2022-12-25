@@ -59,16 +59,16 @@ M.find_notes = function(opts)
   end
 
   telescope_pickers
-    .new(opts, {
-      prompt_title = "Note Files",
-      finder = telescope_finders.new_oneshot_job(
-        find_cmd,
-        { entry_maker = make_entry }
-      ),
-      sorter = telescope_conf.file_sorter(opts),
-      previewer = telescope_conf.file_previewer(opts),
-    })
-    :find()
+      .new(opts, {
+        prompt_title = "Note Files",
+        finder = telescope_finders.new_oneshot_job(
+          find_cmd,
+          { entry_maker = make_entry }
+        ),
+        sorter = telescope_conf.file_sorter(opts),
+        previewer = telescope_conf.file_previewer(opts),
+      })
+      :find()
 end
 
 M.find_notes_buffers = function(opts)
@@ -87,9 +87,8 @@ M.find_notes_buffers = function(opts)
     if opts.ignore_current_buffer and b == vim.api.nvim_get_current_buf() then
       return false
     end
-    if
-      opts.cwd_only
-      and not string.find(vim.api.nvim_buf_get_name(b), vim.loop.cwd(), 1, true)
+    if opts.cwd_only
+        and not string.find(vim.api.nvim_buf_get_name(b), vim.loop.cwd(), 1, true)
     then
       return false
     end
@@ -137,16 +136,16 @@ M.find_notes_buffers = function(opts)
   end
 
   telescope_pickers
-    .new(opts, {
-      prompt_title = "Note Buffers",
-      finder = telescope_finders.new_table({
-        results = buffers,
-        entry_maker = make_entry,
-      }),
-      previewer = telescope_conf.grep_previewer(opts),
-      sorter = telescope_conf.generic_sorter(opts),
-    })
-    :find()
+      .new(opts, {
+        prompt_title = "Note Buffers",
+        finder = telescope_finders.new_table({
+          results = buffers,
+          entry_maker = make_entry,
+        }),
+        previewer = telescope_conf.grep_previewer(opts),
+        sorter = telescope_conf.generic_sorter(opts),
+      })
+      :find()
 end
 
 M.is_cwd_notes_dir = function()
