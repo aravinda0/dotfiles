@@ -222,7 +222,7 @@ groups.extend(
             [
                 DropDown(
                     "zk",
-                    "alacritty -e zsh -c 'cd $HOME/.dency/forge/notes; nvim index.md'",
+                    "alacritty -e zsh -i -c 'cd $HOME/.dency/forge/notes; nvim index.md'",
                     on_focus_lost_hide=False,
                     width=0.95,
                     height=0.95,
@@ -231,7 +231,7 @@ groups.extend(
                 ),
                 DropDown(
                     "areas/tech_prowess",
-                    "alacritty -e zsh -c 'cd $HOME/.dency/forge/areas/tech_prowess; nvim'",
+                    "alacritty -e zsh -i -c 'cd $HOME/.dency/forge/areas/tech_prowess; nvim'",
                     on_focus_lost_hide=False,
                     width=0.95,
                     height=0.95,
@@ -240,7 +240,7 @@ groups.extend(
                 ),
                 DropDown(
                     "areas/self++",
-                    "alacritty -e zsh -c 'cd $HOME/.dency/forge/areas/self++; nvim'",
+                    "alacritty -e zsh -i -c 'cd $HOME/.dency/forge/areas/self++; nvim'",
                     on_focus_lost_hide=False,
                     width=0.95,
                     height=0.95,
@@ -249,7 +249,7 @@ groups.extend(
                 ),
                 DropDown(
                     "areas/workflow",
-                    "alacritty -e zsh -c 'cd $HOME/.dency/forge/areas/workflow/; nvim'",
+                    "alacritty -e zsh -i -c 'cd $HOME/.dency/forge/areas/workflow/; nvim'",
                     on_focus_lost_hide=False,
                     width=0.95,
                     height=0.95,
@@ -258,7 +258,7 @@ groups.extend(
                 ),
                 DropDown(
                     "diary",
-                    "alacritty -e zsh -c 'cd $HOME/.s/.j; nvim diary/diary.md'",
+                    "alacritty -e zsh -i -c 'cd $HOME/.s/.j; nvim diary/diary.md'",
                     on_focus_lost_hide=False,
                     width=0.95,
                     height=0.95,
@@ -267,7 +267,7 @@ groups.extend(
                 ),
                 DropDown(
                     "tmp",
-                    "alacritty -e zsh -c 'cd $HOME/.dency/forge/tmp/; nvim'",
+                    "alacritty -e zsh -i -c 'cd $HOME/.dency/forge/tmp/; nvim'",
                     on_focus_lost_hide=False,
                     width=0.95,
                     height=0.95,
