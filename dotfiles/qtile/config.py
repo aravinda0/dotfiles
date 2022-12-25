@@ -355,7 +355,7 @@ screens = [
         bottom=bar.Bar(
             [
                 widget.CurrentLayout(),
-                widget.AGroupBox(padding=50),
+                widget.AGroupBox(padding=100),
                 # ContextGroupBox(),
                 widget.Prompt(),
                 widget.WindowName(),
@@ -375,7 +375,7 @@ screens = [
         bottom=bar.Bar(
             [
                 widget.CurrentLayout(),
-                widget.AGroupBox(padding=50),
+                widget.AGroupBox(padding=100),
                 # ContextGroupBox(),
                 widget.Prompt(),
                 widget.WindowName(),
