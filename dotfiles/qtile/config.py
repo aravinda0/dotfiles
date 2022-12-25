@@ -131,11 +131,9 @@ keys = [
     EzKey("M-<backslash>", lazy.group["scratchpad/rough"].dropdown_toggle("term1")),
     EzKey("M-C-<backslash>", lazy.group["scratchpad/rough"].dropdown_toggle("term2")),
     EzKey("C-0", lazy.group["scratchpad/notes"].dropdown_toggle("zk")),
-    EzKey(
-        "C-A-0", lazy.group["scratchpad/notes"].dropdown_toggle("areas/tech_prowess")
-    ),
-    EzKey("C-9", lazy.group["scratchpad/notes"].dropdown_toggle("areas/self++")),
-    EzKey("C-A-9", lazy.group["scratchpad/notes"].dropdown_toggle("diary")),
+    EzKey("C-A-0", lazy.group["scratchpad/notes"].dropdown_toggle("sec__atp")),
+    EzKey("C-9", lazy.group["scratchpad/notes"].dropdown_toggle("sec__spp")),
+    EzKey("C-A-9", lazy.group["scratchpad/notes"].dropdown_toggle("sec__dry")),
     EzKey("C-8", lazy.group["scratchpad/notes"].dropdown_toggle("areas/workflow")),
     EzKey("C-<backslash>", lazy.group["scratchpad/notes"].dropdown_toggle("tmp")),
     EzKey(
@@ -230,8 +228,8 @@ groups.extend(
                     y=0.02,
                 ),
                 DropDown(
-                    "areas/tech_prowess",
-                    "alacritty -e zsh -i -c 'cd $FORGE/areas/tech_prowess; nvim'",
+                    "sec__atp",
+                    "alacritty -e zsh -i -c '$ENVFILES_PATH/../common/sec/sec__atp.sh'",
                     on_focus_lost_hide=False,
                     width=0.95,
                     height=0.95,
@@ -239,8 +237,8 @@ groups.extend(
                     y=0.02,
                 ),
                 DropDown(
-                    "areas/self++",
-                    "alacritty -e zsh -i -c 'cd $FORGE/areas/self++; nvim'",
+                    "sec__spp",
+                    "alacritty -e zsh -i -c '$ENVFILES_PATH/../common/sec/sec__spp.sh'",
                     on_focus_lost_hide=False,
                     width=0.95,
                     height=0.95,
@@ -257,8 +255,8 @@ groups.extend(
                     y=0.02,
                 ),
                 DropDown(
-                    "diary",
-                    "alacritty -e zsh -i -c 'cd $HOME/.s/.j; nvim diary/diary.md'",
+                    "sec__dry",
+                    "alacritty -e zsh -i -c '$ENVFILES_PATH/../common/sec/sec__dry.sh'",
                     on_focus_lost_hide=False,
                     width=0.95,
                     height=0.95,
