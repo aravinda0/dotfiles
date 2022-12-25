@@ -6,7 +6,7 @@ local telescope_conf = require("telescope.config").values
 local M = {}
 
 local notes_dirs = {
-  vim.env["MY_NOTES_PATH"],
+  vim.env["FORGE"],
 }
 
 local get_h1_from_path = function(_, path)

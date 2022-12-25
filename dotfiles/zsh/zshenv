@@ -19,8 +19,7 @@ export ENVFILES_PATH=$HOME/.envfiles
 export DOTFILES_SUPPORT_PATH=$HOME/.dotfiles_support
 
 
-# Notes
-export MY_NOTES_PATH=$HOME/.dency/forge
+export FORGE=private
 
 
 # -------------------------------------------------------------------------------
