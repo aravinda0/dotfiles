@@ -421,9 +421,9 @@ floating_layout = layout.Floating(
         Match(wm_class="makebranch"),  # gitk
         Match(wm_class="maketag"),  # gitk
         Match(wm_class="ssh-askpass"),  # ssh-askpass
+        Match(wm_class="qbittorrent"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
-        Match(title=re.compile(r"Firefox Developer Edition \(Private Browsing\)")),
         Match(title="VeraCrypt"),
     ]
 )
@@ -444,6 +444,36 @@ auto_minimize = True
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+
+
+@hook.subscribe.client_new
+def handle_floatation(window):
+    if any(
+        [
+            _is_firefox_dialog(window),
+        ]
+    ):
+        window.floating = True
+
+
+def _is_firefox_dialog(window):
+    wm_class = window.window.get_wm_class()
+    w_name = window.window.get_name()
+
+    # Dialogs
+    if all(
+        [
+            wm_class[0] == "Places",
+            wm_class[1].startswith("firefox"),
+            w_name == "Library",
+        ]
+    ):
+        return True
+
+    if wm_class[1].startswith("firefox") and "private browsing" in w_name.lower():
+        return True
+
+    return False
 
 
 @hook.subscribe.startup_once
