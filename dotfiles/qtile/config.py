@@ -177,17 +177,19 @@ keys = [
     # Misc
     # --------------------------------------------------------------------------------
     EzKey("M-<Return>", lazy.spawn(terminal), desc="Launch terminal"),
+    EzKey("M-r", lazy.spawncmd()),
     KeyChord(
         ["mod4"],
-        "r",
+        "a",
         [
-            EzKey("M-r", lazy.spawncmd()),
-            EzKey("r", lazy.spawncmd()),
             EzKey("w", lazy.spawn("firefox-developer-edition")),
+            EzKey("q", lazy.spawn("quitebrowser")),
+            EzKey("t", lazy.spawn("qbittorrent")),
         ],
-        desc="Run programs",
+        desc="Run applications/programs",
     ),
     EzKey("M-<BackSpace>", lazy.window.kill(), desc="Kill focused window"),
+    EzKey("C-S-q", lazy.window.kill(), desc="Kill focused window"),
     EzKey(
         "C-S-l",
         lazy.spawn("light-locker-command -l"),
