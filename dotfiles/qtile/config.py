@@ -129,7 +129,6 @@ keys = [
     # Scratchpads
     # --------------------------------------------------------------------------------
     EzKey("M-<backslash>", lazy.group["scratchpad/rough"].dropdown_toggle("term1")),
-    EzKey("M-C-<backslash>", lazy.group["scratchpad/rough"].dropdown_toggle("term2")),
     EzKey("C-0", lazy.group["scratchpad/notes"].dropdown_toggle("zk")),
     EzKey("C-A-0", lazy.group["scratchpad/notes"].dropdown_toggle("sec__atp")),
     EzKey("C-9", lazy.group["scratchpad/notes"].dropdown_toggle("sec__spp")),
@@ -212,7 +211,6 @@ groups.extend(
             "scratchpad/rough",
             [
                 DropDown("term1", terminal, on_focus_lost_hide=False),
-                DropDown("term2", terminal, on_focus_lost_hide=False),
             ],
         ),
         ScratchPad(
