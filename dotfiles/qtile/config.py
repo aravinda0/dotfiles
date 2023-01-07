@@ -166,7 +166,7 @@ keys = [
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
-    EzKey("M-<Tab>", lazy.next_layout(), desc="Toggle between layouts"),
+    EzKey("M-<Tab>", lazy.next_layout(), desc="Cycle between layouts"),
     # --------------------------------------------------------------------------------
     # Audio
     # --------------------------------------------------------------------------------
@@ -183,7 +183,7 @@ keys = [
         "a",
         [
             EzKey("w", lazy.spawn("firefox-developer-edition")),
-            EzKey("q", lazy.spawn("quitebrowser")),
+            EzKey("q", lazy.spawn("qutebrowser")),
             EzKey("t", lazy.spawn("qbittorrent")),
         ],
         desc="Run applications/programs",
