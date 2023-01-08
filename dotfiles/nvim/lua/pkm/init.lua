@@ -1,12 +1,13 @@
-local telescope_builtin = require("telescope.builtin")
-local telescope_pickers = require("telescope.pickers")
-local telescope_finders = require("telescope.finders")
-local telescope_conf = require("telescope.config").values
+local tsbuiltin = require("telescope.builtin")
+local tspickers = require("telescope.pickers")
+local tsfinders = require("telescope.finders")
+local tsconf = require("telescope.config").values
 
 local M = {}
 
 local notes_dirs = {
   vim.env["FORGE"],
+  "/tmp/fake_notes",
 }
 
 local get_h1_from_path = function(_, path)
@@ -36,7 +37,7 @@ local h1_picker_opts = {
 
 M.live_grep_notes = function(opts)
   opts = vim.tbl_extend("force", h1_picker_opts, opts or {})
-  telescope_builtin.live_grep(opts)
+  tsbuiltin.live_grep(opts)
 end
 
 M.find_notes = function(opts)
@@ -58,17 +59,14 @@ M.find_notes = function(opts)
     }
   end
 
-  telescope_pickers
-      .new(opts, {
-        prompt_title = "Note Files",
-        finder = telescope_finders.new_oneshot_job(
-          find_cmd,
-          { entry_maker = make_entry }
-        ),
-        sorter = telescope_conf.file_sorter(opts),
-        previewer = telescope_conf.file_previewer(opts),
-      })
-      :find()
+  tspickers
+    .new(opts, {
+      prompt_title = "Note Files",
+      finder = tsfinders.new_oneshot_job(find_cmd, { entry_maker = make_entry }),
+      sorter = tsconf.file_sorter(opts),
+      previewer = tsconf.file_previewer(opts),
+    })
+    :find()
 end
 
 M.find_notes_buffers = function(opts)
@@ -87,8 +85,9 @@ M.find_notes_buffers = function(opts)
     if opts.ignore_current_buffer and b == vim.api.nvim_get_current_buf() then
       return false
     end
-    if opts.cwd_only
-        and not string.find(vim.api.nvim_buf_get_name(b), vim.loop.cwd(), 1, true)
+    if
+      opts.cwd_only
+      and not string.find(vim.api.nvim_buf_get_name(b), vim.loop.cwd(), 1, true)
     then
       return false
     end
@@ -135,17 +134,17 @@ M.find_notes_buffers = function(opts)
     }
   end
 
-  telescope_pickers
-      .new(opts, {
-        prompt_title = "Note Buffers",
-        finder = telescope_finders.new_table({
-          results = buffers,
-          entry_maker = make_entry,
-        }),
-        previewer = telescope_conf.grep_previewer(opts),
-        sorter = telescope_conf.generic_sorter(opts),
-      })
-      :find()
+  tspickers
+    .new(opts, {
+      prompt_title = "Note Buffers",
+      finder = tsfinders.new_table({
+        results = buffers,
+        entry_maker = make_entry,
+      }),
+      previewer = tsconf.grep_previewer(opts),
+      sorter = tsconf.generic_sorter(opts),
+    })
+    :find()
 end
 
 M.is_cwd_notes_dir = function()

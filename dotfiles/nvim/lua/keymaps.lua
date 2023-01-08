@@ -1,4 +1,4 @@
-local telescope_builtin = require("telescope.builtin")
+local tsbuiltin = require("telescope.builtin")
 local hop = require("hop")
 
 local pkm = require("pkm")
@@ -197,7 +197,7 @@ vim.keymap.set("n", "<c-p>", function()
   if pkm.is_cwd_notes_dir() then
     pkm.find_notes()
   else
-    telescope_builtin.find_files()
+    tsbuiltin.find_files()
   end
 end)
 
@@ -209,7 +209,7 @@ vim.keymap.set("n", "<c-o>", function()
   if pkm.is_cwd_notes_dir() then
     pkm.find_notes_buffers(opts)
   else
-    telescope_builtin.buffers(opts)
+    tsbuiltin.buffers(opts)
   end
 end)
 
@@ -217,33 +217,33 @@ vim.keymap.set("n", "<c-t>/", function()
   if pkm.is_cwd_notes_dir() then
     pkm.live_grep_notes()
   else
-    telescope_builtin.live_grep()
+    tsbuiltin.live_grep()
   end
 end)
 
-vim.keymap.set("n", "<c-t>h", telescope_builtin.help_tags)
-vim.keymap.set("n", "<c-t>vm", telescope_builtin.keymaps)
-vim.keymap.set("n", "<c-t>vc", telescope_builtin.commands)
-vim.keymap.set("n", "<c-t>vr", telescope_builtin.reloader)
-vim.keymap.set("n", "<c-t>f", telescope_builtin.current_buffer_fuzzy_find)
-vim.keymap.set("n", "<c-t>*", telescope_builtin.grep_string)
+vim.keymap.set("n", "<c-t>h", tsbuiltin.help_tags)
+vim.keymap.set("n", "<c-t>vm", tsbuiltin.keymaps)
+vim.keymap.set("n", "<c-t>vc", tsbuiltin.commands)
+vim.keymap.set("n", "<c-t>vr", tsbuiltin.reloader)
+vim.keymap.set("n", "<c-t>f", tsbuiltin.current_buffer_fuzzy_find)
+vim.keymap.set("n", "<c-t>*", tsbuiltin.grep_string)
 
 -- context:lang
-vim.keymap.set("n", "<c-l>d", telescope_builtin.diagnostics)
-vim.keymap.set("n", "<c-l>ic", telescope_builtin.lsp_incoming_calls)
-vim.keymap.set("n", "<c-l>oc", telescope_builtin.lsp_outgoing_calls)
-vim.keymap.set("n", "<c-l>r", telescope_builtin.lsp_references)
-vim.keymap.set("n", "<c-l>s", telescope_builtin.lsp_document_symbols)
-vim.keymap.set("n", "<c-l>wss", telescope_builtin.lsp_workspace_symbols)
-vim.keymap.set("n", "<c-l>t", telescope_builtin.treesitter)
+vim.keymap.set("n", "<c-l>d", tsbuiltin.diagnostics)
+vim.keymap.set("n", "<c-l>ic", tsbuiltin.lsp_incoming_calls)
+vim.keymap.set("n", "<c-l>oc", tsbuiltin.lsp_outgoing_calls)
+vim.keymap.set("n", "<c-l>r", tsbuiltin.lsp_references)
+vim.keymap.set("n", "<c-l>s", tsbuiltin.lsp_document_symbols)
+vim.keymap.set("n", "<c-l>wss", tsbuiltin.lsp_workspace_symbols)
+vim.keymap.set("n", "<c-l>t", tsbuiltin.treesitter)
 
 -- context:git
-vim.keymap.set("n", "<c-g>s", telescope_builtin.git_status)
-vim.keymap.set("n", "<c-g>h", telescope_builtin.git_commits)
-vim.keymap.set("n", "<c-g>bh", telescope_builtin.git_bcommits)
-vim.keymap.set("n", "<c-g>f", telescope_builtin.git_files)
-vim.keymap.set("n", "<c-g>br", telescope_builtin.git_branches)
-vim.keymap.set("n", "<c-g>a", telescope_builtin.git_stash)
+vim.keymap.set("n", "<c-g>s", tsbuiltin.git_status)
+vim.keymap.set("n", "<c-g>h", tsbuiltin.git_commits)
+vim.keymap.set("n", "<c-g>bh", tsbuiltin.git_bcommits)
+vim.keymap.set("n", "<c-g>f", tsbuiltin.git_files)
+vim.keymap.set("n", "<c-g>br", tsbuiltin.git_branches)
+vim.keymap.set("n", "<c-g>a", tsbuiltin.git_stash)
 
 M.build_telescope_config_keymaps = function()
   local actions = require("telescope.actions")
