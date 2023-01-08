@@ -189,7 +189,7 @@ keys = [
         desc="Run applications/programs",
     ),
     EzKey("M-<BackSpace>", lazy.window.kill(), desc="Kill focused window"),
-    EzKey("C-S-q", lazy.window.kill(), desc="Kill focused window"),
+    EzKey("C-q", lazy.window.kill(), desc="Kill focused window"),
     EzKey(
         "C-S-l",
         lazy.spawn("light-locker-command -l"),
