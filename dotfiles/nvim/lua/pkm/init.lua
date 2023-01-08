@@ -7,7 +7,6 @@ local M = {}
 
 local notes_dirs = {
   vim.env["FORGE"],
-  "/tmp/fake_notes",
 }
 
 local get_h1_from_path = function(_, path)
@@ -112,25 +111,22 @@ M.find_notes_buffers = function(opts)
     })
   end
 
-  local display_entry = function(entry)
-    local h1 = vim.api.nvim_buf_get_lines(entry.value.bufnr, 0, 1, false)[1]
-    if h1 then
-      return string.sub(h1, 3)
-    else
-      return entry.path
-    end
-  end
-
   local make_entry = function(raw_value)
+    local h1 = vim.api.nvim_buf_get_lines(raw_value.bufnr, 0, 1, false)[1]
+    local path = raw_value.info.name
+    local display
+
+    if h1 then
+      display = string.sub(h1, 3)
+    else
+      display = path
+    end
+
     return {
       value = raw_value,
-      display = display_entry,
-
-      -- NOTE: Copied from Telescope code. Not sure how this ordinal here is tied to
-      -- the above sort, but it seems to work.
-      ordinal = raw_value.bufnr .. ":" .. raw_value.info.name,
-
-      path = raw_value.info.name,
+      display = display,
+      ordinal = display,
+      path = path,
     }
   end
 
