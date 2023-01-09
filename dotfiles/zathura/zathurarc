@@ -1,0 +1,17 @@
+
+# TODO: get size from env
+set font "SourceCodePro normal 18"
+
+# peach background for readability
+set recolor
+set recolor-darkcolor "#000000"
+set recolor-lightcolor "#edd1b0"
+
+# set highlight-color "#ffaa00"
+set highlight-fg "#000000"
+set highlight-transparency 0.7
+
+set scroll-step 100
+
+map <C-y> scroll up
+map <C-e> scroll down
