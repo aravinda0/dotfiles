@@ -289,25 +289,25 @@ c.colors.tabs.indicator.error = bright_red
 c.colors.tabs.odd.fg = fg2
 
 # Background color of unselected odd tabs.
-c.colors.tabs.odd.bg = bg2
+c.colors.tabs.odd.bg = bg0
 
 # Foreground color of unselected even tabs.
 c.colors.tabs.even.fg = c.colors.tabs.odd.fg
 
 # Background color of unselected even tabs.
-c.colors.tabs.even.bg = bg3
+c.colors.tabs.even.bg = bg0
 
 # Foreground color of selected odd tabs.
-c.colors.tabs.selected.odd.fg = fg2
+c.colors.tabs.selected.odd.fg = fg0
 
 # Background color of selected odd tabs.
-c.colors.tabs.selected.odd.bg = bg0
+c.colors.tabs.selected.odd.bg = bg4
 
 # Foreground color of selected even tabs.
 c.colors.tabs.selected.even.fg = c.colors.tabs.selected.odd.fg
 
 # Background color of selected even tabs.
-c.colors.tabs.selected.even.bg = bg0
+c.colors.tabs.selected.even.bg = c.colors.tabs.selected.odd.bg
 
 # Background color of pinned unselected even tabs.
 c.colors.tabs.pinned.even.bg = bright_green
