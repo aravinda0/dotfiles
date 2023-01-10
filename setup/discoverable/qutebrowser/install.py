@@ -16,3 +16,8 @@ def install_config():
         "~/.config/qutebrowser/customize",
         "qutebrowser config customizations",
     )
+    install_dotfiles(
+        "qutebrowser/userscripts",
+        "~/.config/qutebrowser/userscripts",
+        "qutebrowser userscripts",
+    )
