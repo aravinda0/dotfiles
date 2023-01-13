@@ -84,6 +84,8 @@ c.url.searchengines = {
 # Keymaps: normal mode
 # --------------------------------------------------------------------------------
 
+config.bind("<space>rc", "config-source")
+
 config.bind("<ctrl-p>", "set-cmd-text -s :open")
 config.bind("<ctrl-shift-p>", "spawn qutebrowser --target private-window")
 
@@ -103,8 +105,11 @@ config.bind("<ctrl-e>", "run-with-count 3 scroll down")
 # Hard refresh
 config.bind("<ctrl-shift-r>", "reload -f")
 
-
-config.bind("<ctrl-h>;m", "open -t;; bind")
+# Help screens
+config.bind("<space>hm", "open -t ;; bind")
+config.bind("<space>ho", "open -t ;; set")
+config.bind("<space>hh", "open -t ;; help")
+config.bind("<space>hc", "open -t qute://help/commands.html")
 
 
 # --------------------------------------------------------------------------------
