@@ -3,44 +3,48 @@ local tspickers = require("telescope.pickers")
 local tsfinders = require("telescope.finders")
 local tsconf = require("telescope.config").values
 
+local pkm_utils = require("pkm.utils")
+
 local M = {}
 
 local notes_dirs = {
   vim.env["FORGE"],
 }
 
-local get_h1_from_path = function(_, path)
-  local file_to_h1_cache = {}
-
-  local cache_hit = file_to_h1_cache[path]
-  if cache_hit ~= nil then
-    return cache_hit
+local handle_picker_mappings = function(prompt_bufnr, map)
+  local insert_link = function()
+    local selection = tsaction_state.get_selected_entry()
+    print(vim.inspect(selection))
+    tsactions.close(prompt_bufnr)
+    pkm_utils.insert_link(selection.display, selection.rel_path)
   end
 
-  -- Open file and only look at the first line. That's where we expect the h1 to be
-  -- which starts with '# '.
-  for line in io.lines(path) do
-    local h1 = string.sub(line, 3)
-    file_to_h1_cache[path] = h1
-    return h1
-  end
+  map("i", "<c-l>", insert_link)
+  -- map("i", "<c-y>", insert_selection_as_link)
+
+  return true
 end
 
-local h1_picker_opts = {
-  path_display = get_h1_from_path,
+local common_picker_opts = {
+  attach_mappings = handle_picker_mappings,
 
   -- The default layout gives slight preference to the preview window. It's a bit too
   -- wasteful since we use sensible line-lengths.
   horizontal = { preview_width = 0.5 },
 }
+local note_picker_opts = vim.tbl_extend("force", common_picker_opts, {
+  path_display = pkm_utils.get_h1_from_path,
+})
+
+-- --------------------------------------------------------------------------------
 
 M.live_grep_notes = function(opts)
-  opts = vim.tbl_extend("force", h1_picker_opts, opts or {})
+  opts = vim.tbl_extend("force", note_picker_opts, opts or {})
   tsbuiltin.live_grep(opts)
 end
 
 M.find_notes = function(opts)
-  opts = vim.tbl_extend("force", h1_picker_opts, opts or {})
+  opts = vim.tbl_extend("force", note_picker_opts, opts or {})
 
   local find_cmd = { "rg", "-m", "1", "-r", "$title_text", "^# (?P<title_text>)" }
 
@@ -69,10 +73,7 @@ M.find_notes = function(opts)
 end
 
 M.find_notes_buffers = function(opts)
-  local local_opts = {
-    horizontal = h1_picker_opts.horizontal,
-  }
-  opts = vim.tbl_extend("force", local_opts, opts or {})
+  opts = vim.tbl_extend("force", common_picker_opts, opts or {})
 
   local bufnrs = vim.tbl_filter(function(b)
     if vim.fn.buflisted(b) ~= 1 then
