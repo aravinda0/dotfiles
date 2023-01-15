@@ -19,7 +19,8 @@ export ENVFILES_PATH=$HOME/.envfiles
 export DOTFILES_SUPPORT_PATH=$HOME/.dotfiles_support
 
 
-export FORGE=private
+export _F=private
+export _H=private
 
 
 # -------------------------------------------------------------------------------

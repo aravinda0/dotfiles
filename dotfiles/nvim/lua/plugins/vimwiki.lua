@@ -9,7 +9,7 @@ M.setup = function()
   }
 
   vim.g.vimwiki_list = {
-    { path = vim.env["FORGE"], ext = ".md", syntax = "markdown" },
+    { path = vim.env["_F"], ext = ".md", syntax = "markdown" },
   }
   vim.g.vimwiki_ext2syntax = {
     [".md"] = "markdown",

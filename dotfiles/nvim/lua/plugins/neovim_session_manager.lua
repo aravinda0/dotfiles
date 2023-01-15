@@ -9,7 +9,7 @@ M.setup = function()
     autosave_last_session = true,
     autosave_ignore_not_normal = true,
     autosave_ignore_dirs = {
-      vim.env["FORGE"] .. "/notes",
+      vim.env["_H"],
       vim.env["HOME"],
       vim.env["HOME"] .. "/Downloads",
       "/tmp",

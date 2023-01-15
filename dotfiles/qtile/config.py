@@ -220,7 +220,7 @@ groups.extend(
             [
                 DropDown(
                     "zk",
-                    "alacritty -e zsh -i -c 'cd $FORGE/notes; nvim index.md'",
+                    "alacritty -e zsh -i -c 'cd $_H; nvim index.md'",
                     on_focus_lost_hide=False,
                     width=0.95,
                     height=0.95,
@@ -247,7 +247,7 @@ groups.extend(
                 ),
                 DropDown(
                     "areas/workflow",
-                    "alacritty -e zsh -i -c 'cd $FORGE/areas/workflow/; nvim'",
+                    "alacritty -e zsh -i -c 'cd $_F/areas/workflow/; nvim'",
                     on_focus_lost_hide=False,
                     width=0.95,
                     height=0.95,
@@ -265,7 +265,7 @@ groups.extend(
                 ),
                 DropDown(
                     "tmp",
-                    "alacritty -e zsh -i -c 'cd $FORGE/tmp/; nvim'",
+                    "alacritty -e zsh -i -c 'cd $_F/tmp/; nvim'",
                     on_focus_lost_hide=False,
                     width=0.95,
                     height=0.95,

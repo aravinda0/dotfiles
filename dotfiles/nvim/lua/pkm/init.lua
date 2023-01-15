@@ -8,7 +8,7 @@ local pkm_utils = require("pkm.utils")
 local M = {}
 
 local notes_dirs = {
-  vim.env["FORGE"],
+  vim.env["_F"],
 }
 
 local handle_picker_mappings = function(prompt_bufnr, map)
