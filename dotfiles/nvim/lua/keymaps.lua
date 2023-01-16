@@ -1,7 +1,7 @@
 local tsbuiltin = require("telescope.builtin")
 local hop = require("hop")
 
-local pkm = require("pkm")
+local tspimped = require("tspimped")
 
 local M = {}
 
@@ -193,33 +193,9 @@ end
 -- Default mappings: https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/mappings.lua
 -- Actions: https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/actions/init.lua
 -- --------------------------------------------------------------------------------
-vim.keymap.set("n", "<c-p>", function()
-  if pkm.is_cwd_notes_dir() then
-    pkm.find_notes()
-  else
-    tsbuiltin.find_files()
-  end
-end)
-
-vim.keymap.set("n", "<c-o>", function()
-  local opts = {
-    ignore_current_buffer = true,
-    sort_mru = true,
-  }
-  if pkm.is_cwd_notes_dir() then
-    pkm.find_notes_buffers(opts)
-  else
-    tsbuiltin.buffers(opts)
-  end
-end)
-
-vim.keymap.set("n", "<c-t>/", function()
-  if pkm.is_cwd_notes_dir() then
-    pkm.live_grep_notes()
-  else
-    tsbuiltin.live_grep()
-  end
-end)
+vim.keymap.set("n", "<c-p>", tspimped.find_files)
+vim.keymap.set("n", "<c-o>", tspimped.find_buffers)
+vim.keymap.set("n", "<c-t>/", tspimped.live_grep)
 
 vim.keymap.set("n", "<c-t>h", tsbuiltin.help_tags)
 vim.keymap.set("n", "<c-t>vm", tsbuiltin.keymaps)
@@ -347,7 +323,5 @@ M.after_markdown = function()
     vim.api.nvim_win_set_cursor(0, { row + 1, col + 1 })
   end)
 end
-
--- --------------------------------------------------------------------------------
 
 return M
