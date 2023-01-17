@@ -54,3 +54,14 @@ vim.o.mouse = nil
 -- Do we still need these?
 vim.cmd("syntax on")
 vim.cmd("filetype plugin indent on")
+
+-- Enable highlighting for snippets in markdown files
+vim.g.markdown_fenced_languages = {
+  "html",
+  "bash",
+  "python",
+  "javascript",
+  "typescript",
+  "lua",
+  "rust",
+}
