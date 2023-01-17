@@ -40,8 +40,13 @@ return {
           "yaml",
         },
         sync_install = false,
+
         highlight = {
           enable = true,
+          disable = {
+            -- Handled by vimwiki for now
+            "markdown",
+          },
         },
 
         -- `indent` is experimental. Disabled for some langs.
