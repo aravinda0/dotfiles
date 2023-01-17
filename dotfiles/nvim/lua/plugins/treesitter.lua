@@ -56,13 +56,13 @@ return {
           disable = { "python", "yaml" },
         },
 
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-            keymaps = keymaps.build_textobject_keymaps(),
-          },
-        },
+        -- textobjects = {
+        --   select = {
+        --     enable = true,
+        --     lookahead = true,
+        --     keymaps = keymaps.build_textobject_keymaps(),
+        --   },
+        -- },
       })
     end,
   },
