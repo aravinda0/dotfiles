@@ -1,18 +1,28 @@
-local telescope = require("telescope")
-
 local keymaps = require("keymaps")
 
-local M = {}
-
-M.setup = function()
-  telescope.setup({
-    defaults = {
-      file_ignore_patterns = {},
-      mappings = keymaps.build_telescope_config_keymaps(),
+return {
+  {
+    "nvim-telescope/telescope.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+      },
     },
-  })
+    config = function()
+      local telescope = require("telescope")
 
-  telescope.load_extension("fzf")
-end
+      telescope.setup({
+        defaults = {
+          file_ignore_patterns = {},
+          mappings = keymaps.build_telescope_config_keymaps(),
+        },
+      })
+      keymaps.set_telescope_keymaps()
 
-return M
+      telescope.load_extension("fzf")
+    end,
+  },
+}

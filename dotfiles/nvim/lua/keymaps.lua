@@ -1,8 +1,3 @@
-local tsbuiltin = require("telescope.builtin")
-local hop = require("hop")
-
-local tspimped = require("tspimped")
-
 local M = {}
 
 -- Use the space bar as our leader key
@@ -193,33 +188,39 @@ end
 -- Default mappings: https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/mappings.lua
 -- Actions: https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/actions/init.lua
 -- --------------------------------------------------------------------------------
-vim.keymap.set("n", "<c-p>", tspimped.find_files)
-vim.keymap.set("n", "<c-o>", tspimped.find_buffers)
-vim.keymap.set("n", "<c-t>/", tspimped.live_grep)
 
-vim.keymap.set("n", "<c-t>h", tsbuiltin.help_tags)
-vim.keymap.set("n", "<c-t>vm", tsbuiltin.keymaps)
-vim.keymap.set("n", "<c-t>vc", tsbuiltin.commands)
-vim.keymap.set("n", "<c-t>vr", tsbuiltin.reloader)
-vim.keymap.set("n", "<c-t>f", tsbuiltin.current_buffer_fuzzy_find)
-vim.keymap.set("n", "<c-t>*", tsbuiltin.grep_string)
+M.set_telescope_keymaps = function()
+  local tsbuiltin = require("telescope.builtin")
+  local tspimped = require("tspimped")
 
--- context:lang
-vim.keymap.set("n", "<c-l>d", tsbuiltin.diagnostics)
-vim.keymap.set("n", "<c-l>ic", tsbuiltin.lsp_incoming_calls)
-vim.keymap.set("n", "<c-l>oc", tsbuiltin.lsp_outgoing_calls)
-vim.keymap.set("n", "<c-l>r", tsbuiltin.lsp_references)
-vim.keymap.set("n", "<c-l>s", tsbuiltin.lsp_document_symbols)
-vim.keymap.set("n", "<c-l>wss", tsbuiltin.lsp_workspace_symbols)
-vim.keymap.set("n", "<c-l>t", tsbuiltin.treesitter)
+  vim.keymap.set("n", "<c-p>", tspimped.find_files)
+  vim.keymap.set("n", "<c-o>", tspimped.find_buffers)
+  vim.keymap.set("n", "<c-t>/", tspimped.live_grep)
 
--- context:git
-vim.keymap.set("n", "<c-g>s", tsbuiltin.git_status)
-vim.keymap.set("n", "<c-g>h", tsbuiltin.git_commits)
-vim.keymap.set("n", "<c-g>bh", tsbuiltin.git_bcommits)
-vim.keymap.set("n", "<c-g>f", tsbuiltin.git_files)
-vim.keymap.set("n", "<c-g>br", tsbuiltin.git_branches)
-vim.keymap.set("n", "<c-g>a", tsbuiltin.git_stash)
+  vim.keymap.set("n", "<c-t>h", tsbuiltin.help_tags)
+  vim.keymap.set("n", "<c-t>vm", tsbuiltin.keymaps)
+  vim.keymap.set("n", "<c-t>vc", tsbuiltin.commands)
+  vim.keymap.set("n", "<c-t>vr", tsbuiltin.reloader)
+  vim.keymap.set("n", "<c-t>f", tsbuiltin.current_buffer_fuzzy_find)
+  vim.keymap.set("n", "<c-t>*", tsbuiltin.grep_string)
+
+  -- context:lang
+  vim.keymap.set("n", "<c-l>d", tsbuiltin.diagnostics)
+  vim.keymap.set("n", "<c-l>ic", tsbuiltin.lsp_incoming_calls)
+  vim.keymap.set("n", "<c-l>oc", tsbuiltin.lsp_outgoing_calls)
+  vim.keymap.set("n", "<c-l>r", tsbuiltin.lsp_references)
+  vim.keymap.set("n", "<c-l>s", tsbuiltin.lsp_document_symbols)
+  vim.keymap.set("n", "<c-l>wss", tsbuiltin.lsp_workspace_symbols)
+  vim.keymap.set("n", "<c-l>t", tsbuiltin.treesitter)
+
+  -- context:git
+  vim.keymap.set("n", "<c-g>s", tsbuiltin.git_status)
+  vim.keymap.set("n", "<c-g>h", tsbuiltin.git_commits)
+  vim.keymap.set("n", "<c-g>bh", tsbuiltin.git_bcommits)
+  vim.keymap.set("n", "<c-g>f", tsbuiltin.git_files)
+  vim.keymap.set("n", "<c-g>br", tsbuiltin.git_branches)
+  vim.keymap.set("n", "<c-g>a", tsbuiltin.git_stash)
+end
 
 M.build_telescope_config_keymaps = function()
   local actions = require("telescope.actions")
@@ -279,12 +280,15 @@ M.build_aerial_config_keymaps = function()
 end
 
 -- --------------------------------------------------------------------------------
--- hop.nvim
+-- leap.nvim
 -- --------------------------------------------------------------------------------
 
-vim.keymap.set("n", "s", hop.hint_char2)
-vim.keymap.set("n", "<leader>sw", hop.hint_words)
-vim.keymap.set("n", "<leader>sl", hop.hint_lines_skip_whitespace)
+M.set_leap_keymaps = function()
+  local leap = require("leap")
+  vim.keymap.set("n", "s", function()
+    leap.leap({ target_windows = { vim.fn.win_getid() } })
+  end)
+end
 
 -- --------------------------------------------------------------------------------
 -- filetype markdown
