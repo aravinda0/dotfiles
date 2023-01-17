@@ -1,7 +1,6 @@
 return {
   {
-    "numToStr/Comment.nvim",
+    "tpope/vim-surround",
     event = "VeryLazy",
-    config = true,
   },
 }
