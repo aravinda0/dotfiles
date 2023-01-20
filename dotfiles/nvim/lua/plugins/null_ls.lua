@@ -32,7 +32,15 @@ return {
           }),
 
           null_ls.builtins.formatting.black,
-          null_ls.builtins.formatting.isort,
+          null_ls.builtins.diagnostics.ruff,
+
+          null_ls.builtins.diagnostics.sqlfluff.with({
+            extra_args = { "--dialect", "postgres" },
+          }),
+
+          null_ls.builtins.formatting.prettierd,
+
+          null_ls.builtins.formatting.rustywind,
 
           null_ls.builtins.formatting.stylua,
         },
