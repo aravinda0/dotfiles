@@ -154,6 +154,11 @@ keys = [
         lazy.group["scratchpad/notes"].hide_all(),
         desc="Hide all notes scratchpad windows",
     ),
+    EzKey(
+        "C-<space>",
+        lazy.group["scratchpad/notes"].hide_all(),
+        desc="Hide all notes scratchpad windows",
+    ),
     # --------------------------------------------------------------------------------
     # Window actions
     # --------------------------------------------------------------------------------
