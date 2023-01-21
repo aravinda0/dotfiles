@@ -106,6 +106,15 @@ config.bind("<ctrl-shift-tab>", "tab-prev")
 config.bind("<ctrl-y>", "run-with-count 3 scroll up")
 config.bind("<ctrl-e>", "run-with-count 3 scroll down")
 
+config.bind("yf", "hint links yank")
+config.bind(";i", "hint inputs")
+config.bind(";Ii", "hint images")
+config.bind(";II", "hint images tab")
+
+config.bind("m", "mode-enter set_mark")
+
+config.bind("M", "quickmark-save")
+
 # Hard refresh
 config.bind("<ctrl-shift-r>", "reload -f")
 
@@ -114,6 +123,10 @@ config.bind("<space>hm", "open -t ;; bind")
 config.bind("<space>ho", "open -t ;; set")
 config.bind("<space>hh", "open -t ;; help")
 config.bind("<space>hc", "open -t qute://help/commands.html")
+
+# Edit stuff
+config.bind("<space>eu", "edit-url")
+config.bind("<space>ec", "edit-command")
 
 
 # --------------------------------------------------------------------------------
