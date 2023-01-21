@@ -62,12 +62,10 @@ c.hints.chars = "asdghjklwernmiop"
 c.editor.command = [
     "alacritty",
     "-e",
-    "zsh",
-    "-c",
-    "-i",
     "nvim",
     "{file}",
-    # "'nvim {file} -c normal {line}G{column0}l'",
+    "-c",
+    "normal {line}G{column0}l",
 ]
 
 

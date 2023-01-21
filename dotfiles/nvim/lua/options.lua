@@ -46,7 +46,12 @@ vim.o.splitbelow = true
 
 -- Point nvim to the Python in the dedicated nvim venv we created, which holds the nvim
 -- Python client and other packages for plugins.
-vim.g.python3_host_prog = vim.env["NVIM_PY3_VENV_PATH"] .. "/bin/python"
+-- NOTE: $NVIM_PY3_VENV_PATH can be nil if nvim was started from outside our zsh config.
+-- We're okay with this for now.
+local nvim_py3_venv_path = vim.env["NVIM_PY3_VENV_PATH"]
+if nvim_py3_venv_path ~= nil then
+  vim.g.python3_host_prog = nvim_py3_venv_path .. "/bin/python"
+end
 
 -- Disable mouse
 vim.o.mouse = nil
