@@ -106,6 +106,7 @@ M.build_textobject_keymaps = function()
     ["ii"] = "@conditional.inner",
     ["aa"] = "@attribute.outer",
     ["ia"] = "@attribute.inner",
+    ["i;"] = "@statement.outer",
     ["a;"] = "@statement.outer",
   }
 end
