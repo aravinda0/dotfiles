@@ -434,10 +434,20 @@ wmname = "LG3D"
 def handle_floatation(window):
     if any(
         [
+            _is_util_mode_editor(window),
             _is_firefox_dialog(window),
         ]
     ):
         window.floating = True
+
+
+def _is_util_mode_editor(window):
+    wm_class = window.window.get_wm_class()
+    if wm_class[0] == "util_mode_editor":
+        # x,y positioning seems to be ignored...
+        window.place(100, 100, 2500, 800, 1, "#ffffff")
+        return True
+    return False
 
 
 def _is_firefox_dialog(window):

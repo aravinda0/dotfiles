@@ -61,6 +61,8 @@ c.hints.chars = "asdghjklwernmiop"
 
 c.editor.command = [
     "alacritty",
+    "--class",
+    "util_mode_editor",
     "-e",
     "nvim",
     "{file}",
