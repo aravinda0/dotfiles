@@ -22,6 +22,10 @@ packages = [
     # manage disks and handle automounting
     "udisks2",
     "udiskie",
+    #
+    # fonts,
+    "ttf-sourcecodepro-nerd",
+    "noto-fonts-emoji",
 ]
 
 

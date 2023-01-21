@@ -9,6 +9,7 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-emoji",
       "saadparwaiz1/cmp_luasnip",
     },
     config = function()
@@ -25,6 +26,7 @@ return {
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "path" },
+          { name = "emoji" },
           { name = "luasnip" },
         }, {
           { name = "buffer" },
