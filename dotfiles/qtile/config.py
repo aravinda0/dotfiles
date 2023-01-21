@@ -288,6 +288,7 @@ groups.extend(
                     y=0.02,
                 ),
             ],
+            single=True,
         ),
     ]
 )
