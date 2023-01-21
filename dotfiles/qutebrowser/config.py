@@ -71,10 +71,16 @@ c.editor.command = [
 
 c.url.searchengines = {
     "DEFAULT": "https://duckduckgo.com/?q={}",
-    "r": "https://duckduckgo.com/?q={}+site%3Areddit.com",
+    "r": "https://duckduckgo.com/?q=site%3Areddit.com+{}",
+    "i": "https://duckduckgo.com/?q={}&ia=images&iax=images",
+    "w": "https://en.wikipedia.org/w/index.php?search={}",
     "g": "https://github.com/search?q={}",
     "gc": "https://github.com/search?q={}&type=code",
     "s": "https://sourcegraph.com/search?q=context:global+{}&patternType=standard&sm=1",
+    "dic": "https://en.wiktionary.org/wiki/{}",
+    "aur": "https://aur.archlinux.org/packages/?O=0&K={}",
+    "awiki": "https://wiki.archlinux.org/index.php?title=Special%3ASearch&search={}",
+    "t": "https://www.magnetdl.com/search/?m=1&q={}",
 }
 
 
