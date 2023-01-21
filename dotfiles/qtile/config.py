@@ -4,11 +4,25 @@ import subprocess
 
 import workspaces as ws
 from libqtile import bar, hook, layout, widget
-from libqtile.config import (Click, Drag, DropDown, EzKey, Group, KeyChord,
-                             Match, ScratchPad, Screen)
+from libqtile.config import (
+    Click,
+    Drag,
+    DropDown,
+    EzKey,
+    Group,
+    KeyChord,
+    Match,
+    ScratchPad,
+    Screen,
+)
 from libqtile.lazy import lazy
-from workspaces import (ContextGroupBox, activate_context, activate_group_set,
-                        activate_standard_group, make_groups_from_contexts)
+from workspaces import (
+    ContextGroupBox,
+    activate_context,
+    activate_group_set,
+    activate_standard_group,
+    make_groups_from_contexts,
+)
 
 # TODO: Figure out how to not hardcode this. zsh env var not set yet when qtile runs.
 DOTFILES_PATH = os.path.expanduser("~/.dotfiles")
