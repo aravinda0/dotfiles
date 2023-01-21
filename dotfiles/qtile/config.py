@@ -476,3 +476,6 @@ def autostart():
 
     # Start udiskie daemon to watch for connected disks
     subprocess.Popen(["/usr/bin/udiskie", "-s"])
+
+    # Start NetworkManager systray applet
+    subprocess.Popen(["/usr/bin/nm-applet", "--indicator"])
