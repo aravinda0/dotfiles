@@ -20,3 +20,6 @@ __pycache__/
 
 # Temporary while we have just neovim specific global lua config
 .luarc.json
+
+# Ignore mpv script data files
+dotfiles/mpv/persistent_config.json
