@@ -235,11 +235,27 @@ M.build_telescope_config_keymaps = function()
 end
 
 -- --------------------------------------------------------------------------------
+-- neo-tree
+-- --------------------------------------------------------------------------------
+
+vim.keymap.set("n", "<c-m-h>", "<cmd>Neotree toggle position=float<cr>")
+
+M.build_neo_tree_config_keymaps = function()
+  return {
+    ["o"] = "toggle_node",
+    ["O"] = "expand_all_nodes",
+    ["<c-v>"] = "open_vsplit",
+    ["<c-x>"] = "open_split",
+    ["<c-t>"] = "open_tabnew",
+  }
+end
+
+-- --------------------------------------------------------------------------------
 -- aerial.nvim
 -- --------------------------------------------------------------------------------
 
 vim.keymap.set("n", "<c-h>", "<cmd>AerialToggle float<cr>")
-vim.keymap.set("n", "<c-m-h>", "<cmd>AerialToggle<cr>")
+vim.keymap.set("n", "<leader>h", "<cmd>AerialToggle<cr>")
 
 M.build_aerial_config_keymaps = function()
   return {
