@@ -90,6 +90,9 @@ c.url.searchengines = {
 # Keymaps: normal mode
 # --------------------------------------------------------------------------------
 
+# Stop deleting tabs inadvertantly
+config.unbind("d")
+
 config.bind("<space>rc", "config-source")
 
 config.bind("<ctrl-p>", "set-cmd-text -s :open")
