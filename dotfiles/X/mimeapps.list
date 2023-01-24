@@ -1,0 +1,15 @@
+[Default Applications]
+application/pdf=org.pwmt.zathura.desktop
+application/octet-stream=nvim.desktop
+application/x-gettext-translation=nvim.desktop
+application/xml=nvim.desktop
+application/x-wine-extension-ini=nvim.desktop
+text/plain=nvim.desktop
+text/markdown=nvim.desktop
+text/html=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/about=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/unknown=org.qutebrowser.qutebrowser.desktop
+image/*=mpv.desktop;feh.desktop
+video/*=mpv.dektop
