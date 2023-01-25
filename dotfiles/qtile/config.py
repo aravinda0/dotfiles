@@ -445,7 +445,7 @@ def _is_util_mode_editor(window):
     wm_class = window.window.get_wm_class()
     if wm_class[0] == "util_mode_editor":
         # x,y positioning seems to be ignored...
-        window.place(100, 100, 2500, 800, 1, "#ffffff")
+        window.place(100, 100, 2000, 800, 1, "#ffffff")
         return True
     return False
 
