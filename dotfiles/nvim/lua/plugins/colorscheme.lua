@@ -32,7 +32,7 @@ return {
     "sainnhe/gruvbox-material",
     -- enabled = false,
     lazy = false,
-    priority = 1000,
+    priority = 1001,
     ft = { "markdown" },
 
     config = function()
