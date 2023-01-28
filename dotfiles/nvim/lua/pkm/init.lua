@@ -1,6 +1,8 @@
 local tsbuiltin = require("telescope.builtin")
 local tspickers = require("telescope.pickers")
 local tsfinders = require("telescope.finders")
+local tsactions = require("telescope.actions")
+local tsaction_state = require("telescope.actions.state")
 local tsconf = require("telescope.config").values
 
 local pkm_utils = require("pkm.utils")
@@ -14,13 +16,12 @@ local notes_dirs = {
 local handle_picker_mappings = function(prompt_bufnr, map)
   local insert_link = function()
     local selection = tsaction_state.get_selected_entry()
-    print(vim.inspect(selection))
     tsactions.close(prompt_bufnr)
-    pkm_utils.insert_link(selection.display, selection.rel_path)
+    local notes_path = pkm_utils.to_notes_path(selection.path)
+    pkm_utils.insert_link(selection.display, notes_path)
   end
 
   map("i", "<c-l>", insert_link)
-  -- map("i", "<c-y>", insert_selection_as_link)
 
   return true
 end
@@ -58,6 +59,7 @@ M.find_notes = function(opts)
       value = raw_value,
       display = title,
       ordinal = raw_value,
+      rel_path = rel_path,
       path = abs_path,
     }
   end

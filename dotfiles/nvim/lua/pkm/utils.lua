@@ -22,4 +22,23 @@ M.insert_link = function(title, target)
   vim.api.nvim_put({ link }, "", false, true)
 end
 
+M.to_notes_path = function(abs_path)
+  local _H = vim.env["_H"]
+  if not _H then
+    error("$_H env var has not been set!")
+  end
+
+  local notes_path = abs_path
+
+  if string.sub(abs_path, 1, string.len(_H)) == _H then
+    notes_path = "$_H" .. string.sub(abs_path, string.len(_H) + 1)
+  else
+    -- fall back to providing path relative to cwd
+    local cwd = vim.fn.getcwd()
+    notes_path = string.sub(abs_path, string.len(cwd) + 2)
+  end
+
+  return notes_path
+end
+
 return M
