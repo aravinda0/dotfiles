@@ -23,6 +23,11 @@ local handle_picker_mappings = function(prompt_bufnr, map)
 
   map("i", "<c-l>", insert_link)
 
+  -- Default to inserting note links when in insert mode
+  if vim.fn.mode() == "i" then
+    tsactions.select_default:replace(insert_link)
+  end
+
   return true
 end
 

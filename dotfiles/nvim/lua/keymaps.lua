@@ -196,6 +196,7 @@ M.set_telescope_keymaps = function()
   local tspimped = require("tspimped")
 
   vim.keymap.set("n", "<c-p>", tspimped.find_files)
+  vim.keymap.set("i", "<c-p>", tspimped.find_files)
   vim.keymap.set("n", "<c-o>", tspimped.find_buffers)
   vim.keymap.set("n", "<c-t>/", tspimped.live_grep)
 
