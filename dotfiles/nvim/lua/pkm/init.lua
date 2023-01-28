@@ -55,10 +55,10 @@ M.find_notes = function(opts)
   local find_cmd = { "rg", "-m", "1", "-r", "$title_text", "^# (?P<title_text>)" }
 
   local make_entry = function(raw_value)
-    local split = vim.split(raw_value, ":")
-    local rel_path = split[1]
+    local i_colon = string.find(raw_value, ":")
+    local rel_path = string.sub(raw_value, 1, i_colon - 1)
+    local title = string.sub(raw_value, i_colon + 1)
     local abs_path = vim.fn.getcwd() .. "/" .. rel_path
-    local title = split[2]
 
     return {
       value = raw_value,
