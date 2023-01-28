@@ -31,7 +31,7 @@ return {
   {
     "sainnhe/gruvbox-material",
     -- enabled = false,
-    lazy = false,
+    -- lazy = false,
     priority = 1001,
     ft = { "markdown" },
 
