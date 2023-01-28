@@ -13,15 +13,25 @@ local r = luasnip.restore_node
 local snippets = {
   s({
     trig = "pr",
-    dscr = "Print function",
+    dscr = "Print",
   }, {
-    t('print("'),
+    t("print("),
     i(1),
-    t('")'),
+    t(")"),
+    i(0),
+  }),
+
+  s({
+    trig = "pri",
+    dscr = "Print with vim.inspect",
+  }, {
+    t("print(vim.inspect("),
+    i(1),
+    t("))"),
     i(0),
   }),
 }
 
 return {
-  python = snippets,
+  lua = snippets,
 }
