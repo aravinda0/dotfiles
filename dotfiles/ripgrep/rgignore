@@ -1,0 +1,54 @@
+*.py[cod]
+*$py.class
+
+
+# C extensions
+*.so
+
+
+# JavaScript
+node_modules
+bower_components
+
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+
+# Translations
+*.mo
+*.pot
+
+
+# OSX
+.DS_Store
+
+
+# Logs
+pip-log.txt
+pip-delete-this-directory.txt
+npm-debug.log
+
+
+# IDEs
+.idea
+*.iml
+
+
+# Misc
+.tmp
+.venv
