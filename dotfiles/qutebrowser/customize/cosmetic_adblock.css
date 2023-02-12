@@ -1,0 +1,4 @@
+/* Hide promoted ads on reddit.com */
+.promotedlink, .ad-container, .premium-banner-outer {
+  display: none !important;
+}

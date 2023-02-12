@@ -32,6 +32,10 @@ config.load_autoconfig(False)
 config.source("customize/gruvbox.py")
 
 
+# Load user stylesheets
+c.content.user_stylesheets = "./customize/cosmetic_adblock.css"
+
+
 c.fonts.default_family = ["Source Code Pro"]
 c.fonts.default_size = "12pt"
 # c.qt.highdpi = False
