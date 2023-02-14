@@ -240,7 +240,7 @@ end
 -- neo-tree
 -- --------------------------------------------------------------------------------
 
-vim.keymap.set("n", "<c-m-h>", "<cmd>Neotree toggle position=float<cr>")
+vim.keymap.set("n", "<c-m-h>", "<cmd>Neotree toggle position=float reveal<cr>")
 
 M.build_neo_tree_config_keymaps = function()
   return {
