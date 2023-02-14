@@ -1,0 +1,6 @@
+@theme "gruvbox-dark"
+
+
+configuration {
+  font: "Source Code Pro 20";
+}
