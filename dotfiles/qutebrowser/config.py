@@ -84,8 +84,9 @@ c.url.searchengines = {
     "gc": "https://github.com/search?q={}&type=code",
     "s": "https://sourcegraph.com/search?q=context:global+{}&patternType=standard&sm=1",
     "dic": "https://en.wiktionary.org/wiki/{}",
+    "y": "https://www.youtube.com/results?search_query={}",
     "aur": "https://aur.archlinux.org/packages/?O=0&K={}",
-    "awiki": "https://wiki.archlinux.org/index.php?title=Special%3ASearch&search={}",
+    "arch": "https://wiki.archlinux.org/index.php?title=Special%3ASearch&search={}",
     "t": "https://www.magnetdl.com/search/?m=1&q={}",
 }
 
@@ -105,6 +106,9 @@ config.bind("<ctrl-shift-p>", "spawn qutebrowser --target private-window")
 config.bind("<ctrl-t>", "open -t")
 config.bind("<ctrl-o>", "set-cmd-text -s :quickmark-load")
 
+config.bind("<ctrl-y>", "run-with-count 3 scroll up")
+config.bind("<ctrl-e>", "run-with-count 3 scroll down")
+
 config.bind("K", "tab-next")
 config.bind("J", "tab-prev")
 config.bind("<alt-r>", "tab-next")
@@ -112,8 +116,7 @@ config.bind("<alt-e>", "tab-prev")
 config.bind("<ctrl-tab>", "tab-next")
 config.bind("<ctrl-shift-tab>", "tab-prev")
 
-config.bind("<ctrl-y>", "run-with-count 3 scroll up")
-config.bind("<ctrl-e>", "run-with-count 3 scroll down")
+config.bind("yt", "tab-clone")
 
 config.bind("yf", "hint links yank")
 config.bind(";i", "hint inputs")
@@ -135,6 +138,7 @@ config.bind("<space>hc", "open -t qute://help/commands.html")
 
 # Edit stuff
 config.bind("<space>eu", "edit-url")
+config.bind("<alt-u>", "edit-url")
 config.bind("<space>ec", "edit-command")
 
 
