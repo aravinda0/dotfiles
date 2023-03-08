@@ -13,6 +13,7 @@ from libqtile.config import (
     Screen,
 )
 from libqtile.lazy import lazy
+from qtile_bonsai.layout import Bonsai
 
 from workspaces import (
     activate_context,
@@ -115,6 +116,27 @@ def resize_down(qtile):
 
 # keycodes: https://github.com/qtile/qtile/blob/master/libqtile/backend/x11/xkeysyms.py
 keys = [
+    # --------------------------------------------------------------------------------
+    # qtile-bonsai
+    # --------------------------------------------------------------------------------
+    EzKey("M-v", lazy.layout.spawn_split(terminal, "x")),
+    EzKey("M-x", lazy.layout.spawn_split(terminal, "y")),
+    EzKey("M-n", lazy.layout.spawn_tab(terminal)),
+    EzKey("M-S-n", lazy.layout.spawn_tab(terminal, new_level=True)),
+    EzKey("M-t", lazy.layout.spawn_tab(terminal)),
+    EzKey("M-S-t", lazy.layout.spawn_tab(terminal, new_level=True)),
+    EzKey("M-h", lazy.layout.left()),
+    EzKey("M-l", lazy.layout.right()),
+    EzKey("M-k", lazy.layout.up()),
+    EzKey("M-j", lazy.layout.down()),
+    EzKey("M-C-l", lazy.layout.resize_x(100)),
+    EzKey("M-C-h", lazy.layout.resize_x(-100)),
+    EzKey("M-C-j", lazy.layout.resize_y(100)),
+    EzKey("M-C-k", lazy.layout.resize_y(-100)),
+    EzKey("A-d", lazy.layout.prev_tab()),
+    EzKey("A-f", lazy.layout.next_tab()),
+    EzKey("C-S-r", lazy.layout.rename_tab()),
+    # --------------------------------------------------------------------------------
     # --------------------------------------------------------------------------------
     # Groups organization
     # --------------------------------------------------------------------------------
@@ -273,9 +295,10 @@ groups.extend(
 )
 
 layouts = [
-    layout.Bsp(),
+    Bonsai(**{}),
     layout.MonadWide(ratio=0.72, border_width=1),
     layout.Max(),
+    layout.Bsp(),
     # layout.Columns(border_focus_stack=['#d75f5f', '#8f3d3d'], border_width=4),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
