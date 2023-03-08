@@ -186,6 +186,10 @@ keys = [
     EzKey("C-S-<Return>", lazy.window.toggle_fullscreen()),
     EzKey("M-S-<Return>", lazy.layout.toggle_split()),
     EzKey("M-<Tab>", lazy.next_layout()),
+    EzKey("M-C-<Left>", resize_left),
+    EzKey("M-C-<Right>", resize_right),
+    EzKey("M-C-<Down>", resize_down),
+    EzKey("M-C-<Up>", resize_up),
     # --------------------------------------------------------------------------------
     # Audio
     # --------------------------------------------------------------------------------
