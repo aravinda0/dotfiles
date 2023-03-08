@@ -16,14 +16,14 @@ contexts = [
                 "nexus": 0,
                 "scout": 0,
             },
-            "groups": ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
+            "groups": ["1", "2", "3"],
         },
         "notes": {
             "preferred_display": {
                 "nexus": 1,
                 "scout": 0,
             },
-            "groups": ["1", "2", "3", "4", "5", "6"],
+            "groups": ["1", "2", "3"],
         },
         "browser": {
             "preferred_display": {
@@ -40,14 +40,14 @@ contexts = [
                 "nexus": 0,
                 "scout": 0,
             },
-            "groups": ["1", "2", "3", "4", "5"],
+            "groups": ["1", "2", "3"],
         },
         "notes": {
             "preferred_display": {
                 "nexus": 1,
                 "scout": 0,
             },
-            "groups": ["1", "2", "3", "4", "5", "6"],
+            "groups": ["1", "2", "3"],
         },
         "browser": {
             "preferred_display": {
@@ -64,14 +64,14 @@ contexts = [
                 "nexus": 0,
                 "scout": 0,
             },
-            "groups": ["1", "2", "3", "4", "5"],
+            "groups": ["1", "2", "3"],
         },
         "notes": {
             "preferred_display": {
                 "nexus": 1,
                 "scout": 0,
             },
-            "groups": ["1", "2", "3", "4", "5", "6"],
+            "groups": ["1", "2", "3"],
         },
         "browser": {
             "preferred_display": {
@@ -88,14 +88,14 @@ contexts = [
                 "nexus": 0,
                 "scout": 0,
             },
-            "groups": ["1", "2", "3", "4", "5"],
+            "groups": ["1", "2", "3"],
         },
         "notes": {
             "preferred_display": {
                 "nexus": 1,
                 "scout": 0,
             },
-            "groups": ["1", "2", "3", "4", "5", "6"],
+            "groups": ["1", "2", "3"],
         },
         "browser": {
             "preferred_display": {
@@ -112,14 +112,14 @@ contexts = [
                 "nexus": 0,
                 "scout": 0,
             },
-            "groups": ["1", "2", "3", "4"],
+            "groups": ["1", "2", "3"],
         },
         "notes": {
             "preferred_display": {
                 "nexus": 1,
                 "scout": 0,
             },
-            "groups": ["1", "2", "3", "4", "5", "6"],
+            "groups": ["1", "2", "3"],
         },
         "browser": {
             "preferred_display": {
@@ -136,14 +136,14 @@ contexts = [
                 "nexus": 0,
                 "scout": 0,
             },
-            "groups": ["1", "2", "3", "4"],
+            "groups": ["1", "2", "3"],
         },
         "notes": {
             "preferred_display": {
                 "nexus": 1,
                 "scout": 0,
             },
-            "groups": ["1", "2", "3", "4", "5", "6"],
+            "groups": ["1", "2", "3"],
         },
         "browser": {
             "preferred_display": {
@@ -240,7 +240,7 @@ def activate_standard_group(standard_group_name, screen=None):
             active_context, active_group_set, standard_group_name
         )
 
-        qtile.groups_map[normalized_group].toscreen(screen, toggle=False)
+        qtile.groups_map[normalized_group].cmd_toscreen(screen, toggle=False)
 
 
 def cycle_group_in_group_set(step=1):

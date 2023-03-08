@@ -158,8 +158,8 @@ keys = [
     EzKey("M-7", _activate_standard_group("7")),
     EzKey("M-8", _activate_standard_group("8")),
     EzKey("M-9", _activate_standard_group("9")),
-    EzKey("A-f", _cycle_group_in_group_set(1)),
-    EzKey("A-d", _cycle_group_in_group_set(-1)),
+    EzKey("C-A-f", _cycle_group_in_group_set(1)),
+    EzKey("C-A-d", _cycle_group_in_group_set(-1)),
     # --------------------------------------------------------------------------------
     # Scratchpads
     # --------------------------------------------------------------------------------
