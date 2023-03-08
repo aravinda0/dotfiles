@@ -152,35 +152,19 @@ keys = [
     EzKey(
         "C-<BackSpace>",
         lazy.group["scratchpad/notes"].hide_all(),
-        desc="Hide all notes scratchpad windows",
     ),
     # --------------------------------------------------------------------------------
     # Window actions
     # --------------------------------------------------------------------------------
-    EzKey("M-h", lazy.layout.left(), desc="Move focus to left"),
-    EzKey("M-l", lazy.layout.right(), desc="Move focus to right"),
-    EzKey("M-j", lazy.layout.down(), desc="Move focus down"),
-    EzKey("M-k", lazy.layout.up(), desc="Move focus up"),
-    EzKey("M-C-h", resize_left, desc="Grow window to the left"),
-    EzKey("M-C-l", resize_right, desc="Grow window to the right"),
-    EzKey("M-C-j", resize_down, desc="Grow window down"),
-    EzKey("M-C-k", resize_up, desc="Grow window up"),
-    EzKey("M-S-h", lazy.layout.shuffle_left(), desc="Move window to the left"),
-    EzKey("M-S-l", lazy.layout.shuffle_right(), desc="Move window to the right"),
-    EzKey("M-S-j", lazy.layout.shuffle_down(), desc="Move window down"),
-    EzKey("M-S-k", lazy.layout.shuffle_up(), desc="Move window up"),
-    EzKey("C-S-n", lazy.layout.normalize(), desc="Reset all window sizes"),
-    EzKey("C-S-f", lazy.window.toggle_floating(), desc="Toggle floating mode"),
-    EzKey(
-        "C-S-<Return>", lazy.window.toggle_fullscreen(), desc="Toggle full-screen mode"
-    ),
-    EzKey("M-<space>", lazy.layout.next(), desc="Move window focus to other window"),
-    EzKey(
-        "M-S-<Return>",
-        lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack",
-    ),
-    EzKey("M-<Tab>", lazy.next_layout(), desc="Cycle between layouts"),
+    EzKey("M-S-h", lazy.layout.shuffle_left()),
+    EzKey("M-S-l", lazy.layout.shuffle_right()),
+    EzKey("M-S-j", lazy.layout.shuffle_down()),
+    EzKey("M-S-k", lazy.layout.shuffle_up()),
+    EzKey("C-S-n", lazy.layout.normalize()),
+    EzKey("C-S-f", lazy.window.toggle_floating()),
+    EzKey("C-S-<Return>", lazy.window.toggle_fullscreen()),
+    EzKey("M-S-<Return>", lazy.layout.toggle_split()),
+    EzKey("M-<Tab>", lazy.next_layout()),
     # --------------------------------------------------------------------------------
     # Audio
     # --------------------------------------------------------------------------------
@@ -190,7 +174,7 @@ keys = [
     # --------------------------------------------------------------------------------
     # Misc
     # --------------------------------------------------------------------------------
-    EzKey("M-<Return>", lazy.spawn(terminal), desc="Launch terminal"),
+    EzKey("M-<Return>", lazy.spawn(terminal)),
     EzKey("M-r", lazy.spawncmd()),
     EzKey("M-p", lazy.spawn("rofi -show drun")),
     KeyChord(
@@ -202,21 +186,16 @@ keys = [
             EzKey("f", lazy.spawn("firefox-developer-edition")),
             EzKey("t", lazy.spawn("qbittorrent")),
         ],
-        desc="Run applications/programs",
     ),
-    EzKey("M-<BackSpace>", lazy.window.kill(), desc="Kill focused window"),
-    EzKey("C-q", lazy.window.kill(), desc="Kill focused window"),
-    EzKey(
-        "C-S-l",
-        lazy.spawn("light-locker-command -l"),
-        desc="Lock system",
-    ),
+    EzKey("M-<BackSpace>", lazy.window.kill()),
+    EzKey("C-q", lazy.window.kill()),
+    EzKey("C-S-l", lazy.spawn("light-locker-command -l")),
     # --------------------------------------------------------------------------------
     # Mgmt
     # --------------------------------------------------------------------------------
-    EzKey("M-C-r", lazy.reload_config(), desc="Reload Qtile config"),
-    EzKey("M-S-r", lazy.restart(), desc="Restart Qtile"),
-    EzKey("M-C-q", lazy.shutdown(), desc="Shutdown Qtile"),
+    EzKey("M-C-r", lazy.reload_config()),
+    EzKey("M-S-r", lazy.restart()),
+    EzKey("M-C-q", lazy.shutdown()),
 ]
 
 groups = make_groups_from_contexts()
