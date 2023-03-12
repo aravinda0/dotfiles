@@ -32,6 +32,7 @@ return {
           "regex",
           "rust",
           "sql",
+          "svelte",
           "terraform",
           "toml",
           "tsx",
@@ -40,7 +41,6 @@ return {
           "yaml",
         },
         sync_install = false,
-
         highlight = {
           enable = true,
           disable = {
@@ -48,14 +48,12 @@ return {
             "markdown",
           },
         },
-
         -- `indent` is experimental. Disabled for some langs.
         --  Track issue: https://github.com/nvim-treesitter/nvim-treesitter/issues/1136
         indent = {
           enable = true,
           disable = { "python", "yaml" },
         },
-
         textobjects = {
           select = {
             enable = true,
