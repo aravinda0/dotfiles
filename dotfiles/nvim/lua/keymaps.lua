@@ -152,7 +152,7 @@ M.build_nvim_cmp_config_keymaps = function()
     ["<c-j>"] = cmp.mapping.select_next_item(),
     ["<c-k>"] = cmp.mapping.select_prev_item(),
     ["<c-space>"] = cmp.mapping.complete(),
-    -- ["<c-e>"] = cmp.mapping.confirm({ select = true}),
+    ["<c-e>"] = cmp.mapping.confirm({ select = true }),
     ["<c-f>"] = cmp.mapping(function(fallback)
       if luasnip.expand_or_locally_jumpable() then
         luasnip.expand_or_jump()
@@ -161,8 +161,8 @@ M.build_nvim_cmp_config_keymaps = function()
       end
     end, { "i", "s" }),
     ["<c-b>"] = cmp.mapping(function(fallback)
-      if luasnip.get_active_snip() and luasnip.jumpable(-1) then
-        luasnip.jump(-1)
+      if luasnip.get_active_snip() and luasnip.jumpable( -1) then
+        luasnip.jump( -1)
       else
         fallback()
       end
@@ -176,7 +176,7 @@ M.build_nvim_cmp_config_keymaps = function()
     end, { "i", "s" }),
     ["<c-p>"] = cmp.mapping(function(fallback)
       if luasnip.choice_active() then
-        luasnip.change_choice(-1)
+        luasnip.change_choice( -1)
       else
         fallback()
       end
@@ -262,7 +262,6 @@ vim.keymap.set("n", "<leader>h", "<cmd>AerialToggle<cr>")
 M.build_aerial_config_keymaps = function()
   return {
     ["<esc>"] = "actions.close",
-
     -- Defaults
     ["?"] = "actions.show_help",
     ["g?"] = "actions.show_help",
