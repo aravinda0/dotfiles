@@ -137,9 +137,8 @@ config.bind("<space>hh", "open -t ;; help")
 config.bind("<space>hc", "open -t qute://help/commands.html")
 
 # Edit stuff
-config.bind("<space>eu", "edit-url")
-config.bind("<alt-u>", "edit-url")
-config.bind("<space>ec", "edit-command")
+config.bind("ge", "edit-url")
+config.bind("gc", "edit-command")
 
 
 # --------------------------------------------------------------------------------
