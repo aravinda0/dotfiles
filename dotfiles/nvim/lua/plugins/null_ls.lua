@@ -44,6 +44,10 @@ return {
           null_ls.builtins.formatting.rustywind,
 
           null_ls.builtins.formatting.stylua,
+
+          -- Nice in general, but interferes with fancypantsness of modern UI libs
+          -- null_ls.builtins.diagnostics.tidy,
+          -- null_ls.builtins.formatting.tidy,
         },
         on_attach = handle_lsp_attach,
       })
