@@ -240,6 +240,7 @@ end
 -- neo-tree
 -- --------------------------------------------------------------------------------
 
+vim.keymap.set("n", "<c-h>", "<cmd>Neotree toggle position=left reveal<cr>")
 vim.keymap.set("n", "<c-m-h>", "<cmd>Neotree toggle position=float reveal<cr>")
 
 M.build_neo_tree_config_keymaps = function()
@@ -256,8 +257,8 @@ end
 -- aerial.nvim
 -- --------------------------------------------------------------------------------
 
-vim.keymap.set("n", "<c-h>", "<cmd>AerialToggle float<cr>")
-vim.keymap.set("n", "<leader>h", "<cmd>AerialToggle<cr>")
+vim.keymap.set("n", "<c-m>", "<cmd>AerialToggle float<cr>")
+vim.keymap.set("n", "<c-m-m>", "<cmd>AerialToggle<cr>")
 
 M.build_aerial_config_keymaps = function()
   return {
