@@ -149,6 +149,8 @@ config.bind("<ctrl-e>", "completion-item-focus next;; rl-end-of-line", mode="com
 config.bind("<ctrl-y>", "completion-item-focus prev", mode="command")
 config.bind("<ctrl-j>", "completion-item-focus next", mode="command")
 config.bind("<ctrl-k>", "completion-item-focus prev", mode="command")
+config.bind("<ctrl-w>", "rl-backward-kill-word", mode="command")
+config.bind("<ctrl-shift-w>", "rl-filename-rubout", mode="command")
 
 config.bind("<ctrl-return>", "spawn --userscript complete_tld.py", mode="command")
 
