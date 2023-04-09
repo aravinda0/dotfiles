@@ -136,6 +136,12 @@ keys = [
     EzKey("A-d", lazy.layout.prev_tab()),
     EzKey("A-f", lazy.layout.next_tab()),
     EzKey("C-S-r", lazy.layout.rename_tab()),
+    EzKey("M-S-h", lazy.layout.swap_left()),
+    EzKey("M-S-l", lazy.layout.swap_right()),
+    EzKey("M-S-j", lazy.layout.swap_down()),
+    EzKey("M-S-k", lazy.layout.swap_up()),
+    EzKey("M-S-d", lazy.layout.swap_prev_tab()),
+    EzKey("M-S-f", lazy.layout.swap_next_tab()),
     # --------------------------------------------------------------------------------
     # --------------------------------------------------------------------------------
     # Groups organization
@@ -177,10 +183,10 @@ keys = [
     # --------------------------------------------------------------------------------
     # Window actions
     # --------------------------------------------------------------------------------
-    EzKey("M-S-h", lazy.layout.shuffle_left()),
-    EzKey("M-S-l", lazy.layout.shuffle_right()),
-    EzKey("M-S-j", lazy.layout.shuffle_down()),
-    EzKey("M-S-k", lazy.layout.shuffle_up()),
+    # EzKey("M-S-h", lazy.layout.shuffle_left()),
+    # EzKey("M-S-l", lazy.layout.shuffle_right()),
+    # EzKey("M-S-j", lazy.layout.shuffle_down()),
+    # EzKey("M-S-k", lazy.layout.shuffle_up()),
     EzKey("C-S-n", lazy.layout.normalize()),
     EzKey("C-S-f", lazy.window.toggle_floating()),
     EzKey("C-S-<Return>", lazy.window.toggle_fullscreen()),
