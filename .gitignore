@@ -18,6 +18,9 @@ __pycache__/
 # Dedicated venv directory for neovim
 /dotfiles/nvim/venvs
 
+# We don't want to maintain lazy.nvim lockfile
+/dotfiles/nvim/lazy-lock.json
+
 # Temporary while we have just neovim specific global lua config
 .luarc.json
 
