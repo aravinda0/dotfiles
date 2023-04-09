@@ -152,8 +152,7 @@ M.build_nvim_cmp_config_keymaps = function()
     ["<c-j>"] = cmp.mapping.select_next_item(),
     ["<c-k>"] = cmp.mapping.select_prev_item(),
     ["<c-space>"] = cmp.mapping.complete(),
-    ["<c-e>"] = cmp.mapping.confirm({ select = true }),
-    ["<c-f>"] = cmp.mapping(function(fallback)
+    ["<c-e>"] = cmp.mapping(function(fallback)
       if luasnip.expand_or_locally_jumpable() then
         luasnip.expand_or_jump()
       else
@@ -161,8 +160,8 @@ M.build_nvim_cmp_config_keymaps = function()
       end
     end, { "i", "s" }),
     ["<c-b>"] = cmp.mapping(function(fallback)
-      if luasnip.get_active_snip() and luasnip.jumpable( -1) then
-        luasnip.jump( -1)
+      if luasnip.get_active_snip() and luasnip.jumpable(-1) then
+        luasnip.jump(-1)
       else
         fallback()
       end
@@ -176,7 +175,7 @@ M.build_nvim_cmp_config_keymaps = function()
     end, { "i", "s" }),
     ["<c-p>"] = cmp.mapping(function(fallback)
       if luasnip.choice_active() then
-        luasnip.change_choice( -1)
+        luasnip.change_choice(-1)
       else
         fallback()
       end
@@ -307,6 +306,14 @@ M.set_leap_keymaps = function()
   vim.keymap.set("n", "s", function()
     leap.leap({ target_windows = { vim.fn.win_getid() } })
   end)
+end
+
+-- --------------------------------------------------------------------------------
+-- emmet.vim
+-- --------------------------------------------------------------------------------
+
+M.set_emmet_keymaps = function()
+  vim.keymap.set("i", "<c-l>", "<plug>(emmet-expand-abbr)")
 end
 
 -- --------------------------------------------------------------------------------

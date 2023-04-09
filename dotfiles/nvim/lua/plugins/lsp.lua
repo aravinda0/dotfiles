@@ -31,22 +31,6 @@ return {
         capabilities = capabilities,
       })
 
-      lsp.emmet_ls.setup({
-        on_attach = handle_lsp_attach,
-        capabilities = capabilities,
-        filetypes = {
-          "html",
-          "typescriptreact",
-          "javascriptreact",
-          "css",
-          "sass",
-          "scss",
-          "less",
-          "eruby",
-          "svelte",
-        },
-      })
-
       lsp.tailwindcss.setup({
         on_attach = handle_lsp_attach,
         capabilities = capabilities,
