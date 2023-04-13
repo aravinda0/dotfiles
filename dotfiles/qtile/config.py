@@ -342,6 +342,10 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
+                widget.Battery(
+                    charge_char="▲",
+                    discharge_char="▼",
+                ),
                 widget.Systray(),
                 widget.Volume(padding=10),
                 widget.Clock(format=" %a, %d %b %Y %H:%M"),
