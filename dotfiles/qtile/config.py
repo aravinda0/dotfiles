@@ -22,6 +22,7 @@ from workspaces import (
     cycle_group_in_group_set,
     make_groups_from_contexts,
 )
+import utils
 
 
 # TODO: Figure out how to not hardcode this. zsh env var not set yet when qtile runs.
@@ -328,52 +329,34 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+
+def build_bar_widgets():
+    widgets = [
+        widget.CurrentLayout(),
+        widget.AGroupBox(padding=100),
+        widget.Prompt(),
+        widget.WindowName(),
+        widget.Systray(),
+        widget.Volume(padding=10),
+        widget.Clock(format=" %a, %d %b %Y %H:%M"),
+        widget.QuickExit(),
+    ]
+    if utils.is_mobile_device():
+        systray_index = next(
+            i for i, w in enumerate(widgets) if type(w) is widget.Systray
+        )
+        battery_widget = widget.Battery(
+            charge_char="▲",
+            discharge_char="▼",
+        )
+        widgets.insert(systray_index, battery_widget)
+    return widgets
+
+
 screens = [
-    Screen(
-        bottom=bar.Bar(
-            [
-                widget.CurrentLayout(),
-                widget.AGroupBox(padding=100),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Battery(
-                    charge_char="▲",
-                    discharge_char="▼",
-                ),
-                widget.Systray(),
-                widget.Volume(padding=10),
-                widget.Clock(format=" %a, %d %b %Y %H:%M"),
-                widget.QuickExit(),
-            ],
-            26,
-        ),
-    ),
-    Screen(
-        bottom=bar.Bar(
-            [
-                widget.CurrentLayout(),
-                widget.AGroupBox(padding=100),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Clock(format="%a, %d %b %Y %H:%M"),
-                widget.QuickExit(),
-            ],
-            26,
-        ),
-    ),
-    Screen(
-        bottom=bar.Bar(
-            [
-                widget.CurrentLayout(),
-                widget.AGroupBox(padding=100),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Clock(format=" %a, %d %b %Y %H:%M"),
-                widget.QuickExit(),
-            ],
-            26,
-        ),
-    ),
+    Screen(bottom=bar.Bar(build_bar_widgets(), 26)),
+    Screen(),
+    Screen(),
 ]
 
 # Drag floating layouts.
