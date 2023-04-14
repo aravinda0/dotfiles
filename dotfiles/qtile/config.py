@@ -336,12 +336,6 @@ screens = [
                 widget.AGroupBox(padding=100),
                 widget.Prompt(),
                 widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
                 widget.Battery(
                     charge_char="▲",
                     discharge_char="▼",
@@ -361,12 +355,6 @@ screens = [
                 widget.AGroupBox(padding=100),
                 widget.Prompt(),
                 widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
                 widget.Clock(format="%a, %d %b %Y %H:%M"),
                 widget.QuickExit(),
             ],
@@ -380,12 +368,6 @@ screens = [
                 widget.AGroupBox(padding=100),
                 widget.Prompt(),
                 widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
                 widget.Clock(format=" %a, %d %b %Y %H:%M"),
                 widget.QuickExit(),
             ],
