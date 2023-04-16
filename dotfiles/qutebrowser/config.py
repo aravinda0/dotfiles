@@ -79,6 +79,7 @@ c.url.searchengines = {
     "DEFAULT": "https://duckduckgo.com/?q={}",
     "r": "https://duckduckgo.com/?q=site%3Areddit.com+{}",
     "i": "https://duckduckgo.com/?q={}&ia=images&iax=images",
+    "p": "https://phind.com/search?q={}",
     "w": "https://en.wikipedia.org/w/index.php?search={}",
     "g": "https://github.com/search?q={}",
     "gc": "https://github.com/search?q={}&type=code",
