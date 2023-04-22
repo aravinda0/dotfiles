@@ -15,20 +15,23 @@ contexts = [
             "preferred_display": {
                 "nexus": 0,
                 "scout": 0,
+                "ragebox": 0,
             },
-            "groups": ["1", "2", "3"],
+            "groups": ["1", "2"],
         },
         "notes": {
             "preferred_display": {
                 "nexus": 1,
                 "scout": 0,
+                "ragebox": 0,
             },
-            "groups": ["1", "2", "3"],
+            "groups": ["1", "2"],
         },
         "browser": {
             "preferred_display": {
                 "nexus": 2,
                 "scout": 0,
+                "ragebox": 0,
             },
             "groups": ["1", "2"],
         },
@@ -39,22 +42,25 @@ contexts = [
             "preferred_display": {
                 "nexus": 0,
                 "scout": 0,
+                "ragebox": 0,
             },
-            "groups": ["1", "2", "3"],
+            "groups": ["1"],
         },
         "notes": {
             "preferred_display": {
                 "nexus": 1,
                 "scout": 0,
+                "ragebox": 0,
             },
-            "groups": ["1", "2", "3"],
+            "groups": ["1"],
         },
         "browser": {
             "preferred_display": {
                 "nexus": 2,
                 "scout": 0,
+                "ragebox": 0,
             },
-            "groups": ["1", "2"],
+            "groups": ["1"],
         },
     },
     {
@@ -63,22 +69,25 @@ contexts = [
             "preferred_display": {
                 "nexus": 0,
                 "scout": 0,
+                "ragebox": 0,
             },
-            "groups": ["1", "2", "3"],
+            "groups": ["1"],
         },
         "notes": {
             "preferred_display": {
                 "nexus": 1,
                 "scout": 0,
+                "ragebox": 0,
             },
-            "groups": ["1", "2", "3"],
+            "groups": ["1"],
         },
         "browser": {
             "preferred_display": {
                 "nexus": 2,
                 "scout": 0,
+                "ragebox": 0,
             },
-            "groups": ["1", "2"],
+            "groups": ["1"],
         },
     },
     {
@@ -87,22 +96,52 @@ contexts = [
             "preferred_display": {
                 "nexus": 0,
                 "scout": 0,
+                "ragebox": 0,
             },
-            "groups": ["1", "2", "3"],
+            "groups": ["1"],
         },
         "notes": {
             "preferred_display": {
                 "nexus": 1,
                 "scout": 0,
+                "ragebox": 0,
             },
-            "groups": ["1", "2", "3"],
+            "groups": ["1"],
         },
         "browser": {
             "preferred_display": {
                 "nexus": 2,
                 "scout": 0,
+                "ragebox": 0,
             },
-            "groups": ["1", "2"],
+            "groups": ["1"],
+        },
+    },
+    {
+        "name": "craft",
+        "main": {
+            "preferred_display": {
+                "nexus": 0,
+                "scout": 0,
+                "ragebox": 0,
+            },
+            "groups": ["1"],
+        },
+        "notes": {
+            "preferred_display": {
+                "nexus": 1,
+                "scout": 0,
+                "ragebox": 0,
+            },
+            "groups": ["1"],
+        },
+        "browser": {
+            "preferred_display": {
+                "nexus": 2,
+                "scout": 0,
+                "ragebox": 0,
+            },
+            "groups": ["1"],
         },
     },
     {
@@ -111,20 +150,23 @@ contexts = [
             "preferred_display": {
                 "nexus": 0,
                 "scout": 0,
+                "ragebox": 0,
             },
-            "groups": ["1", "2", "3"],
+            "groups": ["1"],
         },
         "notes": {
             "preferred_display": {
                 "nexus": 1,
                 "scout": 0,
+                "ragebox": 0,
             },
-            "groups": ["1", "2", "3"],
+            "groups": ["1"],
         },
         "browser": {
             "preferred_display": {
                 "nexus": 2,
                 "scout": 0,
+                "ragebox": 0,
             },
             "groups": ["1"],
         },
@@ -135,20 +177,23 @@ contexts = [
             "preferred_display": {
                 "nexus": 0,
                 "scout": 0,
+                "ragebox": 0,
             },
-            "groups": ["1", "2", "3"],
+            "groups": ["1"],
         },
         "notes": {
             "preferred_display": {
                 "nexus": 1,
                 "scout": 0,
+                "ragebox": 0,
             },
-            "groups": ["1", "2", "3"],
+            "groups": ["1"],
         },
         "browser": {
             "preferred_display": {
                 "nexus": 2,
                 "scout": 0,
+                "ragebox": 0,
             },
             "groups": ["1"],
         },

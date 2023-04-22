@@ -151,6 +151,7 @@ keys = [
     EzKey("M-C-2", _activate_context("study: topic1")),
     EzKey("M-C-3", _activate_context("study: topic2")),
     EzKey("M-C-4", _activate_context("study: playground")),
+    EzKey("M-C-5", _activate_context("craft")),
     EzKey("M-C-8", _activate_context("study: pkm")),
     EzKey("M-C-9", _activate_context("misc")),
     EzKey("M-d", _activate_group_set("main")),
