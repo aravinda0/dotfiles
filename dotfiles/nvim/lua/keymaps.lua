@@ -18,7 +18,8 @@ vim.keymap.set("n", "<m-j>", "<c-w>j")
 vim.keymap.set("n", "<m-k>", "<c-w>k")
 vim.keymap.set("n", "<m-l>", "<c-w>l")
 
--- Nicer tab motions
+-- Nicer tab operations
+vim.keymap.set("n", "<m-n>", "<cmd>tabnew<cr>")
 vim.keymap.set("n", "<m-e>", "<cmd>tabprevious<cr>")
 vim.keymap.set("n", "<m-r>", "<cmd>tabnext<cr>")
 vim.keymap.set("n", "<m-E>", "<cmd>tabfirst<cr>")
