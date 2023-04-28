@@ -470,3 +470,5 @@ def autostart():
 
     # Start NetworkManager systray applet
     subprocess.Popen(["/usr/bin/nm-applet", "--indicator"])
+
+    activate_context("work")
