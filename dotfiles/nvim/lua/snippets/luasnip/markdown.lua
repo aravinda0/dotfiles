@@ -51,6 +51,18 @@ local snippets = {
     }),
     i(0),
   }),
+
+  s({
+    trig = "jj",
+    dscr = "Journal format",
+  }, {
+    t("# "),
+    f(function()
+      return os.date("%d %b, %Y")
+    end),
+    t({ "", "", "" }),
+    i(0),
+  }),
 }
 
 return {
