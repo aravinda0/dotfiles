@@ -1,4 +1,9 @@
 
+# Prevent really long lines from causing noise
+--max-columns=100
+--max-columns=preview
+
+
 # Default to smart-case
 --smart-case
 
