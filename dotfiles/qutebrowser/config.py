@@ -88,7 +88,7 @@ c.url.searchengines = {
     "dic": "https://en.wiktionary.org/wiki/{}",
     "y": "https://www.youtube.com/results?search_query={}",
     "aur": "https://aur.archlinux.org/packages/?O=0&K={}",
-    "arch": "https://wiki.archlinux.org/index.php?title=Special%3ASearch&search={}",
+    "aw": "https://wiki.archlinux.org/index.php?title=Special%3ASearch&search={}",
     "t": "https://www.magnetdl.com/search/?m=1&q={}",
 }
 
