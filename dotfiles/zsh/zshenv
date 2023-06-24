@@ -66,3 +66,10 @@ export NPM_CONFIG_PREFIX=~/.npm-global
 # Also relying on `AddKeysToAgent` option in ssh config so keys get added to ssh-agent
 # after first use
 eval $(keychain --eval -q)
+
+
+# -------------------------------------------------------------------------------
+# direnv
+# -------------------------------------------------------------------------------
+
+eval "$(direnv hook zsh)"
