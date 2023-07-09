@@ -17,7 +17,7 @@ contexts = [
                 "scout": 0,
                 "ragebox": 0,
             },
-            "groups": ["1", "2"],
+            "groups": ["1", "2", "3", "4"],
         },
         "notes": {
             "preferred_display": {
