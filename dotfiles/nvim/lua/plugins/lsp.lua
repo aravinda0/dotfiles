@@ -31,6 +31,11 @@ return {
         capabilities = capabilities,
       })
 
+      lsp.angularls.setup({
+        on_attach = handle_lsp_attach,
+        capabilities = capabilities,
+      })
+
       lsp.tailwindcss.setup({
         on_attach = handle_lsp_attach,
         capabilities = capabilities,
