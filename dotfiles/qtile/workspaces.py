@@ -44,7 +44,7 @@ contexts = [
                 "scout": 0,
                 "ragebox": 0,
             },
-            "groups": ["1"],
+            "groups": ["1", "2", "3"],
         },
         "notes": {
             "preferred_display": {
@@ -71,7 +71,7 @@ contexts = [
                 "scout": 0,
                 "ragebox": 0,
             },
-            "groups": ["1"],
+            "groups": ["1", "2", "3"],
         },
         "notes": {
             "preferred_display": {
@@ -98,7 +98,7 @@ contexts = [
                 "scout": 0,
                 "ragebox": 0,
             },
-            "groups": ["1"],
+            "groups": ["1", "2"],
         },
         "notes": {
             "preferred_display": {
