@@ -3,9 +3,6 @@ local M = {}
 -- Use the space bar as our leader key
 vim.g.mapleader = " "
 
--- Press F2 for 'paste mode', for properly pasting external stuff into vim
-vim.o.pastetoggle = "<F2>"
-
 vim.keymap.set("i", "jk", "<esc>")
 
 -- Workaround to allow pasting the same line multiple times in visual mode
