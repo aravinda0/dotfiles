@@ -36,10 +36,10 @@ return {
         capabilities = capabilities,
       })
 
-      lsp.tailwindcss.setup({
-        on_attach = handle_lsp_attach,
-        capabilities = capabilities,
-      })
+      -- lsp.tailwindcss.setup({
+      --   on_attach = handle_lsp_attach,
+      --   capabilities = capabilities,
+      -- })
 
       lsp.lua_ls.setup({
         on_attach = handle_lsp_attach,
