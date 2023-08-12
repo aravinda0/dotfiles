@@ -9,6 +9,7 @@ def install_tools():
     global_packages = [
         "pyright",
         "typescript-language-server",
+        "@fsouza/prettierd",
         "emmet-ls",
         "@tailwindcss/language-server",
     ]
