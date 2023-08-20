@@ -102,14 +102,14 @@ config.unbind("d")
 
 config.bind("<space>rc", "config-source")
 
-config.bind("<ctrl-p>", "set-cmd-text -s :open")
+config.bind("<ctrl-p>", "cmd-set-text -s :open")
 config.bind("<ctrl-shift-p>", "spawn qutebrowser --target private-window")
 
 config.bind("<ctrl-t>", "open -t")
 config.bind("<ctrl-o>", "set-cmd-text -s :quickmark-load")
 
-config.bind("<ctrl-y>", "run-with-count 3 scroll up")
-config.bind("<ctrl-e>", "run-with-count 3 scroll down")
+config.bind("<ctrl-y>", "cmd-run-with-count 3 scroll up")
+config.bind("<ctrl-e>", "cmd-run-with-count 3 scroll down")
 
 config.bind("K", "tab-next")
 config.bind("J", "tab-prev")
@@ -140,7 +140,7 @@ config.bind("<space>hc", "open -t qute://help/commands.html")
 
 # Edit stuff
 config.bind("ge", "edit-url")
-config.bind("gc", "edit-command")
+config.bind("gc", "cmd-edit")
 
 
 # --------------------------------------------------------------------------------
