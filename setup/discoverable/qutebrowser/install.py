@@ -3,8 +3,7 @@ from utils.system import system_install
 
 
 def install_tools():
-    system_install("qutebrowser-git")
-    system_install("python-adblock")
+    system_install(["qutebrowser-git", "python-adblock", "pdfjs"])
 
 
 def install_config():
