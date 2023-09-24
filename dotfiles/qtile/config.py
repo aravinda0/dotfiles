@@ -209,7 +209,7 @@ keys = [
     # --------------------------------------------------------------------------------
     EzKey("M-<Return>", lazy.spawn(terminal)),
     EzKey("M-r", lazy.spawncmd()),
-    EzKey("M-p", lazy.spawn("rofi -show drun")),
+    EzKey("M-p", lazy.spawn("rofi -show drun -m -1")),
     KeyChord(
         ["mod4"],
         "a",
