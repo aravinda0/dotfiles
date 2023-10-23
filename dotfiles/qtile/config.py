@@ -14,6 +14,7 @@ from libqtile.config import (
 )
 from libqtile.lazy import lazy
 from qtile_bonsai.layout import Bonsai
+from qtile_bonsai.theme import Gruvbox
 
 from workspaces import (
     activate_context,
@@ -323,12 +324,19 @@ layouts = [
     # layout.Zoomy(),
 ]
 
-widget_defaults = dict(
-    font="source code pro",
-    fontsize=19,
-    padding=4,
-)
+widget_defaults = {
+    "font": "source code pro",
+    "fontsize": 19,
+    "padding": 4,
+    "foreground": Gruvbox.fg1,
+}
 extension_defaults = widget_defaults.copy()
+monitoring_widgets_defaults = {
+    "update_interval": 2,
+    "background": Gruvbox.bg3,
+    "foreground": Gruvbox.fg1,
+    "padding": 6,
+}
 
 
 def build_bar_widgets():
@@ -337,10 +345,26 @@ def build_bar_widgets():
         widget.AGroupBox(padding=100),
         widget.Prompt(),
         widget.WindowName(),
+        widget.CPU(
+            **monitoring_widgets_defaults,
+            format="  {load_percent}%",
+        ),
+        widget.Memory(
+            **monitoring_widgets_defaults,
+            measure_mem="G",
+            format="󰈀 {MemUsed:.2f}{mm}",
+        ),
+        widget.ThermalSensor(
+            **monitoring_widgets_defaults,
+            format="󰔐 {temp:.0f}{unit}",
+            tag_sensor="Tctl",
+        ),
+        widget.Volume(fmt="󰕾 {}"),
         widget.Systray(),
-        widget.Volume(padding=10),
-        widget.Clock(format=" %a, %d %b %Y %H:%M"),
-        widget.QuickExit(),
+        widget.Clock(
+            format="%a, %d %b %Y %H:%M",
+            padding=10,
+        ),
     ]
     if utils.is_mobile_device():
         systray_index = next(
