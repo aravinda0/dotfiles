@@ -328,6 +328,7 @@ widget_defaults = {
     "font": "source code pro",
     "fontsize": 19,
     "padding": 4,
+    "background": Gruvbox.bg0_hard,
     "foreground": Gruvbox.fg1,
 }
 extension_defaults = widget_defaults.copy()
@@ -345,20 +346,7 @@ def build_bar_widgets():
         widget.AGroupBox(padding=100),
         widget.Prompt(),
         widget.WindowName(),
-        widget.CPU(
-            **monitoring_widgets_defaults,
-            format="  {load_percent}%",
-        ),
-        widget.Memory(
-            **monitoring_widgets_defaults,
-            measure_mem="G",
-            format="󰈀 {MemUsed:.2f}{mm}",
-        ),
-        widget.ThermalSensor(
-            **monitoring_widgets_defaults,
-            format="󰔐 {temp:.0f}{unit}",
-            tag_sensor="Tctl",
-        ),
+        *build_bar_monitoring_widgets(),
         widget.Volume(fmt="󰕾 {}"),
         widget.Systray(),
         widget.Clock(
@@ -376,6 +364,36 @@ def build_bar_widgets():
         )
         widgets.insert(systray_index, battery_widget)
     return widgets
+
+
+def build_bar_monitoring_widgets():
+    return [
+        widget.TextBox(
+            text="",
+            foreground=monitoring_widgets_defaults["background"],
+            padding=0,
+        ),
+        widget.CPU(
+            **monitoring_widgets_defaults,
+            format="  {load_percent}%",
+        ),
+        widget.Memory(
+            **monitoring_widgets_defaults,
+            measure_mem="G",
+            format="󰈀 {MemUsed:.2f}{mm}",
+        ),
+        widget.ThermalSensor(
+            **monitoring_widgets_defaults,
+            format="󰔐 {temp:.0f}{unit}",
+            tag_sensor="Tctl",
+        ),
+        widget.TextBox(
+            text="",
+            background=monitoring_widgets_defaults["background"],
+            foreground=widget_defaults["background"],
+            padding=0,
+        ),
+    ]
 
 
 screens = [
