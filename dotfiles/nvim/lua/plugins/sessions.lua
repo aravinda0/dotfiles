@@ -1,28 +1,22 @@
 return {
   {
-    "Shatur/neovim-session-manager",
+    "olimorris/persisted.nvim",
     config = function()
-      require("session_manager").setup({
-        sessions_dir = vim.fn.stdpath("data") .. "/sessions",
-        path_replacer = "__",
-        colon_replacer = "++",
-        autoload_mode = require("session_manager.config").AutoloadMode.CurrentDir,
-        autosave_last_session = true,
-        autosave_ignore_not_normal = true,
-        autosave_ignore_dirs = {
-          vim.env["_H"],
-          vim.env["HOME"],
-          vim.env["HOME"] .. "/Downloads",
-          "/tmp",
-        },
-        autosave_ignore_filetypes = {
-          "gitcommit",
-        },
-        autosave_ignore_buftypes = {},
+      require("persisted").setup({
+        autoload = true,
+        ignored_dirs = {
+          -- NOTE: The paths specified here also affect subdirectories. So specifying
+          -- vim.env["HOME"] will effectively disable everyting under home dir
 
-        -- Always autosaves session. If true, only autosaves after a session is active.
-        autosave_only_in_session = false,
+          vim.env["_H"],
+          vim.env["HOME"] .. "/Downloads",
+
+          -- NOTE: This seems to mess things up when path has '/tmp' somewhere? eg.
+          -- '/x/y/z/tmp':mental health
+          -- "/tmp",
+        },
       })
+      require("telescope").load_extension("persisted")
     end,
   },
 }

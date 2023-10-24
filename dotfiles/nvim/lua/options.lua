@@ -40,6 +40,9 @@ vim.o.backup = false
 vim.o.writebackup = false
 vim.o.swapfile = false
 
+-- Stuff to save in :mksession invocations
+vim.o.sessionoptions = "buffers,curdir,folds,globals,tabpages,winpos,winsize"
+
 -- Control which sides new splits open
 vim.o.splitright = true
 vim.o.splitbelow = true
