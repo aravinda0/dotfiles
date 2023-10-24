@@ -1,10 +1,10 @@
 #! /usr/bin/env python
 
-from qute import qutescript
+from qute import qutescript, Qute
 
 
 @qutescript
-def main(qute):
+def main(qute: Qute):
     open_cmd, *frags = qute.commandline_text.split(" ")
     if open_cmd != ":open":
         return
