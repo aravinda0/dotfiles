@@ -120,6 +120,10 @@ config.bind("<ctrl-shift-tab>", "tab-prev")
 
 config.bind("yt", "tab-clone")
 
+# Move tabs left/right
+config.bind("<<", "tab-move -")
+config.bind(">>", "tab-move +")
+
 config.bind("yf", "hint links yank")
 config.bind(";i", "hint inputs")
 config.bind(";Ii", "hint images")
