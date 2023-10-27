@@ -216,7 +216,6 @@ keys = [
         "a",
         [
             EzKey("w", lazy.spawn("qutebrowser")),
-            EzKey("q", lazy.spawn("qutebrowser")),
             EzKey("f", lazy.spawn("firefox-developer-edition")),
             EzKey("t", lazy.spawn("qbittorrent")),
         ],
