@@ -106,7 +106,7 @@ config.bind("<ctrl-p>", "cmd-set-text -s :open")
 config.bind("<ctrl-shift-p>", "spawn qutebrowser --target private-window")
 
 config.bind("<ctrl-t>", "open -t")
-config.bind("<ctrl-o>", "set-cmd-text -s :quickmark-load")
+config.bind("<ctrl-o>", "cmd-set-text -s :quickmark-load")
 
 config.bind("<ctrl-y>", "cmd-run-with-count 3 scroll up")
 config.bind("<ctrl-e>", "cmd-run-with-count 3 scroll down")
