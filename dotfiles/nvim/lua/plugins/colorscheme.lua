@@ -33,7 +33,7 @@ return {
     -- enabled = false,
     -- lazy = false,
     priority = 1001,
-    ft = { "markdown", "vimwiki" },
+    ft = { "vimwiki" },
     config = function()
       vim.o.background = "dark"
       vim.g.gruvbox_material_background = "medium"
