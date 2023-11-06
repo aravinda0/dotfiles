@@ -12,9 +12,33 @@ return {
       local lsp = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+      local augroup_lsp_formatting = vim.api.nvim_create_augroup("lsp_formatting", {})
       local handle_lsp_attach = function(client, bufnr)
         keymaps.set_common_lsp_keymaps(client, bufnr)
+
+        -- Trigger formatting on save if available
+        if client.supports_method("textDocument/formatting") then
+          vim.api.nvim_clear_autocmds({
+            group = augroup_lsp_formatting,
+            buffer = bufnr,
+          })
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup_lsp_formatting,
+            buffer = bufnr,
+            callback = function()
+              vim.lsp.buf.format({ bufnr = bufnr })
+            end,
+          })
+        end
       end
+
+      lsp.ruff_lsp.setup({
+        on_attach = function(client, bufnr)
+          client.server_capabilities.hoverProvider = false
+          return handle_lsp_attach(client, bufnr)
+        end,
+        capabilities = capabilities,
+      })
 
       lsp.pyright.setup({
         on_attach = handle_lsp_attach,

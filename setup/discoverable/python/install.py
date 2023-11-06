@@ -8,6 +8,8 @@ binary_packages = [
     "ipython",
     "ptpython",
     "pdm",
+    "ruff",
+    "ruff-lsp",
 ]
 
 
