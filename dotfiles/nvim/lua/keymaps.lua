@@ -5,6 +5,9 @@ vim.g.mapleader = " "
 
 vim.keymap.set("i", "jk", "<esc>")
 
+-- Access plugin manager
+vim.keymap.set("n", "<f12>", "<cmd>Lazy<cr>")
+
 -- Workaround to allow pasting the same line multiple times in visual mode
 vim.keymap.set("x", "p", "pgvy")
 vim.keymap.set("x", "P", "Pgvy")
