@@ -9,9 +9,12 @@ skip-magic-trailing-comma = false
 
 [tool.ruff.lint]
 select = [
-  "E", "F", "N", "D2", "S", "FBT", "B", "C4", "T20", "PT", "RET", "SIM", "RUF",
+  "E", "F", "N", "D", "S", "FBT", "B", "C4", "T20", "PT", "RET", "SIM", "RUF",
 ]
 ignore = [
+  "D1",
+  "D201",
+
   # When the above rule categories are enabled, we must ignore the following rules to
   # prevent conflicts with ruff's formatter. 
   # See: https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
