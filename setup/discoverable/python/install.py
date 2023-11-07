@@ -26,3 +26,4 @@ def install_tools():
 
 def install_config():
     install_dotfiles("ptpython/config.py", "~/.config/ptpython/config.py", "ptpython")
+    install_dotfiles("ruff/pyproject.toml", "~/.config/ruff/pyproject.toml", "ruff")
