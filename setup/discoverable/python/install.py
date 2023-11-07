@@ -19,7 +19,8 @@ def install_tools():
     print("pipx installed!")
 
     print("Installing python binary packages via pipx...")
-    subprocess.run(["pipx", "install", *binary_packages])
+    for package in binary_packages:
+        subprocess.run(["pipx", "install", package])
     print("Python binary packages installed")
 
 
