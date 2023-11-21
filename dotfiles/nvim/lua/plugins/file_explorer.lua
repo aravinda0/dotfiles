@@ -15,6 +15,13 @@ return {
         window = {
           mappings = keymaps.build_neo_tree_config_keymaps(),
         },
+        filesystem = {
+          filtered_items = {
+            always_show = {
+              "debug",
+            }
+          }
+        }
       })
     end,
   },
