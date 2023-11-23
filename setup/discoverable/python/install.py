@@ -10,6 +10,7 @@ binary_packages = [
     "pdm",
     "ruff",
     "ruff-lsp",
+    "cookiecutter",
 ]
 
 
