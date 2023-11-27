@@ -175,7 +175,6 @@ keys = [
     EzKey("M-<backslash>", lazy.group["scratchpad/rough"].dropdown_toggle("term1")),
     EzKey("C-0", lazy.group["scratchpad/notes"].dropdown_toggle("zk")),
     EzKey("C-A-0", lazy.group["scratchpad/notes"].dropdown_toggle("sec__atp")),
-    EzKey("C-9", lazy.group["scratchpad/notes"].dropdown_toggle("sec__spp")),
     EzKey("C-A-9", lazy.group["scratchpad/notes"].dropdown_toggle("sec__dry")),
     EzKey("C-8", lazy.group["scratchpad/notes"].dropdown_toggle("areas/workflow")),
     EzKey("C-<backslash>", lazy.group["scratchpad/notes"].dropdown_toggle("tmp")),
@@ -259,15 +258,6 @@ groups.extend(
                 DropDown(
                     "sec__atp",
                     "alacritty -e zsh -i -c '$ENVFILES_PATH/../common/sec/sec__atp.sh'",
-                    on_focus_lost_hide=False,
-                    width=0.95,
-                    height=0.95,
-                    x=0.02,
-                    y=0.02,
-                ),
-                DropDown(
-                    "sec__spp",
-                    "alacritty -e zsh -i -c '$ENVFILES_PATH/../common/sec/sec__spp.sh'",
                     on_focus_lost_hide=False,
                     width=0.95,
                     height=0.95,
