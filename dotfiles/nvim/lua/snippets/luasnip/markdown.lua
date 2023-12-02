@@ -58,7 +58,7 @@ local snippets = {
   }, {
     t("# "),
     f(function()
-      return os.date("%a, %d %b, %Y")
+      return os.date("%d %b %Y - %a")
     end),
     t({ "", "", "" }),
     i(0),
