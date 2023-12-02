@@ -9,11 +9,11 @@ skip-magic-trailing-comma = false
 
 [tool.ruff.lint]
 select = [
-  "E", "F", "N", "D", "S", "FBT", "B", "C4", "T20", "PT", "RET", "SIM", "RUF",
+  "E", "F", "N", "D", "S", "FBT", "B", "C4", "T20", "PT", "RET", "SIM", "RUF", "I",
 ]
 ignore = [
   "D1",
-  "D201",
+  "D205",
 
   # When the above rule categories are enabled, we must ignore the following rules to
   # prevent conflicts with ruff's formatter. 
@@ -38,3 +38,13 @@ unfixable = [
   "F841", # don't auto-remove (seemingly) unused variables
   "F401", # don't auto-remove (seemingly) unused imports
 ]
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
+
+# Disabling the following due to conflict with ruff formatter
+# See: https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
+split-on-trailing-comma = false
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
