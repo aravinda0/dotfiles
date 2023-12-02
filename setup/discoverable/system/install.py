@@ -19,6 +19,9 @@ packages = [
     "udisks2",
     "udiskie",
     #
+    # easy privacy solution to encrypt dirs
+    "encfs",
+    #
     # fonts,
     "ttf-sourcecodepro-nerd",
     "noto-fonts-emoji",
