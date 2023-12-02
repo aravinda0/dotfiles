@@ -26,6 +26,19 @@ return {
             group = augroup_lsp_formatting,
             buffer = bufnr,
             callback = function()
+              -- Code actions are non-blocking. That can cause race conditions when
+              -- invoking the subsequent formatting call which we're doing in a sync
+              -- manner. 
+              -- TODO: Review if things have imporoved to be able to remove the
+              -- `vim.wait()` call. This also spews a 'No code actions available' in
+              -- messages. Fine for now, but can be noisy if we set up toast
+              -- notifications for messages.
+              vim.lsp.buf.code_action({
+                context = { only = { "source.organizeImports"}},
+                apply = true,
+              })
+              vim.wait(50)
+
               vim.lsp.buf.format({ bufnr = bufnr })
             end,
           })
