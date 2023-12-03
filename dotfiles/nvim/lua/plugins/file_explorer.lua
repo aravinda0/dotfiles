@@ -18,6 +18,7 @@ return {
         filesystem = {
           filtered_items = {
             always_show = {
+              ".env",
               "debug",
             }
           }
