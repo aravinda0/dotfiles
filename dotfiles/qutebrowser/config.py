@@ -100,6 +100,10 @@ c.url.searchengines = {
 # Stop deleting tabs inadvertantly
 config.unbind("d")
 
+# Stop refreshing pages inadvertantly
+config.unbind("r")
+
+
 config.bind("<space>rc", "config-source")
 
 config.bind("<ctrl-p>", "cmd-set-text -s :open")
@@ -134,6 +138,7 @@ config.bind("m", "mode-enter set_mark")
 config.bind("M", "quickmark-save")
 
 # Hard refresh
+config.bind("<ctrl-r>", "reload")
 config.bind("<ctrl-shift-r>", "reload -f")
 
 # Help screens
