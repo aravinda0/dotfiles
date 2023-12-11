@@ -16,6 +16,7 @@ from libqtile.lazy import lazy
 from qtile_bonsai.layout import Bonsai
 from qtile_bonsai.theme import Gruvbox
 
+import utils
 from workspaces import (
     activate_context,
     activate_group_set,
@@ -23,7 +24,6 @@ from workspaces import (
     cycle_group_in_group_set,
     make_groups_from_contexts,
 )
-import utils
 
 
 # TODO: Figure out how to not hardcode this. zsh env var not set yet when qtile runs.
@@ -174,9 +174,9 @@ keys = [
     # --------------------------------------------------------------------------------
     EzKey("M-<backslash>", lazy.group["scratchpad/rough"].dropdown_toggle("term1")),
     EzKey("C-0", lazy.group["scratchpad/notes"].dropdown_toggle("zk")),
-    EzKey("C-A-0", lazy.group["scratchpad/notes"].dropdown_toggle("sec__atp")),
     EzKey("C-A-9", lazy.group["scratchpad/notes"].dropdown_toggle("sec__dry")),
     EzKey("C-8", lazy.group["scratchpad/notes"].dropdown_toggle("areas/workflow")),
+    EzKey("C-9", lazy.group["scratchpad/notes"].dropdown_toggle("sec__atp")),
     EzKey("C-<backslash>", lazy.group["scratchpad/notes"].dropdown_toggle("tmp")),
     EzKey(
         "C-<BackSpace>",
