@@ -88,9 +88,19 @@ vim.cmd(
 vim.cmd("iabbrev ---$ ----------")
 
 -- Symbols
+vim.cmd("iabbrev pray$ 🙏")
+vim.cmd("iabbrev tb$ 💭")
+vim.cmd("iabbrev ki$ 💡")
+vim.cmd("iabbrev ang$ 💢")
+vim.cmd("iabbrev no$ 🚫")
+vim.cmd("iabbrev rf$ 🚩")
+vim.cmd("iabbrev fire$ 🔥")
+vim.cmd("iabbrev bana$ 🍌")
+vim.cmd("iabbrev wip$ 🚧")
 vim.cmd("iabbrev tf$ 🤔")
 vim.cmd("iabbrev cf$ 🫤")
 vim.cmd("iabbrev ff$ 🙁")
+vim.cmd("iabbrev hand$ 🤚")
 
 
 -- --------------------------------------------------------------------------------
