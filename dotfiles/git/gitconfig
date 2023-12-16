@@ -1,6 +1,9 @@
 [core]
 	excludesfile = ~/.gitignore
 
+[commit]
+	gpgsign = true
+
 [alias]
     co = checkout
     ci = commit
