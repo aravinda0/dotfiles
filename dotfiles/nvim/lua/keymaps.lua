@@ -248,6 +248,7 @@ M.build_telescope_config_keymaps = function()
     i = {
       ["<c-j>"] = actions.move_selection_next,
       ["<c-k>"] = actions.move_selection_previous,
+      ["<c-n>"] = actions.select_tab,
     },
   }
 end
@@ -266,6 +267,7 @@ M.build_neo_tree_config_keymaps = function()
     ["<c-v>"] = "open_vsplit",
     ["<c-x>"] = "open_split",
     ["<c-t>"] = "open_tabnew",
+    ["<c-n>"] = "open_tabnew",
   }
 end
 
