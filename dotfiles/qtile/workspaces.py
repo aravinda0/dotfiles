@@ -5,6 +5,7 @@ import socket
 from libqtile import hook, qtile, widget
 from libqtile.config import Group
 
+
 # TODO:
 # - easier switcher within groupset? eg. a-d/a-f (can't use mod...)
 
@@ -285,7 +286,7 @@ def activate_standard_group(standard_group_name, screen=None):
             active_context, active_group_set, standard_group_name
         )
 
-        qtile.groups_map[normalized_group].cmd_toscreen(screen, toggle=False)
+        qtile.groups_map[normalized_group].toscreen(screen, toggle=False)
 
 
 def cycle_group_in_group_set(step=1):
