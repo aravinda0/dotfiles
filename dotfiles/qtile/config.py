@@ -165,8 +165,6 @@ keys = [
     EzKey("M-5", _activate_standard_group("5")),
     EzKey("M-6", _activate_standard_group("6")),
     EzKey("M-7", _activate_standard_group("7")),
-    EzKey("M-8", _activate_standard_group("8")),
-    EzKey("M-9", _activate_standard_group("9")),
     EzKey("C-M-f", _cycle_group_in_group_set(1)),
     EzKey("C-M-d", _cycle_group_in_group_set(-1)),
     # --------------------------------------------------------------------------------
