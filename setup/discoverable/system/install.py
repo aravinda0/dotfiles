@@ -28,6 +28,9 @@ packages = [
     #
     # html beautifier
     "tidy",
+    #
+    # screen temperature
+    "redshift",
 ]
 
 
