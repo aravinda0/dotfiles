@@ -419,7 +419,6 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),
         Match(wm_class="qbittorrent"),
         Match(title="pinentry"),  # GPG key password entry
-        Match(wm_class="Pinentry-gtk-2"),
         Match(title="VeraCrypt"),
     ]
 )
@@ -459,6 +458,9 @@ def _is_util_mode_editor(window):
 def _is_firefox_dialog(window):
     wm_class = window.window.get_wm_class()
     w_name = window.window.get_name()
+
+    if not wm_class:
+        return False
 
     # Dialogs
     if all(
