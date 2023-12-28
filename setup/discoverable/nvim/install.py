@@ -2,7 +2,11 @@ import venv
 
 import settings
 from utils.files import install_dotfiles
-from utils.system import nvim_venv_pip_install, system_install_from_source
+from utils.system import (
+    nvim_venv_pip_install,
+    system_install,
+    system_install_from_source,
+)
 
 
 def setup_python_venv_for_neovim():
@@ -26,10 +30,12 @@ def setup_python_venv_for_neovim():
     env_builder.create(settings.NVIM_PY3_VENV_PATH)
 
     print("Installing neovim python client...")
-
     nvim_venv_pip_install("neovim")
-
     print("Installed neovim python client in venv!")
+
+    print("Installing lua-language-server...")
+    system_install("lua-language-server")
+    print("Installed lua-language-server!")
 
 
 def install_tools():
