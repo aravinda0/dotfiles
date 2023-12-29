@@ -172,12 +172,16 @@ keys = [
     # --------------------------------------------------------------------------------
     EzKey("M-<backslash>", lazy.group["scratchpad/rough"].dropdown_toggle("term1")),
     EzKey("C-0", lazy.group["scratchpad/notes"].dropdown_toggle("zk")),
-    EzKey("C-A-9", lazy.group["scratchpad/notes"].dropdown_toggle("sec__dry")),
+    EzKey("C-A-0", lazy.group["scratchpad/notes"].dropdown_toggle("sec__dry")),
     EzKey("C-8", lazy.group["scratchpad/notes"].dropdown_toggle("areas/workflow")),
     EzKey("C-9", lazy.group["scratchpad/notes"].dropdown_toggle("sec__atp")),
     EzKey("C-<backslash>", lazy.group["scratchpad/notes"].dropdown_toggle("tmp")),
     EzKey(
         "C-<BackSpace>",
+        lazy.group["scratchpad/notes"].hide_all(),
+    ),
+    EzKey(
+        "C-S-<backslash>",
         lazy.group["scratchpad/notes"].hide_all(),
     ),
     # --------------------------------------------------------------------------------
