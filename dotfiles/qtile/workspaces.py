@@ -26,7 +26,7 @@ contexts = [
                 "scout": 0,
                 "ragebox": 0,
             },
-            "groups": ["1", "2"],
+            "groups": ["1", "2", "3", "4"],
         },
         "browser": {
             "preferred_display": {
@@ -34,11 +34,11 @@ contexts = [
                 "scout": 0,
                 "ragebox": 0,
             },
-            "groups": ["1", "2"],
+            "groups": ["1", "2", "3"],
         },
     },
     {
-        "name": "study: topic1",
+        "name": "study",
         "main": {
             "preferred_display": {
                 "nexus": 0,
@@ -53,7 +53,7 @@ contexts = [
                 "scout": 0,
                 "ragebox": 0,
             },
-            "groups": ["1"],
+            "groups": ["1", "2", "3"],
         },
         "browser": {
             "preferred_display": {
@@ -61,11 +61,11 @@ contexts = [
                 "scout": 0,
                 "ragebox": 0,
             },
-            "groups": ["1"],
+            "groups": ["1", "2"],
         },
     },
     {
-        "name": "study: topic2",
+        "name": "playground",
         "main": {
             "preferred_display": {
                 "nexus": 0,
@@ -80,115 +80,7 @@ contexts = [
                 "scout": 0,
                 "ragebox": 0,
             },
-            "groups": ["1"],
-        },
-        "browser": {
-            "preferred_display": {
-                "nexus": 2,
-                "scout": 0,
-                "ragebox": 0,
-            },
-            "groups": ["1"],
-        },
-    },
-    {
-        "name": "study: playground",
-        "main": {
-            "preferred_display": {
-                "nexus": 0,
-                "scout": 0,
-                "ragebox": 0,
-            },
-            "groups": ["1", "2"],
-        },
-        "notes": {
-            "preferred_display": {
-                "nexus": 1,
-                "scout": 0,
-                "ragebox": 0,
-            },
-            "groups": ["1"],
-        },
-        "browser": {
-            "preferred_display": {
-                "nexus": 2,
-                "scout": 0,
-                "ragebox": 0,
-            },
-            "groups": ["1"],
-        },
-    },
-    {
-        "name": "craft",
-        "main": {
-            "preferred_display": {
-                "nexus": 0,
-                "scout": 0,
-                "ragebox": 0,
-            },
-            "groups": ["1"],
-        },
-        "notes": {
-            "preferred_display": {
-                "nexus": 1,
-                "scout": 0,
-                "ragebox": 0,
-            },
-            "groups": ["1"],
-        },
-        "browser": {
-            "preferred_display": {
-                "nexus": 2,
-                "scout": 0,
-                "ragebox": 0,
-            },
-            "groups": ["1"],
-        },
-    },
-    {
-        "name": "study: pkm",
-        "main": {
-            "preferred_display": {
-                "nexus": 0,
-                "scout": 0,
-                "ragebox": 0,
-            },
-            "groups": ["1"],
-        },
-        "notes": {
-            "preferred_display": {
-                "nexus": 1,
-                "scout": 0,
-                "ragebox": 0,
-            },
-            "groups": ["1"],
-        },
-        "browser": {
-            "preferred_display": {
-                "nexus": 2,
-                "scout": 0,
-                "ragebox": 0,
-            },
-            "groups": ["1"],
-        },
-    },
-    {
-        "name": "misc",
-        "main": {
-            "preferred_display": {
-                "nexus": 0,
-                "scout": 0,
-                "ragebox": 0,
-            },
-            "groups": ["1"],
-        },
-        "notes": {
-            "preferred_display": {
-                "nexus": 1,
-                "scout": 0,
-                "ragebox": 0,
-            },
-            "groups": ["1"],
+            "groups": ["1", "2", "3"],
         },
         "browser": {
             "preferred_display": {
