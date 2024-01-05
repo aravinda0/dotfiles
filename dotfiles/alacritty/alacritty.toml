@@ -1,0 +1,77 @@
+import = ["/home/aravinda/.envfiles/alacritty.local.toml"]
+
+[colors.bright]
+black = "0x928374"
+blue = "0x7daea3"
+cyan = "0x89b482"
+green = "0xa9b665"
+magenta = "0xd3869b"
+red = "0xea6962"
+white = "0xdfbf8e"
+yellow = "0xe3a84e"
+
+[colors.normal]
+black = "0x665c54"
+blue = "0x7daea3"
+cyan = "0x89b482"
+green = "0xa9b665"
+magenta = "0xd3869b"
+red = "0xea6962"
+white = "0xdfbf8e"
+yellow = "0xe78a4e"
+
+[colors.primary]
+background = "0x1d2021"
+foreground = "0xdfbf8e"
+
+[font.bold]
+family = "source code pro"
+style = "Bold"
+
+[font.bold_italic]
+family = "source code pro"
+style = "Bold Italic"
+
+[font.italic]
+family = "source code pro"
+style = "Italic"
+
+[font.normal]
+family = "source code pro"
+style = "Regular"
+
+[hints]
+alphabet = "jfkdls;ahgurieowpq"
+
+[[hints.enabled]]
+command = "xdg-open"
+post_processing = true
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-<>\"\\s{-}\\^⟨⟩`]+"
+
+[hints.enabled.binding]
+key = "U"
+mods = "Control|Shift"
+
+[hints.enabled.mouse]
+enabled = true
+mods = "None"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "U"
+mode = "~Search"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "SearchBackward"
+key = 53
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "N"
+mods = "Super"
+
+[selection]
+save_to_clipboard = true

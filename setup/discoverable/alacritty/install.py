@@ -7,6 +7,4 @@ def install_tools():
 
 
 def install_config():
-    install_dotfiles(
-        "alacritty/alacritty.yml", "~/.config/alacritty/alacritty.yml", "alacritty"
-    )
+    install_dotfiles("alacritty", "~/.config/alacritty", "alacritty")
