@@ -116,6 +116,8 @@ def resize_down(qtile):
     resize(qtile, "down")
 
 
+rofi_run_cmd = "rofi -show drun -m -1"
+
 # keycodes: https://github.com/qtile/qtile/blob/master/libqtile/backend/x11/xkeysyms.py
 keys = [
     # --------------------------------------------------------------------------------
@@ -124,9 +126,13 @@ keys = [
     EzKey("M-v", lazy.layout.spawn_split(terminal, "x")),
     EzKey("M-x", lazy.layout.spawn_split(terminal, "y")),
     EzKey("M-n", lazy.layout.spawn_tab(terminal)),
-    EzKey("M-S-n", lazy.layout.spawn_tab(terminal, new_level=True)),
     EzKey("M-t", lazy.layout.spawn_tab(terminal)),
+    EzKey("M-S-n", lazy.layout.spawn_tab(terminal, new_level=True)),
     EzKey("M-S-t", lazy.layout.spawn_tab(terminal, new_level=True)),
+    EzKey("M-S-v", lazy.layout.spawn_split(rofi_run_cmd, "x")),
+    EzKey("M-S-x", lazy.layout.spawn_split(rofi_run_cmd, "y")),
+    EzKey("A-d", lazy.layout.prev_tab()),
+    EzKey("A-f", lazy.layout.next_tab()),
     EzKey("M-h", lazy.layout.left()),
     EzKey("M-l", lazy.layout.right()),
     EzKey("M-k", lazy.layout.up()),
@@ -135,8 +141,6 @@ keys = [
     EzKey("M-C-l", lazy.layout.resize_right(100)),
     EzKey("M-C-k", lazy.layout.resize_up(100)),
     EzKey("M-C-j", lazy.layout.resize_down(100)),
-    EzKey("A-d", lazy.layout.prev_tab()),
-    EzKey("A-f", lazy.layout.next_tab()),
     EzKey("C-S-r", lazy.layout.rename_tab()),
     EzKey("M-S-h", lazy.layout.swap_left()),
     EzKey("M-S-l", lazy.layout.swap_right()),
@@ -207,7 +211,7 @@ keys = [
     # --------------------------------------------------------------------------------
     EzKey("M-<Return>", lazy.spawn(terminal)),
     EzKey("M-r", lazy.spawncmd()),
-    EzKey("M-p", lazy.spawn("rofi -show drun -m -1")),
+    EzKey("M-p", lazy.layout.spawn_tab(rofi_run_cmd)),
     EzKey("M-8", lazy.spawn("keepmenu")),
     KeyChord(
         ["mod4"],
