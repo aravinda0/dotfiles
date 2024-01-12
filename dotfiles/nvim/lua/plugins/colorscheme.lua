@@ -10,7 +10,7 @@ return {
   },
   {
     "sainnhe/everforest",
-    -- enabled = false,
+    enabled = false,
     lazy = false,
     priority = 1000,
     config = function()
@@ -22,9 +22,9 @@ return {
   {
     "sainnhe/gruvbox-material",
     -- enabled = false,
-    -- lazy = false,
+    lazy = false,
     priority = 1001,
-    ft = { "vimwiki" },
+    -- ft = { "vimwiki" },
     config = function()
       vim.o.background = "dark"
       vim.g.gruvbox_material_background = "medium"
