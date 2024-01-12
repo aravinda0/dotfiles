@@ -131,6 +131,8 @@ keys = [
     EzKey("M-S-t", lazy.layout.spawn_tab(terminal, new_level=True)),
     EzKey("M-S-v", lazy.layout.spawn_split(rofi_run_cmd, "x")),
     EzKey("M-S-x", lazy.layout.spawn_split(rofi_run_cmd, "y")),
+    EzKey("M-p", lazy.layout.spawn_tab(rofi_run_cmd)),
+    EzKey("M-S-p", lazy.layout.spawn_tab(rofi_run_cmd, new_level=True)),
     EzKey("A-d", lazy.layout.prev_tab()),
     EzKey("A-f", lazy.layout.next_tab()),
     EzKey("M-h", lazy.layout.left()),
@@ -211,7 +213,6 @@ keys = [
     # --------------------------------------------------------------------------------
     EzKey("M-<Return>", lazy.spawn(terminal)),
     EzKey("M-r", lazy.spawncmd()),
-    EzKey("M-p", lazy.layout.spawn_tab(rofi_run_cmd)),
     EzKey("M-8", lazy.spawn("keepmenu")),
     KeyChord(
         ["mod4"],
