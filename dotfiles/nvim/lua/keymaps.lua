@@ -108,6 +108,7 @@ vim.cmd("iabbrev tf$ 🤔")
 vim.cmd("iabbrev cf$ 🫤")
 vim.cmd("iabbrev ff$ 🙁")
 vim.cmd("iabbrev hand$ 🤚")
+vim.cmd("iabbrev tick$ ✅")
 
 
 -- --------------------------------------------------------------------------------
