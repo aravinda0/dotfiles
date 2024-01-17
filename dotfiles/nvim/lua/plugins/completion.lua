@@ -22,6 +22,7 @@ return {
             luasnip.lsp_expand(args.body)
           end,
         },
+        preselect = cmp.PreselectMode.None,
         mapping = keymaps.build_nvim_cmp_config_keymaps(),
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
