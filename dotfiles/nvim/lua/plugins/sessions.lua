@@ -1,22 +1,25 @@
 return {
   {
-    "olimorris/persisted.nvim",
+    "stevearc/resession.nvim",
+    opts = {},
     config = function()
-      require("persisted").setup({
-        autoload = true,
-        ignored_dirs = {
-          -- NOTE: The paths specified here also affect subdirectories. So specifying
-          -- vim.env["HOME"] will effectively disable everyting under home dir
+      local resession = require("resession")
+      resession.setup({})
 
-          vim.env["_H"],
-          vim.env["HOME"] .. "/Downloads",
-
-          -- NOTE: This seems to mess things up when path has '/tmp' somewhere? eg.
-          -- '/x/y/z/tmp':mental health
-          -- "/tmp",
-        },
+      vim.api.nvim_create_autocmd("VimEnter", {
+        callback = function()
+          -- Only load the session if nvim was started with no args
+          if vim.fn.argc(-1) == 0 then
+            -- Save these to a different directory, so our manual sessions don't get polluted
+            resession.load(vim.fn.getcwd(), { dir = "dirsession", silence_errors = true })
+          end
+        end,
       })
-      require("telescope").load_extension("persisted")
+      vim.api.nvim_create_autocmd("VimLeavePre", {
+        callback = function()
+          resession.save(vim.fn.getcwd(), { dir = "dirsession", notify = false })
+        end,
+      })
     end,
-  },
+  }
 }
