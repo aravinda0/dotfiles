@@ -19,7 +19,7 @@ return {
           filtered_items = {
             always_show = {
               ".env",
-              "debug",
+              "tmp",
             }
           }
         }
