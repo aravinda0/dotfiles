@@ -29,10 +29,12 @@ alias gs='git status'
 alias gd="git diff"
 alias gds="git diff --staged"
 alias gco='git checkout'
+alias gr='git restore'
+alias grs='git restore --staged'
 alias ga='git add'
 alias gc='git commit'
 alias gci='git commit -m'
 alias gp='git push'
 
 # `cd` to git repo root
-alias gr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
+alias groot='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
