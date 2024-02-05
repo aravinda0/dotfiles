@@ -4,7 +4,13 @@ return {
     opts = {},
     config = function()
       local resession = require("resession")
-      resession.setup({})
+      resession.setup({
+        autosave = {
+          enabled = true,
+          interval = 300,
+          notify = false,
+        },
+      })
 
       vim.api.nvim_create_autocmd("VimEnter", {
         callback = function()
