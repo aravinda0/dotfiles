@@ -205,8 +205,8 @@ keys = [
     # --------------------------------------------------------------------------------
     # Audio
     # --------------------------------------------------------------------------------
-    EzKey("<XF86AudioRaiseVolume>", lazy.spawn("amixer set -q Master 5%+")),
-    EzKey("<XF86AudioLowerVolume>", lazy.spawn("amixer set -q Master 5%-")),
+    EzKey("<XF86AudioRaiseVolume>", lazy.spawn("amixer set -q Master 3%+")),
+    EzKey("<XF86AudioLowerVolume>", lazy.spawn("amixer set -q Master 3%-")),
     EzKey("<XF86AudioMute>", lazy.spawn("amixer set -q Master toggle")),
     # --------------------------------------------------------------------------------
     # Misc
