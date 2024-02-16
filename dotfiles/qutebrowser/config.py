@@ -171,6 +171,23 @@ config.bind("<ctrl-return>", "spawn --userscript complete_tld.py", mode="command
 
 
 # --------------------------------------------------------------------------------
+# Keymaps: passthrough mode
+# --------------------------------------------------------------------------------
+
+config.bind("K", "tab-next", mode="passthrough")
+config.bind("J", "tab-prev", mode="passthrough")
+config.bind("<alt-r>", "tab-next", mode="passthrough")
+config.bind("<alt-e>", "tab-prev", mode="passthrough")
+config.bind("<ctrl-tab>", "tab-next", mode="passthrough")
+config.bind("<ctrl-shift-tab>", "tab-prev", mode="passthrough")
+
+config.bind("<ctrl-u>", "scroll-page 0 -0.5", mode="passthrough")
+config.bind("<ctrl-d>", "scroll-page 0 0.5", mode="passthrough")
+
+config.bind("<ctrl-y>", "cmd-run-with-count 3 scroll up", mode="passthrough")
+config.bind("<ctrl-e>", "cmd-run-with-count 3 scroll down", mode="passthrough")
+
+# --------------------------------------------------------------------------------
 # Keymaps: hint mode
 # --------------------------------------------------------------------------------
 
