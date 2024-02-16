@@ -1,9 +1,6 @@
 return {
   {
     "vimwiki/vimwiki",
-    ft = {
-      "markdown",
-    },
     init = function()
       vim.g.vimwiki_global_ext = 1
       vim.g.vimwiki_table_mappings = 0
