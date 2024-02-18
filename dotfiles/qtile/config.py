@@ -176,6 +176,7 @@ keys = [
     EzKey("C-0", lazy.group["scratchpad/notes"].dropdown_toggle("zk")),
     EzKey("C-A-0", lazy.group["scratchpad/notes"].dropdown_toggle("sec__dry")),
     EzKey("C-8", lazy.group["scratchpad/notes"].dropdown_toggle("areas/workflow")),
+    EzKey("C-A-8", lazy.group["scratchpad/notes"].dropdown_toggle("sec__frt")),
     EzKey("C-9", lazy.group["scratchpad/notes"].dropdown_toggle("sec__atp")),
     EzKey("C-<backslash>", lazy.group["scratchpad/notes"].dropdown_toggle("tmp")),
     EzKey(
@@ -270,6 +271,15 @@ groups.extend(
                 DropDown(
                     "areas/workflow",
                     "alacritty -e zsh -i -c 'cd $_F/areas/workflow/; nvim'",
+                    on_focus_lost_hide=False,
+                    width=0.95,
+                    height=0.95,
+                    x=0.02,
+                    y=0.02,
+                ),
+                DropDown(
+                    "sec__frt",
+                    "alacritty -e zsh -i -c '$ENVFILES_PATH/../common/sec/sec__frt.sh'",
                     on_focus_lost_hide=False,
                     width=0.95,
                     height=0.95,
