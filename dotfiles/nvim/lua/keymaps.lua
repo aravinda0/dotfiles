@@ -283,7 +283,14 @@ end
 -- aerial.nvim
 -- --------------------------------------------------------------------------------
 
-vim.keymap.set("n", "<c-m>", "<cmd>AerialToggle float<cr>")
+-- vim.keymap.set("n", "<c-m>", "<cmd>AerialToggle float<cr>")
+vim.keymap.set("n", "<c-m>", function()
+  -- NOTE: Workaround for https://github.com/stevearc/aerial.nvim/issues/331
+  require('aerial').refetch_symbols()
+  vim.cmd.AerialOpen 'float'
+  vim.cmd.doautocmd 'BufWinEnter'
+end)
+
 vim.keymap.set("n", "<c-m-m>", "<cmd>AerialToggle<cr>")
 
 M.build_aerial_config_keymaps = function()
