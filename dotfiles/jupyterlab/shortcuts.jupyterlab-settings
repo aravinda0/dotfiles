@@ -1,0 +1,91 @@
+{
+    // Keyboard Shortcuts
+    // @jupyterlab/shortcuts-extension:shortcuts
+    // Keyboard shortcut settings.
+    // *****************************************
+    "shortcuts": [
+        {
+            "args": {},
+            "command": "application:activate-next-tab",
+            "keys": [
+                "Alt R"
+            ],
+            "selector": "body"
+        },
+        {
+            "args": {},
+            "command": "application:activate-previous-tab",
+            "keys": [
+                "Alt E"
+            ],
+            "selector": "body"
+        },
+        {
+            "args": {},
+            "command": "apputils:activate-command-palette",
+            "keys": [
+                "Ctrl P"
+            ],
+            "selector": "body"
+        },
+        {
+            "args": {},
+            "command": "notebook:enter-edit-mode",
+            "keys": [
+                "E"
+            ],
+            "selector": ".jp-Notebook.jp-mod-commandMode .jp-Cell:focus"
+        },
+        {
+            "disabled": true,
+            "args": {},
+            "command": "notebook:enter-command-mode",
+            "keys": [
+                "Ctrl M"
+            ],
+            "selector": ".jp-Notebook.jp-mod-editMode"
+        },
+        {
+            "args": {},
+            "command": "notebook:clear-cell-output",
+            "keys": [
+                "Ctrl L"
+            ],
+            "selector": "body"
+        },
+        {
+            "args": {},
+            "command": "notebook:change-cell-to-code",
+            "keys": [
+                "C"
+            ],
+            "selector": ".jp-Notebook.jp-mod-commandMode:not(.jp-mod-readWrite) :focus"
+        },
+        {
+            "args": {},
+            "command": "notebook:copy-cell",
+            "keys": [
+                "Y"
+            ],
+            "selector": ".jp-Notebook.jp-mod-commandMode:not(.jp-mod-readWrite) :focus"
+        },
+        {
+            "disabled": true,
+            "args": {},
+            "command": "notebook:insert-cell-above",
+            "keys": [
+                "A"
+            ],
+            "selector": ".jp-Notebook.jp-mod-commandMode:not(.jp-mod-readWrite) :focus"
+        },
+        {
+            "args": {},
+            "command": "notebook:paste-cell-below",
+            "keys": [
+                "P"
+            ],
+            "selector": ".jp-Notebook.jp-mod-commandMode:not(.jp-mod-readWrite) :focus"
+        },
+
+    ]
+}
