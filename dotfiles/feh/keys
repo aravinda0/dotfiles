@@ -28,3 +28,6 @@ toggle_fixed_geometry g
 
 toggle_info i
 toggle_filenames d
+
+remove Delete  # remove from file list
+delete C-Delete  # delete from file system
