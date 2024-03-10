@@ -57,8 +57,8 @@ vim.keymap.set("v", ">", ">gv")
 -- Move lines up or down
 -- TODO: Translate the visual mode mappings to lua properly. Stuff after `<cr>` doesn't
 -- seem to register, even in an expr mapping.
-vim.keymap.set("n", "<c-k>", "<cmd>move -2<cr>")
-vim.keymap.set("n", "<c-j>", "<cmd>move +1<cr>")
+vim.keymap.set("n", "<c-m-k>", "<cmd>move -2<cr>")
+vim.keymap.set("n", "<c-m-j>", "<cmd>move +1<cr>")
 vim.cmd("vnoremap <c-j> :move '>+1<cr>gv-gv")
 vim.cmd("vnoremap <c-k> :move '<-2<cr>gv-gv")
 
@@ -284,14 +284,14 @@ end
 -- --------------------------------------------------------------------------------
 
 -- vim.keymap.set("n", "<c-m>", "<cmd>AerialToggle float<cr>")
-vim.keymap.set("n", "<c-m>", function()
+vim.keymap.set("n", "<c-s-o>", function()
   -- NOTE: Workaround for https://github.com/stevearc/aerial.nvim/issues/331
-  require('aerial').refetch_symbols()
-  vim.cmd.AerialOpen 'float'
+  -- require('aerial').refetch_symbols()
+  vim.cmd.AerialToggle 'float'
   vim.cmd.doautocmd 'BufWinEnter'
 end)
 
-vim.keymap.set("n", "<c-m-m>", "<cmd>AerialToggle<cr>")
+vim.keymap.set("n", "<c-m-o>", "<cmd>AerialToggle<cr>")
 
 M.build_aerial_config_keymaps = function()
   return {
@@ -340,6 +340,34 @@ M.set_leap_keymaps = function()
   vim.keymap.set("n", "s", function()
     leap.leap({ target_windows = { vim.fn.win_getid() } })
   end)
+end
+
+
+-- --------------------------------------------------------------------------------
+-- trailblazer.nvim
+-- https://github.com/LeonHeidelbach/trailblazer.nvim?tab=readme-ov-file#%EF%B8%8F-configuration
+-- --------------------------------------------------------------------------------
+
+M.build_trailblazer_keymaps = function()
+  return {
+    nv = {
+      motions = {
+        new_trail_mark = '<c-m>',
+        track_back = '<c-s-k>',
+        peek_move_next_down = '<c-j>',
+        peek_move_previous_up = '<c-k>',
+        move_to_nearest = '<c-n>',
+        toggle_trail_mark_list = '<leader>mm',
+      },
+      actions = {
+        delete_all_trail_marks = '<leader>md',
+        set_trail_mark_select_mode = '<leader>mse',
+        switch_to_next_trail_mark_stack = '<leader>mj',
+        switch_to_previous_trail_mark_stack = '<leader>mk',
+        set_trail_mark_stack_sort_mode = '<leader>mso',
+      },
+    }
+  }
 end
 
 -- --------------------------------------------------------------------------------
