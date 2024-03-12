@@ -150,6 +150,26 @@ keys = [
     EzKey("M-S-j", lazy.layout.swap_down()),
     EzKey("A-S-d", lazy.layout.swap_prev_tab()),
     EzKey("A-S-f", lazy.layout.swap_next_tab()),
+    KeyChord(
+        ["mod4"],
+        "w",
+        [
+            KeyChord(
+                [],
+                "m",
+                [
+                    EzKey("h", lazy.layout.merge_to_subtab("left")),
+                    EzKey("l", lazy.layout.merge_to_subtab("right")),
+                    EzKey("j", lazy.layout.merge_to_subtab("down")),
+                    EzKey("k", lazy.layout.merge_to_subtab("up")),
+                ],
+            ),
+            EzKey("v", lazy.layout.spawn_split(rofi_run_cmd, "x")),
+            EzKey("x", lazy.layout.spawn_split(rofi_run_cmd, "y")),
+            EzKey("t", lazy.layout.spawn_tab(rofi_run_cmd)),
+            EzKey("S-t", lazy.layout.spawn_tab(rofi_run_cmd, new_level=True)),
+        ],
+    ),
     # --------------------------------------------------------------------------------
     # --------------------------------------------------------------------------------
     # Groups organization
