@@ -156,6 +156,15 @@ keys = [
         [
             KeyChord(
                 [],
+                "q",
+                [
+                    EzKey("r", lazy.reload_config()),
+                    EzKey("C-r", lazy.restart()),
+                    EzKey("C-q", lazy.shutdown()),
+                ],
+            ),
+            KeyChord(
+                [],
                 "m",
                 [
                     EzKey("h", lazy.layout.merge_to_subtab("left")),
@@ -168,8 +177,13 @@ keys = [
             EzKey("x", lazy.layout.spawn_split(rofi_run_cmd, "y")),
             EzKey("t", lazy.layout.spawn_tab(rofi_run_cmd)),
             EzKey("S-t", lazy.layout.spawn_tab(rofi_run_cmd, new_level=True)),
+            EzKey("<Delete>", lazy.spawn("light-locker-command -l")),
         ],
     ),
+    EzKey("C-S-h", lazy.layout.merge_to_subtab("left")),
+    EzKey("C-S-l", lazy.layout.merge_to_subtab("right")),
+    EzKey("C-S-j", lazy.layout.merge_to_subtab("down")),
+    EzKey("C-S-k", lazy.layout.merge_to_subtab("up")),
     # --------------------------------------------------------------------------------
     # --------------------------------------------------------------------------------
     # Groups organization
@@ -214,15 +228,15 @@ keys = [
     # EzKey("M-S-l", lazy.layout.shuffle_right()),
     # EzKey("M-S-j", lazy.layout.shuffle_down()),
     # EzKey("M-S-k", lazy.layout.shuffle_up()),
-    EzKey("C-S-n", lazy.layout.normalize()),
-    EzKey("C-S-f", lazy.window.toggle_floating()),
-    EzKey("C-S-<Return>", lazy.window.toggle_fullscreen()),
     EzKey("M-S-<Return>", lazy.layout.toggle_split()),
     EzKey("M-<Tab>", lazy.next_layout()),
     EzKey("M-C-<Left>", resize_left),
     EzKey("M-C-<Right>", resize_right),
     EzKey("M-C-<Down>", resize_down),
     EzKey("M-C-<Up>", resize_up),
+    EzKey("M-C-n", lazy.layout.normalize()),
+    EzKey("M-C-f", lazy.window.toggle_floating()),
+    EzKey("M-C-<Return>", lazy.window.toggle_fullscreen()),
     # --------------------------------------------------------------------------------
     # Audio
     # --------------------------------------------------------------------------------
@@ -242,21 +256,10 @@ keys = [
             EzKey("w", lazy.spawn("qutebrowser")),
             EzKey("f", lazy.spawn("firefox-developer-edition")),
             EzKey("t", lazy.spawn("qbittorrent")),
-            EzKey("v", lazy.layout.spawn_split(rofi_run_cmd, "x")),
-            EzKey("x", lazy.layout.spawn_split(rofi_run_cmd, "y")),
-            EzKey("S-n", lazy.layout.spawn_tab(terminal, new_level=True)),
-            EzKey("S-t", lazy.layout.spawn_tab(terminal, new_level=True)),
         ],
     ),
     EzKey("M-<BackSpace>", lazy.window.kill()),
     EzKey("C-q", lazy.window.kill()),
-    EzKey("C-S-l", lazy.spawn("light-locker-command -l")),
-    # --------------------------------------------------------------------------------
-    # Mgmt
-    # --------------------------------------------------------------------------------
-    EzKey("M-C-r", lazy.reload_config()),
-    EzKey("M-S-r", lazy.restart()),
-    EzKey("M-C-q", lazy.shutdown()),
 ]
 
 groups = make_groups_from_contexts()
