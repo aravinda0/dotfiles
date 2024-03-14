@@ -57,8 +57,8 @@ vim.keymap.set("v", ">", ">gv")
 -- Move lines up or down
 -- TODO: Translate the visual mode mappings to lua properly. Stuff after `<cr>` doesn't
 -- seem to register, even in an expr mapping.
-vim.keymap.set("n", "<c-m-k>", "<cmd>move -2<cr>")
-vim.keymap.set("n", "<c-m-j>", "<cmd>move +1<cr>")
+vim.keymap.set("n", "<c-k>", "<cmd>move -2<cr>")
+vim.keymap.set("n", "<c-j>", "<cmd>move +1<cr>")
 vim.cmd("vnoremap <c-j> :move '>+1<cr>gv-gv")
 vim.cmd("vnoremap <c-k> :move '<-2<cr>gv-gv")
 
@@ -353,9 +353,9 @@ M.build_trailblazer_keymaps = function()
     nv = {
       motions = {
         new_trail_mark = '<c-m>',
-        track_back = '<c-s-k>',
-        peek_move_next_down = '<c-j>',
-        peek_move_previous_up = '<c-k>',
+        track_back = '<c-m-s-k>',
+        peek_move_next_down = '<c-m-j>',
+        peek_move_previous_up = '<c-m-k>',
         move_to_nearest = '<c-n>',
         toggle_trail_mark_list = '<leader>mm',
       },
