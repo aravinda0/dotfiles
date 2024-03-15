@@ -156,15 +156,6 @@ keys = [
         [
             KeyChord(
                 [],
-                "q",
-                [
-                    EzKey("r", lazy.reload_config()),
-                    EzKey("C-r", lazy.restart()),
-                    EzKey("C-q", lazy.shutdown()),
-                ],
-            ),
-            KeyChord(
-                [],
                 "m",
                 [
                     EzKey("h", lazy.layout.merge_to_subtab("left")),
@@ -178,6 +169,9 @@ keys = [
             EzKey("t", lazy.layout.spawn_tab(rofi_run_cmd)),
             EzKey("S-t", lazy.layout.spawn_tab(rofi_run_cmd, new_level=True)),
             EzKey("<Delete>", lazy.spawn("light-locker-command -l")),
+            EzKey("C-r", lazy.reload_config()),
+            EzKey("M-r", lazy.restart()),
+            EzKey("M-q", lazy.shutdown()),
         ],
     ),
     EzKey("C-S-h", lazy.layout.merge_to_subtab("left")),
