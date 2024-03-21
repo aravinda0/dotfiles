@@ -65,57 +65,6 @@ def _cycle_group_in_group_set(step=1):
     return inner
 
 
-def resize(qtile, direction):
-    layout = qtile.current_layout
-    child = layout.current
-    parent = child.parent
-
-    # Not using layout.grow_amount since seems too much
-    grow_amount = 2
-
-    while parent:
-        if child in parent.children:
-            layout_all = False
-
-            if (direction == "left" and parent.split_horizontal) or (
-                direction == "up" and not parent.split_horizontal
-            ):
-                parent.split_ratio = max(5, parent.split_ratio - grow_amount)
-                layout_all = True
-            elif (direction == "right" and parent.split_horizontal) or (
-                direction == "down" and not parent.split_horizontal
-            ):
-                parent.split_ratio = min(95, parent.split_ratio + grow_amount)
-                layout_all = True
-
-            if layout_all:
-                layout.group.layout_all()
-                break
-
-        child = parent
-        parent = child.parent
-
-
-@lazy.function
-def resize_left(qtile):
-    resize(qtile, "left")
-
-
-@lazy.function
-def resize_right(qtile):
-    resize(qtile, "right")
-
-
-@lazy.function
-def resize_up(qtile):
-    resize(qtile, "up")
-
-
-@lazy.function
-def resize_down(qtile):
-    resize(qtile, "down")
-
-
 rofi_run_cmd = "rofi -show drun -m -1"
 
 # keycodes: https://github.com/qtile/qtile/blob/master/libqtile/backend/x11/xkeysyms.py
@@ -139,17 +88,17 @@ keys = [
     EzKey("M-l", lazy.layout.right()),
     EzKey("M-k", lazy.layout.up()),
     EzKey("M-j", lazy.layout.down()),
-    EzKey("M-C-h", lazy.layout.resize_left(100)),
-    EzKey("M-C-l", lazy.layout.resize_right(100)),
-    EzKey("M-C-k", lazy.layout.resize_up(100)),
-    EzKey("M-C-j", lazy.layout.resize_down(100)),
+    EzKey("M-C-h", lazy.layout.resize("left", 100)),
+    EzKey("M-C-l", lazy.layout.resize("right", 100)),
+    EzKey("M-C-k", lazy.layout.resize("up", 100)),
+    EzKey("M-C-j", lazy.layout.resize("down", 100)),
     EzKey("C-S-r", lazy.layout.rename_tab()),
-    EzKey("M-S-h", lazy.layout.swap_left()),
-    EzKey("M-S-l", lazy.layout.swap_right()),
-    EzKey("M-S-k", lazy.layout.swap_up()),
-    EzKey("M-S-j", lazy.layout.swap_down()),
-    EzKey("A-S-d", lazy.layout.swap_prev_tab()),
-    EzKey("A-S-f", lazy.layout.swap_next_tab()),
+    EzKey("M-S-h", lazy.layout.swap("left")),
+    EzKey("M-S-l", lazy.layout.swap("right")),
+    EzKey("M-S-k", lazy.layout.swap("up")),
+    EzKey("M-S-j", lazy.layout.swap("down")),
+    EzKey("A-S-d", lazy.layout.swap_tab_prev()),
+    EzKey("A-S-f", lazy.layout.swap_tab_next()),
     KeyChord(
         ["mod4"],
         "w",
@@ -218,16 +167,8 @@ keys = [
     # --------------------------------------------------------------------------------
     # Window actions
     # --------------------------------------------------------------------------------
-    # EzKey("M-S-h", lazy.layout.shuffle_left()),
-    # EzKey("M-S-l", lazy.layout.shuffle_right()),
-    # EzKey("M-S-j", lazy.layout.shuffle_down()),
-    # EzKey("M-S-k", lazy.layout.shuffle_up()),
     EzKey("M-S-<Return>", lazy.layout.toggle_split()),
     EzKey("M-<Tab>", lazy.next_layout()),
-    EzKey("M-C-<Left>", resize_left),
-    EzKey("M-C-<Right>", resize_right),
-    EzKey("M-C-<Down>", resize_down),
-    EzKey("M-C-<Up>", resize_up),
     EzKey("M-C-n", lazy.layout.normalize()),
     EzKey("M-C-f", lazy.window.toggle_floating()),
     EzKey("M-C-<Return>", lazy.window.toggle_fullscreen()),
@@ -257,9 +198,6 @@ keys = [
 ]
 
 groups = make_groups_from_contexts()
-
-
-# groups = [Group(_) for _ in ["main", "notes", "browser"]]
 groups.extend(
     [
         ScratchPad(
