@@ -357,7 +357,7 @@ M.build_trailblazer_keymaps = function()
         peek_move_next_down = '<c-m-j>',
         peek_move_previous_up = '<c-m-k>',
         move_to_nearest = '<c-n>',
-        toggle_trail_mark_list = '<leader>mm',
+        toggle_trail_mark_list = '<leader>ml',
       },
       actions = {
         delete_all_trail_marks = '<leader>md',
