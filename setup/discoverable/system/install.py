@@ -31,6 +31,9 @@ packages = [
     #
     # screen temperature
     "redshift",
+    #
+    # url downloader (eg. for youtube, etc.)
+    "yt-dlp",
 ]
 
 
