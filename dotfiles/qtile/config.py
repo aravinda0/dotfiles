@@ -103,6 +103,11 @@ keys = [
         ["mod4"],
         "w",
         [
+            EzKey("n", lazy.layout.normalize()),
+            EzKey("f", lazy.window.toggle_floating()),
+            EzKey("M-<Return>", lazy.window.toggle_fullscreen()),
+            EzKey("o", lazy.layout.pull_out()),
+            EzKey("u", lazy.layout.pull_out_to_tab()),
             KeyChord(
                 [],
                 "m",
@@ -111,6 +116,48 @@ keys = [
                     EzKey("l", lazy.layout.merge_to_subtab("right")),
                     EzKey("j", lazy.layout.merge_to_subtab("down")),
                     EzKey("k", lazy.layout.merge_to_subtab("up")),
+                    #
+                    # Merge whole tabs
+                    EzKey("S-h", lazy.layout.merge_tabs("previous")),
+                    EzKey("S-l", lazy.layout.merge_tabs("next")),
+                ],
+            ),
+            KeyChord(
+                [],
+                "i",
+                [
+                    EzKey(
+                        "j",
+                        lazy.layout.push_in("down", dest_selection="mru_largest"),
+                    ),
+                    EzKey(
+                        "k",
+                        lazy.layout.push_in("up", dest_selection="mru_largest"),
+                    ),
+                    EzKey(
+                        "h",
+                        lazy.layout.push_in("left", dest_selection="mru_largest"),
+                    ),
+                    EzKey(
+                        "l",
+                        lazy.layout.push_in("right", dest_selection="mru_largest"),
+                    ),
+                    EzKey(
+                        "S-j",
+                        lazy.layout.push_in("down", dest_selection="mru_deepest"),
+                    ),
+                    EzKey(
+                        "S-k",
+                        lazy.layout.push_in("up", dest_selection="mru_deepest"),
+                    ),
+                    EzKey(
+                        "S-h",
+                        lazy.layout.push_in("left", dest_selection="mru_deepest"),
+                    ),
+                    EzKey(
+                        "S-l",
+                        lazy.layout.push_in("right", dest_selection="mru_deepest"),
+                    ),
                 ],
             ),
             EzKey("v", lazy.layout.spawn_split(rofi_run_cmd, "x")),
@@ -169,9 +216,6 @@ keys = [
     # --------------------------------------------------------------------------------
     EzKey("M-S-<Return>", lazy.layout.toggle_split()),
     EzKey("M-<Tab>", lazy.next_layout()),
-    EzKey("M-C-n", lazy.layout.normalize()),
-    EzKey("M-C-f", lazy.window.toggle_floating()),
-    EzKey("M-C-<Return>", lazy.window.toggle_fullscreen()),
     # --------------------------------------------------------------------------------
     # Audio
     # --------------------------------------------------------------------------------
