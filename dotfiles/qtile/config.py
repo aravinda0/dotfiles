@@ -126,22 +126,10 @@ keys = [
                 [],
                 "i",
                 [
-                    EzKey(
-                        "j",
-                        lazy.layout.push_in("down", dest_selection="mru_largest"),
-                    ),
-                    EzKey(
-                        "k",
-                        lazy.layout.push_in("up", dest_selection="mru_largest"),
-                    ),
-                    EzKey(
-                        "h",
-                        lazy.layout.push_in("left", dest_selection="mru_largest"),
-                    ),
-                    EzKey(
-                        "l",
-                        lazy.layout.push_in("right", dest_selection="mru_largest"),
-                    ),
+                    EzKey("j", lazy.layout.push_in("down")),
+                    EzKey("k", lazy.layout.push_in("up")),
+                    EzKey("h", lazy.layout.push_in("left")),
+                    EzKey("l", lazy.layout.push_in("right")),
                     EzKey(
                         "S-j",
                         lazy.layout.push_in("down", dest_selection="mru_deepest"),
