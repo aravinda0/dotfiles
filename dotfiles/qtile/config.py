@@ -97,8 +97,8 @@ keys = [
     EzKey("M-S-l", lazy.layout.swap("right")),
     EzKey("M-S-k", lazy.layout.swap("up")),
     EzKey("M-S-j", lazy.layout.swap("down")),
-    EzKey("A-S-d", lazy.layout.swap_tab_prev()),
-    EzKey("A-S-f", lazy.layout.swap_tab_next()),
+    EzKey("A-S-d", lazy.layout.swap_tabs("previous")),
+    EzKey("A-S-f", lazy.layout.swap_tabs("next")),
     KeyChord(
         ["mod4"],
         "w",
