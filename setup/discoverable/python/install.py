@@ -3,6 +3,7 @@ import subprocess
 from utils.files import install_dotfiles
 from utils.system import system_install
 
+
 binary_packages = [
     "httpie",
     "ipython",
@@ -10,7 +11,7 @@ binary_packages = [
     "pdm",
     "ruff",
     "ruff-lsp",
-    "cookiecutter",
+    "copier",
 ]
 
 
