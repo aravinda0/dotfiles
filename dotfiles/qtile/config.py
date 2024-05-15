@@ -78,8 +78,6 @@ keys = [
     EzKey("M-t", lazy.layout.spawn_tab(terminal)),
     EzKey("M-S-n", lazy.layout.spawn_tab(terminal, new_level=True)),
     EzKey("M-S-t", lazy.layout.spawn_tab(terminal, new_level=True)),
-    EzKey("M-S-v", lazy.layout.spawn_split(rofi_run_cmd, "x")),
-    EzKey("M-S-x", lazy.layout.spawn_split(rofi_run_cmd, "y")),
     EzKey("M-p", lazy.layout.spawn_tab(rofi_run_cmd)),
     EzKey("M-S-p", lazy.layout.spawn_tab(rofi_run_cmd, new_level=True)),
     EzKey("A-d", lazy.layout.prev_tab()),
@@ -158,11 +156,6 @@ keys = [
             EzKey("M-q", lazy.shutdown()),
         ],
     ),
-    EzKey("C-S-h", lazy.layout.merge_to_subtab("left")),
-    EzKey("C-S-l", lazy.layout.merge_to_subtab("right")),
-    EzKey("C-S-j", lazy.layout.merge_to_subtab("down")),
-    EzKey("C-S-k", lazy.layout.merge_to_subtab("up")),
-    # --------------------------------------------------------------------------------
     # --------------------------------------------------------------------------------
     # Groups organization
     # --------------------------------------------------------------------------------
@@ -303,19 +296,6 @@ groups.extend(
 
 layouts = [
     Bonsai(**{}),
-    layout.MonadWide(ratio=0.72, border_width=1),
-    layout.Max(),
-    layout.Bsp(),
-    # layout.Columns(border_focus_stack=['#d75f5f', '#8f3d3d'], border_width=4),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Matrix(),
-    # layout.MonadTall(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
 ]
 
 widget_defaults = {
