@@ -114,9 +114,11 @@ vim.cmd("iabbrev tick$ ✅")
 -- --------------------------------------------------------------------------------
 -- Diagnostics
 -- --------------------------------------------------------------------------------
+
+-- These are defaults as of nvim 0.10.
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
+vim.keymap.set("n", "<c-w>d", vim.diagnostic.open_float)
 
 -- --------------------------------------------------------------------------------
 -- Treesitter
@@ -148,15 +150,23 @@ end
 M.set_common_lsp_keymaps = function(_, bufnr)
   local buf_opts = { noremap = true, silent = true, buffer = bufnr }
 
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, buf_opts)
-  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, buf_opts)
-  vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, buf_opts)
-  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, buf_opts)
+  -- Defaults as of nvim 0.10:
   vim.keymap.set("n", "K", vim.lsp.buf.hover, buf_opts)
+
+  vim.keymap.set("n", "gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, buf_opts)
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, buf_opts)
+  vim.keymap.set("n", "gt", function()
+    require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
+  end, buf_opts)
+  vim.keymap.set("n", "gi", function()
+    require("telescope.builtin").lsp_implementations({ reuse_win = true })
+  end, buf_opts)
   vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, buf_opts)
   vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, buf_opts)
   vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, buf_opts)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, buf_opts)
+  vim.keymap.set("n", "<leader>cl", vim.lsp.codelens.run, buf_opts)
+  vim.keymap.set("n", "<leader>cL", vim.lsp.codelens.refresh, buf_opts)
   vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, buf_opts)
   vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, buf_opts)
   vim.keymap.set("n", "<leader>wl", function()
