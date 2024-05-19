@@ -53,7 +53,7 @@ return {
         capabilities = capabilities,
       })
 
-      lsp.pyright.setup({
+      lsp.basedpyright.setup({
         on_attach = handle_lsp_attach,
         capabilities = capabilities,
       })
