@@ -458,9 +458,6 @@ def _is_firefox_dialog(window):
     ):
         return True
 
-    if wm_class[1].startswith("firefox") and "private browsing" in w_name.lower():
-        return True
-
     return False
 
 
