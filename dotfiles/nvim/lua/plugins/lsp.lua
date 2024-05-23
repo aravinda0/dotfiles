@@ -45,8 +45,9 @@ return {
         end
       end
 
-      lsp.ruff_lsp.setup({
+      lsp.ruff.setup({
         on_attach = function(client, bufnr)
+          -- use [based]pyright for this
           client.server_capabilities.hoverProvider = false
           return handle_lsp_attach(client, bufnr)
         end,
@@ -56,6 +57,18 @@ return {
       lsp.basedpyright.setup({
         on_attach = handle_lsp_attach,
         capabilities = capabilities,
+        settings = {
+          basedpyright = {
+            -- Use ruff for organizing imports
+            disableOrganizeImports = true,
+          },
+          python = {
+            analysis = {
+              -- Ignore all files for analysis to exclusively use ruff for linting
+              ignore = {"*"},
+            }
+          }
+        }
       })
 
       lsp.rust_analyzer.setup({
@@ -68,10 +81,10 @@ return {
         capabilities = capabilities,
       })
 
-      lsp.angularls.setup({
-        on_attach = handle_lsp_attach,
-        capabilities = capabilities,
-      })
+      -- lsp.angularls.setup({
+      --   on_attach = handle_lsp_attach,
+      --   capabilities = capabilities,
+      -- })
 
       -- lsp.tailwindcss.setup({
       --   on_attach = handle_lsp_attach,
