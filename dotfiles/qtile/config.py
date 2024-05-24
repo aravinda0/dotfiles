@@ -301,7 +301,7 @@ layouts = [
 
 widget_defaults = {
     "font": "source code pro",
-    "fontsize": 19,
+    "fontsize": 20,
     "padding": 4,
     "background": Gruvbox.bg0_hard,
     "foreground": Gruvbox.fg1,
@@ -372,7 +372,7 @@ def build_bar_monitoring_widgets():
 
 
 screens = [
-    Screen(bottom=bar.Bar(build_bar_widgets(), 26)),
+    Screen(bottom=bar.Bar(build_bar_widgets(), 32)),
     Screen(),
     Screen(),
 ]
