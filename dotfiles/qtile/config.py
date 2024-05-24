@@ -1,5 +1,6 @@
 import os
 import subprocess
+from pathlib import Path
 
 from libqtile import bar, hook, layout, widget
 from libqtile.config import (
@@ -482,5 +483,14 @@ def autostart():
 
     # Start NetworkManager systray applet
     subprocess.Popen(["/usr/bin/nm-applet", "--indicator"])
+
+    # Set wallpaper
+    subprocess.Popen(
+        [
+            "/usr/bin/feh",
+            "--bg-scale",
+            Path(DOTFILES_PATH) / "wallpapers/gruv-berries.png",
+        ]
+    )
 
     activate_context("work")
