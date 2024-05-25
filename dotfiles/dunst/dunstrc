@@ -1,3 +1,5 @@
+# config docs: https://github.com/dunst-project/dunst/blob/master/docs/dunst.5.pod
+
 [global]
   font = "source code pro" 22
   width = 1000
@@ -6,12 +8,14 @@
     background = "#282828"
     foreground = "#d5c4a1" #gray2#
     highlight = "#b8bb26"
+    frame_color = "#c29755" 
     timeout = 10
 
 [urgency_normal]
     background = "#282828"
-    foreground = "#ebdbb2" #bejsikFG#
+    foreground = "#ebdbb2" 
     highlight = "#b8bb26"
+    frame_color = "#c29755" 
     timeout = 10
 
 [urgency_critical]
