@@ -17,6 +17,7 @@ from libqtile.lazy import lazy
 from qtile_bonsai.layout import Bonsai
 from qtile_bonsai.theme import Gruvbox
 
+import colors
 import utils
 from workspaces import (
     activate_context,
@@ -296,7 +297,17 @@ groups.extend(
 )
 
 layouts = [
-    Bonsai(**{}),
+    Bonsai(
+        **{
+            "window.border_size": 1,
+            "window.border_color": colors.dull_yellow,
+            "window.active.border_color": colors.bright_yellow,
+            "tab_bar.tab.bg_color": colors.dull_yellow,
+            "tab_bar.tab.fg_color": Gruvbox.fg1,
+            "tab_bar.tab.active.bg_color": colors.bright_yellow,
+            "tab_bar.tab.active.fg_color": Gruvbox.bg0_hard,
+        }
+    ),
 ]
 
 widget_defaults = {
@@ -309,7 +320,7 @@ widget_defaults = {
 extension_defaults = widget_defaults.copy()
 monitoring_widgets_defaults = {
     "update_interval": 2,
-    "background": Gruvbox.bg3,
+    "background": colors.dull_yellow,
     "foreground": Gruvbox.fg1,
     "padding": 6,
 }
@@ -371,8 +382,9 @@ def build_bar_monitoring_widgets():
     ]
 
 
+bar_config = {}
 screens = [
-    Screen(bottom=bar.Bar(build_bar_widgets(), 32)),
+    Screen(bottom=bar.Bar(build_bar_widgets(), 32, **bar_config)),
     Screen(),
     Screen(),
 ]
@@ -407,7 +419,10 @@ floating_layout = layout.Floating(
         Match(wm_class="qbittorrent"),
         Match(title="pinentry"),  # GPG key password entry
         Match(title="VeraCrypt"),
-    ]
+    ],
+    border_normal=colors.dull_yellow,
+    border_focus=colors.bright_yellow,
+    border_width=2,
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"
