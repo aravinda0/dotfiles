@@ -366,7 +366,7 @@ def build_bar_monitoring_widgets():
         widget.Memory(
             **monitoring_widgets_defaults,
             measure_mem="G",
-            format="󰈀 {MemUsed:.2f}{mm}",
+            format="󰈀 {NotAvailable:.2f}{mm}",
         ),
         widget.ThermalSensor(
             **monitoring_widgets_defaults,
