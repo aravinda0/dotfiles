@@ -390,6 +390,28 @@ M.build_trailblazer_keymaps = function()
   }
 end
 
+
+-- --------------------------------------------------------------------------------
+-- resession.vim
+-- --------------------------------------------------------------------------------
+
+M.set_resession_keymaps = function()
+  local resession = require("resession")
+  local subsessions = require("subsessions")
+
+  -- per-directory subsessions
+  vim.keymap.set("n", "<leader>ss", subsessions.save_subsession)
+  vim.keymap.set("n", "<leader>su", subsessions.update_subsession)
+  vim.keymap.set("n", "<leader>sl", subsessions.load_subsession)
+  vim.keymap.set("n", "<leader>sd", subsessions.delete_subsession)
+
+  -- global sessions
+  vim.keymap.set("n", "<leader>sgs", resession.save)
+  vim.keymap.set("n", "<leader>sgl", resession.load)
+  vim.keymap.set("n", "<leader>sgd", resession.delete)
+end
+
+
 -- --------------------------------------------------------------------------------
 -- emmet.vim
 -- --------------------------------------------------------------------------------

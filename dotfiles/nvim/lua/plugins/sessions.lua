@@ -1,3 +1,5 @@
+local keymaps = require("keymaps")
+
 return {
   {
     "stevearc/resession.nvim",
@@ -26,6 +28,8 @@ return {
           resession.save(vim.fn.getcwd(), { dir = "dirsession", notify = false })
         end,
       })
+
+      keymaps.set_resession_keymaps()
     end,
   }
 }
