@@ -18,10 +18,6 @@ return {
           if vim.fn.argc(-1) == 0 then
             -- Save these to a different directory, so our manual sessions don't get polluted
             resession.load(vim.fn.getcwd(), { dir = "dirsession", silence_errors = true })
-
-            -- See the bug https://github.com/stevearc/resession.nvim/issues/44
-            -- We retirgger all buffers here such that LSPs get attached.
-            vim.cmd.doautoall("BufReadPost")
           end
         end,
       })
