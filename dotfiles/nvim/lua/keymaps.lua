@@ -24,6 +24,17 @@ vim.keymap.set("n", "<m-e>", "<cmd>tabprevious<cr>")
 vim.keymap.set("n", "<m-r>", "<cmd>tabnext<cr>")
 vim.keymap.set("n", "<m-E>", "<cmd>tabfirst<cr>")
 vim.keymap.set("n", "<m-R>", "<cmd>tablast<cr>")
+local select_nth_tab = function(n)
+  local tabs = vim.api.nvim_list_tabpages()
+  if n > 0 and n <= #tabs then
+    vim.api.nvim_set_current_tabpage(tabs[n])
+  end
+end
+vim.keymap.set("n", "<m-1>", function() select_nth_tab(1) end)
+vim.keymap.set("n", "<m-2>", function() select_nth_tab(2) end)
+vim.keymap.set("n", "<m-3>", function() select_nth_tab(3) end)
+vim.keymap.set("n", "<m-4>", function() select_nth_tab(4) end)
+vim.keymap.set("n", "<m-5>", function() select_nth_tab(5) end)
 
 -- Switch to previous buffer
 vim.keymap.set("n", "<bs>", "<cmd>b#<cr>")
