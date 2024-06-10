@@ -129,9 +129,16 @@ vim.cmd("iabbrev tick$ ✅")
 -- --------------------------------------------------------------------------------
 
 -- These are defaults as of nvim 0.10.
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end)
+vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end)
 vim.keymap.set("n", "<c-w>d", vim.diagnostic.open_float)
+
+vim.keymap.set("n", "<leader>dh", vim.diagnostic.hide)
+vim.keymap.set("n", "<leader>ds", vim.diagnostic.show)
+vim.keymap.set("n", "<leader>dr", vim.diagnostic.reset)
+vim.keymap.set("n", "<leader>dt", function()
+  vim.diagnostic.enable(vim.diagnostic.is_enabled())
+end)
 
 -- --------------------------------------------------------------------------------
 -- Treesitter
