@@ -137,7 +137,7 @@ vim.keymap.set("n", "<leader>dh", vim.diagnostic.hide)
 vim.keymap.set("n", "<leader>ds", vim.diagnostic.show)
 vim.keymap.set("n", "<leader>dr", vim.diagnostic.reset)
 vim.keymap.set("n", "<leader>dt", function()
-  vim.diagnostic.enable(vim.diagnostic.is_enabled())
+  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end)
 
 -- --------------------------------------------------------------------------------
