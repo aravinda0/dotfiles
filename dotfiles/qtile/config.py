@@ -14,7 +14,7 @@ from libqtile.config import (
     Screen,
 )
 from libqtile.lazy import lazy
-from qtile_bonsai.layout import Bonsai
+from qtile_bonsai import Bonsai, BonsaiBar
 from qtile_bonsai.theme import Gruvbox
 
 import colors
@@ -99,6 +99,8 @@ keys = [
     EzKey("M-S-j", lazy.layout.swap("down")),
     EzKey("A-S-d", lazy.layout.swap_tabs("previous")),
     EzKey("A-S-f", lazy.layout.swap_tabs("next")),
+    EzKey("M-o", lazy.layout.select_branch_out()),
+    EzKey("M-i", lazy.layout.select_branch_in()),
     KeyChord(
         ["mod4"],
         "w",
@@ -151,6 +153,7 @@ keys = [
             EzKey("v", lazy.layout.spawn_split(rofi_run_cmd, "x")),
             EzKey("x", lazy.layout.spawn_split(rofi_run_cmd, "y")),
             EzKey("t", lazy.layout.spawn_tab(rofi_run_cmd)),
+            EzKey("S-v", lazy.layout.toggle_branch_select_mode()),
             EzKey("S-t", lazy.layout.spawn_tab(rofi_run_cmd, new_level=True)),
             EzKey("<Delete>", lazy.spawn("light-locker-command -l")),
             EzKey("C-r", lazy.reload_config()),
@@ -302,6 +305,7 @@ layouts = [
             "window.border_size": 1,
             "window.border_color": colors.dull_yellow,
             "window.active.border_color": colors.bright_yellow,
+            "L1.tab_bar.hide_when": "always",
             "tab_bar.tab.bg_color": colors.dull_yellow,
             "tab_bar.tab.fg_color": Gruvbox.fg1,
             "tab_bar.tab.active.bg_color": colors.bright_yellow,
@@ -312,8 +316,8 @@ layouts = [
 
 widget_defaults = {
     "font": "source code pro",
-    "fontsize": 20,
-    "padding": 4,
+    "fontsize": 22,
+    "icon_size": 22,
     "background": Gruvbox.bg0_hard,
     "foreground": Gruvbox.fg1,
 }
@@ -328,23 +332,28 @@ monitoring_widgets_defaults = {
 
 def build_bar_widgets():
     widgets = [
-        widget.CurrentLayout(),
-        widget.AGroupBox(padding=100),
-        widget.Prompt(),
+        BonsaiBar(
+            **{
+                "bg_color": Gruvbox.bg0_hard,
+            }
+        ),
+        widget.CurrentLayout(padding=10),
+        widget.AGroupBox(fmt="  {}  ", padding=50),
         widget.WindowName(),
+        widget.Prompt(),
         *build_bar_monitoring_widgets(),
+        widget.Spacer(length=40),
         widget.Volume(fmt="󰕾 {}"),
         widget.Systray(),
-        widget.Clock(
-            format="%a, %d %b %Y %H:%M",
-            padding=10,
-        ),
+        widget.Spacer(length=40),
+        widget.Clock(format="%a, %d %b %Y %H:%M"),
     ]
     if utils.is_mobile_device():
         systray_index = next(
             i for i, w in enumerate(widgets) if type(w) is widget.Systray
         )
         battery_widget = widget.Battery(
+            low_percentage=0.15,
             charge_char="▲",
             discharge_char="▼",
         )
@@ -384,7 +393,7 @@ def build_bar_monitoring_widgets():
 
 bar_config = {}
 screens = [
-    Screen(bottom=bar.Bar(build_bar_widgets(), 32, **bar_config)),
+    Screen(top=bar.Bar(build_bar_widgets(), 32, **bar_config)),
     Screen(),
     Screen(),
 ]
