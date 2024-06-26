@@ -161,7 +161,7 @@ keys = [
             EzKey("v", lazy.layout.spawn_split(rofi_run_cmd, "x")),
             EzKey("x", lazy.layout.spawn_split(rofi_run_cmd, "y")),
             EzKey("t", lazy.layout.spawn_tab(rofi_run_cmd)),
-            EzKey("S-v", lazy.layout.toggle_branch_select_mode()),
+            EzKey("C-v", lazy.layout.toggle_branch_select_mode()),
             EzKey("S-t", lazy.layout.spawn_tab(rofi_run_cmd, new_level=True)),
             EzKey("<Delete>", lazy.spawn("light-locker-command -l")),
             EzKey("C-r", lazy.reload_config()),
