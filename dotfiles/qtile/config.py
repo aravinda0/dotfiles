@@ -105,6 +105,14 @@ keys = [
         ["mod4"],
         "w",
         [
+            EzKey("1", _activate_standard_group("1")),
+            EzKey("2", _activate_standard_group("2")),
+            EzKey("3", _activate_standard_group("3")),
+            EzKey("4", _activate_standard_group("4")),
+            EzKey("5", _activate_standard_group("5")),
+            EzKey("6", _activate_standard_group("6")),
+            EzKey("7", _activate_standard_group("7")),
+
             EzKey("n", lazy.layout.normalize()),
             EzKey("f", lazy.window.toggle_floating()),
             EzKey("M-<Return>", lazy.window.toggle_fullscreen()),
@@ -170,13 +178,6 @@ keys = [
     EzKey("M-d", _activate_group_set("main")),
     EzKey("M-e", _activate_group_set("notes")),
     EzKey("M-s", _activate_group_set("browser")),
-    EzKey("M-1", _activate_standard_group("1")),
-    EzKey("M-2", _activate_standard_group("2")),
-    EzKey("M-3", _activate_standard_group("3")),
-    EzKey("M-4", _activate_standard_group("4")),
-    EzKey("M-5", _activate_standard_group("5")),
-    EzKey("M-6", _activate_standard_group("6")),
-    EzKey("M-7", _activate_standard_group("7")),
     EzKey("C-M-f", _cycle_group_in_group_set(1)),
     EzKey("C-M-d", _cycle_group_in_group_set(-1)),
     # --------------------------------------------------------------------------------
