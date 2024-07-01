@@ -1,6 +1,6 @@
 """
 - Docs:
-    - qute://help/configuring.html 
+    - qute://help/configuring.html
     - qute://help/settings.html
         - qute://help/settings.html#bindings.default
     - qute://help/commands.html
@@ -16,7 +16,6 @@
 - `:process`
     - to view userscript run info
 """
-
 
 # These are globals that qutebrowser makes available when processing this file. These
 # self-assignments are just to silence checkers and linters.
@@ -76,6 +75,7 @@ c.editor.command = [
 c.url.searchengines = {
     "DEFAULT": "https://duckduckgo.com/?q={}",
     "r": "https://duckduckgo.com/?q=site%3Areddit.com+{}",
+    "d": "https://discu.eu/q/{}",
     "i": "https://duckduckgo.com/?q={}&ia=images&iax=images",
     "hn": "https://duckduckgo.com/?q=site%3Anews.ycombinator.com+{}",
     "p": "https://phind.com/search?q={}",
