@@ -327,14 +327,7 @@ groups.extend(
 layouts = [
     Bonsai(
         **{
-            "window.border_size": 1,
-            "window.border_color": colors.dull_yellow,
-            "window.active.border_color": colors.bright_yellow,
             "L1.tab_bar.hide_when": "always",
-            "tab_bar.tab.bg_color": colors.dull_yellow,
-            "tab_bar.tab.fg_color": Gruvbox.fg1,
-            "tab_bar.tab.active.bg_color": colors.bright_yellow,
-            "tab_bar.tab.active.fg_color": Gruvbox.bg0_hard,
         }
     ),
 ]
