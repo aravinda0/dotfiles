@@ -101,6 +101,20 @@ keys = [
     EzKey("A-S-f", lazy.layout.swap_tabs("next")),
     EzKey("M-o", lazy.layout.select_branch_out()),
     EzKey("M-i", lazy.layout.select_branch_in()),
+    # ----------
+    # precise tab selection
+    EzKey("M-1", lazy.layout.focus_nth_tab(1)),
+    EzKey("M-2", lazy.layout.focus_nth_tab(2)),
+    EzKey("M-3", lazy.layout.focus_nth_tab(3)),
+    EzKey("M-4", lazy.layout.focus_nth_tab(4)),
+    EzKey("M-5", lazy.layout.focus_nth_tab(5)),
+    # ----------
+    # precise pane selection
+    EzKey("C-1", lazy.layout.focus_nth_window(1, ignore_inactive_tabs_at_levels=[1,2])),
+    EzKey("C-2", lazy.layout.focus_nth_window(2, ignore_inactive_tabs_at_levels=[1,2])),
+    EzKey("C-3", lazy.layout.focus_nth_window(3, ignore_inactive_tabs_at_levels=[1,2])),
+    EzKey("C-4", lazy.layout.focus_nth_window(4, ignore_inactive_tabs_at_levels=[1,2])),
+    EzKey("C-5", lazy.layout.focus_nth_window(5, ignore_inactive_tabs_at_levels=[1,2])),
     KeyChord(
         ["mod4"],
         "w",
