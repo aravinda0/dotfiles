@@ -52,4 +52,7 @@ npm-debug.log
 # Misc
 .tmp
 .venv
-/debug
+debug
+
+# Don't ignore these. These are gitignore'd but we want to search inside them.
+!tmp
