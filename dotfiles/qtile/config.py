@@ -99,8 +99,8 @@ keys = [
     EzKey("M-S-j", lazy.layout.swap("down")),
     EzKey("A-S-d", lazy.layout.swap_tabs("previous")),
     EzKey("A-S-f", lazy.layout.swap_tabs("next")),
-    EzKey("M-o", lazy.layout.select_branch_out()),
-    EzKey("M-i", lazy.layout.select_branch_in()),
+    EzKey("M-o", lazy.layout.select_container_outer()),
+    EzKey("M-i", lazy.layout.select_container_inner()),
     # ----------
     # precise tab selection
     EzKey("M-1", lazy.layout.focus_nth_tab(1)),
@@ -185,7 +185,7 @@ keys = [
             EzKey("v", lazy.layout.spawn_split(rofi_run_cmd, "x")),
             EzKey("x", lazy.layout.spawn_split(rofi_run_cmd, "y")),
             EzKey("t", lazy.layout.spawn_tab(rofi_run_cmd)),
-            EzKey("C-v", lazy.layout.toggle_branch_select_mode()),
+            EzKey("C-v", lazy.layout.toggle_container_select_mode()),
             EzKey("S-t", lazy.layout.spawn_tab(rofi_run_cmd, new_level=True)),
             EzKey("<Delete>", lazy.spawn("light-locker-command -l")),
             EzKey("C-r", lazy.reload_config()),
