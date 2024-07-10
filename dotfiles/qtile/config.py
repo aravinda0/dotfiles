@@ -75,7 +75,9 @@ keys = [
     # qtile-bonsai
     # --------------------------------------------------------------------------------
     EzKey("M-v", lazy.layout.spawn_split(terminal, "x")),
+    EzKey("M-S-v", lazy.layout.spawn_split(terminal, "x", position="previous")),
     EzKey("M-x", lazy.layout.spawn_split(terminal, "y")),
+    EzKey("M-S-x", lazy.layout.spawn_split(terminal, "y", position="previous")),
     EzKey("M-n", lazy.layout.spawn_tab(terminal)),
     EzKey("M-t", lazy.layout.spawn_tab(terminal)),
     EzKey("M-S-n", lazy.layout.spawn_tab(terminal, new_level=True)),
@@ -136,7 +138,6 @@ keys = [
             EzKey("5", _activate_standard_group("5")),
             EzKey("6", _activate_standard_group("6")),
             EzKey("7", _activate_standard_group("7")),
-
             EzKey("n", lazy.layout.normalize()),
             EzKey("f", lazy.window.toggle_floating()),
             EzKey("M-<Return>", lazy.window.toggle_fullscreen()),
