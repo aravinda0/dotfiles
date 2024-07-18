@@ -65,15 +65,33 @@ return {
           python = {
             analysis = {
               -- Ignore all files for analysis to exclusively use ruff for linting
-              ignore = {"*"},
+              ignore = { "*" },
             }
           }
         }
       })
 
+      -- config docs: https://github.com/rust-lang/rust-analyzer/blob/master/docs/user/generated_config.adoc
       lsp.rust_analyzer.setup({
         on_attach = handle_lsp_attach,
         capabilities = capabilities,
+        settings = {
+          ["rust_analyzer"] = {
+            checkOnSave = {
+              allFeatures = true,
+              command = "clippy",
+              extraArgs = { "--no-deps" },
+            },
+            procMacro = {
+              enable = true,
+              ignored = {
+                ["async-trait"] = { "async_trait" },
+                ["napi-derive"] = { "napi" },
+                ["async-recursion"] = { "async_recursion" },
+              },
+            },
+          },
+        }
       })
 
       lsp.tsserver.setup({
