@@ -220,6 +220,10 @@ keys = [
         lazy.group["scratchpad/notes"].hide_all(),
     ),
     EzKey(
+        "C-<grave>",
+        lazy.group["scratchpad/notes"].hide_all(),
+    ),
+    EzKey(
         "C-S-<backslash>",
         lazy.group["scratchpad/notes"].hide_all(),
     ),
