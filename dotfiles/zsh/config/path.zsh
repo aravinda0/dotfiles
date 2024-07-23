@@ -31,4 +31,8 @@ if [[ -d $HOME/.nix-profile/bin ]] ; then
   path=("$HOME/.nix-profile/bin" $path)
 fi
 
+if [[ -d $HOME/.cargo/bin ]] ; then
+  path=("$HOME/.cargo/bin" $path)
+fi
+
 export PATH
