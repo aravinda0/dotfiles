@@ -22,7 +22,7 @@ contexts = [
         },
         "notes": {
             "preferred_display": {
-                "nexus": 1,
+                "nexus": 2,
                 "scout": 0,
                 "ragebox": 0,
             },
@@ -30,7 +30,7 @@ contexts = [
         },
         "browser": {
             "preferred_display": {
-                "nexus": 2,
+                "nexus": 1,
                 "scout": 0,
                 "ragebox": 0,
             },
@@ -49,7 +49,7 @@ contexts = [
         },
         "notes": {
             "preferred_display": {
-                "nexus": 1,
+                "nexus": 2,
                 "scout": 0,
                 "ragebox": 0,
             },
@@ -57,7 +57,7 @@ contexts = [
         },
         "browser": {
             "preferred_display": {
-                "nexus": 2,
+                "nexus": 1,
                 "scout": 0,
                 "ragebox": 0,
             },
@@ -76,7 +76,7 @@ contexts = [
         },
         "notes": {
             "preferred_display": {
-                "nexus": 1,
+                "nexus": 2,
                 "scout": 0,
                 "ragebox": 0,
             },
@@ -84,7 +84,7 @@ contexts = [
         },
         "browser": {
             "preferred_display": {
-                "nexus": 2,
+                "nexus": 1,
                 "scout": 0,
                 "ragebox": 0,
             },
