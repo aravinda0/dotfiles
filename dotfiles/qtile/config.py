@@ -147,10 +147,10 @@ keys = [
                 [],
                 "m",
                 [
-                    EzKey("h", lazy.layout.merge_to_subtab("left")),
-                    EzKey("l", lazy.layout.merge_to_subtab("right")),
-                    EzKey("j", lazy.layout.merge_to_subtab("down")),
-                    EzKey("k", lazy.layout.merge_to_subtab("up")),
+                    EzKey("h", lazy.layout.merge_to_subtab("left", normalize=False)),
+                    EzKey("l", lazy.layout.merge_to_subtab("right", normalize=False)),
+                    EzKey("j", lazy.layout.merge_to_subtab("down", normalize=False)),
+                    EzKey("k", lazy.layout.merge_to_subtab("up", normalize=False)),
                     #
                     # Merge whole tabs
                     EzKey("S-h", lazy.layout.merge_tabs("previous")),
