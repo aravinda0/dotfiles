@@ -332,7 +332,6 @@ groups.extend(
 layouts = [
     Bonsai(
         **{
-            "L1.tab_bar.hide_when": "always",
             "window.single.border_size": 0,
         }
     ),
