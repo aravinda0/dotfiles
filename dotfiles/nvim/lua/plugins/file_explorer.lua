@@ -19,6 +19,7 @@ return {
           filtered_items = {
             always_show = {
               ".env",
+              ".envrc",
               ".github",
               "tmp",
             }
