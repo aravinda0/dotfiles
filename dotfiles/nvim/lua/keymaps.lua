@@ -193,6 +193,7 @@ M.set_common_lsp_keymaps = function(_, bufnr)
 
   -- LSP and orthogonal stuff. Also see more <c-l> chords in telescope config.
   vim.keymap.set("n", "<c-l>r", vim.lsp.buf.rename, buf_opts)
+  vim.keymap.set("n", "<c-l>n", vim.lsp.buf.rename, buf_opts)
   vim.keymap.set("n", "<c-l>f", vim.lsp.buf.format, buf_opts)
   vim.keymap.set("n", "<c-l>a", vim.lsp.buf.code_action, buf_opts)
   vim.keymap.set("n", "<c-l>l", vim.lsp.codelens.run, buf_opts)
