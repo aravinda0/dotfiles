@@ -19,7 +19,7 @@ vim.keymap.set("n", "<m-k>", "<c-w>k")
 vim.keymap.set("n", "<m-l>", "<c-w>l")
 
 -- Nicer tab operations
-vim.keymap.set("n", "<m-n>", "<cmd>tabnew<cr>")
+vim.keymap.set("n", "<m-t>", "<cmd>tabnew<cr>")
 vim.keymap.set("n", "<m-e>", "<cmd>tabprevious<cr>")
 vim.keymap.set("n", "<m-r>", "<cmd>tabnext<cr>")
 vim.keymap.set("n", "<m-E>", "<cmd>tabfirst<cr>")
@@ -456,8 +456,8 @@ M.after_markdown = function()
   vim.keymap.set("n", "<s-tab>", "<cmd>VimwikiPrevLink<cr>")
   vim.keymap.set("n", "<leader>wd", "<cmd>VimwikiDeleteFile<cr>")
   vim.keymap.set("n", "<leader>wr", "<cmd>VimwikiRenameFile<cr>")
-  vim.keymap.set("n", "<leader><c-up>", "<cmd>VimwikiDiaryPrevDay<cr>")
-  vim.keymap.set("n", "<leader><c-down>", "<cmd>VimwikiDiaryNextDay<cr>")
+  vim.keymap.set("n", "<m-p>", "<cmd>VimwikiDiaryPrevDay<cr>")
+  vim.keymap.set("n", "<m-n>", "<cmd>VimwikiDiaryNextDay<cr>")
   vim.keymap.set("n", "<leader>w<leader>i", "<cmd>VimwikiDiaryGenerateLinks<cr>")
 
   -- ZK new note link
