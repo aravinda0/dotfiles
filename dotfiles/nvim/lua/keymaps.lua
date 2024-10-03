@@ -68,10 +68,10 @@ vim.keymap.set("v", ">", ">gv")
 -- Move lines up or down
 -- TODO: Translate the visual mode mappings to lua properly. Stuff after `<cr>` doesn't
 -- seem to register, even in an expr mapping.
-vim.keymap.set("n", "<c-k>", "<cmd>move -2<cr>")
-vim.keymap.set("n", "<c-j>", "<cmd>move +1<cr>")
-vim.cmd("vnoremap <c-j> :move '>+1<cr>gv-gv")
-vim.cmd("vnoremap <c-k> :move '<-2<cr>gv-gv")
+vim.keymap.set("n", "<c-m-k>", "<cmd>move -2<cr>")
+vim.keymap.set("n", "<c-m-j>", "<cmd>move +1<cr>")
+vim.cmd("vnoremap <c-m-j> :move '>+1<cr>gv-gv")
+vim.cmd("vnoremap <c-m-k> :move '<-2<cr>gv-gv")
 
 -- Clear highlighting
 vim.keymap.set("n", "<leader>n", "<cmd>nohl<cr>")
@@ -193,7 +193,6 @@ M.set_common_lsp_keymaps = function(_, bufnr)
 
   -- LSP and orthogonal stuff. Also see more <c-l> chords in telescope config.
   vim.keymap.set("n", "<c-l>r", vim.lsp.buf.rename, buf_opts)
-  vim.keymap.set("n", "<c-l>n", vim.lsp.buf.rename, buf_opts)
   vim.keymap.set("n", "<c-l>f", vim.lsp.buf.format, buf_opts)
   vim.keymap.set("n", "<c-l>a", vim.lsp.buf.code_action, buf_opts)
   vim.keymap.set("n", "<c-l>l", vim.lsp.codelens.run, buf_opts)
@@ -395,8 +394,8 @@ M.build_trailblazer_keymaps = function()
       motions = {
         new_trail_mark = '<c-m>',
         track_back = '<c-m-bs>',
-        peek_move_next_down = '<c-m-j>',
-        peek_move_previous_up = '<c-m-k>',
+        peek_move_next_down = '<c-j>',
+        peek_move_previous_up = '<c-k>',
         move_to_nearest = '<c-n>',
         toggle_trail_mark_list = '<leader>ml',
       },
