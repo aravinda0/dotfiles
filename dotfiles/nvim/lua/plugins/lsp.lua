@@ -94,7 +94,8 @@ return {
         }
       })
 
-      lsp.tsserver.setup({
+      -- Needs `npm i -g typescript typescript-language-server`
+      lsp.ts_ls.setup({
         on_attach = handle_lsp_attach,
         capabilities = capabilities,
       })
