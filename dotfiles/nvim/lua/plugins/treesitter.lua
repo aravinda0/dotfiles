@@ -45,7 +45,7 @@ return {
           enable = true,
           disable = {
             -- Handled by vimwiki for now
-            "markdown",
+            -- "markdown",
           },
         },
         -- `indent` is experimental. Disabled for some langs.
