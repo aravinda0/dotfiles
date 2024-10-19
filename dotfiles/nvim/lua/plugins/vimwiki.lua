@@ -10,7 +10,7 @@ return {
       -- vim.g.vimwiki_hl_headers = 1
 
       vim.g.vimwiki_list = {
-        { path = vim.env["_F"], ext = ".md", syntax = "markdown" },
+        { path = vim.env["_F"],         ext = ".md", syntax = "markdown" },
         { path = vim.env["_F"] .. "/j", ext = ".md", syntax = "markdown" },
       }
       vim.g.vimwiki_ext2syntax = {
