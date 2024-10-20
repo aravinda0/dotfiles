@@ -442,6 +442,16 @@ M.set_emmet_keymaps = function()
   vim.keymap.set("i", "<c-l>", "<plug>(emmet-expand-abbr)")
 end
 
+
+-- --------------------------------------------------------------------------------
+-- bullets.vim
+-- --------------------------------------------------------------------------------
+
+M.set_bullets_keymaps = function()
+  -- Note that there are other default key mappings at play in this plugin.
+  vim.keymap.set("n", "<c-space>", "<Plug>(bullets-toggle-checkbox)")
+end
+
 -- --------------------------------------------------------------------------------
 -- filetype markdown
 -- --------------------------------------------------------------------------------
