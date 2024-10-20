@@ -48,11 +48,11 @@ return {
             -- "markdown",
           },
         },
-        -- `indent` is experimental. Disabled for some langs.
+        -- `indent` is experimental.
         --  Track issue: https://github.com/nvim-treesitter/nvim-treesitter/issues/1136
         indent = {
-          enable = true,
-          disable = { "python", "yaml" },
+          enable = false,
+          disable = { "python", "yaml", "markdown" },
         },
         textobjects = {
           select = {
