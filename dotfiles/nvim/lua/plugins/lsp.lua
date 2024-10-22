@@ -100,6 +100,11 @@ return {
         capabilities = capabilities,
       })
 
+      lsp.svelte.setup({
+        on_attach = handle_lsp_attach,
+        capabilities = capabilities,
+      })
+
       -- lsp.angularls.setup({
       --   on_attach = handle_lsp_attach,
       --   capabilities = capabilities,
