@@ -76,7 +76,7 @@ return {
         on_attach = handle_lsp_attach,
         capabilities = capabilities,
         settings = {
-          ["rust_analyzer"] = {
+          ["rust-analyzer"] = {
             checkOnSave = {
               allFeatures = true,
               command = "clippy",
