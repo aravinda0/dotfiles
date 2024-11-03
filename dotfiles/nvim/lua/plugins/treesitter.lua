@@ -39,6 +39,7 @@ return {
           "vim",
           "vimdoc",
           "yaml",
+          "just",
         },
         sync_install = false,
         highlight = {
