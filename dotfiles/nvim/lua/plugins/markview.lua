@@ -1,10 +1,10 @@
 return {
   enabled = true,
   "OXY2DEV/markview.nvim",
-  lazy = false, -- Recommended
+  lazy = false,   -- Recommended
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
-    "nvim-tree/nvim-web-devicons"
+    "nvim-tree/nvim-web-devicons",
   },
   config = function()
     require("markview").setup({
@@ -15,8 +15,8 @@ return {
 
       list_items = {
         enable = false,
-        indent_size = 2,
-        shift_width = 2,
+        -- indent_size = 2,
+        -- shift_width = 2,
       },
       checkboxes = {
         enable = false,
@@ -28,29 +28,29 @@ return {
       }
     })
 
-    require("markview.extras.checkboxes").setup({
-      --- When true, list item markers will
-      --- be removed.
-      remove_markers = true,
-
-      --- If false, running the command on
-      --- visual mode doesn't change the
-      --- mode.
-      exit = true,
-
-      default_marker = "-",
-      default_state = "X",
-
-      --- A list of states
-      states = {
-        { " ", "X" },
-        { "-", "o", "~" }
-      }
-    })
+    -- require("markview.extras.checkboxes").setup({
+    --   --- When true, list item markers will
+    --   --- be removed.
+    --   remove_markers = true,
+    --
+    --   --- If false, running the command on
+    --   --- visual mode doesn't change the
+    --   --- mode.
+    --   exit = true,
+    --
+    --   default_marker = "-",
+    --   default_state = "X",
+    --
+    --   --- A list of states
+    --   states = {
+    --     { " ", "X" },
+    --     { "-", "o", "~" }
+    --   }
+    -- })
 
     -- TODO: Temp bindings. Move to keymaps file if finalized.
     vim.o.signcolumn = "no"
     vim.keymap.set("n", "<leader>mt", "<cmd>Markview toggle<cr>")
-    vim.keymap.set("n", "<c-space>", "<cmd>CheckboxNext<cr>")
+    -- vim.keymap.set("n", "<c-space>", "<cmd>CheckboxNext<cr>")
   end
 }

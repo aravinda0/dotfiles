@@ -453,6 +453,16 @@ M.set_bullets_keymaps = function()
 end
 
 
--- -------------------------------------------------------------------------------- 
+-- --------------------------------------------------------------------------------
+-- obsidian.vim
+-- --------------------------------------------------------------------------------
+
+M.set_obsidian_keymaps = function()
+  vim.keymap.set("n", "go", "<cmd>ObsidianFollowLink<cr>")
+  vim.keymap.set("n", "gv", "<cmd>ObsidianFollowLink vsplit<cr>")
+  vim.keymap.set("n", "gx", "<cmd>ObsidianFollowLink hsplit<cr>")
+end
+
+-- --------------------------------------------------------------------------------
 
 return M
