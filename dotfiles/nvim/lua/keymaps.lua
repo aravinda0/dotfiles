@@ -450,6 +450,25 @@ end
 M.set_bullets_keymaps = function()
   -- Note that there are other default key mappings at play in this plugin.
   vim.keymap.set("n", "<c-space>", "<Plug>(bullets-toggle-checkbox)")
+
+  -- Temp solution to add support for ensuring `O` also creates a new list item.
+  vim.cmd([[
+    function! SmartBulletsNewlineAbove()
+        let l:save_cursor = getcurpos()
+        let l:current_line_num = l:save_cursor[1]
+        execute "normal! \<Plug>(bullets-newline)"
+        if line('.') > l:current_line_num
+            execute line('.') . 'move ' . (l:current_line_num - 1)
+        endif
+        execute "normal! \<Plug>(bullets-renumber)"
+        call setpos('.', [0, l:current_line_num, 0, 0])
+        call feedkeys('A', 'n')
+    endfunction
+
+    let g:bullets_custom_mappings = [
+      \ ['nmap', 'O', ':call SmartBulletsNewlineAbove()<CR>'],
+    \ ]
+    ]])
 end
 
 
