@@ -13,12 +13,15 @@ return {
         require("obsidian").setup({
             workspaces = {
                 {
-                    -- Use obsidian.nvim for any markdown files, not restricted to workspace dirs.
-                    -- This is done by dynamically marking the current parent dir as a workspace.
+                    -- Use obsidian.nvim for any markdown files, not restricted to
+                    -- workspace dirs. This is done by dynamically marking the current
+                    -- parent dir as a workspace.
                     name = "no-vault",
                     path = function()
-                        -- Alternatively use the CWD: return assert(vim.fn.getcwd())
-                        return assert(vim.fs.dirname(vim.api.nvim_buf_get_name(0)))
+                        return assert(vim.fn.getcwd())
+
+                        -- Alternatively use the current buffer's parent
+                        -- return assert(vim.fs.dirname(vim.api.nvim_buf_get_name(0)))
                     end,
                     overrides = {
                         notes_subdir = vim.NIL, -- have to use 'vim.NIL' instead of 'nil'
