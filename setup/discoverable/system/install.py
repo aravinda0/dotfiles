@@ -25,6 +25,8 @@ packages = [
     # fonts,
     "ttf-sourcecodepro-nerd",
     "noto-fonts-emoji",
+    "noto-fonts-cjk",
+    "noto-fonts-extra",
     #
     # html beautifier
     "tidy",
