@@ -442,42 +442,46 @@ M.set_emmet_keymaps = function()
   vim.keymap.set("i", "<c-l>", "<plug>(emmet-expand-abbr)")
 end
 
+
 -- --------------------------------------------------------------------------------
--- filetype markdown
+-- bullets.vim
 -- --------------------------------------------------------------------------------
 
-M.after_markdown = function()
-  vim.keymap.set("n", "go", "<cmd>VimwikiFollowLink<cr>")
-  vim.keymap.set("n", "gv", "<cmd>VimwikiVSplitLink<cr>")
-  vim.keymap.set("n", "gx", "<cmd>VimwikiSplitLink<cr>")
-  vim.keymap.set("n", "gt", "<cmd>VimwikiTabnewLink<cr>")
-  vim.keymap.set("n", "gu", "<cmd>VimwikiGoBackLink<cr>")
+M.set_bullets_keymaps = function()
+  -- Note that there are other default key mappings at play in this plugin.
+  vim.keymap.set("n", "<c-space>", "<Plug>(bullets-toggle-checkbox)")
 
-  vim.keymap.set("n", "<tab>", "<cmd>VimwikiNextLink<cr>")
-  vim.keymap.set("n", "<s-tab>", "<cmd>VimwikiPrevLink<cr>")
-  vim.keymap.set("n", "<leader>wd", "<cmd>VimwikiDeleteFile<cr>")
-  vim.keymap.set("n", "<leader>wr", "<cmd>VimwikiRenameFile<cr>")
-  vim.keymap.set("n", "<m-p>", "<cmd>VimwikiDiaryPrevDay<cr>")
-  vim.keymap.set("n", "<m-n>", "<cmd>VimwikiDiaryNextDay<cr>")
-  vim.keymap.set("n", "<leader>w<leader>i", "<cmd>VimwikiDiaryGenerateLinks<cr>")
+  -- Temp solution to add support for ensuring `O` also creates a new list item.
+  vim.cmd([[
+    function! SmartBulletsNewlineAbove()
+        let l:save_cursor = getcurpos()
+        let l:current_line_num = l:save_cursor[1]
+        execute "normal! \<Plug>(bullets-newline)"
+        if line('.') > l:current_line_num
+            execute line('.') . 'move ' . (l:current_line_num - 1)
+        endif
+        execute "normal! \<Plug>(bullets-renumber)"
+        call setpos('.', [0, l:current_line_num, 0, 0])
+        call feedkeys('A', 'n')
+    endfunction
 
-  -- ZK new note link
-  vim.keymap.set("i", "<c-n>", function()
-    local uuid = string.sub(vim.fn.system("uuidgen"), 1, 7)
-    local timestamp = os.date("%Y-%m-%d-%H%M")
-    local pos = vim.api.nvim_win_get_cursor(0)
-    local row = pos[1] - 1
-    local col = pos[2]
-    vim.api.nvim_buf_set_text(
-      0,
-      row,
-      col,
-      row,
-      col,
-      { string.format("[](%s-%s)", timestamp, uuid) }
-    )
-    vim.api.nvim_win_set_cursor(0, { row + 1, col + 1 })
-  end)
+    let g:bullets_custom_mappings = [
+      \ ['nmap', 'O', ':call SmartBulletsNewlineAbove()<CR>'],
+    \ ]
+    ]])
 end
+
+
+-- --------------------------------------------------------------------------------
+-- obsidian.vim
+-- --------------------------------------------------------------------------------
+
+M.set_obsidian_keymaps = function()
+  vim.keymap.set("n", "go", "<cmd>ObsidianFollowLink<cr>")
+  vim.keymap.set("n", "gv", "<cmd>ObsidianFollowLink vsplit<cr>")
+  vim.keymap.set("n", "gx", "<cmd>ObsidianFollowLink hsplit<cr>")
+end
+
+-- --------------------------------------------------------------------------------
 
 return M

@@ -39,20 +39,21 @@ return {
           "vim",
           "vimdoc",
           "yaml",
+          "just",
         },
         sync_install = false,
         highlight = {
           enable = true,
           disable = {
             -- Handled by vimwiki for now
-            "markdown",
+            -- "markdown",
           },
         },
-        -- `indent` is experimental. Disabled for some langs.
+        -- `indent` is experimental.
         --  Track issue: https://github.com/nvim-treesitter/nvim-treesitter/issues/1136
         indent = {
-          enable = true,
-          disable = { "python", "yaml" },
+          enable = false,
+          disable = { "python", "yaml", "markdown" },
         },
         textobjects = {
           select = {
