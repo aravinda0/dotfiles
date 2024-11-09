@@ -450,20 +450,6 @@ end
 M.set_bullets_keymaps = function()
    -- Note that there are other default key mappings at play in this plugin.
 
-   -- vim.keymap.set("n", "<c-space>", "<Plug>(bullets-toggle-checkbox)")
-   vim.keymap.set("n", "<c-space>", function()
-      local line = vim.api.nvim_get_current_line()
-
-      local omg = string.gsub(line, "^(%s*[-*+] )[^%[](.*)", "%1%[ %] %2", 1)
-      print(omg)
-
-      -- local bullet = string.match(line, "^%s*[-*+] ")
-      -- if bullet ~= nil then
-      --     modded_line = string.gsub(line, bullet, bullet )
-      --     print(bullet)
-      -- end
-   end)
-
    -- Temp solution to add support for ensuring `O` also creates a new list item.
    vim.cmd([[
     function! SmartBulletsNewlineAbove()
@@ -494,6 +480,17 @@ M.set_obsidian_keymaps = function()
    vim.keymap.set("n", "gv", "<cmd>ObsidianFollowLink vsplit<cr>")
    vim.keymap.set("n", "gx", "<cmd>ObsidianFollowLink hsplit<cr>")
 end
+
+
+-- --------------------------------------------------------------------------------
+-- Personal utils
+-- --------------------------------------------------------------------------------
+
+-- Cycle through options for bullet list items/cboxes.
+vim.keymap.set("n", "<c-space>", function()
+   require("pkm.bullets").cycle_cbox()
+end)
+
 
 -- --------------------------------------------------------------------------------
 
