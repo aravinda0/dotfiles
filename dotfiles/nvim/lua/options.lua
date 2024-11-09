@@ -53,7 +53,7 @@ vim.o.splitbelow = true
 -- We're okay with this for now.
 local nvim_py3_venv_path = vim.env["NVIM_PY3_VENV_PATH"]
 if nvim_py3_venv_path ~= nil then
-  vim.g.python3_host_prog = nvim_py3_venv_path .. "/bin/python"
+   vim.g.python3_host_prog = nvim_py3_venv_path .. "/bin/python"
 end
 
 -- Disable mouse
@@ -65,11 +65,11 @@ vim.cmd("filetype plugin indent on")
 
 -- Enable highlighting for snippets in markdown files
 vim.g.markdown_fenced_languages = {
-  "html",
-  "bash",
-  "python",
-  "javascript",
-  "typescript",
-  "lua",
-  "rust",
+   "html",
+   "bash",
+   "python",
+   "javascript",
+   "typescript",
+   "lua",
+   "rust",
 }

@@ -1,4 +1,4 @@
 return {
-  { "nvim-lua/plenary.nvim" },
-  { "MunifTanjim/nui.nvim" },
+   { "nvim-lua/plenary.nvim" },
+   { "MunifTanjim/nui.nvim" },
 }

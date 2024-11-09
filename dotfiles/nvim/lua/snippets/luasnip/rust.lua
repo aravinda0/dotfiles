@@ -11,33 +11,33 @@ local d = luasnip.dynamic_node
 local r = luasnip.restore_node
 
 local snippets = {
-  s({
-    trig = "pr",
-    dscr = "Print line",
-  }, {
-    t('println!("'),
-    i(1),
-    t('");'),
-    i(0),
-  }),
+   s({
+      trig = "pr",
+      dscr = "Print line",
+   }, {
+      t('println!("'),
+      i(1),
+      t('");'),
+      i(0),
+   }),
 
-  s({
-    trig = "pri",
-    dscr = "Print value",
-  }, {
-    t('println!("'),
-    c(1, {
-      t("{}"),
-      t("{:#?}"),
-      t("{:?}"),
-    }),
-    t('", '),
-    i(2),
-    t(");"),
-    i(0),
-  }),
+   s({
+      trig = "pri",
+      dscr = "Print value",
+   }, {
+      t('println!("'),
+      c(1, {
+         t("{}"),
+         t("{:#?}"),
+         t("{:?}"),
+      }),
+      t('", '),
+      i(2),
+      t(");"),
+      i(0),
+   }),
 }
 
 return {
-  rust = snippets,
+   rust = snippets,
 }

@@ -11,27 +11,27 @@ local d = luasnip.dynamic_node
 local r = luasnip.restore_node
 
 local snippets = {
-  s({
-    trig = "pr",
-    dscr = "Print",
-  }, {
-    t("print("),
-    i(1),
-    t(")"),
-    i(0),
-  }),
+   s({
+      trig = "pr",
+      dscr = "Print",
+   }, {
+      t("print("),
+      i(1),
+      t(")"),
+      i(0),
+   }),
 
-  s({
-    trig = "pri",
-    dscr = "Print with vim.inspect",
-  }, {
-    t("print(vim.inspect("),
-    i(1),
-    t("))"),
-    i(0),
-  }),
+   s({
+      trig = "pri",
+      dscr = "Print with vim.inspect",
+   }, {
+      t("print(vim.inspect("),
+      i(1),
+      t("))"),
+      i(0),
+   }),
 }
 
 return {
-  lua = snippets,
+   lua = snippets,
 }

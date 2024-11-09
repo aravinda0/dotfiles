@@ -11,60 +11,60 @@ local d = luasnip.dynamic_node
 local r = luasnip.restore_node
 
 local snippets = {
-  s({
-    trig = "note",
-    dscr = "Template for a new note",
-  }, {
-    t("# "),
-    i(1, "New note"),
-    t({ "", "", "" }),
-    i(0),
-    t({ "", "", "" }),
-    t({
-      "-------------------------------------------------------------------------------- ",
-      "",
-      "",
-    }),
-    t("## Links"),
-    t({ "", "", "", "" }),
-    t("## References"),
-  }),
+   s({
+      trig = "note",
+      dscr = "Template for a new note",
+   }, {
+      t("# "),
+      i(1, "New note"),
+      t({ "", "", "" }),
+      i(0),
+      t({ "", "", "" }),
+      t({
+         "-------------------------------------------------------------------------------- ",
+         "",
+         "",
+      }),
+      t("## Links"),
+      t({ "", "", "", "" }),
+      t("## References"),
+   }),
 
-  s({
-    trig = "lnote",
-    dscr = "Template for a new literature note",
-  }, {
-    t("# "),
-    i(1, "New literature note"),
-    t({ "", "" }),
-    t({ "", "" }),
-    t({
-      "-------------------------------------------------------------------------------- ",
-      "- source: ",
-      "- pub_date: ",
-      "",
-    }),
-    t({
-      "-------------------------------------------------------------------------------- ",
-      "",
-      "",
-    }),
-    i(0),
-  }),
+   s({
+      trig = "lnote",
+      dscr = "Template for a new literature note",
+   }, {
+      t("# "),
+      i(1, "New literature note"),
+      t({ "", "" }),
+      t({ "", "" }),
+      t({
+         "-------------------------------------------------------------------------------- ",
+         "- source: ",
+         "- pub_date: ",
+         "",
+      }),
+      t({
+         "-------------------------------------------------------------------------------- ",
+         "",
+         "",
+      }),
+      i(0),
+   }),
 
-  s({
-    trig = "jj",
-    dscr = "Journal format",
-  }, {
-    t("# "),
-    f(function()
-      return os.date("%d %b %Y - %a")
-    end),
-    t({ "", "", "" }),
-    i(0),
-  }),
+   s({
+      trig = "jj",
+      dscr = "Journal format",
+   }, {
+      t("# "),
+      f(function()
+         return os.date("%d %b %Y - %a")
+      end),
+      t({ "", "", "" }),
+      i(0),
+   }),
 }
 
 return {
-  markdown = snippets,
+   markdown = snippets,
 }

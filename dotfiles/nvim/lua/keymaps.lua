@@ -25,10 +25,10 @@ vim.keymap.set("n", "<m-r>", "<cmd>tabnext<cr>")
 vim.keymap.set("n", "<m-E>", "<cmd>tabfirst<cr>")
 vim.keymap.set("n", "<m-R>", "<cmd>tablast<cr>")
 local select_nth_tab = function(n)
-  local tabs = vim.api.nvim_list_tabpages()
-  if n > 0 and n <= #tabs then
-    vim.api.nvim_set_current_tabpage(tabs[n])
-  end
+   local tabs = vim.api.nvim_list_tabpages()
+   if n > 0 and n <= #tabs then
+      vim.api.nvim_set_current_tabpage(tabs[n])
+   end
 end
 vim.keymap.set("n", "<m-1>", function() select_nth_tab(1) end)
 vim.keymap.set("n", "<m-2>", function() select_nth_tab(2) end)
@@ -85,7 +85,7 @@ vim.cmd("noremap <leader>ot :tabe <c-r>=expand('%:p:h') . '/' <cr>")
 
 -- Select previously pasted text
 vim.keymap.set("n", "gp", function()
-  return "'[" .. vim.fn.strpart(vim.fn.getregtype(), 0, 1) .. "']"
+   return "'[" .. vim.fn.strpart(vim.fn.getregtype(), 0, 1) .. "']"
 end, { expr = true })
 
 -- --------------------------------------------------------------------------------
@@ -94,7 +94,7 @@ end, { expr = true })
 
 -- Separators
 vim.cmd(
-  "iabbrev --$ --------------------------------------------------------------------------------"
+   "iabbrev --$ --------------------------------------------------------------------------------"
 )
 vim.cmd("iabbrev ---$ ----------")
 
@@ -140,7 +140,7 @@ vim.keymap.set("n", "<c-l>dh", vim.diagnostic.hide)
 vim.keymap.set("n", "<c-l>ds", vim.diagnostic.show)
 vim.keymap.set("n", "<c-l>dr", vim.diagnostic.reset)
 vim.keymap.set("n", "<c-l>dt", function()
-  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+   vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end)
 
 -- --------------------------------------------------------------------------------
@@ -148,18 +148,18 @@ end)
 -- --------------------------------------------------------------------------------
 
 M.build_textobject_keymaps = function()
-  return {
-    ["af"] = "@function.outer",
-    ["if"] = "@function.inner",
-    ["ac"] = "@class.outer",
-    ["ic"] = "@class.inner",
-    ["ai"] = "@conditional.outer",
-    ["ii"] = "@conditional.inner",
-    ["aa"] = "@attribute.outer",
-    ["ia"] = "@attribute.inner",
-    ["i;"] = "@statement.outer",
-    ["a;"] = "@statement.outer",
-  }
+   return {
+      ["af"] = "@function.outer",
+      ["if"] = "@function.inner",
+      ["ac"] = "@class.outer",
+      ["ic"] = "@class.inner",
+      ["ai"] = "@conditional.outer",
+      ["ii"] = "@conditional.inner",
+      ["aa"] = "@attribute.outer",
+      ["ia"] = "@attribute.inner",
+      ["i;"] = "@statement.outer",
+      ["a;"] = "@statement.outer",
+   }
 end
 
 -- --------------------------------------------------------------------------------
@@ -171,39 +171,39 @@ end
 -- UI customizations: https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
 -- --------------------------------------------------------------------------------
 M.set_common_lsp_keymaps = function(_, bufnr)
-  local buf_opts = { noremap = true, silent = true, buffer = bufnr }
+   local buf_opts = { noremap = true, silent = true, buffer = bufnr }
 
-  -- Defaults as of nvim 0.10:
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, buf_opts)
+   -- Defaults as of nvim 0.10:
+   vim.keymap.set("n", "K", vim.lsp.buf.hover, buf_opts)
 
-  vim.keymap.set("n", "gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, buf_opts)
-  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, buf_opts)
-  vim.keymap.set("n", "gt", function()
-    require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
-  end, buf_opts)
-  vim.keymap.set("n", "gi", function()
-    require("telescope.builtin").lsp_implementations({ reuse_win = true })
-  end, buf_opts)
-  vim.keymap.set("n", "gK", vim.lsp.buf.signature_help, buf_opts)
-  vim.keymap.set("i", "<c-k>", vim.lsp.buf.signature_help, buf_opts)
-  vim.keymap.set("n", "<leader>k", function()
-    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-  end, buf_opts)
-  vim.keymap.set("i", "<m-k>", function()
-    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-  end, buf_opts)
+   vim.keymap.set("n", "gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, buf_opts)
+   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, buf_opts)
+   vim.keymap.set("n", "gt", function()
+      require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
+   end, buf_opts)
+   vim.keymap.set("n", "gi", function()
+      require("telescope.builtin").lsp_implementations({ reuse_win = true })
+   end, buf_opts)
+   vim.keymap.set("n", "gK", vim.lsp.buf.signature_help, buf_opts)
+   vim.keymap.set("i", "<c-k>", vim.lsp.buf.signature_help, buf_opts)
+   vim.keymap.set("n", "<leader>k", function()
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+   end, buf_opts)
+   vim.keymap.set("i", "<m-k>", function()
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+   end, buf_opts)
 
-  -- LSP and orthogonal stuff. Also see more <c-l> chords in telescope config.
-  vim.keymap.set("n", "<c-l>r", vim.lsp.buf.rename, buf_opts)
-  vim.keymap.set("n", "<c-l>f", vim.lsp.buf.format, buf_opts)
-  vim.keymap.set("n", "<c-l>a", vim.lsp.buf.code_action, buf_opts)
-  vim.keymap.set("n", "<c-l>l", vim.lsp.codelens.run, buf_opts)
-  vim.keymap.set("n", "<c-l>L", vim.lsp.codelens.refresh, buf_opts)
-  vim.keymap.set("n", "<c-l>wa", vim.lsp.buf.add_workspace_folder, buf_opts)
-  vim.keymap.set("n", "<c-l>wr", vim.lsp.buf.remove_workspace_folder, buf_opts)
-  vim.keymap.set("n", "<c-l>wl", function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, buf_opts)
+   -- LSP and orthogonal stuff. Also see more <c-l> chords in telescope config.
+   vim.keymap.set("n", "<c-l>r", vim.lsp.buf.rename, buf_opts)
+   vim.keymap.set("n", "<c-l>f", vim.lsp.buf.format, buf_opts)
+   vim.keymap.set("n", "<c-l>a", vim.lsp.buf.code_action, buf_opts)
+   vim.keymap.set("n", "<c-l>l", vim.lsp.codelens.run, buf_opts)
+   vim.keymap.set("n", "<c-l>L", vim.lsp.codelens.refresh, buf_opts)
+   vim.keymap.set("n", "<c-l>wa", vim.lsp.buf.add_workspace_folder, buf_opts)
+   vim.keymap.set("n", "<c-l>wr", vim.lsp.buf.remove_workspace_folder, buf_opts)
+   vim.keymap.set("n", "<c-l>wl", function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+   end, buf_opts)
 end
 
 -- --------------------------------------------------------------------------------
@@ -212,42 +212,42 @@ end
 -- Docs: https://github.com/hrsh7th/nvim-cmp
 -- --------------------------------------------------------------------------------
 M.build_nvim_cmp_config_keymaps = function()
-  local cmp = require("cmp")
-  local luasnip = require("luasnip")
+   local cmp = require("cmp")
+   local luasnip = require("luasnip")
 
-  return {
-    ["<c-j>"] = cmp.mapping.select_next_item(),
-    ["<c-k>"] = cmp.mapping.select_prev_item(),
-    ["<c-space>"] = cmp.mapping.complete(),
-    ["<c-e>"] = cmp.mapping(function(fallback)
-      if luasnip.expand_or_locally_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-    ["<c-b>"] = cmp.mapping(function(fallback)
-      if luasnip.get_active_snip() and luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-    ["<c-n>"] = cmp.mapping(function(fallback)
-      if luasnip.choice_active() then
-        luasnip.change_choice(1)
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-    ["<c-p>"] = cmp.mapping(function(fallback)
-      if luasnip.choice_active() then
-        luasnip.change_choice(-1)
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-  }
+   return {
+      ["<c-j>"] = cmp.mapping.select_next_item(),
+      ["<c-k>"] = cmp.mapping.select_prev_item(),
+      ["<c-space>"] = cmp.mapping.complete(),
+      ["<c-e>"] = cmp.mapping(function(fallback)
+         if luasnip.expand_or_locally_jumpable() then
+            luasnip.expand_or_jump()
+         else
+            fallback()
+         end
+      end, { "i", "s" }),
+      ["<c-b>"] = cmp.mapping(function(fallback)
+         if luasnip.get_active_snip() and luasnip.jumpable(-1) then
+            luasnip.jump(-1)
+         else
+            fallback()
+         end
+      end, { "i", "s" }),
+      ["<c-n>"] = cmp.mapping(function(fallback)
+         if luasnip.choice_active() then
+            luasnip.change_choice(1)
+         else
+            fallback()
+         end
+      end, { "i", "s" }),
+      ["<c-p>"] = cmp.mapping(function(fallback)
+         if luasnip.choice_active() then
+            luasnip.change_choice(-1)
+         else
+            fallback()
+         end
+      end, { "i", "s" }),
+   }
 end
 
 -- --------------------------------------------------------------------------------
@@ -258,49 +258,49 @@ end
 -- --------------------------------------------------------------------------------
 
 M.set_telescope_keymaps = function()
-  local tsbuiltin = require("telescope.builtin")
-  local tspimped = require("tspimped")
+   local tsbuiltin = require("telescope.builtin")
+   local tspimped = require("tspimped")
 
-  vim.keymap.set("n", "<c-p>", tspimped.find_files)
-  vim.keymap.set("i", "<c-p>", tspimped.find_files)
-  vim.keymap.set("n", "<c-o>", tspimped.find_buffers)
-  vim.keymap.set("n", "<c-t>/", tspimped.live_grep)
+   vim.keymap.set("n", "<c-p>", tspimped.find_files)
+   vim.keymap.set("i", "<c-p>", tspimped.find_files)
+   vim.keymap.set("n", "<c-o>", tspimped.find_buffers)
+   vim.keymap.set("n", "<c-t>/", tspimped.live_grep)
 
-  vim.keymap.set("n", "<c-t>h", tsbuiltin.help_tags)
-  vim.keymap.set("n", "<c-t>vm", tsbuiltin.keymaps)
-  vim.keymap.set("n", "<c-t>vc", tsbuiltin.commands)
-  vim.keymap.set("n", "<c-t>vr", tsbuiltin.reloader)
-  vim.keymap.set("n", "<c-t>f", tsbuiltin.current_buffer_fuzzy_find)
-  vim.keymap.set("n", "<c-t>*", tsbuiltin.grep_string)
+   vim.keymap.set("n", "<c-t>h", tsbuiltin.help_tags)
+   vim.keymap.set("n", "<c-t>vm", tsbuiltin.keymaps)
+   vim.keymap.set("n", "<c-t>vc", tsbuiltin.commands)
+   vim.keymap.set("n", "<c-t>vr", tsbuiltin.reloader)
+   vim.keymap.set("n", "<c-t>f", tsbuiltin.current_buffer_fuzzy_find)
+   vim.keymap.set("n", "<c-t>*", tsbuiltin.grep_string)
 
-  -- context:lang
-  vim.keymap.set("n", "<c-l>d", tsbuiltin.diagnostics)
-  vim.keymap.set("n", "<c-l>ci", tsbuiltin.lsp_incoming_calls)
-  vim.keymap.set("n", "<c-l>co", tsbuiltin.lsp_outgoing_calls)
-  vim.keymap.set("n", "<c-l>tr", tsbuiltin.lsp_references)
-  vim.keymap.set("n", "<c-l>ts", tsbuiltin.lsp_document_symbols)
-  vim.keymap.set("n", "<c-l>tws", tsbuiltin.lsp_workspace_symbols)
-  vim.keymap.set("n", "<c-l>tt", tsbuiltin.treesitter)
+   -- context:lang
+   vim.keymap.set("n", "<c-l>d", tsbuiltin.diagnostics)
+   vim.keymap.set("n", "<c-l>ci", tsbuiltin.lsp_incoming_calls)
+   vim.keymap.set("n", "<c-l>co", tsbuiltin.lsp_outgoing_calls)
+   vim.keymap.set("n", "<c-l>tr", tsbuiltin.lsp_references)
+   vim.keymap.set("n", "<c-l>ts", tsbuiltin.lsp_document_symbols)
+   vim.keymap.set("n", "<c-l>tws", tsbuiltin.lsp_workspace_symbols)
+   vim.keymap.set("n", "<c-l>tt", tsbuiltin.treesitter)
 
-  -- context:git
-  vim.keymap.set("n", "<c-g>s", tsbuiltin.git_status)
-  vim.keymap.set("n", "<c-g>h", tsbuiltin.git_commits)
-  vim.keymap.set("n", "<c-g>bh", tsbuiltin.git_bcommits)
-  vim.keymap.set("n", "<c-g>f", tsbuiltin.git_files)
-  vim.keymap.set("n", "<c-g>br", tsbuiltin.git_branches)
-  vim.keymap.set("n", "<c-g>a", tsbuiltin.git_stash)
+   -- context:git
+   vim.keymap.set("n", "<c-g>s", tsbuiltin.git_status)
+   vim.keymap.set("n", "<c-g>h", tsbuiltin.git_commits)
+   vim.keymap.set("n", "<c-g>bh", tsbuiltin.git_bcommits)
+   vim.keymap.set("n", "<c-g>f", tsbuiltin.git_files)
+   vim.keymap.set("n", "<c-g>br", tsbuiltin.git_branches)
+   vim.keymap.set("n", "<c-g>a", tsbuiltin.git_stash)
 end
 
 M.build_telescope_config_keymaps = function()
-  local actions = require("telescope.actions")
+   local actions = require("telescope.actions")
 
-  return {
-    i = {
-      ["<c-j>"] = actions.move_selection_next,
-      ["<c-k>"] = actions.move_selection_previous,
-      ["<c-n>"] = actions.select_tab,
-    },
-  }
+   return {
+      i = {
+         ["<c-j>"] = actions.move_selection_next,
+         ["<c-k>"] = actions.move_selection_previous,
+         ["<c-n>"] = actions.select_tab,
+      },
+   }
 end
 
 -- --------------------------------------------------------------------------------
@@ -311,14 +311,14 @@ vim.keymap.set("n", "<c-h>", "<cmd>Neotree toggle position=left reveal<cr>")
 vim.keymap.set("n", "<c-m-h>", "<cmd>Neotree toggle position=float reveal<cr>")
 
 M.build_neo_tree_config_keymaps = function()
-  return {
-    ["o"] = "toggle_node",
-    ["O"] = "expand_all_nodes",
-    ["<c-v>"] = "open_vsplit",
-    ["<c-x>"] = "open_split",
-    ["<c-t>"] = "open_tabnew",
-    ["<c-n>"] = "open_tabnew",
-  }
+   return {
+      ["o"] = "toggle_node",
+      ["O"] = "expand_all_nodes",
+      ["<c-v>"] = "open_vsplit",
+      ["<c-x>"] = "open_split",
+      ["<c-t>"] = "open_tabnew",
+      ["<c-n>"] = "open_tabnew",
+   }
 end
 
 -- --------------------------------------------------------------------------------
@@ -327,50 +327,50 @@ end
 
 -- vim.keymap.set("n", "<c-m>", "<cmd>AerialToggle float<cr>")
 vim.keymap.set("n", "<c-m-o>", function()
-  -- NOTE: Workaround for https://github.com/stevearc/aerial.nvim/issues/331
-  -- require('aerial').refetch_symbols()
-  vim.cmd.AerialToggle 'float'
-  vim.cmd.doautocmd 'BufWinEnter'
+   -- NOTE: Workaround for https://github.com/stevearc/aerial.nvim/issues/331
+   -- require('aerial').refetch_symbols()
+   vim.cmd.AerialToggle 'float'
+   vim.cmd.doautocmd 'BufWinEnter'
 end)
 
 vim.keymap.set("n", "<c-s-o>", "<cmd>AerialToggle<cr>")
 
 M.build_aerial_config_keymaps = function()
-  return {
-    ["<esc>"] = "actions.close",
-    -- Defaults
-    ["?"] = "actions.show_help",
-    ["g?"] = "actions.show_help",
-    ["<CR>"] = "actions.jump",
-    ["<2-LeftMouse>"] = "actions.jump",
-    ["<c-v>"] = "actions.jump_vsplit",
-    ["<c-s>"] = "actions.jump_split",
-    ["p"] = "actions.scroll",
-    ["<c-j>"] = "actions.down_and_scroll",
-    ["<c-k>"] = "actions.up_and_scroll",
-    ["{"] = "actions.prev",
-    ["}"] = "actions.next",
-    ["[["] = "actions.prev_up",
-    ["]]"] = "actions.next_up",
-    ["o"] = "actions.tree_toggle",
-    ["za"] = "actions.tree_toggle",
-    ["O"] = "actions.tree_toggle_recursive",
-    ["zA"] = "actions.tree_toggle_recursive",
-    ["l"] = "actions.tree_open",
-    ["zo"] = "actions.tree_open",
-    ["L"] = "actions.tree_open_recursive",
-    ["zO"] = "actions.tree_open_recursive",
-    ["h"] = "actions.tree_close",
-    ["zc"] = "actions.tree_close",
-    ["H"] = "actions.tree_close_recursive",
-    ["zC"] = "actions.tree_close_recursive",
-    ["zr"] = "actions.tree_increase_fold_level",
-    ["zR"] = "actions.tree_open_all",
-    ["zm"] = "actions.tree_decrease_fold_level",
-    ["zM"] = "actions.tree_close_all",
-    ["zx"] = "actions.tree_sync_folds",
-    ["zX"] = "actions.tree_sync_folds",
-  }
+   return {
+      ["<esc>"] = "actions.close",
+      -- Defaults
+      ["?"] = "actions.show_help",
+      ["g?"] = "actions.show_help",
+      ["<CR>"] = "actions.jump",
+      ["<2-LeftMouse>"] = "actions.jump",
+      ["<c-v>"] = "actions.jump_vsplit",
+      ["<c-s>"] = "actions.jump_split",
+      ["p"] = "actions.scroll",
+      ["<c-j>"] = "actions.down_and_scroll",
+      ["<c-k>"] = "actions.up_and_scroll",
+      ["{"] = "actions.prev",
+      ["}"] = "actions.next",
+      ["[["] = "actions.prev_up",
+      ["]]"] = "actions.next_up",
+      ["o"] = "actions.tree_toggle",
+      ["za"] = "actions.tree_toggle",
+      ["O"] = "actions.tree_toggle_recursive",
+      ["zA"] = "actions.tree_toggle_recursive",
+      ["l"] = "actions.tree_open",
+      ["zo"] = "actions.tree_open",
+      ["L"] = "actions.tree_open_recursive",
+      ["zO"] = "actions.tree_open_recursive",
+      ["h"] = "actions.tree_close",
+      ["zc"] = "actions.tree_close",
+      ["H"] = "actions.tree_close_recursive",
+      ["zC"] = "actions.tree_close_recursive",
+      ["zr"] = "actions.tree_increase_fold_level",
+      ["zR"] = "actions.tree_open_all",
+      ["zm"] = "actions.tree_decrease_fold_level",
+      ["zM"] = "actions.tree_close_all",
+      ["zx"] = "actions.tree_sync_folds",
+      ["zX"] = "actions.tree_sync_folds",
+   }
 end
 
 -- --------------------------------------------------------------------------------
@@ -378,10 +378,10 @@ end
 -- --------------------------------------------------------------------------------
 
 M.set_leap_keymaps = function()
-  local leap = require("leap")
-  vim.keymap.set("n", "s", function()
-    leap.leap({ target_windows = { vim.fn.win_getid() } })
-  end)
+   local leap = require("leap")
+   vim.keymap.set("n", "s", function()
+      leap.leap({ target_windows = { vim.fn.win_getid() } })
+   end)
 end
 
 
@@ -391,25 +391,25 @@ end
 -- --------------------------------------------------------------------------------
 
 M.build_trailblazer_keymaps = function()
-  return {
-    nv = {
-      motions = {
-        new_trail_mark = '<c-m>',
-        track_back = '<c-m-bs>',
-        peek_move_next_down = '<c-j>',
-        peek_move_previous_up = '<c-k>',
-        move_to_nearest = '<c-n>',
-        toggle_trail_mark_list = '<leader>ml',
-      },
-      actions = {
-        delete_all_trail_marks = '<leader>md',
-        set_trail_mark_select_mode = '<leader>mse',
-        switch_to_next_trail_mark_stack = '<leader>mj',
-        switch_to_previous_trail_mark_stack = '<leader>mk',
-        set_trail_mark_stack_sort_mode = '<leader>mso',
-      },
-    }
-  }
+   return {
+      nv = {
+         motions = {
+            new_trail_mark = '<c-m>',
+            track_back = '<c-m-bs>',
+            peek_move_next_down = '<c-j>',
+            peek_move_previous_up = '<c-k>',
+            move_to_nearest = '<c-n>',
+            toggle_trail_mark_list = '<leader>ml',
+         },
+         actions = {
+            delete_all_trail_marks = '<leader>md',
+            set_trail_mark_select_mode = '<leader>mse',
+            switch_to_next_trail_mark_stack = '<leader>mj',
+            switch_to_previous_trail_mark_stack = '<leader>mk',
+            set_trail_mark_stack_sort_mode = '<leader>mso',
+         },
+      }
+   }
 end
 
 
@@ -418,19 +418,19 @@ end
 -- --------------------------------------------------------------------------------
 
 M.set_resession_keymaps = function()
-  local resession = require("resession")
-  local subsessions = require("subsessions")
+   local resession = require("resession")
+   local subsessions = require("subsessions")
 
-  -- per-directory subsessions
-  vim.keymap.set("n", "<leader>ss", subsessions.save_subsession)
-  vim.keymap.set("n", "<leader>su", subsessions.update_subsession)
-  vim.keymap.set("n", "<leader>sl", subsessions.load_subsession)
-  vim.keymap.set("n", "<leader>sd", subsessions.delete_subsession)
+   -- per-directory subsessions
+   vim.keymap.set("n", "<leader>ss", subsessions.save_subsession)
+   vim.keymap.set("n", "<leader>su", subsessions.update_subsession)
+   vim.keymap.set("n", "<leader>sl", subsessions.load_subsession)
+   vim.keymap.set("n", "<leader>sd", subsessions.delete_subsession)
 
-  -- global sessions
-  vim.keymap.set("n", "<leader>sgs", resession.save)
-  vim.keymap.set("n", "<leader>sgl", resession.load)
-  vim.keymap.set("n", "<leader>sgd", resession.delete)
+   -- global sessions
+   vim.keymap.set("n", "<leader>sgs", resession.save)
+   vim.keymap.set("n", "<leader>sgl", resession.load)
+   vim.keymap.set("n", "<leader>sgd", resession.delete)
 end
 
 
@@ -439,7 +439,7 @@ end
 -- --------------------------------------------------------------------------------
 
 M.set_emmet_keymaps = function()
-  vim.keymap.set("i", "<c-l>", "<plug>(emmet-expand-abbr)")
+   vim.keymap.set("i", "<c-l>", "<plug>(emmet-expand-abbr)")
 end
 
 
@@ -448,11 +448,24 @@ end
 -- --------------------------------------------------------------------------------
 
 M.set_bullets_keymaps = function()
-  -- Note that there are other default key mappings at play in this plugin.
-  vim.keymap.set("n", "<c-space>", "<Plug>(bullets-toggle-checkbox)")
+   -- Note that there are other default key mappings at play in this plugin.
 
-  -- Temp solution to add support for ensuring `O` also creates a new list item.
-  vim.cmd([[
+   -- vim.keymap.set("n", "<c-space>", "<Plug>(bullets-toggle-checkbox)")
+   vim.keymap.set("n", "<c-space>", function()
+      local line = vim.api.nvim_get_current_line()
+
+      local omg = string.gsub(line, "^(%s*[-*+] )[^%[](.*)", "%1%[ %] %2", 1)
+      print(omg)
+
+      -- local bullet = string.match(line, "^%s*[-*+] ")
+      -- if bullet ~= nil then
+      --     modded_line = string.gsub(line, bullet, bullet )
+      --     print(bullet)
+      -- end
+   end)
+
+   -- Temp solution to add support for ensuring `O` also creates a new list item.
+   vim.cmd([[
     function! SmartBulletsNewlineAbove()
         let l:save_cursor = getcurpos()
         let l:current_line_num = l:save_cursor[1]
@@ -477,9 +490,9 @@ end
 -- --------------------------------------------------------------------------------
 
 M.set_obsidian_keymaps = function()
-  vim.keymap.set("n", "go", "<cmd>ObsidianFollowLink<cr>")
-  vim.keymap.set("n", "gv", "<cmd>ObsidianFollowLink vsplit<cr>")
-  vim.keymap.set("n", "gx", "<cmd>ObsidianFollowLink hsplit<cr>")
+   vim.keymap.set("n", "go", "<cmd>ObsidianFollowLink<cr>")
+   vim.keymap.set("n", "gv", "<cmd>ObsidianFollowLink vsplit<cr>")
+   vim.keymap.set("n", "gx", "<cmd>ObsidianFollowLink hsplit<cr>")
 end
 
 -- --------------------------------------------------------------------------------
