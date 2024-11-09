@@ -490,6 +490,9 @@ end
 vim.keymap.set("n", "<c-space>", function()
    require("pkm.bullets").cycle_cbox()
 end)
+vim.keymap.set("n", "<c-m-space>", function()
+   require("pkm.bullets").remove_cbox()
+end)
 
 
 -- --------------------------------------------------------------------------------

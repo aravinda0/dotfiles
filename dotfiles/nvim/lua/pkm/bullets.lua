@@ -26,9 +26,22 @@ local _cycle_cbox = function(line)
    return c_bullet .. modded_post_bullet
 end
 
+local _remove_cbox = function(line)
+   local p_cbox_item = "^(%s*[-*+]) %[[%s.oOxX%-]%]"
+   local modded_line, _ = string.gsub(line, p_cbox_item, function(c_bullet)
+      return c_bullet
+   end)
+   return modded_line
+end
+
 M.cycle_cbox = function()
    local line = vim.api.nvim_get_current_line()
    vim.api.nvim_set_current_line(_cycle_cbox(line))
+end
+
+M.remove_cbox = function()
+   local line = vim.api.nvim_get_current_line()
+   vim.api.nvim_set_current_line(_remove_cbox(line))
 end
 
 
