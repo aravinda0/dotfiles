@@ -4,6 +4,7 @@ local tsfinders = require("telescope.finders")
 local tsactions = require("telescope.actions")
 local tsaction_state = require("telescope.actions.state")
 local tsconf = require("telescope.config").values
+local Path = require("plenary.path")
 
 local pkm_utils = require("pkm.utils")
 
@@ -161,6 +162,14 @@ M.is_cwd_notes_dir = function()
    end
 
    return false
+end
+
+
+M.open_diary_index = function()
+   local diary_index = Path:new({ vim.fn.getcwd(), "diary/diary.md" })
+   if diary_index:exists() then
+      vim.cmd("edit " .. diary_index.filename)
+   end
 end
 
 return M

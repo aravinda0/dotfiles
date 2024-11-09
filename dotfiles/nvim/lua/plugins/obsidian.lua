@@ -33,6 +33,10 @@ return {
                },
             },
          },
+         daily_notes = {
+            folder = "diary",
+            alias_format = "%d %b %Y - %a",
+         },
          ui = {
             enable = false,
          }

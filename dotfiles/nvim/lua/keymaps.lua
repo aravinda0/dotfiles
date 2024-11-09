@@ -396,7 +396,7 @@ M.build_trailblazer_keymaps = function()
             track_back = '<c-m-bs>',
             peek_move_next_down = '<c-j>',
             peek_move_previous_up = '<c-k>',
-            move_to_nearest = '<c-n>',
+            move_to_nearest = '<leader>mn',
             toggle_trail_mark_list = '<leader>ml',
          },
          actions = {
@@ -490,6 +490,9 @@ vim.keymap.set("n", "<c-space>", function()
 end)
 vim.keymap.set("n", "<c-m-space>", function()
    require("pkm.bullets").remove_cbox()
+end)
+vim.keymap.set("n", "<c-n>di", function()
+   require("pkm").open_diary_index()
 end)
 
 
