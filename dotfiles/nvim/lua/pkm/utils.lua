@@ -41,4 +41,21 @@ M.to_notes_path = function(abs_path)
    return notes_path
 end
 
+M.scan_dir = function(dir)
+   local results = {}
+   local handle = vim.uv.fs_scandir(dir)
+   if handle then
+      while true do
+         local name, type = vim.uv.fs_scandir_next(handle)
+         if not name then break end
+
+         table.insert(results, {
+            name = name,
+            type = type,
+         })
+      end
+   end
+   return results
+end
+
 return M
