@@ -3,7 +3,7 @@ from utils.system import system_install
 
 
 def install_tools():
-    system_install(["lua", "luajit", "luarocks", "lua-language-server"])
+    system_install(["lua", "lua51", "luajit", "luarocks", "lua-language-server"])
 
 
 def install_config():
