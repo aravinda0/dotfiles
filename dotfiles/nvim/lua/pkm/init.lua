@@ -165,10 +165,15 @@ M.is_cwd_notes_dir = function()
 end
 
 
-M.open_diary_index = function()
-   local diary_index = Path:new({ vim.fn.getcwd(), "diary/diary.md" })
-   if diary_index:exists() then
-      vim.cmd("edit " .. diary_index.filename)
+M.open_index = function()
+   -- some temp oddity here with the diary/diary.md subdir-based index file
+   local known_index_file_names = { "index.md", "diary/diary.md" }
+   for _, file_name in ipairs(known_index_file_names) do
+      local index_file = Path:new({ vim.fn.getcwd(), file_name })
+      if index_file:exists() then
+         vim.cmd("edit " .. index_file.filename)
+         return
+      end
    end
 end
 

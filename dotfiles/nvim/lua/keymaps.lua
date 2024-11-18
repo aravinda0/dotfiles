@@ -491,8 +491,8 @@ end)
 vim.keymap.set("n", "<c-m-space>", function()
    require("pkm.bullets").remove_cbox()
 end)
-vim.keymap.set("n", "<c-n>di", function()
-   require("pkm").open_diary_index()
+vim.keymap.set("n", "<c-n>i", function()
+   require("pkm").open_index()
 end)
 
 
