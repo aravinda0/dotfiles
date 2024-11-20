@@ -18,6 +18,13 @@ vim.keymap.set("n", "<m-j>", "<c-w>j")
 vim.keymap.set("n", "<m-k>", "<c-w>k")
 vim.keymap.set("n", "<m-l>", "<c-w>l")
 
+-- Easier resizing of splits. Increase/decrease pane size (unlike tmux's
+-- border-movement-based resizing). 
+vim.keymap.set("n", "<c-a-->", "<cmd>vertical resize -5<cr>")
+vim.keymap.set("n", "<c-a-=>", "<cmd>vertical resize +5<cr>")
+vim.keymap.set("n", "<c-a-,>", "<cmd>resize -5<cr>")
+vim.keymap.set("n", "<c-a-.>", "<cmd>resize +5<cr>")
+
 -- Nicer tab operations
 vim.keymap.set("n", "<m-t>", "<cmd>tabnew<cr>")
 vim.keymap.set("n", "<m-e>", "<cmd>tabprevious<cr>")
