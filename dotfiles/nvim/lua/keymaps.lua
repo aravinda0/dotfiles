@@ -494,6 +494,9 @@ end)
 vim.keymap.set("n", "<c-n>i", function()
    require("pkm").open_index()
 end)
+vim.keymap.set("n", "gni", function()
+   require("pkm").open_index()
+end)
 
 
 -- --------------------------------------------------------------------------------
