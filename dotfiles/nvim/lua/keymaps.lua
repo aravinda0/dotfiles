@@ -19,7 +19,7 @@ vim.keymap.set("n", "<m-k>", "<c-w>k")
 vim.keymap.set("n", "<m-l>", "<c-w>l")
 
 -- Easier resizing of splits. Increase/decrease pane size (unlike tmux's
--- border-movement-based resizing). 
+-- border-movement-based resizing).
 vim.keymap.set("n", "<c-a-->", "<cmd>vertical resize -5<cr>")
 vim.keymap.set("n", "<c-a-=>", "<cmd>vertical resize +5<cr>")
 vim.keymap.set("n", "<c-a-,>", "<cmd>resize -5<cr>")
@@ -511,6 +511,10 @@ vim.keymap.set("n", "<c-n>t", function()
 end)
 vim.keymap.set("n", "gnt", function()
    require("pkm").open_gtd()
+end)
+
+vim.keymap.set("n", "<c-n>dg", function()
+   require("pkm").generate_diary_index()
 end)
 
 

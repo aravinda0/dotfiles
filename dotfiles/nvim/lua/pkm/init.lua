@@ -171,4 +171,27 @@ M.open_gtd = function()
    pkm_utils.open_file_if_exists({ "gtd.md", "tasks/index.md" })
 end
 
+M.generate_diary_index = function()
+   local data = {}
+
+   for _, item in ipairs(pkm_utils.scan_dir("diary")) do
+      local y, m, d = string.match(item.name, "(%d%d%d%d)-(%d%d)-(%d%d)%.md")
+      if y ~= nil then
+         if data[y] == nil then
+            data[y] = { m = {} }
+         end
+         if data[y][m] == nil then
+            data[y][m] = {}
+         end
+         table.insert(data[y][m], string.format("[[{}|<pretty>]]", item.name))
+         -- 🚧
+      end
+   end
+
+   -- gather file names
+   -- group by month + year
+   -- format dates to desired for index
+   --
+end
+
 return M
