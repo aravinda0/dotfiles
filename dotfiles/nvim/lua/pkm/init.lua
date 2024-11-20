@@ -4,7 +4,6 @@ local tsfinders = require("telescope.finders")
 local tsactions = require("telescope.actions")
 local tsaction_state = require("telescope.actions.state")
 local tsconf = require("telescope.config").values
-local Path = require("plenary.path")
 
 local pkm_utils = require("pkm.utils")
 
@@ -164,17 +163,12 @@ M.is_cwd_notes_dir = function()
    return false
 end
 
-
 M.open_index = function()
-   -- some temp oddity here with the diary/diary.md subdir-based index file
-   local known_index_file_names = { "index.md", "diary/diary.md" }
-   for _, file_name in ipairs(known_index_file_names) do
-      local index_file = Path:new({ vim.fn.getcwd(), file_name })
-      if index_file:exists() then
-         vim.cmd("edit " .. index_file.filename)
-         return
-      end
-   end
+   pkm_utils.open_file_if_exists({ "index.md", "diary/diary.md" })
+end
+
+M.open_gtd = function()
+   pkm_utils.open_file_if_exists({ "gtd.md", "tasks/index.md" })
 end
 
 return M

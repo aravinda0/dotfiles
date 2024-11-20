@@ -58,4 +58,31 @@ M.scan_dir = function(dir)
    return results
 end
 
+M.file_exists = function(path)
+   local file = io.open(path, "r")
+   if file then
+      return true
+   end
+   return false
+end
+
+--- Opens a file to edit if it exists.
+--- @param path string | table: A single path or a list of paths. The first existing
+--- file will be opened.
+M.open_file_if_exists = function(path)
+   local paths
+   if type(path) == "string" then
+      paths = { path }
+   else
+      paths = path
+   end
+
+   for _, f in ipairs(paths) do
+      if M.file_exists(f) then
+         vim.cmd("edit " .. f)
+         return
+      end
+   end
+end
+
 return M

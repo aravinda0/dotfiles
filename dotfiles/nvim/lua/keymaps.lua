@@ -498,11 +498,19 @@ end)
 vim.keymap.set("n", "<c-m-space>", function()
    require("pkm.bullets").remove_cbox()
 end)
+
 vim.keymap.set("n", "<c-n>i", function()
    require("pkm").open_index()
 end)
 vim.keymap.set("n", "gni", function()
    require("pkm").open_index()
+end)
+
+vim.keymap.set("n", "<c-n>t", function()
+   require("pkm").open_gtd()
+end)
+vim.keymap.set("n", "gnt", function()
+   require("pkm").open_gtd()
 end)
 
 
