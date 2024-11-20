@@ -209,15 +209,16 @@ keys = [
     # Scratchpads
     # --------------------------------------------------------------------------------
     EzKey("M-<backslash>", lazy.group["scratchpad/rough"].dropdown_toggle("term1")),
-    EzKey("C-0", lazy.group["scratchpad/notes"].dropdown_toggle("zk")),
+    EzKey("C-1", lazy.group["scratchpad/notes"].dropdown_toggle("tmp_prj")),
     EzKey("C-A-0", lazy.group["scratchpad/notes"].dropdown_toggle("sec__dry")),
-    EzKey("C-7", lazy.group["scratchpad/notes"].dropdown_toggle("dotfiles")),
-    EzKey("C-A-7", lazy.group["scratchpad/notes"].dropdown_toggle("areas/workflow")),
-    EzKey("C-9", lazy.group["scratchpad/notes"].dropdown_toggle("sec__atp")),
+    EzKey("C-7", lazy.group["scratchpad/notes"].dropdown_toggle("sec__atp")),
+    EzKey("C-8", lazy.group["scratchpad/notes"].dropdown_toggle("dotfiles")),
+    EzKey("C-A-8", lazy.group["scratchpad/notes"].dropdown_toggle("areas/workflow")),
+    EzKey("C-9", lazy.group["scratchpad/notes"].dropdown_toggle("tmp_prj")),
+    EzKey("C-0", lazy.group["scratchpad/notes"].dropdown_toggle("zk")),
     EzKey("C-<backslash>", lazy.group["scratchpad/notes"].dropdown_toggle("tmp")),
     EzKey("C-<BackSpace>", lazy.group["scratchpad/notes"].hide_all()),
     EzKey("C-<grave>", lazy.group["scratchpad/notes"].hide_all()),
-    EzKey("C-S-<backslash>", lazy.group["scratchpad/notes"].hide_all()),
     # --------------------------------------------------------------------------------
     # Window actions
     # --------------------------------------------------------------------------------
@@ -308,6 +309,15 @@ groups.extend(
                 DropDown(
                     "tmp",
                     "alacritty -e zsh -i -c 'cd $_F/tmp/; nvim'",
+                    on_focus_lost_hide=False,
+                    width=0.95,
+                    height=0.95,
+                    x=0.02,
+                    y=0.02,
+                ),
+                DropDown(
+                    "tmp_prj",
+                    "alacritty -e zsh -i -c 'cd $_F/tmp_prj/; nvim'",
                     on_focus_lost_hide=False,
                     width=0.95,
                     height=0.95,
