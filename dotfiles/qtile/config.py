@@ -84,8 +84,10 @@ keys = [
     EzKey("M-S-t", lazy.layout.spawn_tab(terminal, new_level=True)),
     EzKey("M-p", lazy.layout.spawn_tab(rofi_run_cmd)),
     EzKey("M-S-p", lazy.layout.spawn_tab(rofi_run_cmd, new_level=True)),
-    EzKey("A-d", lazy.layout.prev_tab()),
-    EzKey("A-f", lazy.layout.next_tab()),
+    EzKey("A-d", lazy.layout.prev_tab(level=1)),
+    EzKey("A-f", lazy.layout.next_tab(level=1)),
+    EzKey("C-A-d", lazy.layout.prev_tab(level=-1)),
+    EzKey("C-A-f", lazy.layout.next_tab(level=-1)),
     EzKey("M-h", lazy.layout.left()),
     EzKey("M-l", lazy.layout.right()),
     EzKey("M-k", lazy.layout.up()),
@@ -105,11 +107,11 @@ keys = [
     EzKey("M-i", lazy.layout.select_container_inner()),
     # ----------
     # precise tab selection
-    EzKey("M-1", lazy.layout.focus_nth_tab(1)),
-    EzKey("M-2", lazy.layout.focus_nth_tab(2)),
-    EzKey("M-3", lazy.layout.focus_nth_tab(3)),
-    EzKey("M-4", lazy.layout.focus_nth_tab(4)),
-    EzKey("M-5", lazy.layout.focus_nth_tab(5)),
+    EzKey("M-1", lazy.layout.focus_nth_tab(1, level=1)),
+    EzKey("M-2", lazy.layout.focus_nth_tab(2, level=1)),
+    EzKey("M-3", lazy.layout.focus_nth_tab(3, level=1)),
+    EzKey("M-4", lazy.layout.focus_nth_tab(4, level=1)),
+    EzKey("M-5", lazy.layout.focus_nth_tab(5, level=1)),
     # ----------
     # precise pane selection
     EzKey(
@@ -209,7 +211,6 @@ keys = [
     # Scratchpads
     # --------------------------------------------------------------------------------
     EzKey("M-<backslash>", lazy.group["scratchpad/rough"].dropdown_toggle("term1")),
-    EzKey("C-1", lazy.group["scratchpad/notes"].dropdown_toggle("tmp_prj")),
     EzKey("C-A-0", lazy.group["scratchpad/notes"].dropdown_toggle("sec__dry")),
     EzKey("C-7", lazy.group["scratchpad/notes"].dropdown_toggle("sec__atp")),
     EzKey("C-8", lazy.group["scratchpad/notes"].dropdown_toggle("tmp_prj")),
