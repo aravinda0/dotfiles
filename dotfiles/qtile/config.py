@@ -88,6 +88,8 @@ keys = [
     EzKey("A-f", lazy.layout.next_tab(level=1)),
     EzKey("C-A-d", lazy.layout.prev_tab(level=-1)),
     EzKey("C-A-f", lazy.layout.next_tab(level=-1)),
+    EzKey("A-c", lazy.layout.prev_tab(level=-1)),
+    EzKey("A-v", lazy.layout.next_tab(level=-1)),
     EzKey("M-h", lazy.layout.left()),
     EzKey("M-l", lazy.layout.right()),
     EzKey("M-k", lazy.layout.up()),
@@ -107,27 +109,27 @@ keys = [
     EzKey("M-i", lazy.layout.select_container_inner()),
     # ----------
     # precise tab selection
-    EzKey("M-1", lazy.layout.focus_nth_tab(1, level=1)),
-    EzKey("M-2", lazy.layout.focus_nth_tab(2, level=1)),
-    EzKey("M-3", lazy.layout.focus_nth_tab(3, level=1)),
-    EzKey("M-4", lazy.layout.focus_nth_tab(4, level=1)),
-    EzKey("M-5", lazy.layout.focus_nth_tab(5, level=1)),
+    EzKey("M-C-1", lazy.layout.focus_nth_tab(1, level=1)),
+    EzKey("M-C-2", lazy.layout.focus_nth_tab(2, level=1)),
+    EzKey("M-C-3", lazy.layout.focus_nth_tab(3, level=1)),
+    EzKey("M-C-4", lazy.layout.focus_nth_tab(4, level=1)),
+    EzKey("M-C-5", lazy.layout.focus_nth_tab(5, level=1)),
     # ----------
     # precise pane selection
     EzKey(
-        "C-1", lazy.layout.focus_nth_window(1, ignore_inactive_tabs_at_levels=[1, 2])
+        "M-1", lazy.layout.focus_nth_window(1, ignore_inactive_tabs_at_levels=[1, 2])
     ),
     EzKey(
-        "C-2", lazy.layout.focus_nth_window(2, ignore_inactive_tabs_at_levels=[1, 2])
+        "M-2", lazy.layout.focus_nth_window(2, ignore_inactive_tabs_at_levels=[1, 2])
     ),
     EzKey(
-        "C-3", lazy.layout.focus_nth_window(3, ignore_inactive_tabs_at_levels=[1, 2])
+        "M-3", lazy.layout.focus_nth_window(3, ignore_inactive_tabs_at_levels=[1, 2])
     ),
     EzKey(
-        "C-4", lazy.layout.focus_nth_window(4, ignore_inactive_tabs_at_levels=[1, 2])
+        "M-4", lazy.layout.focus_nth_window(4, ignore_inactive_tabs_at_levels=[1, 2])
     ),
     EzKey(
-        "C-5", lazy.layout.focus_nth_window(5, ignore_inactive_tabs_at_levels=[1, 2])
+        "M-5", lazy.layout.focus_nth_window(5, ignore_inactive_tabs_at_levels=[1, 2])
     ),
     KeyChord(
         ["mod4"],
@@ -199,14 +201,14 @@ keys = [
     # --------------------------------------------------------------------------------
     # Groups organization
     # --------------------------------------------------------------------------------
-    EzKey("M-C-1", _activate_context("work")),
-    EzKey("M-C-2", _activate_context("study")),
-    EzKey("M-C-3", _activate_context("playground")),
+    EzKey("M-A-1", _activate_context("work")),
+    EzKey("M-A-2", _activate_context("study")),
+    EzKey("M-A-3", _activate_context("playground")),
     EzKey("M-d", _activate_group_set("main")),
     EzKey("M-e", _activate_group_set("notes")),
     EzKey("M-s", _activate_group_set("browser")),
-    EzKey("C-M-f", _cycle_group_in_group_set(1)),
-    EzKey("C-M-d", _cycle_group_in_group_set(-1)),
+    EzKey("M-C-f", _cycle_group_in_group_set(1)),
+    EzKey("M-C-d", _cycle_group_in_group_set(-1)),
     # --------------------------------------------------------------------------------
     # Scratchpads
     # --------------------------------------------------------------------------------
