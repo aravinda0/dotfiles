@@ -174,24 +174,46 @@ end
 M.generate_diary_index = function()
    local data = {}
 
+   -- Group data by Y/M/D.
    for _, item in ipairs(pkm_utils.scan_dir("diary")) do
       local y, m, d = string.match(item.name, "(%d%d%d%d)-(%d%d)-(%d%d)%.md")
       if y ~= nil then
          if data[y] == nil then
-            data[y] = { m = {} }
+            data[y] = { [m] = {} }
          end
          if data[y][m] == nil then
             data[y][m] = {}
          end
-         table.insert(data[y][m], string.format("[[{}|<pretty>]]", item.name))
-         -- 🚧
+
+         local timestamp = os.time({
+            year = tonumber(y),
+            month = tonumber(m),
+            day = tonumber(d),
+         })
+         table.insert(data[y][m], { name = item.name, timestamp = timestamp })
+         -- local pretty_date = os.date("%d %b %Y - %a", timestamp)
+         -- table.insert(data[y][m], string.format("[[%s|%s]]", item.name, pretty_date))
       end
    end
 
-   -- gather file names
-   -- group by month + year
-   -- format dates to desired for index
-   --
+   local lines = { "# Index - Diary", "" }
+   for y, mdata in pkm_utils.pairsByKeys(data, function(a, b) return a > b end) do
+      table.insert(lines, "## " .. y)
+      table.insert(lines, "")
+      for m, ddata in pkm_utils.pairsByKeys(mdata, function(a, b) return a > b end) do
+         table.insert(lines, "### " .. os.date("%B", os.time({ month = tonumber(m), day = 1, year = 1 })))
+         table.insert(lines, "")
+         for d, dinfo in pkm_utils.pairsByKeys(ddata, function(a, b) return a > b end) do
+            local pretty_date = os.date("%d %b %Y - %a", dinfo.timestamp)
+            local line = string.format("- [[%s|%s]]", dinfo.name, pretty_date)
+            table.insert(lines, line)
+         end
+         table.insert(lines, "")
+      end
+      table.insert(lines, "")
+   end
+
+   vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
 end
 
 return M
