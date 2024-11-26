@@ -399,19 +399,19 @@ M.build_trailblazer_keymaps = function()
    return {
       nv = {
          motions = {
-            new_trail_mark = '<c-m>',
-            track_back = '<c-m-bs>',
+            new_trail_mark = '<c-m><c-m>',
             peek_move_next_down = '<c-j>',
             peek_move_previous_up = '<c-k>',
-            move_to_nearest = '<leader>mn',
-            toggle_trail_mark_list = '<leader>ml',
+            track_back = '<c-m><c-b>',
+            move_to_nearest = '<c-m>n',
+            toggle_trail_mark_list = '<c-m>l',
          },
          actions = {
-            delete_all_trail_marks = '<leader>md',
-            set_trail_mark_select_mode = '<leader>mse',
-            switch_to_next_trail_mark_stack = '<leader>mj',
-            switch_to_previous_trail_mark_stack = '<leader>mk',
-            set_trail_mark_stack_sort_mode = '<leader>mso',
+            delete_all_trail_marks = '<c-m>d',
+            set_trail_mark_select_mode = '<c-m>s',
+            switch_to_next_trail_mark_stack = '<c-m>l',
+            switch_to_previous_trail_mark_stack = '<c-m>h',
+            set_trail_mark_stack_sort_mode = '<c-m><s-s>',
          },
       }
    }
