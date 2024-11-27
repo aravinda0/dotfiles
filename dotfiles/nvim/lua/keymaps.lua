@@ -484,6 +484,7 @@ M.set_obsidian_keymaps = function()
    vim.keymap.set("n", "go", "<cmd>ObsidianFollowLink<cr>")
    vim.keymap.set("n", "gv", "<cmd>ObsidianFollowLink vsplit<cr>")
    vim.keymap.set("n", "gx", "<cmd>ObsidianFollowLink hsplit<cr>")
+   vim.keymap.set("n", "<c-n>dt", "<cmd>ObsidianToday<cr>")
 end
 
 
@@ -515,6 +516,12 @@ end)
 
 vim.keymap.set("n", "<c-n>dg", function()
    require("pkm").generate_diary_index()
+end)
+vim.keymap.set("n", "<c-s-j>", function()
+   require("pkm").open_diary_relative(-1)
+end)
+vim.keymap.set("n", "<c-s-k>", function()
+   require("pkm").open_diary_relative(1)
 end)
 
 

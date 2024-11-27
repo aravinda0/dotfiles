@@ -191,8 +191,6 @@ M.generate_diary_index = function()
             day = tonumber(d),
          })
          table.insert(data[y][m], { name = item.name, timestamp = timestamp })
-         -- local pretty_date = os.date("%d %b %Y - %a", timestamp)
-         -- table.insert(data[y][m], string.format("[[%s|%s]]", item.name, pretty_date))
       end
    end
 
@@ -214,6 +212,28 @@ M.generate_diary_index = function()
    end
 
    vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+end
+
+M.open_diary_relative = function(n)
+   local diary_entries = {}
+   for _, item in ipairs(pkm_utils.scan_dir("diary")) do
+      local d = string.match(item.name, "^(%d%d%d%d%-%d%d%-%d%d)%.md")
+      if d ~= nil then
+         table.insert(diary_entries, { name = item.name, ts = pkm_utils.to_timestamp(d) })
+      end
+   end
+   table.sort(diary_entries, function(a, b) return a.ts < b.ts end)
+
+   local bname = vim.fs.basename(vim.api.nvim_buf_get_name(0))
+   for i, entry in ipairs(diary_entries) do
+      if entry.name == bname then
+         local j = i + n
+         if j > 0 and j <= #diary_entries then
+            vim.cmd("edit diary/" .. diary_entries[j].name)
+            return
+         end
+      end
+   end
 end
 
 return M
