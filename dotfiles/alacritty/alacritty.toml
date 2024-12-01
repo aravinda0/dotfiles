@@ -1,4 +1,3 @@
-import = ["~/.envfiles/alacritty.local.toml"]
 
 [colors.bright]
 black = "0x928374"
@@ -75,3 +74,6 @@ mods = "Super"
 
 [selection]
 save_to_clipboard = true
+
+[general]
+import = ["~/.envfiles/alacritty.local.toml"]
