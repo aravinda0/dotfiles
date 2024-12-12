@@ -132,6 +132,9 @@ vim.cmd("iabbrev cf$ 🫤")
 vim.cmd("iabbrev ff$ 🙁")
 vim.cmd("iabbrev hand$ 🤚")
 vim.cmd("iabbrev tick$ ✅")
+vim.cmd("iabbrev pin$ 📍")
+vim.cmd("iabbrev cr$ 🔴")
+vim.cmd("iabbrev cb$ 🔵")
 
 
 -- --------------------------------------------------------------------------------
