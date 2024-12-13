@@ -284,7 +284,7 @@ M.set_telescope_keymaps = function()
    vim.keymap.set("n", "<c-t>*", tsbuiltin.grep_string)
 
    -- context:lang
-   vim.keymap.set("n", "<c-l>d", tsbuiltin.diagnostics)
+   vim.keymap.set("n", "<c-l>dl", tsbuiltin.diagnostics)
    vim.keymap.set("n", "<c-l>ci", tsbuiltin.lsp_incoming_calls)
    vim.keymap.set("n", "<c-l>co", tsbuiltin.lsp_outgoing_calls)
    vim.keymap.set("n", "<c-l>tr", tsbuiltin.lsp_references)
