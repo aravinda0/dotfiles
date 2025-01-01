@@ -20,7 +20,7 @@ export DOTFILES_SUPPORT_PATH=$HOME/.dotfiles_support
 
 
 export _F=private
-export _H=private
+export _W=private
 
 
 # -------------------------------------------------------------------------------
