@@ -2,6 +2,8 @@ import os
 import subprocess
 from pathlib import Path
 
+import colors
+import utils
 from libqtile import bar, hook, layout, widget
 from libqtile.config import (
     Click,
@@ -16,9 +18,6 @@ from libqtile.config import (
 from libqtile.lazy import lazy
 from qtile_bonsai import Bonsai, BonsaiBar
 from qtile_bonsai.theme import Gruvbox
-
-import colors
-import utils
 from workspaces import (
     activate_context,
     activate_group_set,
@@ -212,7 +211,8 @@ keys = [
     # --------------------------------------------------------------------------------
     # Scratchpads
     # --------------------------------------------------------------------------------
-    EzKey("M-<backslash>", lazy.group["scratchpad/rough"].dropdown_toggle("term1")),
+    EzKey("M-<backslash>", lazy.group["scratchpad/rough"].dropdown_toggle("term_x")),
+    EzKey("C-7", lazy.group["scratchpad/notes"].dropdown_toggle("term_1")),
     EzKey("C-8", lazy.group["scratchpad/notes"].dropdown_toggle("tmp_prj")),
     EzKey("C-9", lazy.group["scratchpad/notes"].dropdown_toggle("dotfiles")),
     EzKey("C-0", lazy.group["scratchpad/notes"].dropdown_toggle("w")),
@@ -256,7 +256,7 @@ groups.extend(
         ScratchPad(
             "scratchpad/rough",
             [
-                DropDown("term1", terminal, on_focus_lost_hide=False),
+                DropDown("term_x", terminal, on_focus_lost_hide=False),
             ],
         ),
         ScratchPad(
@@ -283,6 +283,15 @@ groups.extend(
                 DropDown(
                     "tmp",
                     "alacritty -e zsh -i -c 'cd $_F/tmp/; nvim'",
+                    on_focus_lost_hide=False,
+                    width=0.95,
+                    height=0.95,
+                    x=0.02,
+                    y=0.02,
+                ),
+                DropDown(
+                    "term_1",
+                    "alacritty --working-directory /tmp",
                     on_focus_lost_hide=False,
                     width=0.95,
                     height=0.95,
