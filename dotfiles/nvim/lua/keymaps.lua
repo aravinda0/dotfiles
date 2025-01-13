@@ -491,6 +491,8 @@ end
 -- --------------------------------------------------------------------------------
 
 M.set_obsidian_keymaps = function()
+   vim.keymap.set("n", "<c-n>n", "<cmd>ObsidianNew<cr>")
+   vim.keymap.set("n", "<c-n><c-n>", "<cmd>ObsidianNew<cr>")
    vim.keymap.set("n", "go", "<cmd>ObsidianFollowLink<cr>")
    vim.keymap.set("n", "gv", "<cmd>ObsidianFollowLink vsplit<cr>")
    vim.keymap.set("n", "gx", "<cmd>ObsidianFollowLink hsplit<cr>")
