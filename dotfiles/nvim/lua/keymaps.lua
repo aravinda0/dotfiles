@@ -142,6 +142,7 @@ vim.cmd("iabbrev tree2$ 🌲")
 vim.cmd("iabbrev treep$ 🌴")
 vim.cmd("iabbrev rkt$ 🚀")
 vim.cmd("iabbrev pill$ 💊")
+vim.cmd("iabbrev flow$ 🌻")
 
 
 -- --------------------------------------------------------------------------------
