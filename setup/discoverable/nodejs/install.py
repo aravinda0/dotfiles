@@ -11,6 +11,7 @@ def install_tools():
         "typescript-language-server",
         "@fsouza/prettierd",
         "emmet-ls",
+        "svelte-language-server",
         "@tailwindcss/language-server",
     ]
     subprocess.run(["npm", "i", "-g", *global_packages])
