@@ -10,6 +10,7 @@ return {
       },
       config = function()
          local lsp = require("lspconfig")
+         local lsp_util = require("lspconfig.util")
          local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
          local augroup_lsp_formatting = vim.api.nvim_create_augroup("lsp_formatting", {})
@@ -33,8 +34,16 @@ return {
                      -- `vim.wait()` call. This also spews a 'No code actions available' in
                      -- messages. Fine for now, but can be noisy if we set up toast
                      -- notifications for messages.
+                     --
+                     -- Notable issues:
+                     -- https://github.com/neovim/neovim/issues/31176
+                     -- https://github.com/neovim/neovim/issues/19624
                      vim.lsp.buf.code_action({
-                        context = { only = { "source.organizeImports" } },
+                        -- NOTE: organizeImports is destructive and will remove unused
+                        -- imports.
+                        -- context = { only = { "source.organizeImports" } },
+
+                        context = { only = { "source.sortImports" } },
                         apply = true,
                      })
                      vim.wait(50)
@@ -103,6 +112,21 @@ return {
          lsp.svelte.setup({
             on_attach = handle_lsp_attach,
             capabilities = capabilities,
+            root_dir = lsp_util.root_pattern("svelte.config.js", "package.json", "tsconfig.json"),
+            settings = {
+               svelte= {
+                  plugin= {
+                     svelte= {
+                        codeActions= {
+                           enable= false
+                        },
+                        format = {
+                           enable = false
+                        }
+                     }
+                  }
+               }
+            }
          })
 
          -- lsp.angularls.setup({
