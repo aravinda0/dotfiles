@@ -1,8 +1,10 @@
 -- Enable true colors
 vim.o.termguicolors = true
 
--- Getting rid of number column gives us a bit more space for comfortable triple-splits
-vim.o.number = false
+vim.o.relativenumber = true
+
+-- Make signcolumn be overlaid with number column
+vim.o.signcolumn = "number"
 
 -- Line settings
 vim.o.textwidth = 88
