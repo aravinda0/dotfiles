@@ -19,6 +19,9 @@ packages = [
     "udisks2",
     "udiskie",
     #
+    # Screen brightness control
+    "brightnessctl",
+    #
     # easy privacy solution to encrypt dirs
     "encfs",
     #
