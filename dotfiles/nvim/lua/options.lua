@@ -2,6 +2,7 @@
 vim.o.termguicolors = true
 
 vim.o.relativenumber = true
+vim.o.numberwidth = 2
 
 -- Make signcolumn be overlaid with number column
 vim.o.signcolumn = "number"
