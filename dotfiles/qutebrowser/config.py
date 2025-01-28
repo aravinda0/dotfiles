@@ -88,6 +88,10 @@ c.url.searchengines = {
     "aur": "https://aur.archlinux.org/packages/?O=0&K={}",
     "aw": "https://wiki.archlinux.org/index.php?title=Special%3ASearch&search={}",
     "t": "https://www.magnetdl.com/search/?m=1&q={}",
+    # Try devdocs for a bit
+    "dd": "https://devdocs.io#q={}",
+    "dp": "https://devdocs.io#q=python {}",
+    "dr": "https://devdocs.io#q=rust {}",
 }
 
 
