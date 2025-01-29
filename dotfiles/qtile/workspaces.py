@@ -1,9 +1,10 @@
 # Hacky implementation of contextual workflow
 
+import re
 import socket
 
 from libqtile import hook, qtile, widget
-from libqtile.config import Group
+from libqtile.config import Group, Match
 
 
 # TODO:
@@ -123,6 +124,12 @@ def make_groups_from_contexts():
                         label=f"{group_set_name}: {group_name}",
                     )
                 )
+
+    # Just put dev gui windows in this group since convenient in my contexts/monitor
+    # arrangement.
+    # 🤔 Would be better to place these dynamically based on active context.
+    g_work_notes_1 = next(g for g in groups if g.name == "work | notes | 1")
+    g_work_notes_1.matches = [Match(title=re.compile(r"^\[dev\] "))]
 
     return groups
 
