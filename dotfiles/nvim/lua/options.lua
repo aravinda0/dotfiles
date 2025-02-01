@@ -1,11 +1,9 @@
 -- Enable true colors
 vim.o.termguicolors = true
 
-vim.o.relativenumber = true
-vim.o.numberwidth = 2
-
--- Make signcolumn be overlaid with number column
-vim.o.signcolumn = "number"
+-- Always show sign column
+vim.o.signcolumn = "yes:1"
+-- vim.o.signcolumn = "number"
 
 -- Line settings
 vim.o.textwidth = 88
