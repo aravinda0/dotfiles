@@ -264,7 +264,7 @@ groups.extend(
             [
                 DropDown(
                     "w",
-                    "alacritty -e zsh -i -c 'cd $_W; nvim zk/index.md'",
+                    "alacritty -e zsh -i -c 'cd $_Z; nvim zk/index.md'",
                     on_focus_lost_hide=False,
                     width=0.95,
                     height=0.95,
