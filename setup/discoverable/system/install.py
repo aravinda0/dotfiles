@@ -23,7 +23,7 @@ packages = [
     "brightnessctl",
     #
     # easy privacy solution to encrypt dirs
-    "encfs",
+    "gocryptfs",
     #
     # fonts,
     "ttf-sourcecodepro-nerd",
