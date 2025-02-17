@@ -145,6 +145,7 @@ vim.cmd("iabbrev pill$ 💊")
 vim.cmd("iabbrev flow$ 🌻")
 vim.cmd("iabbrev zk$ 🧠")
 vim.cmd("iabbrev vom$ 🤮")
+vim.cmd("iabbrev ts$ 🔭")
 
 
 -- --------------------------------------------------------------------------------
