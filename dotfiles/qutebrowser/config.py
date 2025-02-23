@@ -48,7 +48,7 @@ c.content.blocking.method = "both"
 
 
 # Using a somewhat common, but still linux, user agent seems to help with some sites
-c.content.headers.user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.3"
+# c.content.headers.user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.3"
 
 
 c.completion.open_categories = ["quickmarks", "bookmarks", "history", "filesystem"]
