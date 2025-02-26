@@ -37,6 +37,9 @@ return {
             folder = "diary",
             alias_format = "%d %b %Y - %a",
          },
+         follow_url_func = function(url)
+            vim.ui.open(url)
+         end,
          ui = {
             enable = false,
          }
