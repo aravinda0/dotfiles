@@ -5,13 +5,13 @@ from utils.system import system_install
 
 
 binary_packages = [
-    "httpie",
+    "uv",
     "ipython",
     "ptpython",
-    "pdm",
+    "copier",
+    "httpie",
     "ruff",
     "ruff-lsp",
-    "copier",
 ]
 
 
