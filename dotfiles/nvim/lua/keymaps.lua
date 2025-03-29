@@ -553,6 +553,13 @@ vim.keymap.set("n", "<c-s-k>", function()
    require("pkm").open_diary_relative(1)
 end)
 
+vim.keymap.set("n", "<c-n>a", function()
+   require("pkm.anki").new_card()
+end)
+vim.keymap.set("n", "<c-n>D", function()
+   require("pkm.anki").new_deck()
+end)
+
 
 -- --------------------------------------------------------------------------------
 

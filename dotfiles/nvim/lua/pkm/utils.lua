@@ -61,14 +61,14 @@ end
 M.file_exists = function(path)
    local file = io.open(path, "r")
    if file then
+      file:close()
       return true
    end
    return false
 end
 
 --- Opens a file to edit if it exists.
---- @param path string | table: A single path or a list of paths. The first existing
---- file will be opened.
+--- @param path string | table: A single path or a list of paths. The first existing file will be opened.
 M.open_file_if_exists = function(path)
    local paths
    if type(path) == "string" then
