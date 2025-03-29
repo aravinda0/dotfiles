@@ -52,7 +52,29 @@ local snippets = {
          "",
       }),
       i(0),
-   })
+   }),
+
+   s({
+      trig = "anki",
+      dscr = "anki card",
+   }, {
+      t({
+         "# Card",
+         "",
+         "## Question",
+         "",
+         "",
+      }),
+      i(0),
+      t({
+         "",
+         "",
+         "",
+         "## Answer",
+         "",
+         "",
+      }),
+   }),
 }
 
 return {
