@@ -195,13 +195,13 @@ M.generate_diary_index = function()
    end
 
    local lines = { "# Index - Diary", "" }
-   for y, mdata in pkm_utils.pairsByKeys(data, function(a, b) return a > b end) do
+   for y, mdata in pkm_utils.pairs_by_keys(data, function(a, b) return a > b end) do
       table.insert(lines, "## " .. y)
       table.insert(lines, "")
-      for m, ddata in pkm_utils.pairsByKeys(mdata, function(a, b) return a > b end) do
+      for m, ddata in pkm_utils.pairs_by_keys(mdata, function(a, b) return a > b end) do
          table.insert(lines, "### " .. os.date("%B", os.time({ month = tonumber(m), day = 1, year = 1 })))
          table.insert(lines, "")
-         for d, dinfo in pkm_utils.pairsByKeys(ddata, function(a, b) return a > b end) do
+         for d, dinfo in pkm_utils.pairs_by_keys(ddata, function(a, b) return a > b end) do
             local pretty_date = os.date("%d %b %Y - %a", dinfo.timestamp)
             local line = string.format("- [[%s|%s]]", dinfo.name, pretty_date)
             table.insert(lines, line)
