@@ -427,8 +427,8 @@ M.build_trailblazer_keymaps = function()
          actions = {
             delete_all_trail_marks = '<c-m>d',
             set_trail_mark_select_mode = '<c-m>s',
-            switch_to_next_trail_mark_stack = '<c-m>l',
-            switch_to_previous_trail_mark_stack = '<c-m>h',
+            switch_to_next_trail_mark_stack = '<c-m><c-l>',
+            switch_to_previous_trail_mark_stack = '<c-m><c-h>',
             set_trail_mark_stack_sort_mode = '<c-m><s-s>',
          },
       }
