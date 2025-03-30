@@ -1,14 +1,38 @@
-local tsbuiltin = require("telescope.builtin")
 local tsactions = require("telescope.actions")
 local tsaction_state = require("telescope.actions.state")
+local tsconf = require("telescope.config").values
+local tspickers = require("telescope.pickers")
+local tsfinders = require("telescope.finders")
 
 local M = {}
 
 
---- Open a standard telescope picker, show results of `find_cmd` as options. Once
---- something is selected, `handler` is invoked on the item's path.
-M.find_item_and_act = function(find_cmd, handler, cwd)
-   local handle_selection = function(prompt_bufnr, map)
+---@class FindAndThenOpts
+local default_find_and_then_opts = {
+   src_cmd = nil,
+   src_items = nil,
+   cwd = nil, -- Only valid when `src_cmd` specified
+   title = "Find Items",
+}
+
+--- Open a generic Telescope picker that can show results from a list or from a command.
+--- The selected item then has `handler` invoked on it.
+---
+---@param opts FindAndThenOpts
+---@param handler fun(selection: string)
+M.find_and_then = function(opts, handler)
+   opts = vim.tbl_extend("force", default_find_and_then_opts, opts)
+
+   local finder
+   if opts.src_cmd ~= nil then
+      finder = tsfinders.new_oneshot_job(opts.src_cmd, { cwd = opts.cwd })
+   else
+      finder = tsfinders.new_table({
+         results = opts.src_items
+      })
+   end
+
+   local handle_selection = function(prompt_bufnr, _)
       tsactions.select_default:replace(function()
          tsactions.close(prompt_bufnr)
          local selection = tsaction_state.get_selected_entry()[1]
@@ -17,12 +41,15 @@ M.find_item_and_act = function(find_cmd, handler, cwd)
       return true
    end
 
-   local opts = {
-      cwd = cwd,
-      find_command = find_cmd,
-      attach_mappings = handle_selection,
-   }
-   tsbuiltin.find_files(opts)
+   tspickers
+       .new({}, {
+          prompt_title = opts.title,
+          finder = finder,
+          sorter = tsconf.file_sorter({}),
+          previewer = tsconf.file_previewer({}),
+          attach_mappings = handle_selection,
+       })
+       :find()
 end
 
 

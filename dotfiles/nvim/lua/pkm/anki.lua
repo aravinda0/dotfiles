@@ -7,7 +7,7 @@ local ANKI_DIR = vim.env["_Z"] .. "/anki"
 
 M.generate_anki_id = function()
    -- TODO: 🚧 Inspect all existing cards, make sure not the same ID.
-   return math.random(2^30, 2^31)
+   return math.random(2 ^ 30, 2 ^ 31)
 end
 
 
@@ -22,7 +22,7 @@ M.new_card = function()
       vim.cmd("edit " .. new_card_path)
    end
 
-   tsutils.find_item_and_act({"fd", "-t", "d"}, handler, ANKI_DIR)
+   tsutils.find_and_then({ src_cmd = { "fd", "-t", "d" }, cwd = ANKI_DIR }, handler)
 end
 
 
