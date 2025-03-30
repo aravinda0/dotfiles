@@ -5,9 +5,21 @@ local M = {}
 local ANKI_DIR = vim.env["_Z"] .. "/anki"
 
 
+--- Generates a new random anki-friendly ID number. Will ensure a card with the
+--- generated ID doesn't already exist.
 M.generate_anki_id = function()
-   -- TODO: 🚧 Inspect all existing cards, make sure not the same ID.
-   return math.random(2 ^ 30, 2 ^ 31)
+   for _ = 1, 10 do
+      local new_id = math.random(2 ^ 30, 2 ^ 31)
+      local result = vim.system(
+         { "fd", "-t", "f", "--base-directory", ANKI_DIR, string.format("%s.card.md", new_id) },
+         { text = true }
+      ):wait()
+      if result.code == 0 and result.stdout == "" then
+         return new_id
+      end
+   end
+
+   error("Failed to generate anki ID!")
 end
 
 
