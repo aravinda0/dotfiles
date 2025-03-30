@@ -1,4 +1,5 @@
 local luasnip = require("luasnip")
+local fmt = require("luasnip.extras.fmt").fmt
 
 local s = luasnip.snippet
 local t = luasnip.text_node
@@ -54,27 +55,20 @@ local snippets = {
       i(0),
    }),
 
-   s({
-      trig = "anki",
-      dscr = "anki card",
-   }, {
-      t({
-         "# Card",
-         "",
-         "## Question",
-         "",
-         "",
-      }),
-      i(0),
-      t({
-         "",
-         "",
-         "",
-         "## Answer",
-         "",
-         "",
-      }),
-   }),
+   s({ trig = "acard", dscr = "anki card", },
+      fmt([[
+      # Card
+
+      ## Question
+
+      {i1}
+
+
+      ## Answer
+      ]], {
+         i1 = i(0),
+      })
+   ),
 }
 
 return {
