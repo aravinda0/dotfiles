@@ -150,6 +150,7 @@ vim.cmd("iabbrev df$ 🫥")
 vim.cmd("iabbrev sk$ 💀")
 vim.cmd("iabbrev bone$ 🦴")
 vim.cmd("iabbrev piz$ 🍕")
+vim.cmd("iabbrev cac$ 🌵")
 
 
 -- --------------------------------------------------------------------------------
