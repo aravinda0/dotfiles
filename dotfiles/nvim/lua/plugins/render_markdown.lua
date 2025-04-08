@@ -20,6 +20,7 @@ return {
       },
       code = {
          width = "block",
+         border = "thick",
          min_width = 89,
       },
       bullet = {
