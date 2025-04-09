@@ -44,5 +44,5 @@ packages = [
 
 def install_tools():
     system_update_package_databases()
-    system_install("yay")
+    # system_install("yay")
     system_install(packages)

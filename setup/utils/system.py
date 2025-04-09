@@ -6,6 +6,9 @@ import subprocess
 import settings
 
 
+pkg_mgr = "paru" if shutil.which("paru") is not None else "pacman"
+
+
 def pip_install(packages: str | list[str]):
     if isinstance(packages, str):
         packages = [packages]
@@ -27,14 +30,13 @@ def nvim_venv_pip_install(packages: str | list[str], upgrade=True):
 
 
 def system_update_package_databases():
-    subprocess.run(["yay", "-Sy"])
+    subprocess.run([pkg_mgr, "-Sy"])
 
 
 def system_install(packages: str | list[str]):
     if isinstance(packages, str):
         packages = [packages]
 
-    pkg_mgr = "yay" if shutil.which("yay") is not None else "pacman"
     subprocess.run([pkg_mgr, "-S", "--noconfirm", *packages])
 
 
