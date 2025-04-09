@@ -309,7 +309,7 @@ groups.extend(
                 ),
                 DropDown(
                     "dotfiles",
-                    f"alacritty --working-directory {DOTFILES_PATH}",
+                    f"alacritty --working-directory {DOTFILES_PATH}/..",
                     on_focus_lost_hide=False,
                     width=0.95,
                     height=0.95,
