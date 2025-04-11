@@ -191,7 +191,7 @@ keys = [
             EzKey("t", lazy.layout.spawn_tab(rofi_run_cmd)),
             EzKey("C-v", lazy.layout.toggle_container_select_mode()),
             EzKey("S-t", lazy.layout.spawn_tab(rofi_run_cmd, new_level=True)),
-            EzKey("<Delete>", lazy.spawn("light-locker-command -l")),
+            EzKey("<Delete>", lazy.spawn("xfce4-screensaver-command --lock")),
             EzKey("C-r", lazy.reload_config()),
             EzKey("M-r", lazy.restart()),
             EzKey("M-q", lazy.shutdown()),
@@ -509,7 +509,7 @@ def autostart():
         subprocess.Popen(["/bin/zsh", xcape_path])
 
     # Screen locker daemon
-    subprocess.Popen(["/usr/bin/light-locker"])
+    subprocess.Popen(["/usr/bin/xfce4-screensaver"])
 
     # Start dropbox
     subprocess.Popen("/usr/bin/dropbox")
