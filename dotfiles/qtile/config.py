@@ -511,9 +511,6 @@ def autostart():
     # Screen locker daemon
     subprocess.Popen(["/usr/bin/xfce4-screensaver"])
 
-    # Start dropbox
-    subprocess.Popen("/usr/bin/dropbox")
-
     # Redshift for color temperature mods according to time of day.
     # Manually setting `lat:long` of home city
     subprocess.Popen(["/usr/bin/redshift", "-l", "28.6542:77.2373"])
