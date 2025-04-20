@@ -526,7 +526,7 @@ def autostart():
         [
             "/usr/bin/feh",
             "--bg-scale",
-            Path(DOTFILES_PATH) / "wallpapers/gruv-berries.png",
+            "~/st/etc/app/wallpaper/berries_4k.png",
         ]
     )
 
