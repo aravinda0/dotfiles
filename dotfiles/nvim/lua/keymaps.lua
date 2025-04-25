@@ -158,8 +158,10 @@ vim.cmd("iabbrev cac$ 🌵")
 -- --------------------------------------------------------------------------------
 
 -- These are defaults as of nvim 0.10.
-vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end)
-vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end)
+vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true  }) end)
+vim.keymap.set("n", "[e", function() vim.diagnostic.jump({ count = -1, float = true, _highest = true }) end)
+vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end)
+vim.keymap.set("n", "]e", function() vim.diagnostic.jump({ count = 1, float = true, _highest = true }) end)
 vim.keymap.set("n", "<c-w>d", vim.diagnostic.open_float)
 
 vim.keymap.set("n", "<c-l>dh", vim.diagnostic.hide)
