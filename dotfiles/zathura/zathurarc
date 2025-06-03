@@ -15,3 +15,5 @@ set scroll-step 100
 
 map <C-y> scroll up
 map <C-e> scroll down
+
+set selection-clipboard clipboard
