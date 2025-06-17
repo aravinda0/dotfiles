@@ -86,11 +86,7 @@ return {
             capabilities = capabilities,
             settings = {
                ["rust-analyzer"] = {
-                  checkOnSave = {
-                     allFeatures = true,
-                     command = "clippy",
-                     extraArgs = { "--no-deps" },
-                  },
+                  checkOnSave = true,
                   procMacro = {
                      enable = true,
                      ignored = {
