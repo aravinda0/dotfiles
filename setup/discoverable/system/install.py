@@ -39,6 +39,9 @@ packages = [
     #
     # url downloader (eg. for youtube, etc.)
     "yt-dlp",
+    #
+    # Simple MTP client - CLI, QT GUI. For android file transfers over USB.
+    "android-file-transfer",
 ]
 
 
