@@ -506,6 +506,7 @@ M.set_obsidian_keymaps = function()
    vim.keymap.set("n", "gv", "<cmd>ObsidianFollowLink vsplit<cr>")
    vim.keymap.set("n", "gx", "<cmd>ObsidianFollowLink hsplit<cr>")
    vim.keymap.set("n", "<c-n>dt", "<cmd>ObsidianToday<cr>")
+   vim.keymap.set("n", "<c-n>dy", "<cmd>ObsidianYesterday<cr>")
 end
 
 
