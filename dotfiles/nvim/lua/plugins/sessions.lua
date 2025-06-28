@@ -3,6 +3,7 @@ local keymaps = require("keymaps")
 return {
    {
       "stevearc/resession.nvim",
+      dependencies = { "neovim/nvim-lspconfig" },
       opts = {},
       config = function()
          local resession = require("resession")
