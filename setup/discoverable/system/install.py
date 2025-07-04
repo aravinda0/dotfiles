@@ -15,6 +15,9 @@ packages = [
     "openssh",
     "keychain",
     #
+    # Nice no-nonsense file manager.
+    "thunar",
+    #
     # manage disks and handle automounting
     "udisks2",
     "udiskie",
@@ -32,7 +35,7 @@ packages = [
     "noto-fonts-extra",
     #
     # html beautifier
-    "tidy",
+    # "tidy",
     #
     # screen temperature
     "redshift",
@@ -41,7 +44,8 @@ packages = [
     "yt-dlp",
     #
     # Simple MTP client - CLI, QT GUI. For android file transfers over USB.
-    "android-file-transfer",
+    # Disable for now, since things like thunar seem to understand MTP.
+    # "android-file-transfer",
 ]
 
 
