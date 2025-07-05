@@ -7,11 +7,12 @@ def install_tools():
     system_install(["nodejs", "npm"])
 
     global_packages = [
-        "pyright",
+        "typescript",
         "typescript-language-server",
-        "@fsouza/prettierd",
-        "emmet-ls",
         "svelte-language-server",
         "@tailwindcss/language-server",
+        "basedpyright",
+        "@fsouza/prettierd",
+        "emmet-ls",
     ]
     subprocess.run(["npm", "i", "-g", *global_packages])
