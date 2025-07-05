@@ -43,6 +43,9 @@ packages = [
     # url downloader (eg. for youtube, etc.)
     "yt-dlp",
     #
+    # Directory history manager.
+    "zoxide",
+    #
     # Simple MTP client - CLI, QT GUI. For android file transfers over USB.
     # Disable for now, since things like thunar seem to understand MTP.
     # "android-file-transfer",

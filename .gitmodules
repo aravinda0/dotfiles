@@ -4,6 +4,3 @@
 [submodule "dotfiles/zsh/external/zimfw"]
 	path = dotfiles/zsh/external/zimfw
 	url = https://github.com/zimfw/zimfw
-[submodule "dotfiles/zsh/external/fzf-marks"]
-	path = dotfiles/zsh/external/fzf-marks
-	url = https://github.com/urbainvaes/fzf-marks

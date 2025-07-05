@@ -38,13 +38,6 @@ export FZF_CTRL_R_OPTS='--sort'
 bindkey '^p' fzf-file-widget
 
 
-# -------------------------------------------------------------------------------
-# fzf-marks - Bookmark directories and use fzf to open them
-# -------------------------------------------------------------------------------
-
-source $DOTFILES_PATH/zsh/external/fzf-marks/fzf-marks.plugin.zsh
-
-
 # --------------------------------------------------------------------------------
 # zimfw minimal theme
 # --------------------------------------------------------------------------------

@@ -30,3 +30,13 @@ bindkey -M vicmd '^k' up-line-or-history
 
 # Shift-Tab to select previous options in completion menu
 bindkey '^[[Z' reverse-menu-complete
+
+
+_zoxide_interactive_widget() {
+    zi
+    zle reset-prompt
+}
+zle -N _zoxide_interactive_widget
+bindkey '^g' _zoxide_interactive_widget
+
+

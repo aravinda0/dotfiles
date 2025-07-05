@@ -30,3 +30,6 @@ if [ -f $ENVFILES_PATH/zshrc.local.zsh ]; then
 else
   echo "zsh envfiles have not been configured for this system!"
 fi
+
+
+eval "$(zoxide init zsh)"
