@@ -231,49 +231,69 @@ M.set_common_lsp_keymaps = function(_, bufnr)
    end, buf_opts)
 end
 
--- --------------------------------------------------------------------------------
--- nvim cmp
--- --------------------------------------------------------------------------------
--- Docs: https://github.com/hrsh7th/nvim-cmp
--- --------------------------------------------------------------------------------
-M.build_nvim_cmp_config_keymaps = function()
-   local cmp = require("cmp")
-   local luasnip = require("luasnip")
 
+-- --------------------------------------------------------------------------------
+-- blink cmp
+-- --------------------------------------------------------------------------------
+-- Docs: https://cmp.saghen.dev/configuration/general.html
+-- --------------------------------------------------------------------------------
+M.build_blink_cmp_config_keymaps = function()
    return {
-      ["<c-j>"] = cmp.mapping.select_next_item(),
-      ["<c-k>"] = cmp.mapping.select_prev_item(),
-      ["<c-space>"] = cmp.mapping.complete(),
-      ["<c-e>"] = cmp.mapping(function(fallback)
-         if luasnip.expand_or_locally_jumpable() then
-            luasnip.expand_or_jump()
-         else
-            fallback()
-         end
-      end, { "i", "s" }),
-      ["<c-b>"] = cmp.mapping(function(fallback)
-         if luasnip.get_active_snip() and luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-         else
-            fallback()
-         end
-      end, { "i", "s" }),
-      ["<c-n>"] = cmp.mapping(function(fallback)
-         if luasnip.choice_active() then
-            luasnip.change_choice(1)
-         else
-            fallback()
-         end
-      end, { "i", "s" }),
-      ["<c-p>"] = cmp.mapping(function(fallback)
-         if luasnip.choice_active() then
-            luasnip.change_choice(-1)
-         else
-            fallback()
-         end
-      end, { "i", "s" }),
+      preset = "none",
+      ["<c-k>"] = { "select_prev", "fallback" },
+      ["<c-j>"] = { "select_next", "fallback" },
+      ["<c-e>"] = {
+         function(cmp)
+            -- Handle 3 cases via `<c-e>`:
+            -- 1. If snippet expansion applicable, expand.
+            -- 2. If snippet active, move snippet placeholder position forward.
+            -- 3. If completion available, accept it and complete.
+
+            local luasnip = require("luasnip")
+            if luasnip.expand_or_locally_jumpable() then
+               cmp.cancel()
+
+               -- If we don't do it this way, we get an error. Presumably luasnip tries
+               -- to write into blink's completion menu window.
+               -- Also, just using `expand()` and specifying "snippet_forward" as the
+               -- next handler doesn't seem to work. Causes random jumps on occasion.
+               vim.schedule(function() luasnip.expand_or_jump() end)
+
+               return true
+            end
+         end,
+         "accept",
+         "fallback_to_mappings",
+      },
+      ["<c-b>"] = { "snippet_backward" },
+      ["<c-n>"] = {
+         function(cmp)
+            local luasnip = require("luasnip")
+            if luasnip.choice_active() then
+               -- luasnip.change_choice(1)
+               vim.schedule(function() luasnip.change_choice(1) end)
+               return true
+            end
+         end,
+         "fallback_to_mappings",
+      },
+      ["<c-p>"] = {
+         function(cmp)
+            local luasnip = require("luasnip")
+            if luasnip.choice_active() then
+               -- luasnip.change_choice(-1)
+               vim.schedule(function() luasnip.change_choice(-1) end)
+               return true
+            end
+         end,
+         "fallback_to_mappings",
+      },
+      ["<c-u>"] = { "scroll_documentation_up" },
+      ["<c-d>"] = { "scroll_documentation_down" },
+      ["<c-t>"] = { "hide_documentation", "fallback_to_mappings"},
    }
 end
+
 
 -- --------------------------------------------------------------------------------
 -- Telescope

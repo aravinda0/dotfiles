@@ -2,47 +2,32 @@ local keymaps = require("keymaps")
 
 return {
    {
-      "hrsh7th/nvim-cmp",
-      event = "InsertEnter",
-      dependencies = {
-         "hrsh7th/cmp-nvim-lsp",
-         "hrsh7th/cmp-buffer",
-         "hrsh7th/cmp-path",
-         "hrsh7th/cmp-cmdline",
-         "hrsh7th/cmp-emoji",
-         "saadparwaiz1/cmp_luasnip",
+      "saghen/blink.cmp",
+      dependencies = { "L3MON4D3/LuaSnip" },
+      opts = {
+         keymap = keymaps.build_blink_cmp_config_keymaps(),
+
+         appearance = {
+            -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+            -- Adjusts spacing to ensure icons are aligned
+            nerd_font_variant = "mono"
+         },
+         completion = {
+            documentation = { auto_show = true },
+            ghost_text = { enabled = false },
+         },
+         snippets = { preset = 'luasnip' },
+         sources = {
+            default = { "lsp", "path", "snippets", "buffer" },
+         },
+
+         -- (Default) Rust fuzzy matcher for typo resistance and significantly better
+         -- performance.
+         -- You may use a lua implementation instead by using `implementation = "lua"`
+         -- or fallback to the lua implementation, when the Rust fuzzy matcher is not
+         -- available, by using `implementation = "prefer_rust"`
+         fuzzy = { implementation = "prefer_rust_with_warning" }
       },
-      config = function()
-         local cmp = require("cmp")
-         local luasnip = require("luasnip")
-
-         cmp.setup({
-            snippet = {
-               expand = function(args)
-                  luasnip.lsp_expand(args.body)
-               end,
-            },
-            preselect = cmp.PreselectMode.None,
-            mapping = keymaps.build_nvim_cmp_config_keymaps(),
-            sources = cmp.config.sources({
-               { name = "nvim_lsp" },
-               { name = "path" },
-               { name = "emoji" },
-               { name = "luasnip" },
-            }, {
-               { name = "buffer" },
-            }),
-         })
-
-         -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work
-         -- anymore).
-         cmp.setup.cmdline(":", {
-            sources = cmp.config.sources({
-               { name = "path" },
-            }, {
-               { name = "cmdline" },
-            }),
-         })
-      end,
-   },
+      opts_extend = { "sources.default" }
+   }
 }
