@@ -193,43 +193,37 @@ end
 -- --------------------------------------------------------------------------------
 -- LSP
 -- --------------------------------------------------------------------------------
--- Docs:
---  - https://github.com/neovim/nvim-lspconfig
---  - https://neovim.io/doc/user/lsp.html
--- UI customizations: https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
--- --------------------------------------------------------------------------------
-M.set_common_lsp_keymaps = function(_, bufnr)
-   local buf_opts = { noremap = true, silent = true, buffer = bufnr }
 
-   -- Defaults as of nvim 0.10:
-   vim.keymap.set("n", "K", vim.lsp.buf.hover, buf_opts)
+local buf_opts = { noremap = true, silent = true}
 
-   vim.keymap.set("n", "gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, buf_opts)
-   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, buf_opts)
-   vim.keymap.set("n", "gt", function()
-      require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
-   end, buf_opts)
-   vim.keymap.set("n", "gi", function()
-      require("telescope.builtin").lsp_implementations({ reuse_win = true })
-   end, buf_opts)
-   vim.keymap.set("n", "gK", vim.lsp.buf.signature_help, buf_opts)
-   vim.keymap.set("i", "<c-k>", vim.lsp.buf.signature_help, buf_opts)
-   vim.keymap.set("n", "<c-l><c-k>", function()
-      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-   end, buf_opts)
+-- Defaults as of nvim 0.10:
+vim.keymap.set("n", "K", vim.lsp.buf.hover, buf_opts)
 
-   -- LSP and orthogonal stuff. Also see more <c-l> chords in telescope config.
-   vim.keymap.set("n", "<c-l>r", vim.lsp.buf.rename, buf_opts)
-   vim.keymap.set("n", "<c-l>f", vim.lsp.buf.format, buf_opts)
-   vim.keymap.set("n", "<c-l>a", vim.lsp.buf.code_action, buf_opts)
-   vim.keymap.set("n", "<c-l>ll", vim.lsp.codelens.run, buf_opts)
-   vim.keymap.set("n", "<c-l>lL", vim.lsp.codelens.refresh, buf_opts)
-   vim.keymap.set("n", "<c-l>wa", vim.lsp.buf.add_workspace_folder, buf_opts)
-   vim.keymap.set("n", "<c-l>wr", vim.lsp.buf.remove_workspace_folder, buf_opts)
-   vim.keymap.set("n", "<c-l>wl", function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-   end, buf_opts)
-end
+vim.keymap.set("n", "gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, buf_opts)
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, buf_opts)
+vim.keymap.set("n", "gt", function()
+   require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
+end, buf_opts)
+vim.keymap.set("n", "gi", function()
+   require("telescope.builtin").lsp_implementations({ reuse_win = true })
+end, buf_opts)
+vim.keymap.set("n", "gK", vim.lsp.buf.signature_help, buf_opts)
+vim.keymap.set("i", "<c-k>", vim.lsp.buf.signature_help, buf_opts)
+vim.keymap.set("n", "<c-l><c-k>", function()
+   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, buf_opts)
+
+-- LSP and orthogonal stuff. Also see more <c-l> chords in telescope config.
+vim.keymap.set("n", "<c-l>r", vim.lsp.buf.rename, buf_opts)
+vim.keymap.set("n", "<c-l>f", vim.lsp.buf.format, buf_opts)
+vim.keymap.set("n", "<c-l>a", vim.lsp.buf.code_action, buf_opts)
+vim.keymap.set("n", "<c-l>ll", vim.lsp.codelens.run, buf_opts)
+vim.keymap.set("n", "<c-l>lL", vim.lsp.codelens.refresh, buf_opts)
+vim.keymap.set("n", "<c-l>wa", vim.lsp.buf.add_workspace_folder, buf_opts)
+vim.keymap.set("n", "<c-l>wr", vim.lsp.buf.remove_workspace_folder, buf_opts)
+vim.keymap.set("n", "<c-l>wl", function()
+   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+end, buf_opts)
 
 
 -- --------------------------------------------------------------------------------
