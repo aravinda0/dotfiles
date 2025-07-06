@@ -11,9 +11,9 @@ return {
       heading = {
          width = "block",
          min_width = { 100, 89, 80, 75, 65 },
-         -- backgrounds = {
-         --    -- TODO
-         -- },
+         backgrounds = {
+            "", -- disable default weird dark bg for h1
+         },
          -- foregrounds = {
          --    -- TODO
          -- },
