@@ -1,3 +1,9 @@
+-- ----------------------------------------------------------------------------------------
+-- NOTE: We just extend various LSP server configs here. The defaults are loaded in from
+-- the `nvim-lspconfig` plugin, used as a data-only plugin.
+-- ----------------------------------------------------------------------------------------
+
+
 vim.api.nvim_create_autocmd("LspAttach", {
    group = vim.api.nvim_create_augroup("lsp_attach_stuff", { clear = true }),
    callback = function(args)
@@ -43,7 +49,7 @@ vim.lsp.config("basedpyright", {
       python = {
          analysis = {
             -- Using ruff instead.
-            ignore = {"*"}
+            ignore = { "*" }
          }
       }
    }
@@ -108,3 +114,9 @@ vim.lsp.config('lua_ls', {
    }
 })
 vim.lsp.enable('lua_ls')
+
+
+-- TODO: This is a workaround to deal with some race condition where the LSP stuff
+-- doesn't start without triggering a file reload via `:e`.
+-- Need to look into this to find a better way or fix any root cause.
+vim.api.nvim_exec_autocmds("FileType", {})
