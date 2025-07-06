@@ -34,9 +34,6 @@ packages = [
     "noto-fonts-cjk",
     "noto-fonts-extra",
     #
-    # html beautifier
-    # "tidy",
-    #
     # screen temperature
     "redshift",
     #
@@ -45,6 +42,9 @@ packages = [
     #
     # Directory history manager.
     "zoxide",
+    #
+    # YAML formatter
+    "yamlfmt",
     #
     # Simple MTP client - CLI, QT GUI. For android file transfers over USB.
     # Disable for now, since things like thunar seem to understand MTP.
