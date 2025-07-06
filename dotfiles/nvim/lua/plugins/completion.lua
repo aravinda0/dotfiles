@@ -3,6 +3,7 @@ local keymaps = require("keymaps")
 return {
    {
       "saghen/blink.cmp",
+      version = "1.*",
       dependencies = { "L3MON4D3/LuaSnip" },
       opts = {
          keymap = keymaps.build_blink_cmp_config_keymaps(),
