@@ -158,7 +158,7 @@ vim.cmd("iabbrev cac$ 🌵")
 -- --------------------------------------------------------------------------------
 
 -- These are defaults as of nvim 0.10.
-vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true  }) end)
+vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end)
 vim.keymap.set("n", "[e", function() vim.diagnostic.jump({ count = -1, float = true, _highest = true }) end)
 vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end)
 vim.keymap.set("n", "]e", function() vim.diagnostic.jump({ count = 1, float = true, _highest = true }) end)
@@ -194,7 +194,7 @@ end
 -- LSP
 -- --------------------------------------------------------------------------------
 
-local buf_opts = { noremap = true, silent = true}
+local buf_opts = { noremap = true, silent = true }
 
 -- Defaults as of nvim 0.10:
 vim.keymap.set("n", "K", vim.lsp.buf.hover, buf_opts)
@@ -259,7 +259,7 @@ M.build_blink_cmp_config_keymaps = function()
          "accept",
          "fallback_to_mappings",
       },
-      ["<c-b>"] = { "snippet_backward" },
+      ["<c-b>"] = { "snippet_backward", "fallback_to_mappings" },
       ["<c-n>"] = {
          function(cmp)
             local luasnip = require("luasnip")
@@ -282,9 +282,9 @@ M.build_blink_cmp_config_keymaps = function()
          end,
          "fallback_to_mappings",
       },
-      ["<c-u>"] = { "scroll_documentation_up" },
-      ["<c-d>"] = { "scroll_documentation_down" },
-      ["<c-t>"] = { "hide_documentation", "fallback_to_mappings"},
+      ["<c-u>"] = { "scroll_documentation_up", "fallback_to_mappings" },
+      ["<c-d>"] = { "scroll_documentation_down", "fallback_to_mappings" },
+      ["<c-t>"] = { "hide_documentation", "fallback_to_mappings" },
    }
 end
 
