@@ -2,7 +2,7 @@ local keymaps = require("keymaps");
 
 return {
    enabled = true,
-   "epwalsh/obsidian.nvim",
+   "obsidian-nvim/obsidian.nvim",
    version = "*", -- recommended, use latest release instead of latest commit
    lazy = true,
    ft = "markdown",
@@ -36,6 +36,12 @@ return {
          daily_notes = {
             folder = "diary",
             alias_format = "%d %b %Y - %a",
+         },
+         completion = {
+            nvim_cmp = false,
+            blink = true,
+            min_chars = 2,
+            create_new = true,
          },
          follow_url_func = function(url)
             vim.ui.open(url)
