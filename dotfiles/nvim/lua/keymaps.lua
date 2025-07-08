@@ -323,12 +323,12 @@ M.set_telescope_keymaps = function()
    vim.keymap.set("n", "<c-l>lt", tsbuiltin.treesitter)
 
    -- context:git
-   vim.keymap.set("n", "<c-g>s", tsbuiltin.git_status)
-   vim.keymap.set("n", "<c-g>h", tsbuiltin.git_commits)
-   vim.keymap.set("n", "<c-g>H", tsbuiltin.git_bcommits)
-   vim.keymap.set("n", "<c-g>f", tsbuiltin.git_files)
-   vim.keymap.set("n", "<c-g>br", tsbuiltin.git_branches)
-   vim.keymap.set("n", "<c-g>a", tsbuiltin.git_stash)
+   vim.keymap.set("n", "<m-g>s", tsbuiltin.git_status)
+   vim.keymap.set("n", "<m-g>h", tsbuiltin.git_commits)
+   vim.keymap.set("n", "<m-g>H", tsbuiltin.git_bcommits)
+   vim.keymap.set("n", "<m-g>f", tsbuiltin.git_files)
+   vim.keymap.set("n", "<m-g>br", tsbuiltin.git_branches)
+   vim.keymap.set("n", "<m-g>a", tsbuiltin.git_stash)
 end
 
 M.build_telescope_config_keymaps = function()
