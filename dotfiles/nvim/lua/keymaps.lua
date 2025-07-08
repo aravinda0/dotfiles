@@ -525,6 +525,19 @@ end
 
 
 -- --------------------------------------------------------------------------------
+-- condecompanion.vim
+-- <https://codecompanion.olimorris.dev/getting-started#inline-assistant>
+-- --------------------------------------------------------------------------------
+
+vim.cmd("cab cc CodeCompanion")
+
+vim.keymap.set({ "n", "v" }, "gac", "<cmd>CodeCompanionChat Toggle<cr>")
+vim.keymap.set("v", "gaa", "<cmd>CodeCompanionChat Add<cr>")
+vim.keymap.set({ "n", "v" }, "gA", "<cmd>CodeCompanionActions<cr>")
+
+
+
+-- --------------------------------------------------------------------------------
 -- Personal utils
 -- --------------------------------------------------------------------------------
 
