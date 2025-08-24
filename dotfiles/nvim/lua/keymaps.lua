@@ -514,13 +514,15 @@ end
 -- --------------------------------------------------------------------------------
 
 M.set_obsidian_keymaps = function()
-   vim.keymap.set("n", "<c-n>n", "<cmd>ObsidianNew<cr>")
-   vim.keymap.set("n", "<c-n><c-n>", "<cmd>ObsidianNew<cr>")
-   vim.keymap.set("n", "go", "<cmd>ObsidianFollowLink<cr>")
-   vim.keymap.set("n", "gv", "<cmd>ObsidianFollowLink vsplit<cr>")
-   vim.keymap.set("n", "gx", "<cmd>ObsidianFollowLink hsplit<cr>")
-   vim.keymap.set("n", "<c-n>dt", "<cmd>ObsidianToday<cr>")
-   vim.keymap.set("n", "<c-n>dy", "<cmd>ObsidianYesterday<cr>")
+   vim.keymap.set("n", "<c-n>n", "<cmd>Obsidian new<cr>")
+   vim.keymap.set("n", "<c-n><c-n>", "<cmd>Obsidian new<cr>")
+   vim.keymap.set("n", "<c-n>b", "<cmd>Obsidian backlinks<cr>")
+   vim.keymap.set("n", "go", "<cmd>Obsidian follow_link<cr>")
+   vim.keymap.set("n", "gv", "<cmd>Obsidian follow_link vsplit<cr>")
+   vim.keymap.set("n", "gx", "<cmd>Obsidian follow_link hsplit<cr>")
+   vim.keymap.set("n", "<c-n><c-r>", "<cmd>Obsidian rename<cr>")
+   vim.keymap.set("n", "<c-n>dt", "<cmd>Obsidian today<cr>")
+   vim.keymap.set("n", "<c-n>dy", "<cmd>Obsidian today -1<cr>")
 end
 
 

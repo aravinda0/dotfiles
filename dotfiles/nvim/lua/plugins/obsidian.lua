@@ -11,6 +11,7 @@ return {
    },
    config = function()
       require("obsidian").setup({
+         legacy_commands = false,
          workspaces = {
             {
                -- Use obsidian.nvim for any markdown files, not restricted to
