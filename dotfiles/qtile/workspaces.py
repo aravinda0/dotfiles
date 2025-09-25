@@ -16,7 +16,7 @@ contexts = [
         "main": {
             "preferred_display": {
                 "nexus": 0,
-                "scout": 0,
+                "nomad": 0,
                 "ragebox": 0,
             },
             "groups": ["1", "2", "3", "4"],
@@ -24,7 +24,7 @@ contexts = [
         "notes": {
             "preferred_display": {
                 "nexus": 2,
-                "scout": 0,
+                "nomad": 0,
                 "ragebox": 0,
             },
             "groups": ["1", "2", "3", "4"],
@@ -32,7 +32,7 @@ contexts = [
         "browser": {
             "preferred_display": {
                 "nexus": 1,
-                "scout": 0,
+                "nomad": 0,
                 "ragebox": 0,
             },
             "groups": ["1", "2", "3"],
@@ -43,7 +43,7 @@ contexts = [
         "main": {
             "preferred_display": {
                 "nexus": 0,
-                "scout": 0,
+                "nomad": 0,
                 "ragebox": 0,
             },
             "groups": ["1", "2", "3"],
@@ -51,7 +51,7 @@ contexts = [
         "notes": {
             "preferred_display": {
                 "nexus": 2,
-                "scout": 0,
+                "nomad": 0,
                 "ragebox": 0,
             },
             "groups": ["1", "2", "3"],
@@ -59,7 +59,7 @@ contexts = [
         "browser": {
             "preferred_display": {
                 "nexus": 1,
-                "scout": 0,
+                "nomad": 0,
                 "ragebox": 0,
             },
             "groups": ["1", "2"],
@@ -70,7 +70,7 @@ contexts = [
         "main": {
             "preferred_display": {
                 "nexus": 0,
-                "scout": 0,
+                "nomad": 0,
                 "ragebox": 0,
             },
             "groups": ["1", "2", "3"],
@@ -78,7 +78,7 @@ contexts = [
         "notes": {
             "preferred_display": {
                 "nexus": 2,
-                "scout": 0,
+                "nomad": 0,
                 "ragebox": 0,
             },
             "groups": ["1", "2", "3"],
@@ -86,7 +86,7 @@ contexts = [
         "browser": {
             "preferred_display": {
                 "nexus": 1,
-                "scout": 0,
+                "nomad": 0,
                 "ragebox": 0,
             },
             "groups": ["1"],
