@@ -24,19 +24,19 @@ background = "0x1d2021"
 foreground = "0xdfbf8e"
 
 [font.bold]
-family = "source code pro"
+family = "SauceCodePro Nerd Font Mono"
 style = "Bold"
 
 [font.bold_italic]
-family = "source code pro"
+family = "SauceCodePro Nerd Font Mono"
 style = "Bold Italic"
 
 [font.italic]
-family = "source code pro"
+family = "SauceCodePro Nerd Font Mono"
 style = "Italic"
 
 [font.normal]
-family = "source code pro"
+family = "SauceCodePro Nerd Font Mono"
 style = "Regular"
 
 [hints]
