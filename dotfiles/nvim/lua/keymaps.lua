@@ -346,8 +346,8 @@ end
 -- neo-tree
 -- --------------------------------------------------------------------------------
 
-vim.keymap.set("n", "<c-h>", "<cmd>Neotree toggle position=left reveal<cr>")
-vim.keymap.set("n", "<c-m-h>", "<cmd>Neotree toggle position=float reveal<cr>")
+vim.keymap.set("n", "<m-p>", "<cmd>Neotree toggle position=left reveal<cr>")
+vim.keymap.set("n", "<m-s-p>", "<cmd>Neotree toggle position=float reveal<cr>")
 
 M.build_neo_tree_config_keymaps = function()
    return {
@@ -529,13 +529,17 @@ end
 -- --------------------------------------------------------------------------------
 -- condecompanion.vim
 -- <https://codecompanion.olimorris.dev/getting-started#inline-assistant>
+-- <https://codecompanion.olimorris.dev/usage/chat-buffer/>
 -- --------------------------------------------------------------------------------
 
 vim.cmd("cab cc CodeCompanion")
 
-vim.keymap.set({ "n", "v" }, "gac", "<cmd>CodeCompanionChat Toggle<cr>")
-vim.keymap.set("v", "gaa", "<cmd>CodeCompanionChat Add<cr>")
-vim.keymap.set({ "n", "v" }, "gA", "<cmd>CodeCompanionActions<cr>")
+vim.keymap.set({ "n", "v" }, "<c-h>",
+   function() require("codecompanion").toggle({ window_opts = { layout = "float", width = 0.6 } }) end)
+vim.keymap.set({ "n", "v" }, "<c-a-h>", "<cmd>CodeCompanionActions<cr>")
+vim.keymap.set("v", "gha", "<cmd>CodeCompanionChat Add<cr>")
+
+vim.keymap.set({ "n", "v" }, "ghc", "<cmd>CodeCompanionChat Toggle<cr>")
 
 
 
