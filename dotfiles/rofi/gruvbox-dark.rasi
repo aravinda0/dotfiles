@@ -1,0 +1,72 @@
+* {
+    font: "SauceCodePro Nerd Font Mono 20";
+    text-color: #ebdbb2;
+    background-color: transparent;
+}
+
+window {
+    background-color: rgba(40, 40, 40, 0.9); /* Gruvbox bg with transparency */
+    border: 2px;
+    border-color: #d79921;
+    border-radius: 10px;
+    padding: 15px;
+    dynamic: true;
+    width: 30em;
+}
+
+mainbox {
+    spacing: 10px;
+}
+
+inputbar {
+    background-color: #3c3836;
+    text-color: #ebdbb2;
+    padding: 6px 10px;
+    border-radius: 6px;
+    children: [prompt, entry];
+}
+
+prompt {
+    text-color: #d79921;
+    margin: 0 8px 0 0;
+}
+
+entry {
+    placeholder: "Search…";
+}
+
+listview {
+    background-color: transparent;
+    spacing: 5px;
+    scrollbar: false;
+    lines: 12;
+    dynamic: true;
+}
+
+element {
+    background-color: transparent;
+    text-color: #ebdbb2;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+element selected {
+    background-color: #d79921;
+    text-color: #282828;
+}
+
+element-icon {
+    size: 1.2em;
+    margin: 0 6px 0 0;
+}
+
+element-text {
+    vertical-align: 0.5;
+}
+
+element-text selected {
+    text-color: #000000;
+
+    // This doesn't seem to work. Why?
+    // font: "SauceCodePro Nerd Font Mono Bold 20";
+}

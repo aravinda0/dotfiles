@@ -1,4 +1,4 @@
-@theme "gruvbox-dark"
+@theme "gruvbox-dark.rasi"
 
 
 configuration {
