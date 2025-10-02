@@ -1,7 +1,7 @@
 # config docs: https://github.com/dunst-project/dunst/blob/master/docs/dunst.5.pod
 
 [global]
-  font = "source code pro" 22
+  font = "SauceCodePro Nerd Font Mono" 22
   width = 1000
 
 [urgency_low]

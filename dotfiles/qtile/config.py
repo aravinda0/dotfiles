@@ -331,7 +331,7 @@ layouts = [
 ]
 
 widget_defaults = {
-    "font": "source code pro",
+    "font": "SauceCodePro Nerd Font Mono",
     "fontsize": 22,
     "icon_size": 22,
     "background": Gruvbox.bg0_hard,

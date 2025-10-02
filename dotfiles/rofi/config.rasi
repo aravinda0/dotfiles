@@ -2,7 +2,7 @@
 
 
 configuration {
-  font: "Source Code Pro 20";
+  font: "SauceCodePro Nerd Font Mono 20";
 
   // Unbind conflicting defaults
   kb-remove-to-eol: "";
