@@ -534,7 +534,7 @@ end
 
 vim.cmd("cab cc CodeCompanion")
 
-vim.keymap.set({ "n", "v" }, "<c-h>",
+vim.keymap.set({ "n", "v", "i" }, "<c-h>",
    function() require("codecompanion").toggle({ window_opts = { layout = "float", width = 0.6 } }) end)
 vim.keymap.set({ "n", "v" }, "<c-a-h>", "<cmd>CodeCompanionActions<cr>")
 vim.keymap.set("v", "gha", "<cmd>CodeCompanionChat Add<cr>")
