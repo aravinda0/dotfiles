@@ -30,7 +30,9 @@ return {
                   templates = {
                      subdir = vim.NIL,
                   },
-                  disable_frontmatter = true,
+                  frontmatter = {
+                     enabled = false,
+                  },
                },
             },
          },
