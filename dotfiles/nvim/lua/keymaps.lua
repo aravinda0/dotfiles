@@ -236,31 +236,10 @@ M.build_blink_cmp_config_keymaps = function()
       preset = "none",
       ["<c-k>"] = { "select_prev", "fallback" },
       ["<c-j>"] = { "select_next", "fallback" },
-      ["<c-e>"] = {
-         function(cmp)
-            -- Handle 3 cases via `<c-e>`:
-            -- 1. If snippet expansion applicable, expand.
-            -- 2. If snippet active, move snippet placeholder position forward.
-            -- 3. If completion available, accept it and complete.
-
-            local luasnip = require("luasnip")
-            if luasnip.expand_or_locally_jumpable() then
-               cmp.cancel()
-
-               -- If we don't do it this way, we get an error. Presumably luasnip tries
-               -- to write into blink's completion menu window.
-               -- Also, just using `expand()` and specifying "snippet_forward" as the
-               -- next handler doesn't seem to work. Causes random jumps on occasion.
-               vim.schedule(function() luasnip.expand_or_jump() end)
-
-               return true
-            end
-         end,
-         "accept",
-         "fallback_to_mappings",
-      },
-      ["<c-b>"] = { "snippet_backward", "fallback_to_mappings" },
-      ["<c-n>"] = {
+      ["<c-e>"] = { "select_and_accept", "fallback_to_mappings" },
+      ["<c-n>"] = { "snippet_forward", "fallback_to_mappings" },
+      ["<c-p>"] = { "snippet_backward", "fallback_to_mappings" },
+      ["<c-a-n>"] = {
          function(cmp)
             local luasnip = require("luasnip")
             if luasnip.choice_active() then
@@ -271,7 +250,7 @@ M.build_blink_cmp_config_keymaps = function()
          end,
          "fallback_to_mappings",
       },
-      ["<c-p>"] = {
+      ["<c-a-p>"] = {
          function(cmp)
             local luasnip = require("luasnip")
             if luasnip.choice_active() then
