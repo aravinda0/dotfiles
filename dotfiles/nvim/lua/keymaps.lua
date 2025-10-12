@@ -521,6 +521,15 @@ vim.keymap.set("v", "gha", "<cmd>CodeCompanionChat Add<cr>")
 vim.keymap.set({ "n", "v" }, "ghc", "<cmd>CodeCompanionChat Toggle<cr>")
 
 
+-- --------------------------------------------------------------------------------
+-- neovim-tips
+-- <https://github.com/saxon1964/neovim-tips?tab=readme-ov-file>
+-- --------------------------------------------------------------------------------
+
+vim.keymap.set("n", "<leader>htt", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
+vim.keymap.set("n", "<leader>htb", ":NeovimTipsPdf<CR>", { desc = "Open Neovim tips PDF", noremap = true, silent = true })
+
+
 
 -- --------------------------------------------------------------------------------
 -- Personal utils
