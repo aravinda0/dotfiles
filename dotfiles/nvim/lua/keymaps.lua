@@ -236,7 +236,18 @@ M.build_blink_cmp_config_keymaps = function()
       preset = "none",
       ["<c-k>"] = { "select_prev", "fallback" },
       ["<c-j>"] = { "select_next", "fallback" },
-      ["<c-e>"] = { "select_and_accept", "fallback_to_mappings" },
+      ["<c-e>"] = {
+         function(cmp)
+            local luasnip = require("luasnip")
+            if luasnip.expandable() then
+               cmp.cancel()
+               vim.schedule(function() luasnip.expand() end)
+               return true
+            end
+         end,
+         "select_and_accept",
+         "fallback_to_mappings",
+      },
       ["<c-n>"] = { "snippet_forward", "fallback_to_mappings" },
       ["<c-p>"] = { "snippet_backward", "fallback_to_mappings" },
       ["<c-a-n>"] = {
