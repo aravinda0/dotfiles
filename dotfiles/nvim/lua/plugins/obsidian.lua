@@ -14,31 +14,16 @@ return {
          legacy_commands = false,
          workspaces = {
             {
-               -- Use obsidian.nvim for any markdown files, not restricted to
-               -- workspace dirs. This is done by dynamically marking the current
-               -- parent dir as a workspace.
-               name = "no-vault",
-               path = function()
-                  return assert(vim.fn.getcwd())
-
-                  -- Alternatively use the current buffer's parent
-                  -- return assert(vim.fs.dirname(vim.api.nvim_buf_get_name(0)))
-               end,
-               overrides = {
-                  notes_subdir = vim.NIL, -- have to use 'vim.NIL' instead of 'nil'
-                  new_notes_location = "current_dir",
-                  templates = {
-                     subdir = vim.NIL,
-                  },
-                  frontmatter = {
-                     enabled = false,
-                  },
-               },
-            },
+               name = "default",
+               path = vim.env["_F"],
+            }
          },
          daily_notes = {
-            folder = "diary",
+            folder = "j/diary",
             alias_format = "%d %b %Y - %a",
+         },
+         frontmatter = {
+            enabled = false,
          },
          completion = {
             nvim_cmp = false,
