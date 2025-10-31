@@ -20,10 +20,10 @@ vim.keymap.set("n", "<m-l>", "<c-w>l")
 
 -- Easier resizing of splits. Increase/decrease pane size (unlike tmux's
 -- border-movement-based resizing).
-vim.keymap.set("n", "<c-a-->", "<cmd>vertical resize -5<cr>")
-vim.keymap.set("n", "<c-a-=>", "<cmd>vertical resize +5<cr>")
-vim.keymap.set("n", "<c-a-,>", "<cmd>resize -5<cr>")
-vim.keymap.set("n", "<c-a-.>", "<cmd>resize +5<cr>")
+vim.keymap.set("n", "<a-s-h>", "<cmd>vertical resize -5<cr>")
+vim.keymap.set("n", "<a-s-l>", "<cmd>vertical resize +5<cr>")
+vim.keymap.set("n", "<a-s-k>", "<cmd>resize -5<cr>")
+vim.keymap.set("n", "<a-s-j>", "<cmd>resize +5<cr>")
 
 -- Nicer tab operations
 vim.keymap.set("n", "<m-t>", "<cmd>tabnew<cr>")
@@ -75,10 +75,10 @@ vim.keymap.set("v", ">", ">gv")
 -- Move lines up or down
 -- TODO: Translate the visual mode mappings to lua properly. Stuff after `<cr>` doesn't
 -- seem to register, even in an expr mapping.
-vim.keymap.set("n", "<c-m-k>", "<cmd>move -2<cr>")
-vim.keymap.set("n", "<c-m-j>", "<cmd>move +1<cr>")
-vim.cmd("vnoremap <c-m-j> :move '>+1<cr>gv-gv")
-vim.cmd("vnoremap <c-m-k> :move '<-2<cr>gv-gv")
+vim.keymap.set("n", "<c-a-k>", "<cmd>move -2<cr>")
+vim.keymap.set("n", "<c-a-j>", "<cmd>move +1<cr>")
+vim.cmd("vnoremap <c-a-j> :move '>+1<cr>gv-gv")
+vim.cmd("vnoremap <c-a-k> :move '<-2<cr>gv-gv")
 
 -- Clear highlighting
 vim.keymap.set("n", "<leader>n", "<cmd>nohl<cr>")
@@ -526,7 +526,7 @@ vim.cmd("cab cc CodeCompanion")
 
 vim.keymap.set({ "n", "v", "i" }, "<c-h>",
    function() require("codecompanion").toggle({ window_opts = { layout = "float", width = 0.6 } }) end)
-vim.keymap.set({ "n", "v" }, "<c-a-h>", "<cmd>CodeCompanionActions<cr>")
+-- vim.keymap.set({ "n", "v" }, "<c-a-h>", "<cmd>CodeCompanionActions<cr>")
 vim.keymap.set("v", "gha", "<cmd>CodeCompanionChat Add<cr>")
 
 vim.keymap.set({ "n", "v" }, "ghc", "<cmd>CodeCompanionChat Toggle<cr>")
@@ -580,10 +580,10 @@ end)
 vim.keymap.set("n", "<c-n>dg", function()
    require("pkm").generate_diary_index()
 end)
-vim.keymap.set("n", "<c-s-j>", function()
+vim.keymap.set("n", "<c-a-s-j>", function()
    require("pkm").open_diary_relative(-1)
 end)
-vim.keymap.set("n", "<c-s-k>", function()
+vim.keymap.set("n", "<c-a-s-k>", function()
    require("pkm").open_diary_relative(1)
 end)
 
