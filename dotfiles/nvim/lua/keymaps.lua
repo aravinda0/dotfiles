@@ -43,6 +43,11 @@ vim.keymap.set("n", "<m-3>", function() select_nth_tab(3) end)
 vim.keymap.set("n", "<m-4>", function() select_nth_tab(4) end)
 vim.keymap.set("n", "<m-5>", function() select_nth_tab(5) end)
 
+-- Copy current file path
+vim.keymap.set("n", "yff", ":let @+ = expand('%:p')<CR>", { desc = "Copy absolute file path" })
+vim.keymap.set("n", "yfr", ":let @+ = expand('%')<CR>", { desc = "Copy relative path" })
+vim.keymap.set("n", "yfn", ":let @+ = expand('%:t')<CR>", { desc = "Copy filename" })
+
 -- Switch to previous buffer
 vim.keymap.set("n", "<bs>", "<cmd>b#<cr>")
 
