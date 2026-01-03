@@ -518,6 +518,8 @@ M.set_obsidian_keymaps = function()
    vim.keymap.set("n", "<c-n><c-r>", "<cmd>Obsidian rename<cr>")
    vim.keymap.set("n", "<c-n>dt", "<cmd>Obsidian today<cr>")
    vim.keymap.set("n", "<c-n>dy", "<cmd>Obsidian today -1<cr>")
+   vim.keymap.set("n", "<tab>", function() require("obsidian.api").nav_link("next") end)
+   vim.keymap.set("n", "<s-tab>", function() require("obsidian.api").nav_link("prev") end)
 end
 
 
