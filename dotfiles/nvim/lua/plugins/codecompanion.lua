@@ -1,3 +1,4 @@
+
 return {
    {
       "olimorris/codecompanion.nvim",
@@ -8,11 +9,20 @@ return {
       opts = {
          strategies = {
             chat = {
-               adapter = "gemini",
+               -- adapter = "gemini",
+               adapter = "nanogpt",
+               model = "openai/gpt-5-nano",
             },
             inline = {
                adapter = "gemini",
             },
+         },
+         adapters = {
+            http = {
+               nanogpt = function() 
+                  return require("ai.nanogpt_adapter")
+               end
+            }
          }
       },
    },
