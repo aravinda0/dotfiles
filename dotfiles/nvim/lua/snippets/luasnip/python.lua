@@ -20,6 +20,21 @@ local snippets = {
       t('")'),
       i(0),
    }),
+   s({
+      trig = "ifmain",
+      dscr = "main function",
+   }, {
+      t({
+         "def main():",
+         "    ",
+      }),
+      i(0, "pass"),
+      t({"", "", "", ""}),
+      t({
+         'if __name__ == "__main__":',
+         "    main()"
+      }),
+   }),
 }
 
 return {
