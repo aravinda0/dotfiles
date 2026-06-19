@@ -604,6 +604,9 @@ vim.keymap.set("n", "<c-n>ag", function()
    require("pkm.anki").generate_cards_index()
 end)
 
+vim.keymap.set("n", "<c-n>zg", function()
+   require("pkm").generate_zk_index()
+end)
 
 -- --------------------------------------------------------------------------------
 

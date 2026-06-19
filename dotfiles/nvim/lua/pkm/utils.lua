@@ -58,6 +58,77 @@ M.scan_dir = function(dir)
    return results
 end
 
+---Recursively scan a directory and return matching file paths relative
+---to the provided root directory.
+---
+---Examples:
+---  scan_files_recursive("/vault")
+---    -> { "a.txt", "notes/foo.md", ... }
+---
+---  scan_files_recursive("/vault", { "md" })
+---    -> { "index.md", "notes/foo.md", ... }
+---
+---  scan_files_recursive("/vault", { "md", "txt" })
+---    -> { "README.txt", "notes/foo.md", ... }
+---
+---@param dir string
+---@param extensions? string[]  -- {"md", "txt"} (without leading dots)
+---@param files? string[]
+---@return string[]
+M.scan_files_recursive = function(dir, extensions, files)
+    files = files or {}
+
+    local root = vim.fs.normalize(dir)
+
+    local ext_lookup
+    if extensions and #extensions > 0 then
+        ext_lookup = {}
+        for _, ext in ipairs(extensions) do
+            ext_lookup[ext:lower()] = true
+        end
+    end
+
+    local function recurse(path)
+        local handle = vim.uv.fs_scandir(path)
+        if not handle then
+            return
+        end
+
+        while true do
+            local name, typ = vim.uv.fs_scandir_next(handle)
+            if not name then
+                break
+            end
+
+            local full_path = path .. "/" .. name
+
+            if typ == "directory" then
+                recurse(full_path)
+
+            elseif typ == "file" then
+                local include = false
+
+                if not ext_lookup then
+                    include = true
+                else
+                    local ext = name:match("%.([^.]+)$")
+                    include = ext and ext_lookup[ext:lower()]
+                end
+
+                if include then
+                    local relative =
+                        full_path:sub(#root + 2) -- remove "/root/"
+                    table.insert(files, relative)
+                end
+            end
+        end
+    end
+
+    recurse(root)
+
+    return files
+end
+
 M.file_exists = function(path)
    local file = io.open(path, "r")
    if file then
