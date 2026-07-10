@@ -214,18 +214,19 @@ M.generate_diary_index = function()
    vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
 end
 
-M.generate_zk_index = function()
-   local zk_dir = vim.env["_Z"] .. "/zk"
-   local zk_index = zk_dir .. "/index.md"
+-- Generate index file contents from all files in the current file's directory.
+M.generate_index = function()
+   local curr_path = vim.api.nvim_buf_get_name(0);
+   local curr_path_dir = vim.fs.normalize(vim.fs.joinpath(curr_path, ".."))
 
    local lines = {"# Index - ZK", ""}
 
-   for _, note_path in ipairs(pkm_utils.scan_files_recursive(zk_dir)) do
+   for _, note_path in ipairs(pkm_utils.scan_files_recursive(curr_path_dir)) do
       if note_path == "index.md" then
          goto continue
       end
 
-      local title = pkm_utils.get_h1_from_path(nil, zk_dir .. "/" .. note_path)
+      local title = pkm_utils.get_h1_from_path(nil, curr_path_dir .. "/" .. note_path)
       table.insert(lines, string.format("- [[%s|%s]]", note_path, title))
 
       ::continue::

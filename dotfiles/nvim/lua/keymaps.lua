@@ -605,7 +605,7 @@ vim.keymap.set("n", "<c-n>ag", function()
 end)
 
 vim.keymap.set("n", "<c-n>zg", function()
-   require("pkm").generate_zk_index()
+   require("pkm").generate_index()
 end)
 
 -- --------------------------------------------------------------------------------
