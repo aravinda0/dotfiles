@@ -114,33 +114,34 @@ keys = [
     EzKey("M-C-4", lazy.layout.focus_nth_tab(4, level=1)),
     EzKey("M-C-5", lazy.layout.focus_nth_tab(5, level=1)),
     # ----------
+    # Group selection within workspace
+    EzKey("M-1", _activate_standard_group("1")),
+    EzKey("M-2", _activate_standard_group("2")),
+    EzKey("M-3", _activate_standard_group("3")),
+    EzKey("M-4", _activate_standard_group("4")),
+    EzKey("M-5", _activate_standard_group("5")),
+    EzKey("M-6", _activate_standard_group("6")),
+    EzKey("M-7", _activate_standard_group("7")),
     # precise pane selection
-    EzKey(
-        "M-1", lazy.layout.focus_nth_window(1, ignore_inactive_tabs_at_levels=[1, 2])
-    ),
-    EzKey(
-        "M-2", lazy.layout.focus_nth_window(2, ignore_inactive_tabs_at_levels=[1, 2])
-    ),
-    EzKey(
-        "M-3", lazy.layout.focus_nth_window(3, ignore_inactive_tabs_at_levels=[1, 2])
-    ),
-    EzKey(
-        "M-4", lazy.layout.focus_nth_window(4, ignore_inactive_tabs_at_levels=[1, 2])
-    ),
-    EzKey(
-        "M-5", lazy.layout.focus_nth_window(5, ignore_inactive_tabs_at_levels=[1, 2])
-    ),
+    # EzKey(
+    #     "M-1", lazy.layout.focus_nth_window(1, ignore_inactive_tabs_at_levels=[1, 2])
+    # ),
+    # EzKey(
+    #     "M-2", lazy.layout.focus_nth_window(2, ignore_inactive_tabs_at_levels=[1, 2])
+    # ),
+    # EzKey(
+    #     "M-3", lazy.layout.focus_nth_window(3, ignore_inactive_tabs_at_levels=[1, 2])
+    # ),
+    # EzKey(
+    #     "M-4", lazy.layout.focus_nth_window(4, ignore_inactive_tabs_at_levels=[1, 2])
+    # ),
+    # EzKey(
+    #     "M-5", lazy.layout.focus_nth_window(5, ignore_inactive_tabs_at_levels=[1, 2])
+    # ),
     KeyChord(
         ["mod4"],
         "w",
         [
-            EzKey("1", _activate_standard_group("1")),
-            EzKey("2", _activate_standard_group("2")),
-            EzKey("3", _activate_standard_group("3")),
-            EzKey("4", _activate_standard_group("4")),
-            EzKey("5", _activate_standard_group("5")),
-            EzKey("6", _activate_standard_group("6")),
-            EzKey("7", _activate_standard_group("7")),
             EzKey("n", lazy.layout.normalize()),
             EzKey("f", lazy.window.toggle_floating()),
             EzKey("M-<Return>", lazy.window.toggle_fullscreen()),
@@ -211,15 +212,13 @@ keys = [
     # --------------------------------------------------------------------------------
     # Scratchpads
     # --------------------------------------------------------------------------------
-    EzKey("M-<backslash>", lazy.group["scratchpad/rough"].dropdown_toggle("term_x")),
-    EzKey("C-7", lazy.group["scratchpad/notes"].dropdown_toggle("term_1")),
-    EzKey("C-8", lazy.group["scratchpad/notes"].dropdown_toggle("tmp_prj")),
-    EzKey("C-9", lazy.group["scratchpad/notes"].dropdown_toggle("dotfiles")),
-    EzKey("C-0", lazy.group["scratchpad/notes"].dropdown_toggle("w")),
-    EzKey("C-A-0", lazy.group["scratchpad/notes"].dropdown_toggle("sec__dry")),
-    EzKey("C-<backslash>", lazy.group["scratchpad/notes"].dropdown_toggle("tmp")),
-    EzKey("C-<BackSpace>", lazy.group["scratchpad/notes"].hide_all()),
-    EzKey("C-<grave>", lazy.group["scratchpad/notes"].hide_all()),
+    EzKey("M-<backslash>", lazy.group["scratchpad/notes"].dropdown_toggle("now")),
+    EzKey("M-7", lazy.group["scratchpad/notes"].dropdown_toggle("term_1")),
+    EzKey("M-8", lazy.group["scratchpad/notes"].dropdown_toggle("scratch")),
+    EzKey("M-9", lazy.group["scratchpad/notes"].dropdown_toggle("dotfiles")),
+    EzKey("M-0", lazy.group["scratchpad/notes"].dropdown_toggle("w")),
+    EzKey("C-M-0", lazy.group["scratchpad/notes"].dropdown_toggle("sec__dry")),
+    EzKey("M-<Space>", lazy.group["scratchpad/notes"].hide_all()),
     # --------------------------------------------------------------------------------
     # Window actions
     # --------------------------------------------------------------------------------
@@ -236,7 +235,8 @@ keys = [
     # --------------------------------------------------------------------------------
     EzKey("M-<Return>", lazy.spawn(terminal)),
     EzKey("M-r", lazy.spawncmd()),
-    EzKey("M-8", lazy.spawn("keepmenu")),
+    EzKey("M-<F8>", lazy.spawn("keepmenu")),
+    EzKey("C-M-8", lazy.spawn("keepmenu")),
     KeyChord(
         ["mod4"],
         "a",
@@ -281,8 +281,8 @@ groups.extend(
                     y=0.02,
                 ),
                 DropDown(
-                    "tmp",
-                    "alacritty -e zsh -i -c 'cd $_F/tmp/; nvim'",
+                    "now",
+                    "alacritty -e zsh -i -c 'cd $_F/now/; nvim'",
                     on_focus_lost_hide=False,
                     width=0.95,
                     height=0.95,
@@ -299,8 +299,8 @@ groups.extend(
                     y=0.02,
                 ),
                 DropDown(
-                    "tmp_prj",
-                    "alacritty -e zsh -i -c 'cd $_F/tmp_prj/; nvim'",
+                    "scratch",
+                    "alacritty -e zsh -i -c 'cd $_F/scratch/; nvim'",
                     on_focus_lost_hide=False,
                     width=0.95,
                     height=0.95,
