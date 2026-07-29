@@ -2,7 +2,7 @@ local keymaps = require("keymaps")
 
 return {
    {
-      "ggandor/leap.nvim",
+      "https://codeberg.org/andyg/leap.nvim",
       event = "VeryLazy",
       config = function()
          keymaps.set_leap_keymaps()

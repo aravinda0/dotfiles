@@ -25,18 +25,9 @@ return {
          frontmatter = {
             enabled = false,
          },
-         completion = {
-            nvim_cmp = false,
-            blink = true,
-            min_chars = 2,
-            create_new = true,
-         },
-         follow_url_func = function(url)
-            vim.ui.open(url)
-         end,
          ui = {
             enable = false,
-         }
+         },
       })
 
       keymaps.set_obsidian_keymaps();
