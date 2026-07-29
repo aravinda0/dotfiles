@@ -57,3 +57,4 @@ npm-debug.log
 .venv
 /debug
 /tmp
+/scratch
