@@ -1,3 +1,8 @@
+[env]
+WINIT_X11_SCALE_FACTOR = "1"
+
+[font]
+size = 19
 
 [colors.bright]
 black = "0x928374"
