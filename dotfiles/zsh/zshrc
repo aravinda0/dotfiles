@@ -33,3 +33,10 @@ fi
 
 
 eval "$(zoxide init zsh)"
+
+
+
+# Show when nix env is active.
+if [[ -n "$PROMPT" ]]; then
+    PROMPT='${IN_NIX_SHELL:+[nix] }'"$PROMPT"
+fi
