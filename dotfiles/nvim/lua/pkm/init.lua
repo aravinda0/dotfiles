@@ -3,6 +3,8 @@ local tspickers = require("telescope.pickers")
 local tsfinders = require("telescope.finders")
 local tsactions = require("telescope.actions")
 local tsaction_state = require("telescope.actions.state")
+local tsmake_entry = require("telescope.make_entry")
+local tssorters = require("telescope.sorters")
 local tsconf = require("telescope.config").values
 
 local pkm_utils = require("pkm.utils")
@@ -11,6 +13,12 @@ local M = {}
 
 local notes_dirs = {
    vim.env["_F"],
+}
+local notes_dirs_prefixes = {
+   z = "zk/",
+   n = "notes/",
+   l = "lit/",
+   m = "medi/",
 }
 
 local handle_picker_mappings = function(prompt_bufnr, map)
@@ -42,17 +50,86 @@ local note_picker_opts = vim.tbl_extend("force", common_picker_opts, {
    path_display = pkm_utils.get_h1_from_path,
 })
 
+
+--- Parses the telescope search prompt so when it gets prefixed with certain modifiers
+--- (eg. /z), then only corresponding subdirectories are searched.
+local function parse_search_prompt(prompt)
+  local key, term = prompt:match("^/(%a) (.*)$")
+  if key and notes_dirs_prefixes[key] then
+    return term, notes_dirs_prefixes[key]
+  end
+  return prompt, nil
+end
+
+--- Custom sorter handles our prefix-capable prompts. Without this, search results can
+--- get messed up as the prefix is used for scoring and items may get dropped.
+local function make_sorter()
+   local sorter = tsconf.file_sorter(opts)
+
+   local score = sorter.scoring_function
+   sorter.scoring_function = function(self, prompt, line, ...)
+      local term = parse_search_prompt(prompt)
+      return score(self, term, line, ...)
+   end
+
+   local highlight = sorter.highlighter
+   if highlight then
+      sorter.highlighter = function(self, prompt, display)
+         local term = parse_search_prompt(prompt)
+         return highlight(self, term, display)
+      end
+   end
+
+   sorter.discard = false -- don't reuse results filtered on a partial "/z" prompt
+   return sorter
+end
+local sorter = make_sorter()
+
 -- --------------------------------------------------------------------------------
+
 
 M.live_grep_notes = function(opts)
    opts = vim.tbl_extend("force", note_picker_opts, opts or {})
-   tsbuiltin.live_grep(opts)
+   opts.cwd = opts.cwd or vim.uv.cwd()
+
+   local finder = tsfinders.new_job(function(prompt)
+      local term, dir = parse_search_prompt(prompt)
+      if not term or term == "" then
+         return nil
+      end
+
+      local cmd = vim.list_extend({}, tsconf.vimgrep_arguments)
+      if opts.additional_args then
+         local extra = type(opts.additional_args) == "function"
+             and opts.additional_args(opts)
+             or opts.additional_args
+         vim.list_extend(cmd, extra)
+      end
+      vim.list_extend(cmd, { "--", term })
+      table.insert(cmd, dir or ".")
+      return cmd
+   end, tsmake_entry.gen_from_vimgrep(opts), opts.max_results, opts.cwd)
+
+   local sorter = tssorters.highlighter_only(opts)
+   local highlight = sorter.highlighter
+   sorter.highlighter = function(self, prompt, display)
+      local term = parse_search_prompt(prompt)
+      return highlight(self, term, display)
+   end
+
+   tspickers
+       .new(opts, {
+          prompt_title = "Live Grep Notes",
+          finder = finder,
+          previewer = tsconf.grep_previewer(opts),
+          sorter = sorter,
+       })
+       :find()
 end
+
 
 M.find_notes = function(opts)
    opts = vim.tbl_extend("force", note_picker_opts, opts or {})
-
-   local find_cmd = { "rg", "-m", "1", "-r", "$title_text", "^# (?P<title_text>)" }
 
    local make_entry = function(raw_value)
       local i_colon = string.find(raw_value, ":")
@@ -69,11 +146,18 @@ M.find_notes = function(opts)
       }
    end
 
+   local finder = tsfinders.new_job(function(prompt)
+      local term, dir = parse_search_prompt(prompt)
+      local cmd = { "rg", "-m", "1", "-r", "$title_text", "^# (?P<title_text>)"}
+      if dir then table.insert(cmd, dir) end
+      return cmd
+   end, make_entry, opts.max_results, opts.cwd)
+
    tspickers
        .new(opts, {
           prompt_title = "Note Files",
-          finder = tsfinders.new_oneshot_job(find_cmd, { entry_maker = make_entry }),
-          sorter = tsconf.file_sorter(opts),
+          finder = finder,
+          sorter = sorter,
           previewer = tsconf.file_previewer(opts),
        })
        :find()
